@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>数学准备</title>
+    <link href="/2025/01/13/math4phy/"/>
+    <url>/2025/01/13/math4phy/</url>
+    
+    <content type="html"><![CDATA[<h2 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h2><p>正常运算<br>Cramer’s law</p><h2 id="矢量的合成与分解"><a href="#矢量的合成与分解" class="headerlink" title="矢量的合成与分解"></a>矢量的合成与分解</h2><p>$\vec{A}$ 的量值（模量）<br>$\vec{a}$&#x3D;$\frac{\vec{A}}{A}$方向矢量（长度为1）<br>标量与矢量的乘积<br>平行四边形法则<br>矢量的正交分解<br>$\vec{A}&#x3D;A_x\vec{i}+A_y\vec{j}+A_z\vec{k}$ i j k分别对应x y z</p><h3 id="k维空间"><a href="#k维空间" class="headerlink" title="k维空间"></a>k维空间</h3><h4 id="一维空间："><a href="#一维空间：" class="headerlink" title="一维空间："></a>一维空间：</h4><p>前后有一对可以延展的方向<br>可以开放（没有尽头）也可以闭合（圈）</p><h4 id="二维空间："><a href="#二维空间：" class="headerlink" title="二维空间："></a>二维空间：</h4><p>前后左右有两对可以延展的方向<br>有平直&amp;弯曲之别</p><h4 id="三维空间："><a href="#三维空间：" class="headerlink" title="三维空间："></a>三维空间：</h4><p>前后左右上下三对可延展的方向<br>有平直&amp;弯曲之别</p><h4 id="k维空间："><a href="#k维空间：" class="headerlink" title="k维空间："></a>k维空间：</h4><p>k对互相垂直可延展的方向</p><h2 id="矢量标积（点乘）"><a href="#矢量标积（点乘）" class="headerlink" title="矢量标积（点乘）"></a>矢量标积（点乘）</h2><p>应用：功</p><h2 id="矢量的失积（叉乘）"><a href="#矢量的失积（叉乘）" class="headerlink" title="矢量的失积（叉乘）"></a>矢量的失积（叉乘）</h2><p>$\vec{A}\times\vec{B}&#x3D;\vec{C}$<br> $C&#x3D;AB\sin\theta$<br> C的大小：平行四边形法则中平行四边形的面积</p><h4 id="vec-C-的方向"><a href="#vec-C-的方向" class="headerlink" title="$\vec{C}的方向$"></a>$\vec{C}的方向$</h4><p>右手系规定:框架式、螺旋式<br>右手框架:拇指指向$\vec{A}$的方向，食指指向$\vec{B}$的方向，中指的方向是$\vec{C}$<br>右手螺旋：四指指向$\vec{A}$的方向，握向$\vec{B}$的方向，拇指的方向是$\vec{C}$<br>左手系规定与之类似</p><h4 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h4><p>$\vec{A}\times\vec{B}&#x3D;-\vec{B}\times\vec{A}$<br>$(k\vec{A})\times\vec{B}&#x3D;k(\vec{A}\times\vec{B})$<br>分配律、结合律<br>$\vec{i}\times\vec{i}&#x3D;\vec{j}\times\vec{j}&#x3D;\vec{k}\times\vec{k}&#x3D;0$<br>$\vec{i}\times\vec{j}&#x3D;\vec{k}$<br>$\vec{j}\times\vec{k}&#x3D;\vec{i}$<br>$\vec{k}\times\vec{i}&#x3D;\vec{j}$</p><p>$\vec{A}\times\vec{B}&#x3D;$ $\begin{vmatrix}\vec{i} &amp; A_x &amp; B_x \\vec{j} &amp;A_y &amp; B_y \\vec{k}&amp; A_z &amp; B_z\end{vmatrix}$ </p><p>应用：安培力，洛伦兹力<br>可以证明：任意一个单连通闭合电流回路在匀强磁场中所受（合）安培力为零。<br>$\vec{F}&#x3D;\sum I\Delta l B&#x3D;I \sum (\Delta l) B$<br>闭合回路，$\sum (\Delta l)&#x3D;0$</p><h2 id="矢量的三重积"><a href="#矢量的三重积" class="headerlink" title="矢量的三重积"></a>矢量的三重积</h2><h4 id="三重标积"><a href="#三重标积" class="headerlink" title="三重标积"></a>三重标积</h4><p>$\vec{A}\cdot (\vec{B}\times\vec{C})&#x3D;\vec{A}\vec{B}\vec{C}围成的平行六面体的体积$<br>$\vec{A}\vec{B}\vec{C}$共面则有$\vec{A}\cdot (\vec{B}\times\vec{C})&#x3D;0$<br>$\vec{A}\cdot (\vec{B}\times\vec{C})&#x3D;\begin{vmatrix} A_x &amp; B_x &amp; C_x\\ A_y &amp; B_y&amp;C_y \A_z &amp; B_z &amp; C_z\end{vmatrix}$<br>性质：$\vec{A}\cdot (\vec{B}\times\vec{C})&#x3D;\vec{B}\cdot (\vec{C}\times\vec{A})&#x3D;\vec{C}\cdot (\vec{A}\times\vec{B})$</p><h4 id="三重矢积"><a href="#三重矢积" class="headerlink" title="三重矢积"></a>三重矢积</h4><p>$\vec{A}\times(\vec{B}\times\vec{C})&#x3D;\vec{D}$ 注意到$\vec{D}一定在\vec{B}\vec{C}确定的平面内$<br>所以$\vec{A}\times(\vec{B}\times\vec{C})&#x3D;\alpha\vec{V}+\beta\vec{C}$ 其中$\alpha&#x3D;\vec{A}\cdot \vec{C}$    $\beta&#x3D;-\vec{A} \cdot \vec{B}$<br>记忆：ACB,BAC 换顺序即可</p><h2 id="微积分"><a href="#微积分" class="headerlink" title="微积分"></a>微积分</h2><h4 id="几个重要极限"><a href="#几个重要极限" class="headerlink" title="几个重要极限"></a>几个重要极限</h4><p>把dx看作x趋于0<br>cosdx&#x3D;1<br>sindx&#x3D;tandx&#x3D;dx<br>Ax+bdx&#x3D;Ax<br>$(1+dx)^{\frac{1}{dx}}&#x3D;e&#x3D;2.71828$</p><h4 id="微商（导数）"><a href="#微商（导数）" class="headerlink" title="微商（导数）"></a>微商（导数）</h4><p>定义：函数的微分与自变量微分构成的商运算</p><h4 id="泰勒"><a href="#泰勒" class="headerlink" title="泰勒"></a>泰勒</h4><p>$e^{ix}&#x3D;1+ix-\frac{1}{2!}x^{2}-\frac{i}{3!}x^{3}+\frac{1}{4!}x^{4}+…$<br>$e^{ix}&#x3D;cosx+isinx$</p><h4 id="矢量的微商"><a href="#矢量的微商" class="headerlink" title="矢量的微商"></a>矢量的微商</h4><p>$\vec{A}(t)&#x3D;A_x(t)\vec{i}+A_y(t)\vec{j}+A_z\vec{k}$<br>整体式 $d\vec{A}&#x3D;\vec{A}(t+dt)-\vec{A}(t)$<br>分解式 $\frac{d\vec{A}}{dt}&#x3D;\frac{dAx}{dt}\vec{i}+\frac{dAy}{dt}\vec{j}+\frac{dAz}{dt}\vec{k}$<br>圆的渐开线运动——更加适合用整体式解法<br>将一个圆轴固定在一个平面上,轴上缠线,拉紧一个线头,让该线绕圆轴运动且始终与圆轴相切,那么线上一个定点在该平面上的轨迹就是渐开线。<br>！<a href="%22D:%5Cbianrumen%5CGeneral-Physics%5C1.png%22">渐开线</a><br>用小量近似，$\vec{a}&#x3D;\frac{d\vec{v}}{dt},d\vec{v}指向切点,大小为v_0d\theta$<br>可以推导出：$\vec{a}&#x3D;\frac{d\theta}{dt}v_0&#x3D;\omega v_0&#x3D;\frac{v_0}{l}v_0$</p><h4 id="标积矢积的微商"><a href="#标积矢积的微商" class="headerlink" title="标积矢积的微商"></a>标积矢积的微商</h4><p>已知$\vec{A}(t)\vec{B}(t)$<br>$(\vec{A}\cdot\vec{B})’&#x3D;\frac{d\vec{A}}{dt}\cdot\vec{B}+\vec{A}\cdot \frac{d\vec{B}}{dt}$<br>$(\vec{A}\times\vec{B})’&#x3D;\frac{d\vec{A}}{dt}\times\vec{B}+\vec{A}\times \frac{d\vec{B}}{dt}$</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>physics</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>复仇剧、人生目标与天朝中学教育</title>
     <link href="/2025/01/11/revenge/"/>
     <url>/2025/01/11/revenge/</url>
