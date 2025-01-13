@@ -21,12 +21,12 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="质点运动学 运动：物体各点部位的位置随时间变化 空间和时间 空间 绝对空间观：存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中">
+    <meta name="description" content="质点运动学 运动：物体各点部位的位置随时间变化 # 空间和时间 ## 空间 绝对空间观：存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="港湾">
 <meta property="og:url" content="http://example.com/2025/01/13/2/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="质点运动学 运动：物体各点部位的位置随时间变化 空间和时间 空间 绝对空间观：存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中">
+<meta property="og:description" content="质点运动学 运动：物体各点部位的位置随时间变化 # 空间和时间 ## 空间 绝对空间观：存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-13T13:12:14.411Z">
 <meta property="article:modified_time" content="2025-01-13T13:20:50.131Z">
@@ -299,11 +299,9 @@
             
               <div class="markdown-body">
                 
-                <h1>质点运动学</h1>
-<p>运动：物体各点部位的位置随时间变化</p>
-<h1>空间和时间</h1>
-<h2 id="空间">空间</h2>
-<p>绝对空间观：存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中</p>
+                <h1 id="质点运动学">质点运动学</h1>
+<p>运动：物体各点部位的位置随时间变化 # 空间和时间 ## 空间
+绝对空间观：存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中</p>
 
                 
               </div>
@@ -461,6 +459,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -679,6 +683,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
