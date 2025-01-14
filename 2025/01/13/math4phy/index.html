@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/2.png">
 <meta property="article:published_time" content="2025-01-13T12:56:04.000Z">
-<meta property="article:modified_time" content="2025-01-14T07:31:47.519Z">
+<meta property="article:modified_time" content="2025-01-14T12:23:19.594Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta property="article:tag" content="physics">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          932 字
+          1.4k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          8 分钟
+          12 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-14T15:31:47+08:00
+                    本文最后更新于 2025-01-14T20:23:19+08:00
                   
                   
 
@@ -433,6 +433,74 @@ class="math inline">\((\vec{A}\cdot\vec{B})&#39;=\frac{d\vec{A}}{dt}\cdot\vec{B}
 <p><span
 class="math inline">\((\vec{A}\times\vec{B})&#39;=\frac{d\vec{A}}{dt}\times\vec{B}+\vec{A}\times
 \frac{d\vec{B}}{dt}\)</span></p>
+<h4 id="积分">积分</h4>
+<p>面积、弧长公式</p>
+<p>例子：一个圆盘，面积密度<span
+class="math inline">\(\rho=\frac{dm}{ds}是常量,以\omega的角速度转动,求总动能\)</span></p>
+<p>取一个小圆环 <span class="math inline">\(dm=\rho(2\pi rdr),v=\omega
+r,dE_k=\frac{1}{2}(dm)v^2=\pi\rho\omega^2 r^3 dr\)</span></p>
+<p>总动能即从0到R积分得，<span
+class="math inline">\(\frac{1}{4}\pi\rho\omega^2R^4\)</span></p>
+<p>引入:<span class="math inline">\(M=\rho \pi
+R^2,I=\frac{1}{2}MR^2得E_k=\frac{1}{2}I\omega^2\)</span></p>
+<p>例子:细杆滑下去</p>
+<p>找包络线</p>
+<h4 id="偏微商偏导">偏微商（偏导）</h4>
+<p><span class="math inline">\(y(x_1,x_2,...,x_k)\)</span>变化到<span
+class="math inline">\(y(x_1+dx,x_2,...,x_k)\)</span></p>
+<p>偏微商 <span
+class="math inline">\(\frac{y(x_1+dx,x_2,...,x_k)-y(x_1,x_2,...,x_k)}{dx_1}\)</span>=<span
+class="math inline">\(\frac{\partial y}{\partial x_1}\)</span></p>
+<p>函数因为各自变量变化引起的变化量：全微分<span
+class="math inline">\(dy=\frac{\partial y}{\partial
+x_1}dx_1+...+\frac{\partial y}{\partial x_k}dx_k\)</span></p>
+<p>例子:理想气体状态方程 pV=nRT T=<span
+class="math inline">\(\frac{PV}{nR}\)</span></p>
+<p><span class="math inline">\(\frac{\partial T}{\partial
+p}=\frac{V}{nR}\)</span></p>
+<p><span class="math inline">\(\frac{\partial T}{\partial
+V}=\frac{p}{nR}\)</span></p>
+<p><span class="math inline">\(代入后知道：pdv+vdp=nRdT\)</span></p>
+<h4 id="多元函数的积分">多元函数的积分</h4>
+<p>三维空间</p>
+<p>标量函数:<span
+class="math inline">\(\phi(\vec{r})=\phi(x,y,z)\)</span></p>
+<p>实例：静电场的电势 <span
+class="math inline">\(U=U(\vec{r})\)</span></p>
+<p>矢量函数:<span
+class="math inline">\(\vec{A}(vec{r})=\vec{A}(x,y,z)\)</span></p>
+<p>实例：静电场场强 <span
+class="math inline">\(\vec{E}=\vec{E}(\vec{r})\)</span></p>
+<h5 id="标量函数线积分">标量函数线积分</h5>
+<p><span
+class="math inline">\(\int_L\phi(\vec{r})dl若\phi=1，则该积分为l\)</span></p>
+<p>特例:L为闭合曲线</p>
+<p><span class="math inline">\(\oint_L\phi(\vec{r})dl\)</span></p>
+<h5 id="矢量函数线积分">矢量函数线积分</h5>
+<p><span class="math inline">\(\int_L\vec{A}d\vec{l}\)</span></p>
+<p>实例：做功</p>
+<p><span class="math inline">\(dw=\vec{F}\cdot\vec{dl}\)</span></p>
+<p>特例:闭合曲线，给定一个循环的方向<span
+class="math inline">\(\oint_L\vec{A}\vec{dl}\)</span></p>
+<p>实例：保守力</p>
+<h5 id="标量函数的面积分">标量函数的面积分</h5>
+<p>ds:面元面积</p>
+<p>每一条从左到右积分，再把条和条之间从上到下积分</p>
+<p><span class="math inline">\(\iint_s\phi(\vec{r})dS\)</span>
+二重积分</p>
+<p>特例：如果是闭合曲面，则<span
+class="math inline">\(\oiint_s\phi(\vec{r})ds\)</span></p>
+<h5 id="矢量函数的面积分">矢量函数的面积分</h5>
+<p><span class="math inline">\(\vec{ds}=ds\vec{n}\)</span> 面元矢量</p>
+<p><span class="math inline">\(\iint_s\vec{A}\vec{ds}\)</span></p>
+<p>实例：如果<span
+class="math inline">\(\vec{A}是磁感应强度\vec{B},那么这个积分表示通过这个面的磁通量\)</span></p>
+<p>特例: S是一个闭合曲面</p>
+<p><span class="math inline">\(\oiint_s\vec{A}\vec{ds}\)</span></p>
+<p>例如:<span class="math inline">\(\oiint
+\vec{B}\vec{ds}=0\)</span></p>
+<h5 id="标量函数体积分">标量函数体积分</h5>
+<p><span class="math inline">\(\iiint_v\phi(\vec{r})dV\)</span></p>
 
                 
               </div>
@@ -502,9 +570,9 @@ class="math inline">\((\vec{A}\times\vec{B})&#39;=\frac{d\vec{A}}{dt}\times\vec{
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/13/2/" title="">
+                      <a href="/2025/01/14/chap1/" title="质点运动学">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">质点运动学</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
