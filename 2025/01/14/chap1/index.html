@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/blue.png">
 <meta property="article:published_time" content="2025-01-14T12:38:23.000Z">
-<meta property="article:modified_time" content="2025-01-15T14:43:31.425Z">
+<meta property="article:modified_time" content="2025-01-16T02:28:00.338Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta property="article:tag" content="physics">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          3k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          20 分钟
+          26 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-15T22:43:31+08:00
+                    本文最后更新于 2025-01-16T10:28:00+08:00
                   
                   
 
@@ -500,6 +500,48 @@ class="math inline">\(v_r=\frac{dr}{dt};v_\theta=r\frac{d\theta}{dt}\)</span></p
 class="math inline">\(\frac{dr}{d\theta}=r\frac{v_r}{v_\theta}\)</span></p>
 <p><span
 class="math inline">\(若已知v_r,v_\theta与r和\theta的表达式，可以推出r(\theta)。这种方式多见于天体运动种的推导\)</span></p>
+<h2 id="空间曲线运动">空间曲线运动</h2>
+<h3 id="质点的空间运动">质点的空间运动</h3>
+<p>运动方程：<span
+class="math inline">\(\vec{r}(t)=x(t)\vec{i}+y(t)\vec{j}+z(t)\vec{k}\)</span></p>
+<p><span
+class="math inline">\(\vec{v}=v_x\vec{i}+v_y\vec{j}+v_z\vec{k}\)</span></p>
+<p><span
+class="math inline">\(\vec{a}=a_x\vec{i}+a_y\vec{j}+a_z\vec{k}\)</span></p>
+<h3 id="质点系和刚性质点系">质点系和刚性质点系</h3>
+<h4 id="质点系">质点系</h4>
+<p>定义：由若干质点构成的系统</p>
+<h5 id="自由度">自由度</h5>
+<p>取出第i个质点，运动不受约束，它的运动方程<span
+class="math inline">\(\vec{r_i}(t)=x_i(t)\vec{i}+y_i(t)\vec{j}+z_i(t)\vec{k}\)</span>。有三个独立坐标，称为有三个运动自由度。</p>
+<p>N个质点构成 质点系，各个质点的运动都不受约束，那么有3N个自由度。</p>
+<h4 id="刚性质点系">刚性质点系</h4>
+<p>定义：每两个质点的间距不变。</p>
+<h5 id="自由度-1">自由度</h5>
+<p>取出三个不共线的质点，那么可以唯一确定一个平面。命名为1，2，3号质点。如果<span
+class="math inline">\(\vec{r_1},\vec{r_2},\vec{r_3}\)</span>确定，可以确定整个系统所有点的位置。此时自由度取决于1，2，3.</p>
+<p>1，2，3还有三个约束方程（来刻画距离不变）</p>
+<p>因此刚性质点系运动的参量只有6个。</p>
+<h5 id="运动分解">运动分解</h5>
+<p>平动+转动</p>
+<p>平动有三个自由度；转动有三个自由度</p>
+<h2 id="参考系间的相对运动">参考系间的相对运动</h2>
+<h3 id="参考系间平动">参考系间平动</h3>
+<p>在S系，<span class="math inline">\(\vec{r}(t)\)</span>;在S'系,<span
+class="math inline">\(\vec{r}(t)\)</span>;刻画O'相对S系运动<span
+class="math inline">\(\vec{r_{O&#39;}(t)}\)</span></p>
+<p>伽利略变换：</p>
+<p><span
+class="math inline">\(\vec{r}(t)=\vec{r_{O&#39;}(t)+\vec{r&#39;}(t)}\)</span></p>
+<p><span
+class="math inline">\(\vec{v}(t)=\vec{v_{O&#39;}}(t)+\vec{v&#39;}(t)\)</span></p>
+<p><span
+class="math inline">\(\vec{a}(t)=\vec{a_{O&#39;}}(t)+\vec{a&#39;}(t)\)</span></p>
+<h3 id="参考系间的匀速定轴转动">参考系间的匀速定轴转动</h3>
+<p>例子：地球参考系相对于地心参考系做匀速定轴转动</p>
+<h3 id="参考系中质点间的相对运动">参考系中质点间的相对运动</h3>
+<p>某参考系如果有两个运动质点A，B。建立一个随A一起相对S系运动（平动）的参考系，称之为平动参考系A系，便可以描述B在A系中的运动。这个运动就是在背景参考系S中B相对A的运动。</p>
+<p>例子：滚轮线运动</p>
 <h2 id="习题">习题</h2>
 <h4 id="题1">题1</h4>
 <p>长(L)的均匀弹性绳(AB)自由伸直地放在光滑水平桌面上，绳的(A)端固定。(t
@@ -555,6 +597,25 @@ class="math inline">\(v=\sqrt{v_0^2+4r^2\omega_0^2}\)</span></p>
 <p><span class="math inline">\(\rho=\frac{v^2}{a_心}\)</span></p>
 <p><span
 class="math inline">\(\rho=\frac{(v_0^2+4r^2w_0^2)^\frac{3}{2}}{4\omega_0(v_0^2+2r^2\omega_0^2)}\)</span></p>
+<h4 id="题5">题5</h4>
+<p>狐狸沿半径R的圆轨道以恒定速率v奔跑，在狐狸出发的同时，猎犬从圆心出发以相同的速率v追击过程中，圆心、猎犬和狐狸始终连成一直线。取圆心O为坐标原点，从O到狐狸初始位置设置极轴，建立极坐标系。</p>
+<ol type="1">
+<li><p>导出猎犬<span
+class="math inline">\(v_r,a_r,a_\theta\)</span>与猎犬所在位置参量<span
+class="math inline">\(r,\theta\)</span>间的关系；</p></li>
+<li><p>确定猎犬运动轨道的极坐标方程，并画出轨道曲线；</p></li>
+<li><p>判断猎犬能否追上狐狸？</p></li>
+</ol>
+<p>解答: 对猎犬分析：因为共线，<span
+class="math inline">\(v_\theta=r\omega=\frac{r}{R}v,v_r=\sqrt{v^2-v_0^2}\)</span></p>
+<p><span
+class="math inline">\(\frac{dr}{d\theta}=r\frac{v_r}{v_\theta}=\sqrt{R^2-r^2}\)</span></p>
+<p><span
+class="math inline">\(\int_{0}^{r}\frac{dr}{\sqrt{R^2-r^2}}=\int_{0}^{\theta}d\theta\)</span></p>
+<p><span
+class="math inline">\(arcsin\frac{r}{R}=\theta或者r=Rsin\theta（圆）\)</span></p>
+<p><img src="/img/dog.png" srcset="/img/loading.gif" lazyload alt="猎犬运动半径为0.5R"></p>
+<p>二者正好在顶点相遇（走过的弧长相同）</p>
 
                 
               </div>
