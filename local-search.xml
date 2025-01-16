@@ -4,13 +4,19 @@
   
   
   <entry>
-    <title>chap2</title>
+    <title>牛顿定律与动量定理</title>
     <link href="/2025/01/16/chap2/"/>
     <url>/2025/01/16/chap2/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="牛顿定律">牛顿定律</h1><p>适用范围：宏观世界，低速（v&lt;&lt;c）</p><h3 id="牛顿第一定律">牛顿第一定律</h3><p>内容:每个物体都会保持静止状态，或匀速直线运动，除非它被施加在其上的力改变这种运动状态。</p><p>惯性系：牛顿第一定律成立的参考系，否则为非惯性系</p><h3 id="牛顿第二定律">牛顿第二定律</h3><p>内容：<spanclass="math inline">\(\vec{F}=\frac{d(m\vec{v})}{dt}\)</span>m为不变量</p><p>或者可以写为：<span class="math inline">\(\vec{F}=m\vec{a}\)</span>m为惯性质量，F为物体所受的外力</p><h3 id="牛顿第三定律">牛顿第三定律</h3><p>相互作用力是径向力</p><h1 id="相互作用力">相互作用力</h1><h2 id="基本的相互作用">基本的相互作用</h2><h4 id="万有引力相互作用">万有引力相互作用</h4><h4 id="电相互作用">电相互作用</h4><h4 id="弱电作用">弱电作用</h4><p>强相互作用&amp;弱相互作用</p><h2 id="常见的力">常见的力</h2><h3 id="重力">重力</h3><p>来源于万有引力</p><h3 id="弹力摩擦力浮力">弹力、摩擦力、浮力</h3><p>来源于电作用力</p><h1 id="力学相对性原理">力学相对性原理</h1><p>在所有惯性系中，力学定律有相同的表达形式</p><h1 id="题目">题目</h1><h2 id="题1">题1</h2><p>1、讨论半圆圆周轻绳中的张力分布（可以看成轻绳绕理想滑轮，无摩擦）</p><p>切向的力平衡关系<spanclass="math inline">\(T(\theta)cos\frac{d\theta}{2}=T(\theta+d\theta)cos\frac{d\theta}{2}\)</span></p><p>因此张力是一个常量</p><p>2、讨论<span class="math inline">\(n=\frac{dN}{dl}\)</span>的大小</p><p><spanclass="math inline">\(dN=T(\theta+d\theta)sin\frac{d\theta}{2}+T(\theta)sin\frac{d\theta}{2}\)</span></p><p>运用小量近似可以看出<spanclass="math inline">\(\frac{dN}{d\theta}=T\)</span></p><p>因此<span class="math inline">\(n=\frac{T}{R}\)</span>是一个常量！</p><h2 id="题2">题2</h2><p><img src="/img/4.png" alt=""></p><p>动力学方程</p><p><span class="math inline">\(对m_1:T-Tcos\alpha=m_1a_1\)</span></p><p><spanclass="math inline">\(对m_2:竖直方向m_2g-Tsin\alpha=m_2a_2sin\alpha\)</span></p><p><spanclass="math inline">\(水平方向Tcos\alpha=m_2(a_1-a_2cos\alpha)\)</span></p><p>运动关联:<spanclass="math inline">\(m_2沿着绳子伸长的大小=m_1向左的大小\)</span></p><p>因此<span class="math inline">\(a_1=a_2\)</span></p><p>最终解出<spanclass="math inline">\(\alpha=arccos\{\frac{1}{2}(k+2-\sqrt{k(k+1)})\}\)</span></p><p><span class="math inline">\(k=\frac{m_1}{m_2}\)</span></p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>physics</tag>
+      
+    </tags>
     
   </entry>
   
