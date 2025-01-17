@@ -4,13 +4,19 @@
   
   
   <entry>
-    <title>chap3</title>
+    <title>机械能定理</title>
     <link href="/2025/01/17/chap3/"/>
     <url>/2025/01/17/chap3/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="动能定理">动能定理</h1><h2 id="功与功率">功与功率</h2><p><span class="math inline">\(\vec{F}\)</span> 做功定义为<spanclass="math inline">\(dw=\vec{F}\cdot\vec{dl}=Fdlcos\theta\)</span></p><p>重力功：W=mgh</p><p>弹力功：<spanclass="math inline">\(W=\frac{1}{2}k(x_1^2-x_2^2)\)</span></p><h1 id="题目">题目</h1>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>physics</tag>
+      
+    </tags>
     
   </entry>
   
@@ -28,25 +34,6 @@
     <tags>
       
       <tag>physics</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>approach</title>
-    <link href="/2025/01/15/approach/"/>
-    <url>/2025/01/15/approach/</url>
-    
-    <content type="html"><![CDATA[<p>开个坑，正好为我17日回去做准备，写一写各科的学习方式和参考书推荐。</p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>学习</tag>
       
     </tags>
     

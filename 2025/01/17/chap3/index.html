@@ -21,21 +21,26 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="chap3">
+    <meta name="description" content="动能定理 功与功率 \(\vec{F}\) 做功定义为\(dw&#x3D;\vec{F}\cdot\vec{dl}&#x3D;Fdlcos\theta\) 重力功：W&#x3D;mgh 弹力功：\(W&#x3D;\frac{1}{2}k(x_1^2-x_2^2)\) 题目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机械能定理">
 <meta property="og:url" content="http://example.com/2025/01/17/chap3/index.html">
 <meta property="og:site_name" content="港湾">
+<meta property="og:description" content="动能定理 功与功率 \(\vec{F}\) 做功定义为\(dw&#x3D;\vec{F}\cdot\vec{dl}&#x3D;Fdlcos\theta\) 重力功：W&#x3D;mgh 弹力功：\(W&#x3D;\frac{1}{2}k(x_1^2-x_2^2)\) 题目">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/RIN.png">
 <meta property="article:published_time" content="2025-01-17T03:52:18.000Z">
-<meta property="article:modified_time" content="2025-01-17T03:52:18.434Z">
+<meta property="article:modified_time" content="2025-01-17T04:21:08.985Z">
 <meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="physics">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/RIN.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>chap3 - 港湾</title>
+  <title>机械能定理 - 港湾</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,13 +211,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/sea.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/RIN.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="chap3"></span>
+            <span id="subtitle" data-typed-text="机械能定理"></span>
           
         </div>
 
@@ -235,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          42 字
         
       </span>
     
@@ -292,12 +297,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">chap3</h1>
+            <h1 id="seo-header">机械能定理</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-17T11:52:18+08:00
+                    本文最后更新于 2025-01-17T12:21:08+08:00
                   
                   
 
@@ -307,7 +312,14 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="动能定理">动能定理</h1>
+<h2 id="功与功率">功与功率</h2>
+<p><span class="math inline">\(\vec{F}\)</span> 做功定义为<span
+class="math inline">\(dw=\vec{F}\cdot\vec{dl}=Fdlcos\theta\)</span></p>
+<p>重力功：W=mgh</p>
+<p>弹力功：<span
+class="math inline">\(W=\frac{1}{2}k(x_1^2-x_2^2)\)</span></p>
+<h1 id="题目">题目</h1>
 
                 
               </div>
@@ -317,6 +329,13 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/physics/" class="print-no-link">#physics</a>
+      
+    </div>
+  
 </div>
 
 
@@ -325,7 +344,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>chap3</div>
+      <div>机械能定理</div>
       <div>http://example.com/2025/01/17/chap3/</div>
     </div>
     <div class="license-meta">
@@ -465,6 +484,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -710,6 +735,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
