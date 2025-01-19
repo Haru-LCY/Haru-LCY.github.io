@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/RIN.png">
 <meta property="article:published_time" content="2025-01-17T03:52:18.000Z">
-<meta property="article:modified_time" content="2025-01-19T12:26:22.079Z">
+<meta property="article:modified_time" content="2025-01-19T14:14:00.511Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta property="article:tag" content="physics">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          2.8k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          15 分钟
+          24 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-19T20:26:22+08:00
+                    本文最后更新于 2025-01-19T22:14:00+08:00
                   
                   
 
@@ -440,6 +440,62 @@ class="math inline">\(dW_{内非保}+dW_外=dE\)</span></p>
 <h2 id="机械能守恒">机械能守恒</h2>
 <p>如果恒有<span
 class="math inline">\(dW_外=0,dW_{内非保}=0\)</span>，则机械能守恒</p>
+<h1 id="碰撞">碰撞</h1>
+<h2 id="一维碰撞">一维碰撞</h2>
+<p>定义：碰撞前后速度都在同一直线上。</p>
+<h3 id="二体碰撞">二体碰撞</h3>
+<p>动量守恒：<span
+class="math inline">\(m_1v_1+m_2v_2=m_1v_1&#39;+m_2v_2&#39;\)</span>（带‘的是初速度）</p>
+<h4 id="弹性碰撞">弹性碰撞</h4>
+<p>解1：<span class="math inline">\(v_1=v_1&#39;\)</span>, <span
+class="math inline">\(v_2=v_2&#39;\)</span></p>
+<p>解2：<span
+class="math inline">\(v_1=\frac{(m_1-m_2)v_1&#39;+2m_2v_2&#39;}{m_1+m_2}\)</span></p>
+<p><span
+class="math inline">\(v_2=\frac{(m_2-m_1)v_1&#39;+2m_1v_2&#39;}{m_1+m_2}\)</span></p>
+<p><span
+class="math inline">\(v_2-v_1=v_1&#39;-v_2&#39;\)</span>（速度差保持不变）</p>
+<p>观察：原因具有1，2置换对称性，结果也有对称性</p>
+<p><span class="math inline">\(m_1=m_2\)</span> 则互换速度</p>
+<h4 id="完全非弹性碰撞">完全非弹性碰撞</h4>
+<p>碰撞后一起运动</p>
+<p><span
+class="math inline">\(v_1=v_2=\frac{m1v_1&#39;+m2v_2&#39;}{m_1+m_2}\)</span></p>
+<p>$v_2-v_1=0(v_1'-v_2') $</p>
+<h4 id="非弹性碰撞">非弹性碰撞</h4>
+<p><span class="math inline">\(v_2-v_1=e(v_1&#39;-v_2&#39;)\)</span>
+e介于0，1之间，称为恢复系数。</p>
+<p><img src="/img/碰撞.png" srcset="/img/loading.gif" lazyload alt="用e算速度和能量损失"></p>
+<h3 id="三体碰撞">三体碰撞</h3>
+<p><img src="/img/三体.png" srcset="/img/loading.gif" lazyload alt="三个小球同时碰撞"></p>
+<p>动量守恒：<span
+class="math inline">\(m_1v_1+m_2v_2+m_3v_3=m_1v_1&#39;+m_2v_2&#39;+m_3v_3&#39;\)</span>（带‘的初始状态）</p>
+<h4 id="完全非弹性碰撞-1">完全非弹性碰撞</h4>
+<p>三个末速度相等，于是有唯一解</p>
+<h4 id="弹性碰撞-1">弹性碰撞</h4>
+<p><span
+class="math inline">\(\frac{1}{2}m_1v_1^2+\frac{1}{2}m_2v_2^2+\frac{1}{2}m_3v_3^2=\frac{1}{2}m_1v_1&#39;^2+\frac{1}{2}m_2v_2&#39;^2+\frac{1}{2}m_3v_3&#39;^2\)</span></p>
+<p>解不可以唯一确定，为什么？</p>
+<p>这是因为把小球刚性化了，碰撞时具体的挤压被忽略了，与真实的情况不同了。丢了几何结构和物质结构。后续讨论的斜碰撞考虑了几何结构。</p>
+<h2 id="二维斜碰撞">二维斜碰撞</h2>
+<p>定义：碰撞前后速度矢量在同一平面内</p>
+<h3 id="二体碰撞-1">二体碰撞</h3>
+<p>动量守恒：<span
+class="math inline">\(m_1v_1+m_2v_2=m_1v_1&#39;+m_2v_2&#39;\)</span>（带‘的是初速度）</p>
+<h4 id="完全非弹性碰撞-2">完全非弹性碰撞</h4>
+<p><span
+class="math inline">\(v_1=v_2=\frac{m_1v_1&#39;+m_2v_2&#39;}{m_1+m_2}\)</span></p>
+<p>解确定</p>
+<h4 id="弹性碰撞-2">弹性碰撞</h4>
+<p><span
+class="math inline">\(\frac{1}{2}m_1v_1^2+\frac{1}{2}m_2v_2^2=\frac{1}{2}m_1v_1&#39;^2+\frac{1}{2}m_2v_2&#39;^2\)</span></p>
+<p>解不确定</p>
+<p>解决这种不确定性，可以补充一个标量方程，也可以给出一些碰撞过程的相互作用细节，或者给出几何结构。在我们讨论宏观问题时，突破口往往是几何结构。</p>
+<p>例子：在一个光滑水平面上有两个相同的小球1号2号，1号一开始静止，2号一开始有如图所示的初速度。求碰后的状态。</p>
+<p><img src="/img/几何.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>我们可以把2初速度分为<span
+class="math inline">\(v_\perp\)</span>和<span
+class="math inline">\(v_\parallel\)</span></p>
 <h1 id="题目">题目</h1>
 <h2 id="题1">题1</h2>
 <p>很小的定滑轮与轻绳之间无摩擦，绳的A端由变力F拉动，使A始终具有水平速度<span
@@ -512,6 +568,59 @@ class="math inline">\(初态：\frac{1}{2}Mv_0^2-G\frac{Mm}{l_0}\)</span></p>
 class="math inline">\(v_0\)</span></p>
 <p>补充讨论：</p>
 <p><img src="/img/补充.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="题4">题4</h2>
+<p><img src="/img/9题.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>一开始<span
+class="math inline">\(P_x=0\)</span>，当绳子开始下滑的时候，<span
+class="math inline">\(P_x\)</span>显然大于0。如果最终能达到中间的图所示的那种状态，必然有一个<span
+class="math inline">\(P_x\)</span>减小的过程。</p>
+<p>唯一能够改变<span
+class="math inline">\(P_x\)</span>的外力是桌角给的支持力<span
+class="math inline">\(\vec{N}\)</span>，显然这个力只能斜向上，所以<span
+class="math inline">\(P_x\)</span>不可能减小。</p>
+<p>当N=0时，意味着要分离了，此时有<span
+class="math inline">\(P_x\)</span>最大值。</p>
+<p>设<span
+class="math inline">\(\lambda\)</span>为绳子的线密度，将绳子的运动速率记为v，则有能量关联式：</p>
+<p><span class="math inline">\(\frac{1}{2}(\lambda L)v^2=(\lambda
+l)g\frac{l}{2}\)</span></p>
+<p><span class="math inline">\(得出v=\sqrt{\frac{g}{L}}l\)</span></p>
+<p>因此<span class="math inline">\(p_x=\lambda (L-l)v=\lambda
+(L-l)\sqrt{\frac{g}{L}}l\)</span></p>
+<p>显然<span
+class="math inline">\(l=\frac{1}{2}L\)</span>时水平动量最大，离开桌面。</p>
+<h2 id="题5">题5</h2>
+<p><img src="/img/题8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这个转换方式很巧妙，对于直角三角形的关系，要多注意斜边中点的特性。</p>
+<p><img src="/img/82.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="题6">题6</h2>
+<p>A球初始位置<span class="math inline">\(H_A\)</span>,B球初始位置<span
+class="math inline">\(H_B\)</span>,二者质量相同。所有的碰撞都是弹性的，求AB构成的系统周期运动的条件是什么？</p>
+<p>解答：</p>
+<p>本题的特殊性在于AB质量相同，质量相同的物体弹性碰撞会交换速度。于是我们讨论A,B两类运动状态。</p>
+<p>A类运动状态的承担者：A,B,A,B....</p>
+<p>B类运动状态承担者：B,A,B,A....</p>
+<p><span class="math inline">\(T_A=2\sqrt{\frac{2H_A}{g}}\)</span></p>
+<p><span class="math inline">\(T_B=2\sqrt{\frac{2H_B}{g}}\)</span></p>
+<p>两类运动状态构成的系统是不是有公共的周期？</p>
+<p>条件：<span class="math inline">\(T_A,T_B\)</span>
+有最小公倍数，即<span class="math inline">\(\frac{T_A}{T_B}\)</span>
+为有理数（<span class="math inline">\(\frac{N_A}{N_B}\)</span>）。</p>
+<p>即高度之比为一个有理数的平方。</p>
+<p>如果不发生三体碰撞呢？</p>
+<p>要求<span class="math inline">\(N_A\)</span>和<span
+class="math inline">\(N_B\)</span>一奇一偶</p>
+<h2 id="题7">题7</h2>
+<p>一个光滑椭圆环固定在一个光滑水平面上，椭圆的周长为L，一个小球贴着椭圆环的内侧匀速率v运动。旋转一个周期，在这一个周期内，计算弹力F大小的平均值是多少（对时间求平均）？</p>
+<p><img src="/img/椭圆.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>解答：</p>
+<p><span class="math inline">\(F=\frac{mv^2}{\rho}\)</span></p>
+<p><span class="math inline">\(F_平=\frac{\int_T Fdt}{T}\)</span></p>
+<p><span
+class="math inline">\(Fdt=mv(\frac{vdt}{\rho})=mv\frac{dl}{\rho}=mvd\theta\)</span></p>
+<p><span class="math inline">\(F_平=\frac{\int_{0}^{2\pi}
+mvd\theta}{T}\)</span></p>
+<p><span class="math inline">\(F_平=\frac{2\pi mv^2}{L}\)</span></p>
 
                 
               </div>
