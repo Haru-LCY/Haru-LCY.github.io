@@ -30,9 +30,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/RIN.png">
 <meta property="article:published_time" content="2025-01-17T03:52:18.000Z">
-<meta property="article:modified_time" content="2025-01-19T14:14:00.511Z">
+<meta property="article:modified_time" content="2025-01-20T02:15:40.386Z">
 <meta property="article:author" content="瑾瑜當年">
-<meta property="article:tag" content="physics">
+<meta property="article:tag" content="力学">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/RIN.png">
   
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          3.2k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          24 分钟
+          27 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-19T22:14:00+08:00
+                    本文最后更新于 2025-01-20T10:15:40+08:00
                   
                   
 
@@ -477,6 +477,19 @@ class="math inline">\(m_1v_1+m_2v_2+m_3v_3=m_1v_1&#39;+m_2v_2&#39;+m_3v_3&#39;\)
 class="math inline">\(\frac{1}{2}m_1v_1^2+\frac{1}{2}m_2v_2^2+\frac{1}{2}m_3v_3^2=\frac{1}{2}m_1v_1&#39;^2+\frac{1}{2}m_2v_2&#39;^2+\frac{1}{2}m_3v_3&#39;^2\)</span></p>
 <p>解不可以唯一确定，为什么？</p>
 <p>这是因为把小球刚性化了，碰撞时具体的挤压被忽略了，与真实的情况不同了。丢了几何结构和物质结构。后续讨论的斜碰撞考虑了几何结构。</p>
+<h3 id="绳子类碰撞作用">绳子类碰撞作用</h3>
+<p><span class="math inline">\(m_1\)</span>，<span
+class="math inline">\(m_2\)</span>两个小球由软绳连结。2初速度<span
+class="math inline">\(v_2&#39;\)</span>大于1初速度<span
+class="math inline">\(v_1&#39;\)</span>，求绳子伸直后的运动状态。</p>
+<p>动量守恒：<span
+class="math inline">\(m_1v_1+m_2v_2=m_1v_1&#39;+m_2v_2&#39;\)</span></p>
+<p>情况1：假设绳子不损耗机械能，则可以看成类弹性碰撞</p>
+<p>情况2：绳子一旦伸直不再回缩</p>
+<p><span class="math inline">\(v_1=v_2\)</span>，类完全非弹性碰撞</p>
+<p>情况3：介于情况1，情况2之间</p>
+<p><span
+class="math inline">\(v_1-v_2=e(v_2&#39;-v_1&#39;)\)</span>，类非弹性碰撞</p>
 <h2 id="二维斜碰撞">二维斜碰撞</h2>
 <p>定义：碰撞前后速度矢量在同一平面内</p>
 <h3 id="二体碰撞-1">二体碰撞</h3>
@@ -621,6 +634,32 @@ class="math inline">\(Fdt=mv(\frac{vdt}{\rho})=mv\frac{dl}{\rho}=mvd\theta\)</sp
 <p><span class="math inline">\(F_平=\frac{\int_{0}^{2\pi}
 mvd\theta}{T}\)</span></p>
 <p><span class="math inline">\(F_平=\frac{2\pi mv^2}{L}\)</span></p>
+<h2 id="题8">题8</h2>
+<p>考查斜碰撞中摩擦力起的作用</p>
+<p>小球从h自由下落，落在向右以<span
+class="math inline">\(v_0\)</span>运动的平板上，把竖直方向与平板的碰撞是弹性碰撞。小球和平板摩擦系数为<span
+class="math inline">\(\mu\)</span>,求弹回去的速度。</p>
+<p>解答：</p>
+<p><img src="/img/球.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><span class="math inline">\(N\Delta t =2m v_\perp\)</span></p>
+<p><span class="math inline">\(f\Delta t=m v_\parallel\)</span></p>
+<p><span class="math inline">\(f=\mu N\)</span></p>
+<p><span class="math inline">\(v\perp=\sqrt{2gh}\)</span></p>
+<p>可以解出<span class="math inline">\(v_\parallel\)</span></p>
+<p>注意：如果<span
+class="math inline">\(v_\parallel&gt;v_0\)</span>，则上述结论失效，取<span
+class="math inline">\(v_\parallel=v_0\)</span></p>
+<h2 id="题9">题9</h2>
+<p>光滑的水平面上有一个质量均匀分布的光滑圆环（不固定），圆环的右侧开一个小孔（引起的质量损失忽略不计）。有一个小球P从小口进入圆环，速度与径向夹角为<span
+class="math inline">\(\phi\)</span>。问<span
+class="math inline">\(\phi\)</span>取何值的时候，小球可以在圆里面兜圈子，最后还从小孔出去？</p>
+<p>解答：</p>
+<p>碰撞的时候，切向速度保留。</p>
+<p>这道题目并没有给出质量，我们可以利用相对速度大小来求解。因为相对速度大小不变，碰撞后相对于圆环的运动与固定圆环不动时碰撞后的运动相同（类似于光的反射）</p>
+<p>因此，<span class="math inline">\(\phi\)</span>
+需要为正多边形对应的角度，包括<span
+class="math inline">\(\phi=0\)</span></p>
+<p><img src="/img/环.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
                 
               </div>
@@ -633,7 +672,7 @@ mvd\theta}{T}\)</span></p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/physics/" class="print-no-link">#physics</a>
+        <a href="/tags/%E5%8A%9B%E5%AD%A6/" class="print-no-link">#力学</a>
       
     </div>
   
@@ -689,6 +728,12 @@ mvd\theta}{T}\)</span></p>
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/01/20/chap4/" title="角动量定理与天体运动">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">角动量定理与天体运动</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
