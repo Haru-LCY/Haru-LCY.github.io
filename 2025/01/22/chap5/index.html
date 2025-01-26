@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/%E4%BC%98%E7%BE%8E.png">
 <meta property="article:published_time" content="2025-01-22T13:02:48.000Z">
-<meta property="article:modified_time" content="2025-01-25T14:19:24.453Z">
+<meta property="article:modified_time" content="2025-01-26T11:00:15.449Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta property="article:tag" content="力学">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          3.8k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          24 分钟
+          32 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-01-25T22:19:24+08:00
+                    本文最后更新于 2025-01-26T19:00:15+08:00
                   
                   
 
@@ -545,6 +545,42 @@ class="math inline">\(M_{外z}=\frac{dL_z}{dt}=I\beta\)</span></p>
 <h1 id="刚体平面平行运动">刚体平面平行运动</h1>
 <p>定义：每一个点部位都在自己对应的一个平面内运动，所有这些平面彼此平行</p>
 <h2 id="运动学内容">运动学内容</h2>
+<p>对刚体进行投影到<span class="math inline">\(\sigma\)</span>平面上</p>
+<p><img src="/img/投影.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3
+id="角速度相对任意一个分解点都一样">角速度相对任意一个分解点都一样</h3>
+<p>运动分解为：随某点部位的平动&amp;绕该点部位的转动</p>
+<p>“某点”取A，则B也有相同的<span
+class="math inline">\(\vec{v_A}\)</span>。B点绕A点的旋转<span
+class="math inline">\(\vec{\omega_A}\)</span>。则<span
+class="math inline">\(\vec{v_B}=\vec{v_A}+\vec{\omega_A}\times
+R_{BA}\)</span></p>
+<p>“某点”取B，则<span
+class="math inline">\(\vec{v_A}=\vec{v_B}-\vec{\omega_B}\times
+R_{BA}\)</span></p>
+<p>推出<span class="math inline">\(\vec{\omega_A}\times
+R_{BA}=\vec{\omega_B}\times R_{BA}\)</span></p>
+<p>因此<span class="math inline">\(\omega_A=\omega_B=\omega\)</span></p>
+<h3 id="速度瞬心">速度瞬心</h3>
+<p>某时刻速度为零的点称为该时刻的速度瞬心（线）</p>
+<p>该时刻刚体其他点部位（P）速度等于此点部位相对瞬心（M）运动速度</p>
+<p>注意这个关系只有速度相等，其他的运动量不一定相等，因此我们不能说“P相当于绕着M旋转”。譬如<span
+class="math inline">\(\vec{a_p}=\vec{a_{PM}}+\vec{a_M}\)</span>,可见加速度并不相等。</p>
+<p><span
+class="math inline">\(\vec{v_P}=\vec{\omega}\times\vec{R_{PM}}\)</span></p>
+<p>瞬心的寻找</p>
+<p><img src="/img/瞬.png" srcset="/img/loading.gif" lazyload alt="两线交点即为M"></p>
+<h2 id="动力学内容">动力学内容</h2>
+<p>将运动分成随质心平动（外参考系），绕过质心转轴的转动（质心系）</p>
+<h3 id="相对外惯性系">相对外惯性系</h3>
+<p>质心运动定理：<span
+class="math inline">\(\vec{F_{合外}}=m\vec{a_c}\)</span></p>
+<p>动能定理：<span class="math inline">\(W_外=\Delta E_k\)</span> <span
+class="math inline">\(E_k=\frac{1}{2}mv_c^2+\frac{1}{2}I_c\omega^2\)</span></p>
+<h3 id="相对质心系">相对质心系</h3>
+<p>质心运动定理:<span class="math inline">\(M_外=I_c\beta\)</span></p>
+<p>动能定理:<span class="math inline">\(W_外=\Delta E_k\)</span> <span
+class="math inline">\(E_k=\frac{1}{2}I_c\omega^2\)</span></p>
 <h1 id="习题">习题</h1>
 <h2 id="题1">题1</h2>
 <p>一个细杆，<span
@@ -675,6 +711,67 @@ class="math inline">\(\omega=\omega_B=-\frac{1}{8}\omega_0\)</span></p>
 <p>地面系中不是定轴转动，但在质心系中是定轴（过质心转轴）转动。其动力学方程与惯性系转动定理相同。因为以质心为参考点，惯性力的力矩为零。（详见质心系）</p>
 <p><span class="math inline">\(TR=I_c\beta\)</span></p>
 <p><span class="math inline">\(a=\beta R\)</span></p>
+<h2 id="题9-瞬心加速度">题9 瞬心加速度</h2>
+<p>半径为r的圆环A沿着半径为R的固定圆环B的外侧做纯滚动，A的环心O绕着B的环心做圆周运动的角速度记为<span
+class="math inline">\(\omega_\theta\)</span>,求A环瞬心M的加速度</p>
+<p><img src="/img/线.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>因为A纯滚动，与大圆接触点速度为0，所以M是瞬心</p>
+<p><span class="math inline">\(v_O=\omega_r\cdot r\)</span></p>
+<p><span class="math inline">\(\omega_r=\frac{v_O}{r}\)</span></p>
+<p><span class="math inline">\(v_O=(R+r)\omega_\theta\)</span></p>
+<p><span
+class="math inline">\(\omega_\theta=\frac{v_O}{R+r}\)</span></p>
+<p><span
+class="math inline">\(\vec{a_M}=\vec{a_{Mo}}+\vec{a_o}\)</span></p>
+<p><span
+class="math inline">\(\vec{a_{Mo}}\)</span>代表M相对小圆圆心的加速度，因此<span
+class="math inline">\(\vec{a_{Mo}}=\omega_r^2r\)</span>方向竖直向上</p>
+<p><span class="math inline">\(\vec{a_o}=\omega_\theta^2(R+r)\)</span>
+方向竖直向下</p>
+<p>结果可求出</p>
+<h2 id="题10">题10</h2>
+<p>匀质球体(m,R)放在倾斜角为<span
+class="math inline">\(\theta\)</span>的斜面上，我们可以分析出：<span
+class="math inline">\(\mu=0\)</span> 纯滑动，<span
+class="math inline">\(\mu较小\)</span>，连滚带滑，<span
+class="math inline">\(\mu \geq \mu_临\)</span> 进入纯滚动状态，求<span
+class="math inline">\(\mu_临\)</span></p>
+<p>加速度：<span class="math inline">\(mgsin\theta-f=ma\)</span></p>
+<p>角加速度：<span class="math inline">\(fR=I_c\beta\)</span></p>
+<p>运动关联：<span class="math inline">\(a=\beta
+R\)</span>（因为纯滚动<span class="math inline">\(v=\omega
+R\)</span>，求导即可）</p>
+<h2 id="题11">题11</h2>
+<p>匀质圆环，m，R。水平地面动摩擦因数<span
+class="math inline">\(\mu\)</span>，给圆环水平向右初速度<span
+class="math inline">\(v_0\)</span>（初始无旋转），讨论之后圆环的运动</p>
+<p>水平向左滑动摩擦力<span class="math inline">\(f=\mu mg\)</span></p>
+<p><span class="math inline">\(v=v_0-at=v_0-\mu gt\)</span></p>
+<p><span class="math inline">\(fR=I_c\beta=mR^2\beta\)</span></p>
+<p><span class="math inline">\(\omega=\beta t=\frac{\mu g
+t}{R}\)</span></p>
+<p>当<span class="math inline">\(v=\omega
+R\)</span>时，进入纯滚动状态（之后f=0??????????）</p>
+<h2 id="题12">题12</h2>
+<p>匀质细杆质量M，长度L，放在一个光滑水平面上。如图所示有一个小球m，以<span
+class="math inline">\(v_0\)</span>打向细杆。球m，M发生第二次碰撞的条件？</p>
+<p><img src="/img/12.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>记向上速度方向为正方向</p>
+<p><span class="math inline">\(\vec{v_c}\)</span>为细杆质心的速度，<span
+class="math inline">\(\vec{v}\)</span> 为小球碰撞后的速度</p>
+<p>动量守恒:<span class="math inline">\(Mv_c+mv=mv_0\)</span></p>
+<p>能量守恒:<span
+class="math inline">\(\frac{1}{2}Mv_c^2+\frac{1}{2}I_c\omega^2+\frac{1}{2}mv^2=\frac{1}{2}mv_0^2\)</span></p>
+<p>角动量在地面参考系讨论</p>
+<p>由细杆和小球组成的系统，相对地面系的任何参考点都守恒。取（移动之前）细杆质心所在点对应地面上的点（记为C点）为参考点。</p>
+<p>因此<span
+class="math inline">\(0+I_c\omega+\frac{L}{2}mv=\frac{L}{2}mv_0\)</span>（质心平动贡献的角动量是0）</p>
+<p>观察可知，发生碰撞的条件是<span
+class="math inline">\(v=v_c\)</span></p>
+<p>因此我们可以通过这个关系，找出<span
+class="math inline">\(\frac{M}{m}\)</span>的关系，四个未知量四个方程可以求解</p>
+<h2 id="题13">题13</h2>
+<p>光滑水平地面，一个匀质细杆竖直立在水平地面上。给细杆一个扰动让它滑倒。是否有可能细杆整体倒地之前，B端先离开了地面呢？</p>
 
                 
               </div>
@@ -1152,7 +1249,7 @@ class="math inline">\(\omega=\omega_B=-\frac{1}{8}\omega_0\)</span></p>
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:true,models:[{"path":"https://model.oml2d.com/HK416-1-normal/model.json","scale":0.1,"position":[0,60],"stageStyle":{"height":450},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"right",mobileDisplay:true,models:[{"path":"https://model.hacxy.cn/HK416-1-normal/model.json","scale":0.1,"motionPreloadStrategy":"ALL","position":[0,60],"stageStyle":{"height":520},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
   return axios.get('https://v1.hitokoto.cn?c=i')
     .then(function (response) {
       return response.data.hitokoto ;
