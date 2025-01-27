@@ -21,12 +21,12 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="行列式正常运算Cramer’s law 矢量的合成与分解$\vec{A}$ $\vec{a}$&#x3D;$\frac{\vec{A}}{A}$方向矢量（长度为1） 标量与矢量的乘积 平行四边形法则 矢量的正交分解 $\vec{A}&#x3D;A_x\vec{i}+A_y\vec{j}+A_z\vec{k}$  i j k分别对应x y z k维空间一维空间：前后有一对可以延展的方向 可以开放（没有尽头）也可以闭合（">
+    <meta name="description" content="行列式 正常运算 Cramer&#39;s law 矢量的合成与分解 \(\vec{A}\) \(\vec{a}\)&#x3D;\(\frac{\vec{A}}{A}\)方向矢量（长度为1） 标量与矢量的乘积 平行四边形法则 矢量的正交分解 \(\vec{A}&#x3D;A_x\vec{i}+A_y\vec{j}+A_z\vec{k}\) i j k分别对应x y z k维空间 一维空间： 前后有一对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数学准备">
 <meta property="og:url" content="http://example.com/2025/01/13/math4phy/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="行列式正常运算Cramer’s law 矢量的合成与分解$\vec{A}$ $\vec{a}$&#x3D;$\frac{\vec{A}}{A}$方向矢量（长度为1） 标量与矢量的乘积 平行四边形法则 矢量的正交分解 $\vec{A}&#x3D;A_x\vec{i}+A_y\vec{j}+A_z\vec{k}$  i j k分别对应x y z k维空间一维空间：前后有一对可以延展的方向 可以开放（没有尽头）也可以闭合（">
+<meta property="og:description" content="行列式 正常运算 Cramer&#39;s law 矢量的合成与分解 \(\vec{A}\) \(\vec{a}\)&#x3D;\(\frac{\vec{A}}{A}\)方向矢量（长度为1） 标量与矢量的乘积 平行四边形法则 矢量的正交分解 \(\vec{A}&#x3D;A_x\vec{i}+A_y\vec{j}+A_z\vec{k}\) i j k分别对应x y z k维空间 一维空间： 前后有一对">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/2.png">
 <meta property="article:published_time" content="2025-01-13T12:56:04.000Z">
@@ -312,99 +312,195 @@
             
               <div class="markdown-body">
                 
-                <h2 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h2><p>正常运算<br>Cramer’s law</p>
-<h2 id="矢量的合成与分解"><a href="#矢量的合成与分解" class="headerlink" title="矢量的合成与分解"></a>矢量的合成与分解</h2><p>$\vec{A}$</p>
-<p>$\vec{a}$=$\frac{\vec{A}}{A}$方向矢量（长度为1）</p>
+                <h2 id="行列式">行列式</h2>
+<p>正常运算 Cramer's law</p>
+<h2 id="矢量的合成与分解">矢量的合成与分解</h2>
+<p><span class="math inline">\(\vec{A}\)</span></p>
+<p><span class="math inline">\(\vec{a}\)</span>=<span
+class="math inline">\(\frac{\vec{A}}{A}\)</span>方向矢量（长度为1）</p>
 <p>标量与矢量的乘积</p>
 <p>平行四边形法则</p>
 <p>矢量的正交分解</p>
-<p>$\vec{A}=A_x\vec{i}+A_y\vec{j}+A_z\vec{k}$</p>
-<p> i j k分别对应x y z</p>
-<h3 id="k维空间"><a href="#k维空间" class="headerlink" title="k维空间"></a>k维空间</h3><h4 id="一维空间："><a href="#一维空间：" class="headerlink" title="一维空间："></a>一维空间：</h4><p>前后有一对可以延展的方向</p>
+<p><span
+class="math inline">\(\vec{A}=A_x\vec{i}+A_y\vec{j}+A_z\vec{k}\)</span></p>
+<p>i j k分别对应x y z</p>
+<h3 id="k维空间">k维空间</h3>
+<h4 id="一维空间">一维空间：</h4>
+<p>前后有一对可以延展的方向</p>
 <p>可以开放（没有尽头）也可以闭合（圈）</p>
-<h4 id="二维空间："><a href="#二维空间：" class="headerlink" title="二维空间："></a>二维空间：</h4><p>前后左右有两对可以延展的方向</p>
+<h4 id="二维空间">二维空间：</h4>
+<p>前后左右有两对可以延展的方向</p>
 <p>有平直&amp;弯曲之别</p>
-<h4 id="三维空间："><a href="#三维空间：" class="headerlink" title="三维空间："></a>三维空间：</h4><p>前后左右上下三对可延展的方向</p>
+<h4 id="三维空间">三维空间：</h4>
+<p>前后左右上下三对可延展的方向</p>
 <p>有平直&amp;弯曲之别</p>
-<h4 id="k维空间："><a href="#k维空间：" class="headerlink" title="k维空间："></a>k维空间：</h4><p>k对互相垂直可延展的方向</p>
-<h2 id="矢量标积（点乘）"><a href="#矢量标积（点乘）" class="headerlink" title="矢量标积（点乘）"></a>矢量标积（点乘）</h2><p>应用：功</p>
-<h2 id="矢量的失积（叉乘）"><a href="#矢量的失积（叉乘）" class="headerlink" title="矢量的失积（叉乘）"></a>矢量的失积（叉乘）</h2><p>$\vec{A}\times\vec{B}=\vec{C}$<br> $C=AB\sin\theta$<br> C的大小：平行四边形法则中平行四边形的面积</p>
-<h4 id="vec-C-的方向"><a href="#vec-C-的方向" class="headerlink" title="$\vec{C}的方向$"></a>$\vec{C}的方向$</h4><p>右手系规定:</p>
-<p>右手框架:拇指指向$\vec{A}$的方向，食指指向$\vec{B}$的方向，中指的方向是$\vec{C}$</p>
-<p>右手螺旋：四指指向$\vec{A}$的方向，握向$\vec{B}$的方向，拇指的方向是$\vec{C}$</p>
+<h4 id="k维空间-1">k维空间：</h4>
+<p>k对互相垂直可延展的方向</p>
+<h2 id="矢量标积点乘">矢量标积（点乘）</h2>
+<p>应用：功</p>
+<h2 id="矢量的失积叉乘">矢量的失积（叉乘）</h2>
+<p><span class="math inline">\(\vec{A}\times\vec{B}=\vec{C}\)</span>
+<span class="math inline">\(C=AB\sin\theta\)</span>
+C的大小：平行四边形法则中平行四边形的面积</p>
+<h4 id="vecc的方向"><span
+class="math inline">\(\vec{C}的方向\)</span></h4>
+<p>右手系规定:</p>
+<p>右手框架:拇指指向<span
+class="math inline">\(\vec{A}\)</span>的方向，食指指向<span
+class="math inline">\(\vec{B}\)</span>的方向，中指的方向是<span
+class="math inline">\(\vec{C}\)</span></p>
+<p>右手螺旋：四指指向<span
+class="math inline">\(\vec{A}\)</span>的方向，握向<span
+class="math inline">\(\vec{B}\)</span>的方向，拇指的方向是<span
+class="math inline">\(\vec{C}\)</span></p>
 <p>左手系规定与之类似</p>
-<h4 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h4><p>$\vec{A}\times\vec{B}=-\vec{B}\times\vec{A}$</p>
-<p>$(k\vec{A})\times\vec{B}=k(\vec{A}\times\vec{B})$</p>
+<h4 id="基本性质">基本性质</h4>
+<p><span
+class="math inline">\(\vec{A}\times\vec{B}=-\vec{B}\times\vec{A}\)</span></p>
+<p><span
+class="math inline">\((k\vec{A})\times\vec{B}=k(\vec{A}\times\vec{B})\)</span></p>
 <p>分配律、结合律</p>
-<p>$\vec{i}\times\vec{i}=\vec{j}\times\vec{j}=\vec{k}\times\vec{k}=0$</p>
-<p>$\vec{i}\times\vec{j}=\vec{k}$</p>
-<p>$\vec{j}\times\vec{k}=\vec{i}$</p>
-<p>$\vec{k}\times\vec{i}=\vec{j}$</p>
-<p>$\vec{A}\times\vec{B}=$ $\begin{vmatrix}\vec{i} &amp; A_x &amp; B_x \\vec{j} &amp;A_y &amp; B_y \\vec{k}&amp; A_z &amp; B_z\end{vmatrix}$ </p>
-<p>应用：安培力，洛伦兹力<br>可以证明：任意一个单连通闭合电流回路在匀强磁场中所受（合）安培力为零。<br>$\vec{F}=\sum I\Delta l B=I \sum (\Delta l) B$<br>闭合回路，$\sum (\Delta l)=0$</p>
-<h2 id="矢量的三重积"><a href="#矢量的三重积" class="headerlink" title="矢量的三重积"></a>矢量的三重积</h2><h4 id="三重标积"><a href="#三重标积" class="headerlink" title="三重标积"></a>三重标积</h4><p>$\vec{A}\cdot (\vec{B}\times\vec{C})=\vec{A}\vec{B}\vec{C}围成的平行六面体的体积$</p>
-<p>$\vec{A}\vec{B}\vec{C}$共面则有$\vec{A}\cdot (\vec{B}\times\vec{C})=0$</p>
-<p>$\vec{A}\cdot (\vec{B}\times\vec{C})=\begin{vmatrix} A_x &amp; B_x &amp; C_x\\ A_y &amp; B_y&amp;C_y \\ A_z &amp; B_z &amp; C_z\end{vmatrix}$</p>
-<p>性质：$\vec{A}\cdot (\vec{B}\times\vec{C})=\vec{B}\cdot (\vec{C}\times\vec{A})=\vec{C}\cdot (\vec{A}\times\vec{B})$</p>
-<h4 id="三重矢积"><a href="#三重矢积" class="headerlink" title="三重矢积"></a>三重矢积</h4><p>$\vec{A}\times(\vec{B}\times\vec{C})=\vec{D}$ 注意到$\vec{D}$一定在$\vec{B}\vec{C}$确定的平面内</p>
-<p>所以$\vec{A}\times(\vec{B}\times\vec{C})=\alpha\vec{V}+\beta\vec{C}$ 其中$\alpha=\vec{A}\cdot \vec{C}$    $\beta=-\vec{A} \cdot \vec{B}$</p>
+<p><span
+class="math inline">\(\vec{i}\times\vec{i}=\vec{j}\times\vec{j}=\vec{k}\times\vec{k}=0\)</span></p>
+<p><span class="math inline">\(\vec{i}\times\vec{j}=\vec{k}\)</span></p>
+<p><span class="math inline">\(\vec{j}\times\vec{k}=\vec{i}\)</span></p>
+<p><span class="math inline">\(\vec{k}\times\vec{i}=\vec{j}\)</span></p>
+<p><span class="math inline">\(\vec{A}\times\vec{B}=\)</span> <span
+class="math inline">\(\begin{vmatrix}\vec{i} &amp; A_x &amp; B_x
+\\\vec{j} &amp;A_y &amp; B_y \\\vec{k}&amp; A_z &amp;
+B_z\end{vmatrix}\)</span></p>
+<p>应用：安培力，洛伦兹力
+可以证明：任意一个单连通闭合电流回路在匀强磁场中所受（合）安培力为零。
+<span class="math inline">\(\vec{F}=\sum I\Delta l B=I \sum (\Delta l)
+B\)</span> 闭合回路，<span class="math inline">\(\sum (\Delta
+l)=0\)</span></p>
+<h2 id="矢量的三重积">矢量的三重积</h2>
+<h4 id="三重标积">三重标积</h4>
+<p><span class="math inline">\(\vec{A}\cdot
+(\vec{B}\times\vec{C})=\vec{A}\vec{B}\vec{C}围成的平行六面体的体积\)</span></p>
+<p><span
+class="math inline">\(\vec{A}\vec{B}\vec{C}\)</span>共面则有<span
+class="math inline">\(\vec{A}\cdot (\vec{B}\times\vec{C})=0\)</span></p>
+<p><span class="math inline">\(\vec{A}\cdot
+(\vec{B}\times\vec{C})=\begin{vmatrix} A_x &amp; B_x &amp; C_x\\\ A_y
+&amp; B_y&amp;C_y \\\ A_z &amp; B_z &amp; C_z\end{vmatrix}\)</span></p>
+<p>性质：<span class="math inline">\(\vec{A}\cdot
+(\vec{B}\times\vec{C})=\vec{B}\cdot (\vec{C}\times\vec{A})=\vec{C}\cdot
+(\vec{A}\times\vec{B})\)</span></p>
+<h4 id="三重矢积">三重矢积</h4>
+<p><span
+class="math inline">\(\vec{A}\times(\vec{B}\times\vec{C})=\vec{D}\)</span>
+注意到<span class="math inline">\(\vec{D}\)</span>一定在<span
+class="math inline">\(\vec{B}\vec{C}\)</span>确定的平面内</p>
+<p>所以<span
+class="math inline">\(\vec{A}\times(\vec{B}\times\vec{C})=\alpha\vec{V}+\beta\vec{C}\)</span>
+其中<span class="math inline">\(\alpha=\vec{A}\cdot \vec{C}\)</span>
+<span class="math inline">\(\beta=-\vec{A} \cdot \vec{B}\)</span></p>
 <p>记忆：ACB,BAC 换顺序即可</p>
-<h2 id="微积分"><a href="#微积分" class="headerlink" title="微积分"></a>微积分</h2><h4 id="几个重要极限"><a href="#几个重要极限" class="headerlink" title="几个重要极限"></a>几个重要极限</h4><p>把dx看作x趋于0</p>
+<h2 id="微积分">微积分</h2>
+<h4 id="几个重要极限">几个重要极限</h4>
+<p>把dx看作x趋于0</p>
 <p>cosdx=1</p>
 <p>sindx=tandx=dx</p>
 <p>Ax+bdx=Ax</p>
-<p>$(1+dx)^{\frac{1}{dx}}=e=2.71828$</p>
-<h4 id="微商（导数）"><a href="#微商（导数）" class="headerlink" title="微商（导数）"></a>微商（导数）</h4><p>定义：函数的微分与自变量微分构成的商运算</p>
-<h4 id="泰勒"><a href="#泰勒" class="headerlink" title="泰勒"></a>泰勒</h4><p>$e^{ix}=1+ix-\frac{1}{2!}x^{2}-\frac{i}{3!}x^{3}+\frac{1}{4!}x^{4}+…$</p>
-<p>$e^{ix}=cosx+isinx$</p>
-<h4 id="矢量的微商"><a href="#矢量的微商" class="headerlink" title="矢量的微商"></a>矢量的微商</h4><p>$\vec{A}(t)=A_x(t)\vec{i}+A_y(t)\vec{j}+A_z\vec{k}$</p>
-<p>整体式 $d\vec{A}=\vec{A}(t+dt)-\vec{A}(t)$</p>
-<p>分解式 $\frac{d\vec{A}}{dt}=\frac{dAx}{dt}\vec{i}+\frac{dAy}{dt}\vec{j}+\frac{dAz}{dt}\vec{k}$</p>
+<p><span
+class="math inline">\((1+dx)^{\frac{1}{dx}}=e=2.71828\)</span></p>
+<h4 id="微商导数">微商（导数）</h4>
+<p>定义：函数的微分与自变量微分构成的商运算</p>
+<h4 id="泰勒">泰勒</h4>
+<p><span
+class="math inline">\(e^{ix}=1+ix-\frac{1}{2!}x^{2}-\frac{i}{3!}x^{3}+\frac{1}{4!}x^{4}+...\)</span></p>
+<p><span class="math inline">\(e^{ix}=cosx+isinx\)</span></p>
+<h4 id="矢量的微商">矢量的微商</h4>
+<p><span
+class="math inline">\(\vec{A}(t)=A_x(t)\vec{i}+A_y(t)\vec{j}+A_z\vec{k}\)</span></p>
+<p>整体式 <span
+class="math inline">\(d\vec{A}=\vec{A}(t+dt)-\vec{A}(t)\)</span></p>
+<p>分解式 <span
+class="math inline">\(\frac{d\vec{A}}{dt}=\frac{dAx}{dt}\vec{i}+\frac{dAy}{dt}\vec{j}+\frac{dAz}{dt}\vec{k}\)</span></p>
 <p>圆的渐开线运动——更加适合用整体式解法</p>
 <p>将一个圆轴固定在一个平面上,轴上缠线,拉紧一个线头,让该线绕圆轴运动且始终与圆轴相切,那么线上一个定点在该平面上的轨迹就是渐开线。</p>
-<p>用小量近似，$\vec{a}=\frac{d\vec{v}}{dt},d\vec{v}指向切点,大小为v_0d\theta$</p>
-<p>可以推导出：$\vec{a}=\frac{d\theta}{dt}v_0=\omega v_0=\frac{v_0}{l}v_0$</p>
-<h4 id="标积矢积的微商"><a href="#标积矢积的微商" class="headerlink" title="标积矢积的微商"></a>标积矢积的微商</h4><p>已知$\vec{A}(t)\vec{B}(t)$</p>
-<p>$(\vec{A}\cdot\vec{B})’=\frac{d\vec{A}}{dt}\cdot\vec{B}+\vec{A}\cdot \frac{d\vec{B}}{dt}$</p>
-<p>$(\vec{A}\times\vec{B})’=\frac{d\vec{A}}{dt}\times\vec{B}+\vec{A}\times \frac{d\vec{B}}{dt}$</p>
-<h4 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h4><p>面积、弧长公式</p>
-<p>例子：一个圆盘，面积密度$\rho=\frac{dm}{ds}是常量,以\omega的角速度转动,求总动能$</p>
-<p>取一个小圆环<br>$dm=\rho(2\pi rdr),v=\omega r,dE_k=\frac{1}{2}(dm)v^2=\pi\rho\omega^2 r^3 dr$</p>
-<p>总动能即从0到R积分得，$\frac{1}{4}\pi\rho\omega^2R^4$</p>
-<p>引入:$M=\rho \pi R^2,I=\frac{1}{2}MR^2得E_k=\frac{1}{2}I\omega^2$</p>
+<p>用小量近似，<span
+class="math inline">\(\vec{a}=\frac{d\vec{v}}{dt},d\vec{v}指向切点,大小为v_0d\theta\)</span></p>
+<p>可以推导出：<span
+class="math inline">\(\vec{a}=\frac{d\theta}{dt}v_0=\omega
+v_0=\frac{v_0}{l}v_0\)</span></p>
+<h4 id="标积矢积的微商">标积矢积的微商</h4>
+<p>已知<span class="math inline">\(\vec{A}(t)\vec{B}(t)\)</span></p>
+<p><span
+class="math inline">\((\vec{A}\cdot\vec{B})&#39;=\frac{d\vec{A}}{dt}\cdot\vec{B}+\vec{A}\cdot
+\frac{d\vec{B}}{dt}\)</span></p>
+<p><span
+class="math inline">\((\vec{A}\times\vec{B})&#39;=\frac{d\vec{A}}{dt}\times\vec{B}+\vec{A}\times
+\frac{d\vec{B}}{dt}\)</span></p>
+<h4 id="积分">积分</h4>
+<p>面积、弧长公式</p>
+<p>例子：一个圆盘，面积密度<span
+class="math inline">\(\rho=\frac{dm}{ds}是常量,以\omega的角速度转动,求总动能\)</span></p>
+<p>取一个小圆环 <span class="math inline">\(dm=\rho(2\pi rdr),v=\omega
+r,dE_k=\frac{1}{2}(dm)v^2=\pi\rho\omega^2 r^3 dr\)</span></p>
+<p>总动能即从0到R积分得，<span
+class="math inline">\(\frac{1}{4}\pi\rho\omega^2R^4\)</span></p>
+<p>引入:<span class="math inline">\(M=\rho \pi
+R^2,I=\frac{1}{2}MR^2得E_k=\frac{1}{2}I\omega^2\)</span></p>
 <p>例子:细杆滑下去</p>
 <p>找包络线</p>
-<h4 id="偏微商（偏导）"><a href="#偏微商（偏导）" class="headerlink" title="偏微商（偏导）"></a>偏微商（偏导）</h4><p>$y(x_1,x_2,…,x_k)$变化到$y(x_1+dx,x_2,…,x_k)$</p>
-<p>偏微商 $\frac{y(x_1+dx,x_2,…,x_k)-y(x_1,x_2,…,x_k)}{dx_1}$=$\frac{\partial y}{\partial x_1}$</p>
-<p>函数因为各自变量变化引起的变化量：全微分$dy=\frac{\partial y}{\partial x_1}dx_1+…+\frac{\partial y}{\partial x_k}dx_k$</p>
-<p>例子:理想气体状态方程 pV=nRT T=$\frac{PV}{nR}$</p>
-<p>$\frac{\partial T}{\partial p}=\frac{V}{nR}$</p>
-<p>$\frac{\partial T}{\partial V}=\frac{p}{nR}$</p>
-<p>$代入后知道：pdv+vdp=nRdT$</p>
-<h4 id="多元函数的积分"><a href="#多元函数的积分" class="headerlink" title="多元函数的积分"></a>多元函数的积分</h4><p>三维空间 </p>
-<p>标量函数:$\phi(\vec{r})=\phi(x,y,z)$</p>
-<p>实例：静电场的电势 $U=U(\vec{r})$</p>
-<p>矢量函数:$\vec{A}(vec{r})=\vec{A}(x,y,z)$ </p>
-<p>实例：静电场场强 $\vec{E}=\vec{E}(\vec{r})$</p>
-<h5 id="标量函数线积分"><a href="#标量函数线积分" class="headerlink" title="标量函数线积分"></a>标量函数线积分</h5><p>$\int_L\phi(\vec{r})dl若\phi=1，则该积分为l$</p>
+<h4 id="偏微商偏导">偏微商（偏导）</h4>
+<p><span class="math inline">\(y(x_1,x_2,...,x_k)\)</span>变化到<span
+class="math inline">\(y(x_1+dx,x_2,...,x_k)\)</span></p>
+<p>偏微商 <span
+class="math inline">\(\frac{y(x_1+dx,x_2,...,x_k)-y(x_1,x_2,...,x_k)}{dx_1}\)</span>=<span
+class="math inline">\(\frac{\partial y}{\partial x_1}\)</span></p>
+<p>函数因为各自变量变化引起的变化量：全微分<span
+class="math inline">\(dy=\frac{\partial y}{\partial
+x_1}dx_1+...+\frac{\partial y}{\partial x_k}dx_k\)</span></p>
+<p>例子:理想气体状态方程 pV=nRT T=<span
+class="math inline">\(\frac{PV}{nR}\)</span></p>
+<p><span class="math inline">\(\frac{\partial T}{\partial
+p}=\frac{V}{nR}\)</span></p>
+<p><span class="math inline">\(\frac{\partial T}{\partial
+V}=\frac{p}{nR}\)</span></p>
+<p><span class="math inline">\(代入后知道：pdv+vdp=nRdT\)</span></p>
+<h4 id="多元函数的积分">多元函数的积分</h4>
+<p>三维空间</p>
+<p>标量函数:<span
+class="math inline">\(\phi(\vec{r})=\phi(x,y,z)\)</span></p>
+<p>实例：静电场的电势 <span
+class="math inline">\(U=U(\vec{r})\)</span></p>
+<p>矢量函数:<span
+class="math inline">\(\vec{A}(vec{r})=\vec{A}(x,y,z)\)</span></p>
+<p>实例：静电场场强 <span
+class="math inline">\(\vec{E}=\vec{E}(\vec{r})\)</span></p>
+<h5 id="标量函数线积分">标量函数线积分</h5>
+<p><span
+class="math inline">\(\int_L\phi(\vec{r})dl若\phi=1，则该积分为l\)</span></p>
 <p>特例:L为闭合曲线</p>
-<p>$\oint_L\phi(\vec{r})dl$</p>
-<h5 id="矢量函数线积分"><a href="#矢量函数线积分" class="headerlink" title="矢量函数线积分"></a>矢量函数线积分</h5><p>$\int_L\vec{A}d\vec{l}$</p>
+<p><span class="math inline">\(\oint_L\phi(\vec{r})dl\)</span></p>
+<h5 id="矢量函数线积分">矢量函数线积分</h5>
+<p><span class="math inline">\(\int_L\vec{A}d\vec{l}\)</span></p>
 <p>实例：做功</p>
-<p>$dw=\vec{F}\cdot\vec{dl}$</p>
-<p>特例:闭合曲线，给定一个循环的方向$\oint_L\vec{A}\vec{dl}$</p>
+<p><span class="math inline">\(dw=\vec{F}\cdot\vec{dl}\)</span></p>
+<p>特例:闭合曲线，给定一个循环的方向<span
+class="math inline">\(\oint_L\vec{A}\vec{dl}\)</span></p>
 <p>实例：保守力</p>
-<h5 id="标量函数的面积分"><a href="#标量函数的面积分" class="headerlink" title="标量函数的面积分"></a>标量函数的面积分</h5><p>ds:面元面积</p>
+<h5 id="标量函数的面积分">标量函数的面积分</h5>
+<p>ds:面元面积</p>
 <p>每一条从左到右积分，再把条和条之间从上到下积分</p>
-<p>$\iint_s\phi(\vec{r})dS$ 二重积分</p>
-<p>特例：如果是闭合曲面，则$\oiint_s\phi(\vec{r})ds$</p>
-<h5 id="矢量函数的面积分"><a href="#矢量函数的面积分" class="headerlink" title="矢量函数的面积分"></a>矢量函数的面积分</h5><p>$\vec{ds}=ds\vec{n}$ 面元矢量</p>
-<p>$\iint_s\vec{A}\vec{ds}$</p>
-<p>实例：如果$\vec{A}是磁感应强度\vec{B},那么这个积分表示通过这个面的磁通量$</p>
+<p><span class="math inline">\(\iint_s\phi(\vec{r})dS\)</span>
+二重积分</p>
+<p>特例：如果是闭合曲面，则<span
+class="math inline">\(\oiint_s\phi(\vec{r})ds\)</span></p>
+<h5 id="矢量函数的面积分">矢量函数的面积分</h5>
+<p><span class="math inline">\(\vec{ds}=ds\vec{n}\)</span> 面元矢量</p>
+<p><span class="math inline">\(\iint_s\vec{A}\vec{ds}\)</span></p>
+<p>实例：如果<span
+class="math inline">\(\vec{A}是磁感应强度\vec{B},那么这个积分表示通过这个面的磁通量\)</span></p>
 <p>特例: S是一个闭合曲面</p>
-<p>$\oiint_s\vec{A}\vec{ds}$</p>
-<p>例如:$\oiint \vec{B}\vec{ds}=0$</p>
-<h5 id="标量函数体积分"><a href="#标量函数体积分" class="headerlink" title="标量函数体积分"></a>标量函数体积分</h5><p>$\iiint_v\phi(\vec{r})dV$</p>
+<p><span class="math inline">\(\oiint_s\vec{A}\vec{ds}\)</span></p>
+<p>例如:<span class="math inline">\(\oiint
+\vec{B}\vec{ds}=0\)</span></p>
+<h5 id="标量函数体积分">标量函数体积分</h5>
+<p><span class="math inline">\(\iiint_v\phi(\vec{r})dV\)</span></p>
 
                 
               </div>
