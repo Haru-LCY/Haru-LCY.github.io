@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/cp.png">
 <meta property="article:published_time" content="2025-01-26T12:17:39.000Z">
-<meta property="article:modified_time" content="2025-02-05T12:38:15.573Z">
+<meta property="article:modified_time" content="2025-02-06T12:41:43.488Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta property="article:tag" content="力学">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          3.9k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          19 分钟
+          33 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-05T20:38:15+08:00
+                    本文最后更新于 2025-02-06T20:41:43+08:00
                   
                   
 
@@ -582,6 +582,217 @@ class="math inline">\(\omega\)</span>的关系</p>
 &lt;\frac{\omega_0}{\sqrt{2}}\)</span>
 会出现振幅共振现象，即外加频率=固有频率时，振幅最大</p>
 <p><img src="/img/振幅.png" srcset="/img/loading.gif" lazyload alt="振幅共振现象"></p>
+<h1 id="波动现象">波动现象</h1>
+<p>波是振动状态传播形成的物理现象</p>
+<p>要素：波源、介质</p>
+<h2 id="分类">分类</h2>
+<p>机械波（水波、地震波）、非机械波（电磁波）</p>
+<p>简谐波、非简谐波</p>
+<p>横波（水面波、线波、电磁波）、纵波（声波、长弹簧波）；地震波既有横波也有纵波</p>
+<p>线波、面波、空间波</p>
+<h3 id="空间波">空间波</h3>
+<h4 id="分类-1">分类</h4>
+<p>平面波、柱面波、球面波、其他</p>
+<p><img src="/img/波图.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="定义">定义</h4>
+<p>波阵面：某时刻空间振动相位相同的点组成的面</p>
+<p>波前：t时刻最前方的波阵面</p>
+<p>波线：波的传播方向线</p>
+<h1 id="简谐波">简谐波</h1>
+<h2 id="平面简谐波">平面简谐波</h2>
+<p>能量密度不变，因此A不变</p>
+<p><img src="/img/线波.png" srcset="/img/loading.gif" lazyload alt="代替真实空间的简谐波"></p>
+<p><span class="math inline">\(\xi=\xi(t,x)\)</span>定义为振动量</p>
+<p>波是振动状态的传播，而这个振动状态是简谐振动</p>
+<p>于是只需要找x=0,<span class="math inline">\(\xi(t,x=0)=Acos(\omega
+t+\phi)\)</span></p>
+<p><span
+class="math inline">\(\xi(t,x)=\xi(t-\frac{x}{u},x=0)\)</span></p>
+<p>u波速，<span class="math inline">\(\lambda\)</span>波长</p>
+<p>因此<span class="math inline">\(\xi(t,x)=Acos(\omega
+(t-+\frac{x}{u})+\phi)\)</span>右传播-左传播+</p>
+<p><span class="math inline">\(\lambda=uT\)</span></p>
+<p><span
+class="math inline">\(\frac{\omega}{u}=\frac{2\pi}{\lambda}\)</span></p>
+<p>于是<span class="math inline">\(\xi(t,x)=Acos(\omega
+t-+\frac{2\pi}{\lambda}x+\phi)\)</span>右传播-左传播+，这种表示方式可以看出相对位置的影响</p>
+<p>定义<span
+class="math inline">\(k=\frac{2\pi}{\lambda}\)</span>为波数（可以理解为空间中的"角频率"）</p>
+<p>矢量化<span class="math inline">\(\vec{k}=k\vec{i}\)</span></p>
+<p>于是<span class="math inline">\(\xi(t,x)=Acos(\omega t-
+\vec{k}\cdot\vec{x} +\phi)\)</span></p>
+<p><img src="/img/波.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h2 id="球面简谐波">球面简谐波</h2>
+<p>能量密度与<span class="math inline">\(r^2\)</span>成反比，因此<span
+class="math inline">\(A_r\)</span>与<span
+class="math inline">\(\frac{1}{r}\)</span>成正比</p>
+<p><span class="math inline">\(\xi(r,t)=\frac{A}{r}cos(\omega
+t-\frac{2\pi}{\lambda}r+\phi)\)</span> 注意这里的A并不是振幅</p>
+<p><span class="math inline">\(\xi(r,t)=\frac{r_0}{r}A_0cos(\omega
+t-\frac{2\pi}{\lambda}r+\phi)\)</span>
+这种表示方式可以给定一个位置的振幅，来求其他的振幅</p>
+<h1 id="波干涉与驻波">波干涉与驻波</h1>
+<p>波的独立传播现象：若干列相同种类的波，在介质中传播的时候，如果动力方程是线性的，则每一列波的传播不受其他波列的影响。</p>
+<p>波的叠加：满足上述现象的波，在空间每一个点形成的合振动即为各自独立存在时振动量的叠加。</p>
+<h2 id="干涉">干涉</h2>
+<p>相干波列：同频率，同振动方向，有固定的初相位或者有固定的初相位差。</p>
+<p>相干波源：产生相干波列的波源。</p>
+<p>波的干涉：相干波列在介质中各处合振动振幅有不随时间变化的空间分布。</p>
+<p><img src="/img/干涉.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>特例：<span class="math inline">\(\phi_1-\phi_2=0\)</span></p>
+<p>则<span class="math inline">\(r_2-r_1=k\lambda\)</span> 有A最大值</p>
+<p><span class="math inline">\(r_2-r_1=k+\frac{1}{2}\lambda\)</span>
+有A最大值</p>
+<h2 id="驻波">驻波</h2>
+<p><span class="math inline">\(A_1=A_2=A\)</span></p>
+<p>则最大振幅为2A，最小振幅为0</p>
+<p><img src="/img/驻波.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h1 id="波的衍射反射折射">波的衍射反射折射</h1>
+<h2 id="惠更斯原理">惠更斯原理</h2>
+<p>t时刻波前的每一个点部位都可以看作是产生球面子波的新波源，这些子波在<span
+class="math inline">\(t+\Delta
+t\)</span>时刻波前的包络面就是整个波在<span
+class="math inline">\(t+\Delta t\)</span>时刻的波前</p>
+<h3 id="折射定律">折射定律</h3>
+<p><img src="/img/折射.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>折射定律:<span
+class="math inline">\(\frac{u_1}{sin\theta_i}=\frac{u_2}{sin\theta_t}\)</span></p>
+<h3 id="反射定律">反射定律</h3>
+<p>如果镜子不动，则反射角等于入射角</p>
+<p>镜子向下运动，则反射角大于入射角</p>
+<p>镜子向上运动，则反射角小于入射角</p>
+<p><img src="/img/运动.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h2 id="半波损失">半波损失</h2>
+<p>假设遇上某一个介质分界面，只有反射没有透射。</p>
+<p>反射有<span
+class="math inline">\(\pi\)</span>相位突变，相当于减少半个波长。</p>
+<h2 id="多普勒效应">多普勒效应</h2>
+<p>讨论相对接收者运动的波源</p>
+<p>定义观测者B在单位时间内接收到的波列长度为u，其中包含波长个数即为单位时间内接收到的全振动次数，定义为接收频率。<span
+class="math inline">\(\nu=\frac{u}{\lambda}\)</span></p>
+<h3 id="都不动">都不动</h3>
+<p>显然<span class="math inline">\(\nu=\nu_0\)</span></p>
+<h3 id="s不动b动">S不动B动</h3>
+<p>假设B向S运动，则单位时间接收到波列长度为<span
+class="math inline">\(u+v_B\)</span></p>
+<p><span
+class="math inline">\(\nu=\frac{u+v_B}{\lambda_0}=\frac{u+v_B}{u}\nu_0\)</span></p>
+<p>如果B背离S运动，则上述式子中的+改为-（要求<span
+class="math inline">\(v_B&lt;u\)</span>）</p>
+<p>注意如果<span
+class="math inline">\(v_B&gt;u\)</span>不属于多普勒效应</p>
+<h4 id="冲击波">冲击波</h4>
+<p><span class="math inline">\(v_B&gt;u\)</span>时是冲击波</p>
+<p><span class="math inline">\(sin\theta=\frac{u}{v}\)</span></p>
+<p><img src="/img/冲击波.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h3 id="s动b不动">S动B不动</h3>
+<p>观测者认为波长改变了</p>
+<p>假设B向S运动，<span
+class="math inline">\(\lambda&#39;=\lambda_0-v_ST_0=(u-v_S)T_0\)</span></p>
+<p><span
+class="math inline">\(\nu=\frac{u}{\lambda&#39;}=\frac{u}{u-v_S}\nu_0\)</span></p>
+<p>如果B背离S运动，则上述式子中的-改为+</p>
+<h3 id="sb都动">SB都动</h3>
+<p><span class="math inline">\(\nu=\frac{u+-v_B}{u+-v_S}\)</span></p>
+<h1 id="一维线性波动方程">一维线性波动方程</h1>
+<h2 id="波动方程">波动方程</h2>
+<p>平面简谐波：<span
+class="math inline">\(\xi(x,t)=Acos[\omega(t-\frac{x}{u})+\phi]\)</span></p>
+<p>简谐振动动力学微分方程：<span
+class="math inline">\(x&#39;&#39;+\omega^2x=0\)</span></p>
+<p><span class="math inline">\(\frac{\partial^2\xi}{\partial
+t^2}=-\omega^2\xi\)</span></p>
+<p><span class="math inline">\(\frac{\partial^2\xi}{\partial
+x^2}=-\frac{\omega^2}{u^2}\xi\)</span></p>
+<p><span class="math inline">\(\frac{\partial^2\xi}{\partial
+t^2}-u^2\frac{\partial^2\xi}{\partial x^2}=0\)</span></p>
+<h2 id="弹性介质中的纵波横波">弹性介质中的纵波横波</h2>
+<h3 id="波速">波速</h3>
+<h4 id="横波">横波</h4>
+<p>取一小段弹簧dx，记它的伸长量为<span
+class="math inline">\(d\xi\)</span></p>
+<p>弹性，则知道<span
+class="math inline">\(\frac{d\xi}{dx}\)</span>与<span
+class="math inline">\(\frac{F}{S}\)</span>成正比</p>
+<p><span
+class="math inline">\(E\frac{d\xi}{dx}=\frac{F}{S}\)</span>,E为常量，定义为杨氏模量</p>
+<p><span
+class="math inline">\(k_{dx}=\frac{F}{d\xi}=\frac{ES}{dx}\)</span>(很小一段的伸长量)</p>
+<p><span class="math inline">\(k=\frac{ES}{l}\)</span>
+长度为l的弹性介质的劲度系数</p>
+<p><img src="/img/切变.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>假设匀质柱体密度为<span
+class="math inline">\(\rho\)</span>初始长度为x</p>
+<p><img src="/img/柱.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>则<span class="math inline">\(\rho s \Delta x
+\frac{d^2\xi}{dt^2}=\rho s \Delta x g+F_2-F_1\)</span></p>
+<p><span class="math inline">\(F_1=ES(\frac{d\xi}{dx})_x\)</span></p>
+<p><span
+class="math inline">\(F_2=ES(\frac{d\xi}{dx})_{x+\Delta  x}\)</span></p>
+<p>代入把右边化简为二阶导再约分</p>
+<p><span class="math inline">\(\frac{d^2
+\xi}{dt^2}-\frac{E}{\rho}\frac{d^2 \xi}{dx^2}=g\)</span></p>
+<p>变成偏导得一阶线性非齐次方程</p>
+<p><span class="math inline">\(\frac{\partial^2 \xi}{\partial
+t^2}-\frac{E}{\rho}\frac{\partial^2 \xi}{\partial x^2}=g\)</span></p>
+<p>如果改为水平放置，则<span class="math inline">\(\frac{\partial^2
+\xi}{\partial t^2}-\frac{E}{\rho}\frac{\partial^2 \xi}{\partial
+x^2}=0\)</span></p>
+<p>水平放置时<span
+class="math inline">\(u=\sqrt{\frac{E}{\rho}}\)</span></p>
+<h4 id="纵波">纵波</h4>
+<p>纵波波速：<span
+class="math inline">\(u=\sqrt{\frac{G}{\rho}}\)</span></p>
+<h2 id="线波">线波</h2>
+<p><img src="/img/xian.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h2 id="波动方程的解">波动方程的解</h2>
+<p><span class="math inline">\(\frac{\partial^2\xi}{\partial
+t^2}-u^2\frac{\partial^2\xi}{\partial x^2}=0\)</span></p>
+<p>通解：设x=0为<span
+class="math inline">\(\xi(0,t)=\Phi(t)\)</span></p>
+<p>右形波<span
+class="math inline">\(\xi(x,t)=\xi(0,t-\frac{x}{u})=\Phi(t-\frac{x}{u})\)</span></p>
+<p>左形波<span
+class="math inline">\(\xi(x,t)=\xi(0,t+\frac{x}{u})=\Phi(t+\frac{x}{u})\)</span></p>
+<p>通解：<span
+class="math inline">\(\xi(x,t)=\Phi_1(t-\frac{x}{u})+\Phi_2(t+\frac{x}{u})\)</span></p>
+<p>如果引入t=0时各个x的振动量分布函数，表示为<span
+class="math inline">\(F_1(x)\)</span></p>
+<p>再给出各个x振动的速度分布函数，表示为<span
+class="math inline">\(F_2(x)\)</span></p>
+<p>则<span class="math inline">\(\Phi_1，\Phi_2\)</span>函数形式由<span
+class="math inline">\(F_1(x)\)</span>和<span
+class="math inline">\(F_2(x)\)</span>确定</p>
+<h1 id="波的能量">波的能量</h1>
+<p>弹性介质纵波为例取简谐波</p>
+<p><span
+class="math inline">\(\xi(x,t)=Acos[\omega(t-\frac{x}{u})+\phi]\)</span></p>
+<p>为方便取<span class="math inline">\(\phi=0\)</span></p>
+<p>取一段介质，面积dS，长度从x到x+dx，密度<span
+class="math inline">\(\rho\)</span></p>
+<p>dV=dSdx</p>
+<p><span class="math inline">\(dE_k=\frac{1}{2}(\rho dS
+dx)(\frac{\partial \xi}{\partial t})^2\)</span></p>
+<p><span class="math inline">\(dE_k=\frac{1}{2}\rho \omega^2
+A^2  sin^2[\omega(t-\frac{x}{u})]dsdx\)</span></p>
+<p><span
+class="math inline">\(dE_p=\frac{1}{2}k_{dx}[\xi(x+dx,t)-\xi(x,t)]^2\)</span></p>
+<p><span class="math inline">\(dE_p=\frac{1}{2}Edsdx(\frac{\partial
+\xi}{\partial x})^2\)</span></p>
+<p><span class="math inline">\(dE_p=\frac{1}{2}\rho \omega^2 A^2
+sin^2[\omega(t-\frac{x}{u})]dsdx\)</span></p>
+<p>发现一个重要规律：<span class="math inline">\(dE_p=dE_k\)</span></p>
+<h2 id="能量密度">能量密度</h2>
+<p><span class="math inline">\(\epsilon=\frac{dE}{dV}\)</span> <span
+class="math inline">\(dE=dE_k+dE_p\)</span></p>
+<p><span class="math inline">\(\epsilon=\rho \omega^2 A^2
+sin^2[\omega(t-\frac{x}{u})]\)</span></p>
+<h2 id="波场的能流密度">波场的能流密度</h2>
+<p>u是波的传播速度</p>
+<p><span class="math inline">\(i=\frac{dE}{ds dt}=\epsilon
+u\)</span></p>
+<p>把它矢量化为<span class="math inline">\(\vec{i}=\epsilon
+\vec{u}\)</span></p>
 <h1 id="习题">习题</h1>
 <h2 id="题1">题1</h2>
 <p><img src="/img/例5.png" srcset="/img/loading.gif" lazyload alt=" "></p>
