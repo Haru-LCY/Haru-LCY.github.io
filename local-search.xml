@@ -4,6 +4,57 @@
   
   
   <entry>
+    <title>Probability Theory</title>
+    <link href="/2025/02/17/post/"/>
+    <url>/2025/02/17/post/</url>
+    
+    <content type="html"><![CDATA[<h1 id="monte-hall-problem">Monte Hall Problem</h1><p>3 closed doors. Behind one door is a car, while the other 2 doorseach has a donkey behind it.</p><p>First the guest pick a door, then Monte opens a different door whichhas a donkey. Monte ask the guest:"Would you like to change yourchoice?"</p><p>P=(U.p)</p><p>直观认为的<spanclass="math inline">\(\frac{1}{2}\)</span>是先开门后选的结果，真实的概率应该是<spanclass="math inline">\(\frac{2}{3}\)</span></p><p>100doors, 只有一个有车，98 revealed, 胜率为99%</p><h1 id="birthday-paradox">Birthday Paradox</h1><p>n random people, how likely is it to have 2 people with the samebirthday?</p><p>考虑没有两个人生日相同的情况</p><p><span class="math inline">\(\frac{365\cdot 364 \cdot \cdot \cdot(365-n+1)}{365^n}\)</span></p><p>When we calculate, use the approximation <spanclass="math inline">\(1-x=e^{-x}\)</span></p><p>P=1-<span class="math inline">\((1-\frac{1}{365})\cdot\cdot \cdot(1-\frac{n-1}{365})\)</span></p><p>=1-<span class="math inline">\(e^{-\frac{n(n-1)}{2\cdot365}}\)</span></p><h1 id="online-auction-problem">Online Auction Problem</h1><p>Sell a ticket to n=<span class="math inline">\(10^6\)</span>interested buyers</p><p>A stream of distinct offers <spanclass="math inline">\(x_1,x_2,...,x_n\)</span> you have to make thedecision at real time. You want to maximize the probability pf accpetingthe highest offer.</p><p>Strategy K 1）skip first k offers, the maxium in first k is MAX2）Accept <span class="math inline">\(x_j\)</span> if j is the first jsatisfying <span class="math inline">\(x_j&gt;MAX\)</span></p><p>U is the set of all permutations（排列）of {1,2,...,n} (n!)</p><p>T describe the case that one succeed</p><p><span class="math inline">\(T_j=(n-1)!\frac{k}{j-1}\)</span>(n-1)!考虑第n个最大，分数考虑条件（2）</p><p><span class="math inline">\(P=\frac{\Sigma T_j}{n!}\)</span></p><p><spanclass="math inline">\(H_n=1+\frac{1}{2}+...+\frac{1}{n}=lnn+C\)</span></p><p><span class="math inline">\(P=\frac{k}{n}(lnn-lnk)\)</span></p><h1 id="basic-volcabulary-for-graph">Basic Volcabulary for Graph</h1><p>multiset is like a set except its members need not be distinct.</p><p>Def of multiset: a set together with a function that assigns to eachmember of the set a positive integer or <spanclass="math inline">\(\infin\)</span>(called multiplicity)</p><p>图 graph 点 vertices 边 edge</p><p>A simple graph G is a pair of set (V,E). E is edege. Each element ofE is a subset of size two of V.</p><p>Multigraph(graph with repeated edges)</p><h1 id="ramsey-numbers"><ahref="https://youtu.be/rK484PiJ9t8?si=FfFMYtNyfd4HlVMj">Ramseynumbers</a></h1><p>The Union Bound</p><p>Among 6 people, there must exist either 3 mutual friends, or 3 nutualstrangers</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>计智应数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Discrete Mathematics</title>
+    <link href="/2025/02/06/VA2/"/>
+    <url>/2025/02/06/VA2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="chap1">Chap1</h1><p>set：集合</p><p>cardinality：集合中元素的个数</p><p>disjoint: 交集为空集的两个集合</p><p>difference：A中的元素包含于A但不包含于B</p><p>symmetric difference:<span class="math inline">\(A\DeltaB\)</span>只包含于A或者只包含于B</p><p><span class="math inline">\(A\cup (B\cap C)=(A\cup B)\cap(A\cupC)\)</span></p><p>一个集合有<spanclass="math inline">\(2^n\)</span>个子集（元素出现为1不出现为0，转成二进制思考）</p><p>permutation：排列</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>狭义相对论</title>
+    <link href="/2025/02/06/chap7/"/>
+    <url>/2025/02/06/chap7/</url>
+    
+    <content type="html"><![CDATA[<h1 id="基本原理">基本原理</h1><h2 id="相对性原理">相对性原理</h2><p>在所有惯性系中，物理学定律有相同的表述形式。</p><h2 id="真空光速不变原理">真空光速不变原理</h2><p>在所有惯性系中，真空光速具有相同的量值，而与光源运动无关。</p><h1 id="时空度量相对性">时空度量相对性</h1><p>运动尺子长度缩短，运动时钟变慢</p><h2 id="同时的相对性">同时的相对性</h2><p>即时钟零点校准的相对性</p><p><img src="/img/相对.png" alt=""></p><h2 id="尺缩效应">尺缩效应</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>力学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>龙年二次元年度总结</title>
     <link href="/2025/02/06/2024/"/>
     <url>/2025/02/06/2024/</url>
