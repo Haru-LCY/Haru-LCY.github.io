@@ -21,12 +21,12 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Lecture 1:History Block World 1963 MIT Summer Project David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face">
+    <meta name="description" content="Lecture 1:HistoryBlock World 1963  MIT Summer Project  David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face Detect">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231N">
 <meta property="og:url" content="http://example.com/2023/01/01/cs/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="Lecture 1:History Block World 1963 MIT Summer Project David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face">
+<meta property="og:description" content="Lecture 1:HistoryBlock World 1963  MIT Summer Project  David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face Detect">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/green.png">
 <meta property="og:image" content="http://example.com/img/distance.png">
@@ -313,42 +313,29 @@
             
               <div class="markdown-body">
                 
-                <h1 id="lecture-1history">Lecture 1:History</h1>
-<p>Block World 1963</p>
-<p>MIT Summer Project</p>
+                <h1 id="Lecture-1-History"><a href="#Lecture-1-History" class="headerlink" title="Lecture 1:History"></a>Lecture 1:History</h1><p>Block World 1963 </p>
+<p>MIT Summer Project </p>
 <p>David Mars: Input-Sketch(edges)-1/2-D Sketch-3D</p>
-<p>Generalized Cylinder &amp; Pictorial structure
-用圆柱体/小圆和线段表示图像</p>
+<p>Generalized Cylinder &amp; Pictorial structure 用圆柱体/小圆和线段表示图像</p>
 <p>Image segmentation 图像分割</p>
-<p>Face Detection 1999-2000 machine learning</p>
-<p>2000s Benchmark Dataset---PASCAL Visual Object Challenge</p>
-<p>Machine Learning Algorithms:
-如果没有足够多的训练数据，就容易过拟合。ImageNet
-希望找到最大的图像数据集。</p>
+<p>Face Detection 1999-2000 machine learning </p>
+<p>2000s Benchmark Dataset—-PASCAL Visual Object Challenge</p>
+<p>Machine Learning Algorithms: 如果没有足够多的训练数据，就容易过拟合。ImageNet 希望找到最大的图像数据集。</p>
 <p>ImageNet Classification Challenge：CNN(Focus of our course!)</p>
-<h1 id="lecture-2">Lecture 2</h1>
-<p>Semantic Gap：Computer view an image as pixels(一堆数字)</p>
-<p>Challenge：Viewpoint
-variation，illumination，deformation，occlusion（遮挡）</p>
+<h1 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture 2"></a>Lecture 2</h1><p>Semantic Gap：Computer view an image as pixels(一堆数字)</p>
+<p>Challenge：Viewpoint variation，illumination，deformation，occlusion（遮挡）</p>
 <p>Data-Drive Approach: 找很多某一类东西的图片，用ML训练</p>
-<h2 id="nearest-neighbour">Nearest Neighbour</h2>
-<p>train step→记住所有data/lable o(1)</p>
+<h2 id="Nearest-Neighbour"><a href="#Nearest-Neighbour" class="headerlink" title="Nearest Neighbour"></a>Nearest Neighbour</h2><p>train step→记住所有data/lable o(1)</p>
 <p>predict step→预测 o(N)</p>
-<p>K-nearest Neighbours: Instead of copying label from nearest
-neighbour, take the majority vote from K closest points.</p>
+<p>K-nearest Neighbours: Instead of copying label from nearest neighbour, take the majority vote from K closest points.</p>
 <p><img src="/img/green.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><img src="/img/distance.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><a target="_blank" rel="noopener" href="http://vision.stanford.edu/teaching/cs231n-demos/knn/">A Fun
-Demo</a></p>
-<p>How to choose K and the way we calculate the distance?
-(hyperparameters:choices about the algorithm that we set rather than
-learn)</p>
+<p><a target="_blank" rel="noopener" href="http://vision.stanford.edu/teaching/cs231n-demos/knn/">A Fun Demo</a></p>
+<p>How to choose K and the way we calculate the distance? (hyperparameters:choices about the algorithm that we set rather than learn)</p>
 <p>Very problem-dependet!</p>
-<p>Most data: training; validations; test
-在val选hyperparameters，最终在test上evaluate.</p>
+<p>Most data: training; validations; test 在val选hyperparameters，最终在test上evaluate.</p>
 <p><img src="/img/idea.png" srcset="/img/loading.gif" lazyload alt="另一种比较好的idea"></p>
-<h2 id="linear-classification">Linear Classification</h2>
-<p>f(x,W)=Wx+b</p>
+<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>f(x,W)=Wx+b</p>
 
                 
               </div>

@@ -21,16 +21,16 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it. First the guest pick a door, then Monte opens a different door which has a donkey.">
+    <meta name="description" content="Monte Hall Problem3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it. First the guest pick a door, then Monte opens a different door which has a donkey. Mont">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probability Theory">
 <meta property="og:url" content="http://example.com/2025/02/17/post/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it. First the guest pick a door, then Monte opens a different door which has a donkey.">
+<meta property="og:description" content="Monte Hall Problem3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it. First the guest pick a door, then Monte opens a different door which has a donkey. Mont">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/OIP.jpg">
 <meta property="article:published_time" content="2025-02-17T05:16:30.000Z">
-<meta property="article:modified_time" content="2025-02-25T14:29:07.604Z">
+<meta property="article:modified_time" content="2025-02-25T14:34:08.292Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta property="article:tag" content="计智应数">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          850 字
+          893 字
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-25T22:29:07+08:00
+                    本文最后更新于 2025-02-25T22:34:08+08:00
                   
                   
 
@@ -312,158 +312,77 @@
             
               <div class="markdown-body">
                 
-                <h1 id="monte-hall-problem">Monte Hall Problem</h1>
-<p>3 closed doors. Behind one door is a car, while the other 2 doors
-each has a donkey behind it.</p>
-<p>First the guest pick a door, then Monte opens a different door which
-has a donkey. Monte ask the guest:"Would you like to change your
-choice?"</p>
+                <h1 id="Monte-Hall-Problem"><a href="#Monte-Hall-Problem" class="headerlink" title="Monte Hall Problem"></a>Monte Hall Problem</h1><p>3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it.</p>
+<p>First the guest pick a door, then Monte opens a different door which has a donkey. Monte ask the guest:”Would you like to change your choice?”</p>
 <p>P=(U.p)</p>
-<p>直观认为的<span
-class="math inline">\(\frac{1}{2}\)</span>是先开门后选的结果，真实的概率应该是<span
-class="math inline">\(\frac{2}{3}\)</span></p>
+<p>直观认为的$\frac{1}{2}$是先开门后选的结果，真实的概率应该是$\frac{2}{3}$</p>
 <p>100doors, 只有一个有车，98 revealed, 胜率为99%</p>
-<h1 id="birthday-paradox">Birthday Paradox</h1>
-<p>n random people, how likely is it to have 2 people with the same
-birthday?</p>
+<h1 id="Birthday-Paradox"><a href="#Birthday-Paradox" class="headerlink" title="Birthday Paradox"></a>Birthday Paradox</h1><p>n random people, how likely is it to have 2 people with the same birthday?</p>
 <p>考虑没有两个人生日相同的情况</p>
-<p><span class="math inline">\(\frac{365\cdot 364 \cdot \cdot \cdot
-(365-n+1)}{365^n}\)</span></p>
-<p>When we calculate, use the approximation <span
-class="math inline">\(1-x=e^{-x}\)</span></p>
-<p>P=1-<span class="math inline">\((1-\frac{1}{365})\cdot\cdot \cdot
-(1-\frac{n-1}{365})\)</span></p>
-<p>=1-<span class="math inline">\(e^{-\frac{n(n-1)}{2\cdot
-365}}\)</span></p>
-<h1 id="online-auction-problem">Online Auction Problem</h1>
-<p>Sell a ticket to n=<span class="math inline">\(10^6\)</span>
-interested buyers</p>
-<p>A stream of distinct offers <span
-class="math inline">\(x_1,x_2,...,x_n\)</span> you have to make the
-decision at real time. You want to maximize the probability pf accpeting
-the highest offer.</p>
-<p>Strategy K 1）skip first k offers, the maxium in first k is MAX
-2）Accept <span class="math inline">\(x_j\)</span> if j is the first j
-satisfying <span class="math inline">\(x_j&gt;MAX\)</span></p>
-<p>U is the set of all permutations（排列）of {1,2,...,n} (n!)</p>
+<p>$\frac{365\cdot 364 \cdot \cdot \cdot (365-n+1)}{365^n}$</p>
+<p>When we calculate, use the approximation $1-x=e^{-x}$</p>
+<p>P=1-$(1-\frac{1}{365})\cdot\cdot \cdot (1-\frac{n-1}{365})$</p>
+<p>=1-$e^{-\frac{n(n-1)}{2\cdot 365}}$</p>
+<h1 id="Online-Auction-Problem"><a href="#Online-Auction-Problem" class="headerlink" title="Online Auction Problem"></a>Online Auction Problem</h1><p>Sell a ticket to n=$10^6$ interested buyers</p>
+<p>A stream of distinct offers $x_1,x_2,…,x_n$ you have to make the decision at real time. You want to maximize the probability pf accpeting the highest offer.</p>
+<p>Strategy K<br>1）skip first k offers, the maxium in first k is MAX<br>2）Accept $x_j$ if j is the first j satisfying $x_j&gt;MAX$</p>
+<p>U is the set of all permutations（排列）of {1,2,…,n} (n!)</p>
 <p>T describe the case that one succeed</p>
-<p><span class="math inline">\(T_j=(n-1)!\frac{k}{j-1}\)</span>
-(n-1)!考虑第n个最大，分数考虑条件（2）</p>
-<p><span class="math inline">\(P=\frac{\Sigma T_j}{n!}\)</span></p>
-<p><span
-class="math inline">\(H_n=1+\frac{1}{2}+...+\frac{1}{n}=lnn+C\)</span></p>
-<p><span class="math inline">\(P=\frac{k}{n}(lnn-lnk)\)</span></p>
-<h1 id="basic-volcabulary-for-graph">Basic Volcabulary for Graph</h1>
-<p>multiset is like a set except its members need not be distinct.</p>
-<p>Def of multiset: a set together with a function that assigns to each
-member of the set a positive integer or <span
-class="math inline">\(\infin\)</span>(called multiplicity)</p>
+<p>$T_j=(n-1)!\frac{k}{j-1}$ (n-1)!考虑第n个最大，分数考虑条件（2）</p>
+<p>$P=\frac{\Sigma T_j}{n!}$</p>
+<p>$H_n=1+\frac{1}{2}+…+\frac{1}{n}=lnn+C$</p>
+<p>$P=\frac{k}{n}(lnn-lnk)$</p>
+<h1 id="Basic-Volcabulary-for-Graph"><a href="#Basic-Volcabulary-for-Graph" class="headerlink" title="Basic Volcabulary for Graph"></a>Basic Volcabulary for Graph</h1><p>multiset is like a set except its members need not be distinct.</p>
+<p>Def of multiset: a set together with a function that assigns to each member of the set a positive integer or $\infin$(called multiplicity)</p>
 <p>图 graph 点 vertices 边 edge</p>
-<p>A simple graph G is a pair of set (V,E). E is edege. Each element of
-E is a subset of size two of V.</p>
+<p>A simple graph G is a pair of set (V,E). E is edege. Each element of E is a subset of size two of V.</p>
 <p>Multigraph(graph with repeated edges)</p>
 <p>|V|=number of vertices=the order of G</p>
-<h1 id="ramsey-numbers"><a
-target="_blank" rel="noopener" href="https://youtu.be/rK484PiJ9t8?si=FfFMYtNyfd4HlVMj">Ramsey
-numbers</a></h1>
-<p>The Union Bound</p>
-<p>Among 6 people, there must exist either 3 mutual friends, or 3 nutual
-strangers</p>
+<h1 id="Ramsey-numbers"><a href="#Ramsey-numbers" class="headerlink" title="Ramsey numbers"></a><a target="_blank" rel="noopener" href="https://youtu.be/rK484PiJ9t8?si=FfFMYtNyfd4HlVMj">Ramsey numbers</a></h1><p>The Union Bound</p>
+<p>Among 6 people, there must exist either 3 mutual friends, or 3 nutual strangers</p>
 <p>Proof:</p>
 <p><img src="/img/ramsey.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><img src="/img/R.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>If you color the edges of K5 red and blue arbitraryly, then you are
-not guaranteed a red K3 or blue K3</p>
+<p>If you color the edges of K5 red and blue arbitraryly, then you are not guaranteed a red K3 or blue K3</p>
 <p><img src="/img/反例.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>Define Ramsey Number:</p>
-<h1 id="chain-rule">Chain Rule</h1>
-<p>这个法则对于用条件概率计算总概率很有用</p>
-<p><span class="math inline">\(Pr(S_1\cap S_2\cdot\cdot\cdot\cap
-S_m)=Pr(S_1)Pr(S_2|S_1)Pr(S_3|S_2\cap S_1)\cdot \cdot Pr(S_m|S_1\cap
-\cdot \cdot S_{m-1})\)</span></p>
-<p>特殊情形：<span class="math inline">\(S_k \subset S_{k-1} \cdot \cdot
-\cdot \subset S_{1}\)</span></p>
-<p>此时<span class="math inline">\(Pr\{S_1\cap S_2\cdot \cdot \cdot \cap
-S_m\}=Pr\{S_1\}Pr\{S_2|S_1\}Pr\{S_3|S_2\}\cdot \cdot
-Pr\{S_m|S_{m-1}\}\)</span></p>
-<h1 id="permutation">Permutation</h1>
-<p>P=(U,p) where U is the set of all permutations, p(<span
-class="math inline">\(\sigma\)</span>)=1/|U| for all <span
-class="math inline">\(\sigma \in U\)</span></p>
-<p>For each <span class="math inline">\(1\leq i \leq n\)</span>, let
-<span class="math inline">\(L_i(\theta)=\)</span> length of cycle
-containing i.</p>
-<h2 id="qprobability">Q:Probability</h2>
-<p>Q: What is the probability of 1 being in a cycle of length s?</p>
-<p>Lemma:Pr(<span class="math inline">\(L_1=s\)</span>)=<span
-class="math inline">\(\frac{1}{n}\)</span> for any s<span
-class="math inline">\(\in\)</span>{1,...,n}.</p>
+<p>Define Ramsey Number: </p>
+<h1 id="Chain-Rule"><a href="#Chain-Rule" class="headerlink" title="Chain Rule"></a>Chain Rule</h1><p>这个法则对于用条件概率计算总概率很有用</p>
+<p>$Pr(S<em>1\cap S_2\cdot\cdot\cdot\cap S_m)=Pr(S_1)Pr(S_2|S_1)Pr(S_3|S_2\cap S_1)\cdot \cdot Pr(S_m|S_1\cap \cdot \cdot S</em>{m-1})$</p>
+<p>特殊情形：$S<em>k \subset S</em>{k-1} \cdot \cdot \cdot \subset S_{1}$</p>
+<p>此时$Pr{S<em>1\cap S_2\cdot \cdot \cdot \cap S_m}=Pr{S_1}Pr{S_2|S_1}Pr{S_3|S_2}\cdot \cdot Pr{S_m|S</em>{m-1}}$</p>
+<h1 id="Permutation"><a href="#Permutation" class="headerlink" title="Permutation"></a>Permutation</h1><p>P=(U,p) where U is the set of all permutations, p($\sigma$)=1/|U| for all $\sigma \in U$</p>
+<p>For each $1\leq i \leq n$, let $L_i(\theta)=$ length of cycle containing i.</p>
+<h2 id="Q-Probability"><a href="#Q-Probability" class="headerlink" title="Q:Probability"></a>Q:Probability</h2><p>Q: What is the probability of 1 being in a cycle of length s?</p>
+<p>Lemma:Pr($L_1=s$)=$\frac{1}{n}$ for any s$\in${1,…,n}.</p>
 <p>Proof:</p>
-<h3 id="step1">Step1</h3>
-<p>Pr{<span class="math inline">\(L_1&gt;s\)</span>|<span
-class="math inline">\(L_1&gt;s-1\)</span>}=<span
-class="math inline">\(\frac{n-s}{n-s+1}\)</span></p>
+<h3 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h3><p>Pr{$L_1&gt;s$|$L_1&gt;s-1$}=$\frac{n-s}{n-s+1}$</p>
 <p>解析：</p>
-<p>假设这个循环从1开始。为了得到这个概率表达式，我们可以考虑一个循环的前s位，由于<span
-class="math inline">\(L_1&gt;s-1\)</span>，必有前s个点各不相同。<span
-class="math inline">\(L_1\)</span>是否大于s取决于第s+1位是否又回到了1。如果在第s+1位回到了1，那么就有<span
-class="math inline">\(L_1=s\)</span>。</p>
+<p>假设这个循环从1开始。为了得到这个概率表达式，我们可以考虑一个循环的前s位，由于$L_1&gt;s-1$，必有前s个点各不相同。$L_1$是否大于s取决于第s+1位是否又回到了1。如果在第s+1位回到了1，那么就有$L_1=s$。</p>
 <p>下面我们考虑第s+1位的元素又多少种可能性。</p>
-<p>第一种可能性又回到了1，这时<span
-class="math inline">\(L_1=s\)</span></p>
+<p>第一种可能性又回到了1，这时$L_1=s$</p>
 <p>第二种可能性不回到1，则这一位只能选择除了循环的前s位（包含1）的所有数，即有n-s种选择。</p>
 <p>于是总共有n-s+1种选项，能选的是n-s（第二种情况）</p>
-<h3 id="step2">Step2</h3>
-<p>Pr{<span class="math inline">\(L_1\)</span>=s}=<span
-class="math inline">\(\frac{n-1}{n}\frac{n-2}{n-1}\cdot \cdot
-\cdot\frac{n-s+1}{n-s+2}\frac{1}{n-s+1}=\frac{1}{n}\)</span></p>
+<h3 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h3><p>Pr{$L_1$=s}=$\frac{n-1}{n}\frac{n-2}{n-1}\cdot \cdot \cdot\frac{n-s+1}{n-s+2}\frac{1}{n-s+1}=\frac{1}{n}$</p>
 <p>解析：</p>
-<p>我们可以使用Chain Rule来计算Pr{<span
-class="math inline">\(L_1&gt;s-1\)</span>}的大小。因为<span
-class="math inline">\(L_1&gt;s \subset
-L_1&gt;s-1\)</span>，我们可以使用特殊情形的。</p>
-<p>回忆：P(AB)=P(A)P(B|A) 在这里我们令<span
-class="math inline">\(L_1&gt;s-1\)</span>作为事件A，因为它的概率很好求；令B为<span
-class="math inline">\(L_1=s\)</span></p>
-<p>于是<span
-class="math inline">\(Pr(L_1&gt;s-1)=\frac{n-1}{n}\frac{n-2}{n-1}\cdot
-\cdot \cdot\frac{n-s+1}{n-s+2}=\frac{n-s+1}{n}\)</span></p>
-<p><span
-class="math inline">\(Pr(L_1=1|L_1&gt;s-1)=\frac{1}{n-s+1}\)</span>
-详见step1的“第一种可能性”</p>
+<p>我们可以使用Chain Rule来计算Pr{$L_1&gt;s-1$}的大小。因为$L_1&gt;s \subset L_1&gt;s-1$，我们可以使用特殊情形的。</p>
+<p>回忆：P(AB)=P(A)P(B|A) 在这里我们令$L_1&gt;s-1$作为事件A，因为它的概率很好求；令B为$L_1=s$</p>
+<p>于是$Pr(L_1&gt;s-1)=\frac{n-1}{n}\frac{n-2}{n-1}\cdot \cdot \cdot\frac{n-s+1}{n-s+2}=\frac{n-s+1}{n}$</p>
+<p>$Pr(L_1=1|L_1&gt;s-1)=\frac{1}{n-s+1}$ 详见step1的“第一种可能性”</p>
 <p>代入之后即可算出概率。</p>
-<h2 id="qexpectation">Q：Expectation</h2>
-<p>继承原始的题目条件，Let X be the random variable X(<span
-class="math inline">\(\sigma\)</span>)=# of cycles in <span
-class="math inline">\(\sigma\)</span>'s cycle repesentation.</p>
+<h2 id="Q：Expectation"><a href="#Q：Expectation" class="headerlink" title="Q：Expectation"></a>Q：Expectation</h2><p>继承原始的题目条件，Let X be the random variable X($\sigma$)=# of cycles in $\sigma$’s cycle repesentation.</p>
 <p>Q:What is E(X)?</p>
-<p><span class="math inline">\(\sigma=(3,5,1,4,2)\)</span> contains
-cycle (2,5) and (3,4,1) <span
-class="math inline">\(L_1(\sigma)=3\)</span> and <span
-class="math inline">\(L_5(\sigma
-)=2\)</span></p>
-<p>Note that <span
-class="math inline">\(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)}=\frac{1}{2}\cdot
-2+\frac{1}{3}\cdot 3=2\)</span></p>
-<p>From this we know that X=<span
-class="math inline">\(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)}\)</span> is
-the number of cycles.</p>
-<p>注释：每一个长度为s的cycle在上面的算式中都可以得出一个<span
-class="math inline">\(s\cdot
-\frac{1}{s}=1\)</span>，因此我们可以这样断言。</p>
-<p>E（X）=<span
-class="math inline">\(E(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)})\)</span></p>
-<p>因为在一个排列里n个元素地位是平等的，所以我们有<span
-class="math inline">\(E(L_1)=\cdot \cdot \cdot =E(L_i)\)</span>
-于是<span
-class="math inline">\(E(X)=nE(\frac{1}{L_1(\sigma)})\)</span></p>
-<p><span class="math inline">\(E(\frac{1}{L_1})\)</span></p>
-<h1 id="expectation">Expectation</h1>
-<h2 id="law-of-linear-expectation">Law of linear Expectation</h2>
-<p>$X=C_1X_1+C_2X_2+C_nX_n $</p>
-<p>Then E(X)=<span class="math inline">\(\Sigma_i C_i
-E(X_i)\)</span></p>
-
+<p>$\sigma=(3,5,1,4,2)$ contains cycle (2,5) and (3,4,1) $L_1(\sigma)=3$ and $L_5(\sigma<br>)=2$ </p>
+<p>Note that $\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)}=\frac{1}{2}\cdot 2+\frac{1}{3}\cdot 3=2$</p>
+<p>From this we know that X=$\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)}$ is the number of cycles.</p>
+<p>注释：每一个长度为s的cycle在上面的算式中都可以得出一个$s\cdot \frac{1}{s}=1$，因此我们可以这样断言。</p>
+<p>E（X）=$E(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)})$</p>
+<p>因为在一个排列里n个元素地位是平等的，所以我们有$E(L_1)=\cdot \cdot \cdot =E(L_i)$ 于是$E(X)=nE(\frac{1}{L_1(\sigma)})$</p>
+<p>$E(\frac{1}{L<em>1})=\Sigma</em>{s=1}^{n}P(L<em>1=s)\frac{1}{s}=\frac{1}{n}\Sigma</em>{s=1}^{n}\frac{1}{s}$</p>
+<p>Harmonic Number（调和级数）：$\Sigma_{s=1}^{n}\frac{1}{s}=H_n$</p>
+<p>E(X)=nE($\frac{1}{L_1}$)=$H_n$</p>
+<h1 id="Expectation"><a href="#Expectation" class="headerlink" title="Expectation"></a>Expectation</h1><h2 id="Law-of-linear-Expectation"><a href="#Law-of-linear-Expectation" class="headerlink" title="Law of linear Expectation"></a>Law of linear Expectation</h2><p>$X=C_1X_1+C_2X_2+\cdot \cdot \cdot C_nX_n $</p>
+<p>Then E(X)=$\Sigma_i C_i E(X_i)$</p>
+<h2 id="Conditional-Expectation"><a href="#Conditional-Expectation" class="headerlink" title="Conditional Expectation"></a>Conditional Expectation</h2>
                 
               </div>
             
