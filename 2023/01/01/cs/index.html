@@ -21,28 +21,23 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it. First the guest pick a door, then Monte opens a different door which has a donkey.">
+    <meta name="description" content="History Block World 1963 MIT Summer Project David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face Detection">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Probability Theory">
-<meta property="og:url" content="http://example.com/2025/02/17/post/index.html">
+<meta property="og:title" content="CS231N">
+<meta property="og:url" content="http://example.com/2023/01/01/cs/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it. First the guest pick a door, then Monte opens a different door which has a donkey.">
+<meta property="og:description" content="History Block World 1963 MIT Summer Project David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face Detection">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/ramsey.png">
-<meta property="og:image" content="http://example.com/img/R.png">
-<meta property="og:image" content="http://example.com/img/%E5%8F%8D%E4%BE%8B.png">
-<meta property="article:published_time" content="2025-02-17T05:16:30.000Z">
-<meta property="article:modified_time" content="2025-02-20T09:18:34.773Z">
+<meta property="article:published_time" content="2022-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-25T07:58:29.547Z">
 <meta property="article:author" content="瑾瑜當年">
-<meta property="article:tag" content="计智应数">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/ramsey.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Probability Theory - 港湾</title>
+  <title>CS231N - 港湾</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Probability Theory"></span>
+            <span id="subtitle" data-typed-text="CS231N"></span>
           
         </div>
 
@@ -230,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-17 13:16" pubdate>
-          2025年2月17日 下午
+        <time datetime="2023-01-01 00:00" pubdate>
+          2023年1月1日 凌晨
         </time>
       </span>
     
@@ -242,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          197 字
+          30 字
         
       </span>
     
@@ -253,7 +248,7 @@
         
         
         
-          2 分钟
+          1 分钟
         
       </span>
     
@@ -299,12 +294,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Probability Theory</h1>
+            <h1 id="seo-header">CS231N</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-20T17:18:34+08:00
+                    本文最后更新于 2025-02-25T15:58:29+08:00
                   
                   
 
@@ -314,70 +309,15 @@
             
               <div class="markdown-body">
                 
-                <h1 id="monte-hall-problem">Monte Hall Problem</h1>
-<p>3 closed doors. Behind one door is a car, while the other 2 doors
-each has a donkey behind it.</p>
-<p>First the guest pick a door, then Monte opens a different door which
-has a donkey. Monte ask the guest:"Would you like to change your
-choice?"</p>
-<p>P=(U.p)</p>
-<p>直观认为的<span
-class="math inline">\(\frac{1}{2}\)</span>是先开门后选的结果，真实的概率应该是<span
-class="math inline">\(\frac{2}{3}\)</span></p>
-<p>100doors, 只有一个有车，98 revealed, 胜率为99%</p>
-<h1 id="birthday-paradox">Birthday Paradox</h1>
-<p>n random people, how likely is it to have 2 people with the same
-birthday?</p>
-<p>考虑没有两个人生日相同的情况</p>
-<p><span class="math inline">\(\frac{365\cdot 364 \cdot \cdot \cdot
-(365-n+1)}{365^n}\)</span></p>
-<p>When we calculate, use the approximation <span
-class="math inline">\(1-x=e^{-x}\)</span></p>
-<p>P=1-<span class="math inline">\((1-\frac{1}{365})\cdot\cdot \cdot
-(1-\frac{n-1}{365})\)</span></p>
-<p>=1-<span class="math inline">\(e^{-\frac{n(n-1)}{2\cdot
-365}}\)</span></p>
-<h1 id="online-auction-problem">Online Auction Problem</h1>
-<p>Sell a ticket to n=<span class="math inline">\(10^6\)</span>
-interested buyers</p>
-<p>A stream of distinct offers <span
-class="math inline">\(x_1,x_2,...,x_n\)</span> you have to make the
-decision at real time. You want to maximize the probability pf accpeting
-the highest offer.</p>
-<p>Strategy K 1）skip first k offers, the maxium in first k is MAX
-2）Accept <span class="math inline">\(x_j\)</span> if j is the first j
-satisfying <span class="math inline">\(x_j&gt;MAX\)</span></p>
-<p>U is the set of all permutations（排列）of {1,2,...,n} (n!)</p>
-<p>T describe the case that one succeed</p>
-<p><span class="math inline">\(T_j=(n-1)!\frac{k}{j-1}\)</span>
-(n-1)!考虑第n个最大，分数考虑条件（2）</p>
-<p><span class="math inline">\(P=\frac{\Sigma T_j}{n!}\)</span></p>
-<p><span
-class="math inline">\(H_n=1+\frac{1}{2}+...+\frac{1}{n}=lnn+C\)</span></p>
-<p><span class="math inline">\(P=\frac{k}{n}(lnn-lnk)\)</span></p>
-<h1 id="basic-volcabulary-for-graph">Basic Volcabulary for Graph</h1>
-<p>multiset is like a set except its members need not be distinct.</p>
-<p>Def of multiset: a set together with a function that assigns to each
-member of the set a positive integer or <span
-class="math inline">\(\infin\)</span>(called multiplicity)</p>
-<p>图 graph 点 vertices 边 edge</p>
-<p>A simple graph G is a pair of set (V,E). E is edege. Each element of
-E is a subset of size two of V.</p>
-<p>Multigraph(graph with repeated edges)</p>
-<p>|V|=number of vertices=the order of G</p>
-<h1 id="ramsey-numbers"><a
-target="_blank" rel="noopener" href="https://youtu.be/rK484PiJ9t8?si=FfFMYtNyfd4HlVMj">Ramsey
-numbers</a></h1>
-<p>The Union Bound</p>
-<p>Among 6 people, there must exist either 3 mutual friends, or 3 nutual
-strangers</p>
-<p>Proof:</p>
-<p><img src="/img/ramsey.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="/img/R.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>If you color the edges of K5 red and blue arbitraryly, then you are
-not guaranteed a red K3 or blue K3</p>
-<p><img src="/img/反例.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>Define Ramsey Number:</p>
+                <h1 id="history">History</h1>
+<p>Block World 1963</p>
+<p>MIT Summer Project</p>
+<p>David Mars: Input-Sketch(edges)-1/2-D Sketch-3D</p>
+<p>Generalized Cylinder &amp; Pictorial structure
+用圆柱体/小圆和线段表示图像</p>
+<p>Image segmentation 图像分割</p>
+<p>Face Detection 1999-2000 machine learning</p>
+<p>2000s Benchmark Dataset---PASCAL Visual Object Challenge</p>
 
                 
               </div>
@@ -387,13 +327,6 @@ not guaranteed a red K3 or blue K3</p>
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E8%AE%A1%E6%99%BA%E5%BA%94%E6%95%B0/" class="print-no-link">#计智应数</a>
-      
-    </div>
-  
 </div>
 
 
@@ -402,8 +335,8 @@ not guaranteed a red K3 or blue K3</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Probability Theory</div>
-      <div>http://example.com/2025/02/17/post/</div>
+      <div>CS231N</div>
+      <div>http://example.com/2023/01/01/cs/</div>
     </div>
     <div class="license-meta">
       
@@ -415,7 +348,7 @@ not guaranteed a red K3 or blue K3</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月17日</div>
+          <div>2023年1月1日</div>
         </div>
       
       
@@ -447,12 +380,18 @@ not guaranteed a red K3 or blue K3</p>
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2024/08/28/%E6%97%B6%E4%BB%A3%E5%8F%98%E9%9D%A9%E4%B8%AD%E7%9A%84%E5%BD%B7%E5%BE%A8%E8%80%85%E4%BB%AC-%E8%AE%B0%E3%80%8A%E5%87%A1%E5%B0%94%E8%B5%9B%E7%8E%AB%E7%91%B0%E3%80%8B%E4%B8%8E%E3%80%8A%E8%96%84%E6%A8%B1%E9%AC%BC%E3%80%8B/" title="时代变革中的彷徨者们--记《凡尔赛玫瑰》与《薄樱鬼》">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">时代变革中的彷徨者们--记《凡尔赛玫瑰》与《薄樱鬼》</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/06/VA2/" title="Discrete Mathematics">
-                        <span class="hidden-mobile">Discrete Mathematics</span>
+                      <a href="/2022/12/01/%E6%83%9F%E6%84%BF%E5%B8%B8%E4%BC%B4%E5%90%9B%E8%BA%AB%E4%BE%A7%EF%BC%8C%E5%B9%BB%E6%A2%A6%E4%B8%80%E7%9E%AC%E5%8F%88%E4%BD%95%E5%A6%A8%EF%BC%9F-%E7%81%B0%E9%B9%B0%E5%B9%BB%E5%A2%83%E9%80%9A%E5%85%B3%E7%AE%80%E8%AF%84/" title="惟愿常伴君身侧，幻梦一瞬又何妨？---灰鹰幻境通关简评">
+                        <span class="hidden-mobile">惟愿常伴君身侧，幻梦一瞬又何妨？---灰鹰幻境通关简评</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -542,12 +481,6 @@ not guaranteed a red K3 or blue K3</p>
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -793,49 +726,6 @@ not guaranteed a red K3 or blue K3</p>
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
