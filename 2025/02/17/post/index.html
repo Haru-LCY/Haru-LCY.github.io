@@ -21,16 +21,16 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="4 Probability TOOLS Distirbutive Law for Expectation Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it. First the guest pick a door,">
+    <meta name="description" content="中英双语随机使用，目的是为了让自己看懂，比较informal的lecture note，见谅。 4 Probability TOOLS Distirbutive Law for Expectation Tail Estimates Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probability Theory">
 <meta property="og:url" content="http://example.com/2025/02/17/post/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="4 Probability TOOLS Distirbutive Law for Expectation Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2 doors each has a donkey behind it. First the guest pick a door,">
+<meta property="og:description" content="中英双语随机使用，目的是为了让自己看懂，比较informal的lecture note，见谅。 4 Probability TOOLS Distirbutive Law for Expectation Tail Estimates Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/OIP.jpg">
 <meta property="article:published_time" content="2025-02-17T05:16:30.000Z">
-<meta property="article:modified_time" content="2025-02-25T15:13:19.577Z">
+<meta property="article:modified_time" content="2025-02-26T06:55:19.362Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta property="article:tag" content="计智应数">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.8k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          10 分钟
+          16 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-25T23:13:19+08:00
+                    本文最后更新于 2025-02-26T14:55:19+08:00
                   
                   
 
@@ -312,8 +312,11 @@
             
               <div class="markdown-body">
                 
-                <p>4 Probability TOOLS</p>
+                <p>中英双语随机使用，目的是为了让自己看懂，比较informal的lecture
+note，见谅。</p>
+<p>4 Probability TOOLS</p>
 <p>Distirbutive Law for Expectation</p>
+<p>Tail Estimates</p>
 <h1 id="monte-hall-problem">Monte Hall Problem</h1>
 <p>3 closed doors. Behind one door is a car, while the other 2 doors
 each has a donkey behind it.</p>
@@ -482,6 +485,12 @@ T}p(u)X(u)}{P(T)}\)</span> if P(T)&gt;0</p>
 <p>X is random variable, U is the DISJOINT union of <span
 class="math inline">\(W_1,W_2,\cdot \cdot W_n\)</span></p>
 <p>E(X)=<span class="math inline">\(\Sigma_i P(W_i)E(X|W_i)\)</span></p>
+<h2 id="variance">Variance</h2>
+<p>Variance：Var(X)=<span
+class="math inline">\(E((X-E(X))^2)\)</span></p>
+<p>Standard Deviation of X: <span
+class="math inline">\(\sigma(X)=\sqrt{Var(X)}\)</span></p>
+<p>Fact:<span class="math inline">\(Var(X)=E(X^2)-(E(X))^2\)</span></p>
 <h2 id="独立随机变量">独立随机变量</h2>
 <p>X.Y are independent if P(X=x,Y=y)=P(X=x)P(Y=y), in other words
 P(X=x|Y=y)=P(X=x)</p>
@@ -489,14 +498,12 @@ P(X=x|Y=y)=P(X=x)</p>
 <h3 id="thm1">Thm1</h3>
 <p>E(XY)=E(X)E(Y)</p>
 <h3 id="thm2">Thm2</h3>
-<p>Var(X+Y) 明天再写，好困b（￣▽￣）d　</p>
+<p>Var(X+Y)=Var(X)+Var(Y)</p>
+<p><span
+class="math inline">\(Var(X+Y)=E(X^2+2XY+Y^2)-(E(X+Y))^2\)</span></p>
+<p><span
+class="math inline">\(=E(X^2)+2E(X)E(Y)+E(Y^2)-E(X)^2-2E(X)E(Y)-E(Y)^2\)</span></p>
 <p>对比？</p>
-<h2 id="variance">Variance</h2>
-<p>Variance：Var(X)=<span
-class="math inline">\(E((X-E(X))^2)\)</span></p>
-<p>Standard Deviation of X: <span
-class="math inline">\(\sigma(X)=\sqrt{Var(X)}\)</span></p>
-<p>Fact:<span class="math inline">\(Var(X)=E(X^2)-(E(X))^2\)</span></p>
 <h1 id="geometric-distribution">Geometric Distribution</h1>
 <p>扔一枚硬币，正面朝上的概率为p，X是第一次扔出来正面的次数。</p>
 <h2 id="ex">E(X)</h2>
@@ -513,6 +520,66 @@ class="math inline">\(E((X+1)^2)=E((X^2+2X+1))=E(X^2)+2E(X)+1\)</span>
 then substitute it to the equation.</p>
 <p>We have <span
 class="math inline">\(Var(X)=\frac{1-p}{p^2}\)</span></p>
+<h1 id="tail-estimates">Tail Estimates</h1>
+<h2 id="markovs-inequality">Markov's Inequality</h2>
+<p>X是一个非负的随机变量,then for any c&gt;0, P(X&gt;cE(X))&lt;<span
+class="math inline">\(\frac{1}{c}\)</span></p>
+<p>另一种形式:P(X&gt;A)&lt;<span
+class="math inline">\(\frac{E(X)}{A}\)</span></p>
+<p>If E(X)=0, 那么所有X均为0，不等式显然成立</p>
+<p>If E(X)&gt;0, then E(X)=<span class="math inline">\(\Sigma
+p(u)X(u)&gt;?\)</span></p>
+<p>进行两步缩小：</p>
+<p>第一步，只保留X&gt;cE(X)</p>
+<p>第二部，把这些留下来的X的期望全缩小到cE(X)</p>
+<p>于是<span
+class="math inline">\(E(X)&gt;P(X&gt;cE(X))cE(X)\)</span>，两边约掉期望即可证毕。</p>
+<h2 id="chebyshevs-inequality">Chebyshev's Inequality</h2>
+<p>For any c&gt;0, <span class="math inline">\(P(|X-E(X)|&gt;c
+\sigma(X))&lt;\frac{1}{c^2}\)</span></p>
+<p><span class="math inline">\(|X-E(X)|&gt;c \sigma(X)\)</span> 等价于
+<span class="math inline">\((X-E(X))^2&gt;c^2 Var(X)\)</span></p>
+<p>平方之后可以转换为Var(x)，不然|X-E(X)|的期望无意义。</p>
+<p>Use Markov's Inequality <span
+class="math inline">\(P((X-E(X))^2&gt;c^2
+Var(X))&lt;\frac{E((X-E(X))^2)}{c^2 Var(X)}=\frac{1}{c^2}\)</span></p>
+<h1 id="greedy-clique">Greedy Clique</h1>
+<p><img src="/img/greedy.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="upper-bound">Upper Bound</h2>
+<p>p(<span class="math inline">\(|A(G)|&gt;\log_2
+n+\log_2\log_2n\)</span>)=o(1)</p>
+<p>Let <span class="math inline">\(K=\log_2 n+\log_2\log_2n\)</span> for
+<span class="math inline">\(2\leq i \leq n\)</span>.</p>
+<p><span class="math inline">\(T_i\)</span> repesent the algorithm
+selects vertex i（初始给的图里的序号） as the K-th（选出的图里面的序号）
+vertex to join S.</p>
+<p>Distributive Law: <span
+class="math inline">\(P(|S|&gt;K)=\Sigma_{2\leq i \leq
+n}P(T_i)P(|S|&gt;K|T_i)\)</span></p>
+<p>至于为什么从2开始？因为1原先就在图里，无需算法选择。</p>
+<p><span class="math inline">\(P(|S|&gt;K|T_i)\leq
+(n-i)\frac{1}{2^k}\leq\frac{n}{2^k}\)</span></p>
+<p>解析：</p>
+<p>如果S中已经有了k个点，那么下一个点想要加入必须和已经有的这k个都相连。这个概率就是<span
+class="math inline">\(\frac{1}{2^k}\)</span>。</p>
+<p>回忆Union
+Bound,一堆事件的“至少一个发生”的概率，不会超过它们各自发生的概率之和。</p>
+<p>[ P(A_1 A_2 A_n) P(A_1) + P(A_2) + + P(A_n) ]</p>
+<p>这个算法已经遍历了前i个点，因此我们能选的点就是剩下的n-i个。再用Union
+Bound，就得出了小于(n-i)乘以每一个点被加入的概率。</p>
+<h2 id="lower-bound">Lower Bound</h2>
+<p><img src="/img/low.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><span
+class="math inline">\(X_m(G)\)</span>来表示G（算法生成的）第m个点。Y用来刻画前一个被选中的和后一个被选中的点之间的距离。</p>
+<p><span class="math inline">\(P(Y_j=t)=(1-b_j)^{t-1}b_j\)</span> <span
+class="math inline">\(Y_j=t\)</span>表示第j+1个加入的和第j个之间的间隔是t。<span
+class="math inline">\((1-b_j)^{t-1}\)</span>刻画j之后的t-1个都不行，<span
+class="math inline">\(b_j\)</span>刻画第j+1个加入的。</p>
+<p>Lemma1：<span
+class="math inline">\(X_m\)</span>就是初始值1加上所有的变化量Y</p>
+<p>A(G)<span class="math inline">\(\geq
+K\)</span>：选出来的图至少有K个点。这个说法等价于，选到第K个点的时候，还可以继续选。也就是说第K个点的编号并没有超出n，即<span
+class="math inline">\(X_k(G)\leq n\)</span>。</p>
 
                 
               </div>
