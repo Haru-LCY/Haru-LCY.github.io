@@ -21,26 +21,26 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="中英双语随机使用，目的是为了让自己看懂，比较informal的lecture note，见谅。 4 Probability TOOLS Distirbutive Law for Expectation Tail Estimates Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2">
+    <meta name="description" content="计算内容 求极限：二重极限，累次极限 函数连续性、可微性的判断 全微分计算 方向导数的计算 二重极限 考查函数的连续性计算的就是二重极限，二重极限可以理解为x,y两个变量同时趋于某一点。当然，趋于某一点的路径是随意的。在证伪时，路径的多样性是一个很好的工具。 存在 放缩 此方法适用于证明&#x2F;求解极限为0者。最终利用的是\(\rho→0\),或者是x→0且y→0 均值不等式 \(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Probability Theory">
-<meta property="og:url" content="http://example.com/2025/02/17/post/index.html">
+<meta property="og:title" content="多元微积分笔记">
+<meta property="og:url" content="http://example.com/2025/02/27/VA/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="中英双语随机使用，目的是为了让自己看懂，比较informal的lecture note，见谅。 4 Probability TOOLS Distirbutive Law for Expectation Tail Estimates Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2">
+<meta property="og:description" content="计算内容 求极限：二重极限，累次极限 函数连续性、可微性的判断 全微分计算 方向导数的计算 二重极限 考查函数的连续性计算的就是二重极限，二重极限可以理解为x,y两个变量同时趋于某一点。当然，趋于某一点的路径是随意的。在证伪时，路径的多样性是一个很好的工具。 存在 放缩 此方法适用于证明&#x2F;求解极限为0者。最终利用的是\(\rho→0\),或者是x→0且y→0 均值不等式 \(">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/OIP.jpg">
-<meta property="article:published_time" content="2025-02-17T05:16:30.000Z">
-<meta property="article:modified_time" content="2025-02-26T15:00:17.710Z">
+<meta property="og:image" content="http://example.com/img/k.jpg">
+<meta property="article:published_time" content="2025-02-27T02:19:23.000Z">
+<meta property="article:modified_time" content="2025-02-27T04:15:07.512Z">
 <meta property="article:author" content="瑾瑜當年">
-<meta property="article:tag" content="计智应数">
+<meta property="article:tag" content="微积分">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/OIP.jpg">
+<meta name="twitter:image" content="http://example.com/img/k.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Probability Theory - 港湾</title>
+  <title>多元微积分笔记 - 港湾</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,13 +211,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/OIP.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/k.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Probability Theory"></span>
+            <span id="subtitle" data-typed-text="多元微积分笔记"></span>
           
         </div>
 
@@ -228,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-17 13:16" pubdate>
-          2025年2月17日 下午
+        <time datetime="2025-02-27 10:19" pubdate>
+          2025年2月27日 上午
         </time>
       </span>
     
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.5k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          19 分钟
+          21 分钟
         
       </span>
     
@@ -297,12 +297,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Probability Theory</h1>
+            <h1 id="seo-header">多元微积分笔记</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-26T23:00:17+08:00
+                    本文最后更新于 2025-02-27T12:15:07+08:00
                   
                   
 
@@ -312,316 +312,299 @@
             
               <div class="markdown-body">
                 
-                <p>中英双语随机使用，目的是为了让自己看懂，比较informal的lecture
-note，见谅。</p>
-<p>4 Probability TOOLS</p>
-<p>Distirbutive Law for Expectation</p>
-<p>Tail Estimates</p>
-<h1 id="monte-hall-problem">Monte Hall Problem</h1>
-<p>3 closed doors. Behind one door is a car, while the other 2 doors
-each has a donkey behind it.</p>
-<p>First the guest pick a door, then Monte opens a different door which
-has a donkey. Monte ask the guest:"Would you like to change your
-choice?"</p>
-<p>P=(U.p)</p>
-<p>直观认为的<span
-class="math inline">\(\frac{1}{2}\)</span>是先开门后选的结果，真实的概率应该是<span
-class="math inline">\(\frac{2}{3}\)</span></p>
-<p>100doors, 只有一个有车，98 revealed, 胜率为99%</p>
-<h1 id="birthday-paradox">Birthday Paradox</h1>
-<p>n random people, how likely is it to have 2 people with the same
-birthday?</p>
-<p>考虑没有两个人生日相同的情况</p>
-<p><span class="math inline">\(\frac{365\cdot 364 \cdot \cdot \cdot
-(365-n+1)}{365^n}\)</span></p>
-<p>When we calculate, use the approximation <span
-class="math inline">\(1-x=e^{-x}\)</span></p>
-<p>P=1-<span class="math inline">\((1-\frac{1}{365})\cdot\cdot \cdot
-(1-\frac{n-1}{365})\)</span></p>
-<p>=1-<span class="math inline">\(e^{-\frac{n(n-1)}{2\cdot
-365}}\)</span></p>
-<h1 id="online-auction-problem">Online Auction Problem</h1>
-<p>Sell a ticket to n=<span class="math inline">\(10^6\)</span>
-interested buyers</p>
-<p>A stream of distinct offers <span
-class="math inline">\(x_1,x_2,...,x_n\)</span> you have to make the
-decision at real time. You want to maximize the probability pf accpeting
-the highest offer.</p>
-<p>Strategy K 1）skip first k offers, the maxium in first k is MAX
-2）Accept <span class="math inline">\(x_j\)</span> if j is the first j
-satisfying <span class="math inline">\(x_j&gt;MAX\)</span></p>
-<p>U is the set of all permutations（排列）of {1,2,...,n} (n!)</p>
-<p>T describe the case that one succeed</p>
-<p><span class="math inline">\(T_j=(n-1)!\frac{k}{j-1}\)</span>
-(n-1)!考虑第n个最大，分数考虑条件（2）</p>
-<p><span class="math inline">\(P=\frac{\Sigma T_j}{n!}\)</span></p>
+                <h1 id="计算内容">计算内容</h1>
+<p>求极限：二重极限，累次极限</p>
+<p>函数连续性、可微性的判断</p>
+<p>全微分计算</p>
+<p>方向导数的计算</p>
+<h1 id="二重极限">二重极限</h1>
+<p>考查函数的连续性计算的就是二重极限，二重极限可以理解为x,y两个变量同时趋于某一点。当然，趋于某一点的路径是随意的。在证伪时，路径的多样性是一个很好的工具。</p>
+<h2 id="存在">存在</h2>
+<h3 id="放缩">放缩</h3>
+<p>此方法适用于证明/求解极限为0者。最终利用的是<span
+class="math inline">\(\rho→0\)</span>,或者是x→0且y→0</p>
+<h4 id="均值不等式">均值不等式</h4>
 <p><span
-class="math inline">\(H_n=1+\frac{1}{2}+...+\frac{1}{n}=lnn+C\)</span></p>
-<p><span class="math inline">\(P=\frac{k}{n}(lnn-lnk)\)</span></p>
-<h1 id="basic-volcabulary-for-graph">Basic Volcabulary for Graph</h1>
-<p>multiset is like a set except its members need not be distinct.</p>
-<p>Def of multiset: a set together with a function that assigns to each
-member of the set a positive integer or <span
-class="math inline">\(\infin\)</span>(called multiplicity)</p>
-<p>图 graph 点 vertices 边 edge</p>
-<p>A simple graph G is a pair of set (V,E). E is edege. Each element of
-E is a subset of size two of V.</p>
-<p>Multigraph(graph with repeated edges)</p>
-<p>|V|=number of vertices=the order of G</p>
-<h1 id="ramsey-numbers"><a
-target="_blank" rel="noopener" href="https://youtu.be/rK484PiJ9t8?si=FfFMYtNyfd4HlVMj">Ramsey
-numbers</a></h1>
-<p>The Union Bound</p>
-<p>Among 6 people, there must exist either 3 mutual friends, or 3 nutual
-strangers</p>
-<p>Proof:</p>
-<p><img src="/img/ramsey.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="/img/R.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>If you color the edges of K5 red and blue arbitraryly, then you are
-not guaranteed a red K3 or blue K3</p>
-<p><img src="/img/反例.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>Define Ramsey Number:</p>
-<h1 id="chain-rule">Chain Rule</h1>
-<p>这个法则对于用条件概率计算总概率很有用</p>
-<p><span class="math inline">\(Pr(S_1\cap S_2\cdot\cdot\cdot\cap
-S_m)=Pr(S_1)Pr(S_2|S_1)Pr(S_3|S_2\cap S_1)\cdot \cdot Pr(S_m|S_1\cap
-\cdot \cdot S_{m-1})\)</span></p>
-<p>特殊情形：<span class="math inline">\(S_k \subset S_{k-1} \cdot \cdot
-\cdot \subset S_{1}\)</span></p>
-<p>此时<span class="math inline">\(Pr\{S_1\cap S_2\cdot \cdot \cdot \cap
-S_m\}=Pr\{S_1\}Pr\{S_2|S_1\}Pr\{S_3|S_2\}\cdot \cdot
-Pr\{S_m|S_{m-1}\}\)</span></p>
-<h1 id="permutation">Permutation</h1>
-<p>P=(U,p) where U is the set of all permutations, p(<span
-class="math inline">\(\sigma\)</span>)=1/|U| for all <span
-class="math inline">\(\sigma \in U\)</span></p>
-<p>For each <span class="math inline">\(1\leq i \leq n\)</span>, let
-<span class="math inline">\(L_i(\theta)=\)</span> length of cycle
-containing i.</p>
-<h2 id="qprobability">Q:Probability</h2>
-<p>Q: What is the probability of 1 being in a cycle of length s?</p>
-<p>Lemma:Pr(<span class="math inline">\(L_1=s\)</span>)=<span
-class="math inline">\(\frac{1}{n}\)</span> for any s<span
-class="math inline">\(\in\)</span>{1,...,n}.</p>
-<p>Proof:</p>
-<h3 id="step1">Step1</h3>
-<p>Pr{<span class="math inline">\(L_1&gt;s\)</span>|<span
-class="math inline">\(L_1&gt;s-1\)</span>}=<span
-class="math inline">\(\frac{n-s}{n-s+1}\)</span></p>
-<p>解析：</p>
-<p>假设这个循环从1开始。为了得到这个概率表达式，我们可以考虑一个循环的前s位，由于<span
-class="math inline">\(L_1&gt;s-1\)</span>，必有前s个点各不相同。<span
-class="math inline">\(L_1\)</span>是否大于s取决于第s+1位是否又回到了1。如果在第s+1位回到了1，那么就有<span
-class="math inline">\(L_1=s\)</span>。</p>
-<p>下面我们考虑第s+1位的元素又多少种可能性。</p>
-<p>第一种可能性又回到了1，这时<span
-class="math inline">\(L_1=s\)</span></p>
-<p>第二种可能性不回到1，则这一位只能选择除了循环的前s位（包含1）的所有数，即有n-s种选择。</p>
-<p>于是总共有n-s+1种选项，能选的是n-s（第二种情况）</p>
-<h3 id="step2">Step2</h3>
-<p>Pr{<span class="math inline">\(L_1\)</span>=s}=<span
-class="math inline">\(\frac{n-1}{n}\frac{n-2}{n-1}\cdot \cdot
-\cdot\frac{n-s+1}{n-s+2}\frac{1}{n-s+1}=\frac{1}{n}\)</span></p>
-<p>解析：</p>
-<p>我们可以使用Chain Rule来计算Pr{<span
-class="math inline">\(L_1&gt;s-1\)</span>}的大小。因为<span
-class="math inline">\(L_1&gt;s \subset
-L_1&gt;s-1\)</span>，我们可以使用特殊情形的。</p>
-<p>回忆：P(AB)=P(A)P(B|A) 在这里我们令<span
-class="math inline">\(L_1&gt;s-1\)</span>作为事件A，因为它的概率很好求；令B为<span
-class="math inline">\(L_1=s\)</span></p>
-<p>于是<span
-class="math inline">\(Pr(L_1&gt;s-1)=\frac{n-1}{n}\frac{n-2}{n-1}\cdot
-\cdot \cdot\frac{n-s+1}{n-s+2}=\frac{n-s+1}{n}\)</span></p>
+class="math inline">\(\lim_{(x,y)→(0,0)}\frac{x^2y^2}{x^2+y^2}\)</span></p>
+<p><span class="math inline">\(\frac{x^2y^2}{x^2+y^2} \leq
+\frac{x^4+y^4}{2(x^2+y^2)}\leq
+\frac{1}{2}\frac{x^2}{x^2+y^2}x^2+\frac{1}{2}\frac{y^2}{x^2+y^2}y^2\leq  \frac{1}{2}(x^2+y^2)\)</span></p>
+<p>趋于0，证毕</p>
+<h4 id="中值定理">中值定理</h4>
 <p><span
-class="math inline">\(Pr(L_1=1|L_1&gt;s-1)=\frac{1}{n-s+1}\)</span>
-详见step1的“第一种可能性”</p>
-<p>代入之后即可算出概率。</p>
-<h2 id="qexpectation">Q：Expectation</h2>
-<p>继承原始的题目条件，Let X be the random variable X(<span
-class="math inline">\(\sigma\)</span>)=# of cycles in <span
-class="math inline">\(\sigma\)</span>'s cycle repesentation.</p>
-<p>Q:What is E(X)?</p>
-<p><span class="math inline">\(\sigma=(3,5,1,4,2)\)</span> contains
-cycle (2,5) and (3,4,1) <span
-class="math inline">\(L_1(\sigma)=3\)</span> and <span
-class="math inline">\(L_5(\sigma
-)=2\)</span></p>
-<p>Note that <span
-class="math inline">\(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)}=\frac{1}{2}\cdot
-2+\frac{1}{3}\cdot 3=2\)</span></p>
-<p>From this we know that X=<span
-class="math inline">\(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)}\)</span> is
-the number of cycles.</p>
-<p>注释：每一个长度为s的cycle在上面的算式中都可以得出一个<span
-class="math inline">\(s\cdot
-\frac{1}{s}=1\)</span>，因此我们可以这样断言。</p>
-<p>E（X）=<span
-class="math inline">\(E(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)})\)</span></p>
-<p>因为在一个排列里n个元素地位是平等的，所以我们有<span
-class="math inline">\(E(L_1)=\cdot \cdot \cdot =E(L_i)\)</span>
-于是<span
-class="math inline">\(E(X)=nE(\frac{1}{L_1(\sigma)})\)</span></p>
+class="math inline">\(\frac{e^{x^3+y^3}-1}{x^2+y^2}\)</span>在(0,0)处的极限是否存在？</p>
+<p><span class="math inline">\(e^{x^3+y^3}-e^0=e^\epsilon
+(x^3+y^3)\)</span> 注意<span class="math inline">\(\epsilon \in
+(0,1)\)</span></p>
+<p>$||e||e(|x|+|y|) e(|x|+|y|) $</p>
+<p>趋于0，证毕</p>
+<h4 id="分离绝对值或平方">分离绝对值或平方</h4>
+<p>上面的两道例题也用了这个方法，我们可以各提取出一个x,y的平方或者绝对值，然后把剩下的直接放大到1</p>
+设 [ f(x, y)=
+<span class="math display">\[\begin{cases}
+\frac{x^{2}+y^{2}}{\vert x\vert+\vert y\vert}, &amp; (x, y)\neq(0, 0)\\
+0, &amp; (x, y)=(0, 0)
+\end{cases}\]</span>
+<p>] 证明函数 <span class="math inline">\(f\)</span> 在原点 <span
+class="math inline">\((0, 0)\)</span> 处连续。</p>
+<p>[ <span class="math display">\[\begin{align*}
+\vert f(x, y)-f(0, 0)\vert&amp;=\frac{x^{2}+y^{2}}{\vert x\vert+\vert
+y\vert}\\
+&amp;=\vert x\vert\frac{\vert x\vert}{\vert x\vert+\vert y\vert}+\vert
+y\vert\frac{\vert y\vert}{\vert x\vert+\vert y\vert}\leq\vert
+x\vert+\vert y\vert
+\end{align*}\]</span> ]</p>
+<p>因此当 <span class="math inline">\(\|(x, y)-(0,
+0)\|=\sqrt{x^{2}+y^{2}}\)</span> 充分小时，<span
+class="math inline">\(\vert f(x, y)-f(0, 0)\vert\)</span> 可以任意小。故
+<span class="math inline">\(\lim_{(x, y)\to(0, 0)}f(x, y)=f(0,
+0)\)</span>。这就证明了函数 <span class="math inline">\(f(x, y)\)</span>
+在原点 <span class="math inline">\((0, 0)\)</span>
+处连续。命题得证。</p>
+<h3 id="整体看">整体看</h3>
 <p><span
-class="math inline">\(E(\frac{1}{L_1})=\Sigma_{s=1}^{n}P(L_1=s)\frac{1}{s}=\frac{1}{n}\Sigma_{s=1}^{n}\frac{1}{s}\)</span></p>
-<p>Harmonic Number（调和级数）：<span
-class="math inline">\(\Sigma_{s=1}^{n}\frac{1}{s}=H_n\)</span></p>
-<p>E(X)=nE(<span class="math inline">\(\frac{1}{L_1}\)</span>)=<span
-class="math inline">\(H_n\)</span></p>
-<p>（Q2配合下面一条食用）</p>
-<h1 id="finding-my-pet">Finding My Pet</h1>
-<p>这个问题也可以抽象成找permutation中的cycle</p>
-<p><img src="/img/pet.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>我们只需要关心这个cycle的大小和<span
-class="math inline">\(\frac{n}{2}\)</span>的关系即可，如果<span
-class="math inline">\(\leq \frac{n}{2}\)</span>的话，就成功了。</p>
-<p><img src="/img/PET2.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>P(|<span class="math inline">\(C_i\)</span>|=j)=<span
-class="math inline">\(\frac{1}{n}\)</span></p>
-<p><span class="math inline">\(B\cap
-T\)</span>意味着两个cycle完全相同，所以2也在<span
-class="math inline">\(C_1\)</span>中就等价于满足B。</p>
+class="math inline">\(\lim_{(x,y)→(0,0)}\frac{xy-sin(xy)}{xy-cos(xy)}\)</span></p>
+<p>直接xy=u，泰勒即可，答案三分之一</p>
+<h3 id="分而治之">分而治之</h3>
 <p><span
-class="math inline">\(C_1\)</span>我们已经知道有j个不同的元素，而且有1。于是剩下的元素有j-1个坑位，</p>
-<h1 id="random-variables">Random Variables</h1>
-<p>Random Variable Expectation的定义以及重要理论</p>
-<h2 id="law-of-linear-expectation">Law of linear Expectation</h2>
-<p>$X=C_1X_1+C_2X_2+C_nX_n $</p>
-<p>Then E(X)=<span class="math inline">\(\Sigma_i C_i
-E(X_i)\)</span></p>
-<h2 id="新conditional-expectation">(新)Conditional Expectation</h2>
-<p>Random Variable X and Event T, u是各种可能的情况（事件）</p>
-<p>E(X|T)=<span class="math inline">\(\frac{\Sigma_{u\in
-T}p(u)X(u)}{P(T)}\)</span> if P(T)&gt;0</p>
-<p>当P（T）=0 E(X|T)=0</p>
-<h2 id="distributive-law-for-条件概率">Distributive Law for
-条件概率</h2>
-<p>X is random variable, U is the DISJOINT union of <span
-class="math inline">\(W_1,W_2,\cdot \cdot W_n\)</span></p>
-<p>E(X)=<span class="math inline">\(\Sigma_i P(W_i)E(X|W_i)\)</span></p>
-<h2 id="variance">Variance</h2>
-<p>Variance：Var(X)=<span
-class="math inline">\(E((X-E(X))^2)\)</span></p>
-<p>Standard Deviation of X: <span
-class="math inline">\(\sigma(X)=\sqrt{Var(X)}\)</span></p>
-<p>Fact:<span class="math inline">\(Var(X)=E(X^2)-(E(X))^2\)</span></p>
-<h2 id="独立随机变量">独立随机变量</h2>
-<p>X.Y are independent if P(X=x,Y=y)=P(X=x)P(Y=y), in other words
-P(X=x|Y=y)=P(X=x)</p>
-<p>If X,Y are independent</p>
-<h3 id="thm1">Thm1</h3>
-<p>E(XY)=E(X)E(Y)</p>
-<h3 id="thm2">Thm2</h3>
-<p>Var(X+Y)=Var(X)+Var(Y)</p>
+class="math inline">\(\lim_{(x,y)→(0,0)}(x+1)^\frac{1+y}{xy}\)</span></p>
 <p><span
-class="math inline">\(Var(X+Y)=E(X^2+2XY+Y^2)-(E(X+Y))^2\)</span></p>
+class="math inline">\(\frac{1}{x+1}\frac{x+1}{x}\frac{1+y}{y}\)</span>
+如此拆分指数部分即可</p>
+<p>得出最终的极限为<span class="math inline">\(e^1=e\)</span></p>
+<h2 id="不存在">不存在</h2>
+<p>两种思想。要么找一条特殊路径让极限不存在，要么找俩路径极限存在但不等。</p>
+<h3 id="正比例函数">正比例函数</h3>
+<p>此方法适用于否定齐次函数的极限</p>
+<p>eg.<span
+class="math inline">\(\lim_{(x,y)→(0,0)}\frac{x^2-y^2}{x^2+y^2}\)</span></p>
+<p>从y=kx趋近，极限为<span
+class="math inline">\(\frac{1-k^2}{1+k^2}\)</span>，取不同的k极限存在但不相等。</p>
+<h3 id="二次函数">二次函数</h3>
+<p>这个适用的类型类似于上面的齐次函数</p>
 <p><span
-class="math inline">\(=E(X^2)+2E(X)E(Y)+E(Y^2)-E(X)^2-2E(X)E(Y)-E(Y)^2\)</span></p>
-<p>对比？</p>
-<h1 id="geometric-distribution">Geometric Distribution</h1>
-<p>扔一枚硬币，正面朝上的概率为p，X是第一次扔出来正面的次数。</p>
-<h2 id="ex">E(X)</h2>
-<p>E(X)=p<span class="math inline">\(\cdot 1+(1-p)E(X+1)\)</span>
-分类讨论第一次是否成功来计算期望。</p>
-<p>由于E（X+1）=E（X）+1我们可以轻松算出E（X）=<span
-class="math inline">\(\frac{1}{p}\)</span></p>
-<h2 id="varx">Var(X)</h2>
-<p><span class="math inline">\(Var(X)=E(X^2)-(E(X))^2\)</span></p>
-<p><span class="math inline">\(E(X^2)=p\cdot 1+(1-p)\cdot
-E((X+1)^2)\)</span></p>
+class="math inline">\(\lim_{(x,y)→(0,0)}\frac{x^2y}{x^4+y^2}\)</span></p>
+<p>取<span class="math inline">\(y=kx^2\)</span>趋近，则极限为<span
+class="math inline">\(\frac{k}{1+k^2}\)</span></p>
+<h1 id="累次极限">累次极限</h1>
+<p>对于二元的就是二次极限，每一次求极限都只取一个变量，剩下是常量。当然，只有前一个极限存在才能继续算下一个。</p>
+<p>例子</p>
+<p>设 <span class="math inline">\(f(x, y)=\frac{x^2 - y^2}{x^2 +
+y^2}\)</span>，其定义域为 <span class="math inline">\(D =
+\mathbb{R}^2\setminus\{(0, 0)\}\)</span>。之前已证，函数 <span
+class="math inline">\(f(x, y)\)</span> 在点 <span
+class="math inline">\((0, 0)\)</span>
+处的全面极限不存在。现考察累次极限。不难证明</p>
+<p><span class="math display">\[
+\lim_{y \to 0}\lim_{x \to 0}f(x, y)=\lim_{y \to 0}\frac{-y^2}{y^2}=-1.
+\]</span> <span class="math display">\[
+\lim_{x \to 0}\lim_{y \to 0}f(x, y)=\lim_{x \to 0}\frac{x^2}{x^2}=1.
+\]</span></p>
+<h2 id="累次极限与重极限">累次极限与重极限</h2>
+<p>定理：</p>
+<ol type="i">
+<li><p>若以下三个极限均存在 <span class="math display">\[\lim_{y \to
+y_0}\lim_{x \to x_0}f(x, y), \lim_{x \to x_0}\lim_{y \to y_0}f(x, y),
+\lim_{(x, y)\to(x_0, y_0)}f(x, y),\]</span>
+则它们的极限值均相等；</p></li>
+<li><p>若两个累次极限存在，但极限值不等，则重极限不存在。</p></li>
+</ol>
+<h1 id="可微与偏导">可微与偏导</h1>
+<p>定义：记二元函数 <span class="math inline">\(f(x, y)\)</span>
+定义域为 <span class="math inline">\(D\)</span>，设点 <span
+class="math inline">\((x_0, y_0)\)</span> 是 <span
+class="math inline">\(D\)</span> 的一个内点。若存在两个数 <span
+class="math inline">\(\lambda, \mu \in \mathbb{R}\)</span>，使得对 <span
+class="math inline">\(\forall h, k \in (-\delta, \delta)\)</span>， [
+f(x_0 + h, y_0 + k) - f(x_0, y_0) - (h + k) = o(), ] 则称函数 <span
+class="math inline">\(f(x, y)\)</span> 在点 <span
+class="math inline">\((x_0, y_0)\)</span> 处可微，并称线性函数 <span
+class="math inline">\(\lambda h + \mu k\)</span> 为 <span
+class="math inline">\(f(x, y)\)</span> 在点 <span
+class="math inline">\((x_0, y_0)\)</span> 处的微分，记作 <span
+class="math inline">\(\left.\mathrm{d}f\right|_{(x_0,y_0)} = \lambda h +
+\mu k\)</span>。自变量 <span class="math inline">\(x, y\)</span> 的增量
+<span class="math inline">\(h, k\)</span> 常写作 <span
+class="math inline">\(h = \Delta x, k = \Delta y\)</span>。故微分常写作
+<span class="math inline">\(\left.\mathrm{d}f\right|_{(x_0,y_0)} =
+\lambda\Delta x + \mu\Delta y\)</span>。</p>
+<p>微分是唯一的,也就是说<span class="math inline">\(\lambda
+,\mu\)</span>是唯一的。其中<span
+class="math inline">\(\lambda=\frac{\partial f}{\partial x}\)</span>
+<span class="math inline">\(\mu=\frac{\partial f}{\partial
+y}\)</span></p>
+<h2 id="可微">可微→</h2>
+<p>如果一个函数在某一点可微，那么.....?</p>
+<p>1、函数在这一点连续</p>
+<p>2、在这一点沿着任意方向的方向导数均存在，当然偏导数也存在。</p>
+<p>（偏导数不存在一定不可微）</p>
+<p>注意:偏导数存在不能推出连续，更不能推出可微。</p>
+考虑函数 [ f(x, y)=
+<span class="math display">\[\begin{cases}
+0, &amp; xy = 0\\
+1, &amp; xy \neq 0
+\end{cases}\]</span>
+<p>] 显然函数 <span class="math inline">\(f\)</span> 在原点处不连续。但
+<span class="math inline">\(f\)</span> 在原点的两个偏导数存在。因为 [
+==0, x ] 这说明偏导数 <span class="math inline">\(f_x(0, 0)\)</span>
+存在，且 <span class="math inline">\(f_x(0,
+0)=0\)</span>。同理可证偏导数 <span class="math inline">\(f_y(0,
+0)\)</span> 存在，且 <span class="math inline">\(f_y(0,
+0)=0\)</span>。</p>
+<h2 id="判断是否可微">判断是否可微</h2>
+<p>首先看偏导是否存在，偏导数不存在就不可微。</p>
+<p>然后计算[_{→0} ]</p>
+<p><span class="math inline">\(\rho=\sqrt{h^2+k^2}\)</span></p>
+<h2 id="高阶偏导">高阶偏导</h2>
+<p>n阶偏导有<span
+class="math inline">\(2^n\)</span>个高阶偏导。感觉高阶偏导和累次极限有点像。</p>
+<p><span class="math inline">\(\frac{\partial^2 f}{\partial
+x^2}=f_{xx}=D_{xx}f\)</span></p>
+<p><span class="math inline">\(\frac{\partial ^2 f}{\partial y\partial x
+}=f_{xy}=D_{xy}f\)</span></p>
+<h2 id="clairaut定理">Clairaut定理</h2>
+<p>设<span class="math inline">\(f(x, y)\)</span>在开区域<span
+class="math inline">\(D \subset
+\mathbb{R}^2\)</span>上定义。假设两个二阶混合偏导数<span
+class="math inline">\(f_{xy}(x, y)\)</span>和<span
+class="math inline">\(f_{yx}(x, y)\)</span>在<span
+class="math inline">\(D\)</span>上处处存在，且在点<span
+class="math inline">\((x_0, y_0)\)</span>处均连续，则<span
+class="math inline">\(f_{xy}(x_0, y_0) = f_{yx}(x_0, y_0)\)</span>。</p>
+<p>证明思路大概是累次极限+中值定理，最后利用连续性。</p>
+<p>Clairaut定理断言，如果</p>
+<ol type="i">
+<li><p>两个混合偏导数 <span class="math inline">\(f_{xy},
+f_{yx}\)</span> 在开区域 <span class="math inline">\(D\)</span>
+上存在；</p></li>
+<li><p><span class="math inline">\(f_{xy}\)</span> 和 <span
+class="math inline">\(f_{yx}\)</span> 在点 <span
+class="math inline">\((x_0, y_0)\)</span> 处均连续</p></li>
+</ol>
+<p>则 <span class="math inline">\(f_{xy}(x_0, y_0) = f_{yx}(x_0,
+y_0)\)</span>。</p>
+<p>条件 (ii) 可减弱为 (ii)' <span class="math inline">\(f_{xy}\)</span>
+或 <span class="math inline">\(f_{yx}\)</span> 在点 <span
+class="math inline">\((x_0, y_0)\)</span> 处连续。</p>
+<h3 id="f_xyf_yx"><span class="math inline">\(f_{xy}\)</span>≠<span
+class="math inline">\(f_{yx}\)</span></h3>
+(课本第40页例1.4.16.) 设 [ f(x, y)=
+<span class="math display">\[\begin{cases}
+\frac{xy(x^{2}-y^{2})}{x^{2}+y^{2}}, &amp; (x, y)\neq(0, 0)\\
+0, &amp; (x, y)=(0, 0)
+\end{cases}\]</span>
+<p>]</p>
+<p>考虑 (f(x, y)) 的两个二阶混合偏导数 (f_{xy}) 和 (f_{yx})。判断
+(f_{xy}(0, 0)) 和 (f_{yx}(0, 0)) 是否存在。存在时求出它们的值。</p>
+<p>解答：</p>
+<p>在开区域 (^2{(0, 0)}) 上，(f(x, y))
+是分式函数，故它的各阶偏导数均连续。计算得它的一阶和二阶混合偏导数如下 [
+f_x(x, y)=, f_y(x, y)=, ] [ f_{xy}(x, y)= = f_{yx}(x, y). ]</p>
+<p>不难看出 (f_{xy}, f_{yx}) 在点 ((0,0)) 处的极限都不存在.
+(因为它们沿着两个坐标轴趋于 ((0,0)) 时有极限 (1) 和 (-1).)
+因此二阶混合偏导在点 ((0,0)) 处均不连续.</p>
+<p>！但这并不表明 (f_{xy}(0, 0), f_{yx}(0, 0)) 不存在！</p>
+<p>以下考虑它们的存在性与计算. 由于 [ ==0 , (x ). ] 故 (f_x(0,0)) 存在且
+(f_x(0,0)=0). 同理可证 (f_y(0,0)) 存在且 (f_y(0,0)=0). 由于 [ ==-1 , (y
+), ] 这说明 (f_{xy}(0,0)) 存在且 (f_{xy}(0,0)= -1). 类似地, 由于 [ ==1 ,
+(x ), ] 故 (f_{yx}(0,0)) 存在, 且 (f_{yx}(0,0)= 1 = f_{xy}(0,0)).
+解答完毕.</p>
+<h1 id="方向导数">方向导数</h1>
+<h2 id="定义">定义</h2>
+<p>f(x,y)的定义域包含点<span class="math inline">\(z_0\)</span>=<span
+class="math inline">\((x_0,y_0)\)</span>的一个领域，u=(a,b)为一个单位向量，往下称单位向量u为一个方向。若极限<span
+class="math inline">\(\lim_{t→0}\frac{f(z_0+tu)-f(z_0)}{t}=\lim_{t→0}\frac{f(x_0+ta,y_0+tb)-f(x_0,y_0)}{t}\)</span>存在，则称之为函数f再点<span
+class="math inline">\(z_0\)</span>处沿着方向u的导数。</p>
+<p>记作<span class="math inline">\(\frac{\partial f}{\partial
+u}(x_0,y-0)\)</span>或者<span
+class="math inline">\(D_uf|_{(x_0,y_0)}\)</span></p>
+<h2 id="几何意义">几何意义</h2>
+<p>偏导数就是一种特殊的方向导数</p>
+<p><img src="/img/方向.jpg" srcset="/img/loading.gif" lazyload alt="美妙的几何意义"></p>
+<h2 id="计算">计算</h2>
+<p>偏导数=梯度与方向的内积</p>
+<p>$D_uf(x,y)=f(x,y)u $</p>
+<p><span class="math inline">\(\nabla f(x_1,x_2,x_3,...)=(\frac{\partial
+f}{\partial x_1},\frac{\partial f}{\partial x_2},\frac{\partial
+f}{\partial x_3})\)</span></p>
+<p>注意这里求梯度代入的点就是趋近于的点</p>
+<h3 id="梯度的性质">梯度的性质</h3>
+<ol type="i">
+<li><p>常数函数的梯度为零，即 <span class="math inline">\(\nabla c =
+0\)</span>；</p></li>
+<li><p><span class="math inline">\(\nabla(\lambda f)=\lambda\nabla
+f\)</span>，<span class="math inline">\(\lambda\)</span>
+为常数；</p></li>
+<li><p><span class="math inline">\(\nabla(f\pm g)=\nabla f\pm\nabla
+g\)</span>；</p></li>
+<li><p><span class="math inline">\(\nabla(fg)=g\nabla f + f\nabla
+g\)</span>；</p></li>
+<li><p><span class="math inline">\(\nabla(f/g)=\frac{1}{g^2}(g\nabla f -
+f\nabla g)\)</span>，<span class="math inline">\(g\neq
+0\)</span>；</p></li>
+<li><p><span class="math inline">\(\nabla u(f)=u&#39;(f)\nabla
+f\)</span>，这里 <span class="math inline">\(u(t)\)</span>
+为一元可微函数。</p></li>
+</ol>
+<h2 id="最值">最值</h2>
+<p>定理：设函数 <span class="math inline">\(f(x)\)</span> 在点 <span
+class="math inline">\(x_0\)</span> 处可微，且 <span
+class="math inline">\(\nabla f(x_0) \neq 0\)</span>，则函数 <span
+class="math inline">\(f(x)\)</span> 沿着梯度方向 <span
+class="math inline">\(\nabla f(x_0)/\|\nabla f(x_0)\|\)</span>
+可取得方向导数的最大值，且最大值为 <span class="math inline">\(\|\nabla
+f(x_0)\|\)</span>；沿负梯度方向 <span class="math inline">\(-\nabla
+f(x_0)/\|\nabla f(x_0)\|\)</span> 取得方向导数值最小值且最小值为 <span
+class="math inline">\(-\|\nabla f(x_0)\|\)</span>。</p>
+<p>证明很简单，两个向量的内积同方向达到最大，反向则最小。</p>
+<h3 id="例题">例题</h3>
+<p>设 <span class="math inline">\(f(x, y)=xe^y\)</span>。</p>
+<ol type="i">
+<li><p>求函数在点 <span class="math inline">\(P = (2, 0)\)</span>
+处，沿着方向 <span class="math inline">\(\overrightarrow{PQ}\)</span>
+的方向导数，这里 <span class="math inline">\(Q=(0.5,
+2)\)</span>；</p></li>
+<li><p>求函数在点 <span class="math inline">\(P\)</span>
+处的方向导数的最大值。</p></li>
+</ol>
+<p>简单计算得 <span class="math inline">\(\nabla f(x, y)=(e^y,
+xe^y)\)</span>，<span class="math inline">\(\nabla f(2, 0)=(1,
+2)\)</span>。</p>
+<ol type="i">
+<li>计算 <span class="math inline">\(\overrightarrow{PQ}=(0.5, 2)-(2,
+0)=(-1.5, 2)\)</span>，其单位向量为 <span class="math inline">\(u =
+(-\frac{3}{5}, \frac{4}{5})\)</span>。</li>
+</ol>
+<p>故函数在点 <span class="math inline">\(P = (2, 0)\)</span> 处沿着方向
+<span class="math inline">\(u\)</span> 的方向导数为 <span
+class="math inline">\(D_uf(2, 0)=\nabla f(2, 0)\cdot u=(1,
+2)\cdot(-\frac{3}{5}, \frac{4}{5}) = 1\)</span></p>
+<ol start="2" type="i">
+<li>由定理知，函数在点 <span class="math inline">\(P\)</span>
+处沿着梯度方向 <span class="math inline">\(\nabla f(2, 0)=(1,
+2)\)</span> 的方向导数可取得最大值 <span class="math inline">\(\|\nabla
+f(2, 0)\|=\sqrt{5}\)</span>。图示如下。</li>
+</ol>
+<p><img src="/img/梯度.jpg" srcset="/img/loading.gif" lazyload alt="红色的线的水平线"></p>
+<h4 id="水平线补充">水平线（补充）</h4>
+<p>定义：对二元函数 <span class="math inline">\(f(x, y)\)</span>，称集合
+<span class="math inline">\(\{(x, y) \in D, f(x, y)=k\}\)</span> 为函数
+<span class="math inline">\(f\)</span> 的水平线，或简单地说 <span
+class="math inline">\(f(x, y)=k\)</span> 是水平线，这里 <span
+class="math inline">\(k \in \mathbb{R}\)</span>，<span
+class="math inline">\(D \subset \mathbb{R}^2\)</span> 是函数 <span
+class="math inline">\(f\)</span> 的定义域。</p>
+<p>例：考虑函数 <span class="math inline">\(f(x, y)=4x^2 +
+y^2\)</span>。对于任意正数 <span
+class="math inline">\(k&gt;0\)</span>，水平线 <span
+class="math inline">\(4x^2 + y^2=k\)</span> 为椭圆，其标准形式为</p>
 <p><span
-class="math inline">\(E((X+1)^2)=E((X^2+2X+1))=E(X^2)+2E(X)+1\)</span>
-then substitute it to the equation.</p>
-<p>We have <span
-class="math inline">\(Var(X)=\frac{1-p}{p^2}\)</span></p>
-<h1 id="tail-estimates">Tail Estimates</h1>
-<h2 id="markovs-inequality">Markov's Inequality</h2>
-<p>X是一个非负的随机变量,then for any c&gt;0, P(X&gt;cE(X))&lt;<span
-class="math inline">\(\frac{1}{c}\)</span></p>
-<p>另一种形式:P(X&gt;A)&lt;<span
-class="math inline">\(\frac{E(X)}{A}\)</span></p>
-<p>If E(X)=0, 那么所有X均为0，不等式显然成立</p>
-<p>If E(X)&gt;0, then E(X)=<span class="math inline">\(\Sigma
-p(u)X(u)&gt;?\)</span></p>
-<p>进行两步缩小：</p>
-<p>第一步，只保留X&gt;cE(X)</p>
-<p>第二部，把这些留下来的X的期望全缩小到cE(X)</p>
-<p>于是<span
-class="math inline">\(E(X)&gt;P(X&gt;cE(X))cE(X)\)</span>，两边约掉期望即可证毕。</p>
-<h2 id="chebyshevs-inequality">Chebyshev's Inequality</h2>
-<p>For any c&gt;0, <span class="math inline">\(P(|X-E(X)|&gt;c
-\sigma(X))&lt;\frac{1}{c^2}\)</span></p>
-<p>另一种形式： <span
-class="math inline">\(P(|X-E(X)|&gt;A)&lt;\frac{Var(X)}{A^2}\)</span></p>
-<p><span class="math inline">\(|X-E(X)|&gt;c \sigma(X)\)</span> 等价于
-<span class="math inline">\((X-E(X))^2&gt;c^2 Var(X)\)</span></p>
-<p>平方之后可以转换为Var(x)，不然|X-E(X)|的期望无意义。</p>
-<p>Use Markov's Inequality <span
-class="math inline">\(P((X-E(X))^2&gt;c^2
-Var(X))&lt;\frac{E((X-E(X))^2)}{c^2 Var(X)}=\frac{1}{c^2}\)</span></p>
-<h1 id="greedy-clique">Greedy Clique</h1>
-<p><img src="/img/greedy.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="upper-bound">Upper Bound</h2>
-<p>p(<span class="math inline">\(|A(G)|&gt;\log_2
-n+\log_2\log_2n\)</span>)=o(1)</p>
-<p>Let <span class="math inline">\(K=\log_2 n+\log_2\log_2n\)</span> for
-<span class="math inline">\(2\leq i \leq n\)</span>.</p>
-<p><span class="math inline">\(T_i\)</span> repesent the algorithm
-selects vertex i（初始给的图里的序号） as the K-th（选出的图里面的序号）
-vertex to join S.</p>
-<p>Distributive Law: <span
-class="math inline">\(P(|S|&gt;K)=\Sigma_{2\leq i \leq
-n}P(T_i)P(|S|&gt;K|T_i)\)</span></p>
-<p>至于为什么从2开始？因为1原先就在图里，无需算法选择。</p>
-<p><span class="math inline">\(P(|S|&gt;K|T_i)\leq
-(n-i)\frac{1}{2^k}\leq\frac{n}{2^k}\)</span></p>
-<p>解析：</p>
-<p>如果S中已经有了k个点，那么下一个点想要加入必须和已经有的这k个都相连。这个概率就是<span
-class="math inline">\(\frac{1}{2^k}\)</span>。</p>
-<p>回忆Union
-Bound,一堆事件的“至少一个发生”的概率，不会超过它们各自发生的概率之和。</p>
-<p>[ P(A_1 A_2 A_n) P(A_1) + P(A_2) + + P(A_n) ]</p>
-<p>这个算法已经遍历了前i个点，因此我们能选的点就是剩下的n-i个。再用Union
-Bound，就得出了小于(n-i)乘以每一个点被加入的概率。</p>
-<p>因此P(|S|&gt;k)<span class="math inline">\(\leq
-\frac{n}{2^K}\Sigma_{2\leq i\leq n}P(T_i)\leq \frac{n}{2^K}\)</span></p>
-<p><span class="math inline">\(2^K=n\cdot \log_2 n\)</span></p>
-<p>所以P(|S|&gt;K)<span class="math inline">\(\leq \frac{1}{\log_2
-n}=o(1)\)</span></p>
-<h2 id="lower-bound">Lower Bound</h2>
-<p><img src="/img/low.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><span
-class="math inline">\(X_m(G)\)</span>来表示G（算法生成的）第m个点。Y用来刻画前一个被选中的和后一个被选中的点之间的距离。</p>
-<p><span class="math inline">\(P(Y_j=t)=(1-b_j)^{t-1}b_j\)</span> <span
-class="math inline">\(Y_j=t\)</span>表示第j+1个加入的和第j个之间的间隔是t。<span
-class="math inline">\((1-b_j)^{t-1}\)</span>刻画j之后的t-1个都不行，<span
-class="math inline">\(b_j\)</span>刻画第j+1个加入的。</p>
-<p>Lemma1：<span
-class="math inline">\(X_m\)</span>就是初始值1加上所有的变化量Y</p>
-<p>A(G)<span class="math inline">\(\geq
-K\)</span>：选出来的图至少有K个点。这个说法等价于，选到第K个点的时候，还可以继续选。也就是说第K个点的编号并没有超出n，即<span
-class="math inline">\(X_k(G)\leq n\)</span>。</p>
-<p><img src="/img/C.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>解析:记<span class="math inline">\(\Sigma_{1\leq j \leq
-K}Y_j=X&#39;\)</span></p>
-<p>Lemma2: <span class="math inline">\(Y_j\)</span>
-是现在有j个点，再添加一个点需要经过的间隔的期望。由于下一点就能加入图的概率是<span
-class="math inline">\(b_j=\frac{1}{2^j}\)</span>，所以我们可以把它看成一个几何分布。</p>
-<p>E(X)=<span
-class="math inline">\(\frac{1}{p}\)</span>（几何分布性质）于是<span
-class="math inline">\(E(Y_j)=\frac{1}{b_j}=2^j\)</span></p>
-<p>直接根据期望能够线性相加，然后放大即可</p>
-<p>Lemma3:<span
-class="math inline">\(Y_j\)</span>相互独立，因为前一个点经过多少间隔走到下一个符合条件的点，不会互相影响</p>
-<p><span
-class="math inline">\(2(\frac{2}{3}(\frac{n^2}{(\log_2n)^2}-1)-\frac{n}{\log_2n}+1)\)</span></p>
-<p>显然<span class="math inline">\(a=\frac{n}{\log_2
-n}&gt;1\)</span></p>
-<p>如果我们要<span
-class="math inline">\(\frac{2}{3}a^2+\frac{1}{3}-a\leq a^2\)</span>
-只需要 <span class="math inline">\(-a^2-3a+1 \leq
-0\)</span>，a满足这个要求</p>
-<p><img src="/img/exp.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+class="math display">\[\frac{x^2}{k/4}+\frac{y^2}{k}=1,\]</span></p>
+<p>两个半轴的长度分别为 <span
+class="math inline">\(\sqrt{k}/2\)</span>，<span
+class="math inline">\(\sqrt{k}\)</span>。函数图像及其水平线如下。</p>
+<p><img src="/img/水平线.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于二元函数是水平线，如果推广到三元就是水平面了。</p>
 
                 
               </div>
@@ -634,7 +617,7 @@ class="math inline">\(\frac{2}{3}a^2+\frac{1}{3}-a\leq a^2\)</span>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%A1%E6%99%BA%E5%BA%94%E6%95%B0/" class="print-no-link">#计智应数</a>
+        <a href="/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/" class="print-no-link">#微积分</a>
       
     </div>
   
@@ -646,8 +629,8 @@ class="math inline">\(\frac{2}{3}a^2+\frac{1}{3}-a\leq a^2\)</span>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Probability Theory</div>
-      <div>http://example.com/2025/02/17/post/</div>
+      <div>多元微积分笔记</div>
+      <div>http://example.com/2025/02/27/VA/</div>
     </div>
     <div class="license-meta">
       
@@ -659,7 +642,7 @@ class="math inline">\(\frac{2}{3}a^2+\frac{1}{3}-a\leq a^2\)</span>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月17日</div>
+          <div>2025年2月27日</div>
         </div>
       
       
@@ -691,18 +674,12 @@ class="math inline">\(\frac{2}{3}a^2+\frac{1}{3}-a\leq a^2\)</span>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/27/VA/" title="多元微积分笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">多元微积分笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/06/VA2/" title="Discrete Mathematics">
-                        <span class="hidden-mobile">Discrete Mathematics</span>
+                      <a href="/2025/02/17/post/" title="Probability Theory">
+                        <span class="hidden-mobile">Probability Theory</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
