@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/OIP.jpg">
 <meta property="article:published_time" content="2025-02-17T05:16:30.000Z">
-<meta property="article:modified_time" content="2025-02-28T14:16:37.580Z">
+<meta property="article:modified_time" content="2025-03-18T15:34:37.171Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta property="article:tag" content="计智应数">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          4.1k 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          20 分钟
+          35 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-02-28T22:16:37+08:00
+                    本文最后更新于 2025-03-18T23:34:37+08:00
                   
                   
 
@@ -622,6 +622,60 @@ class="math inline">\(\frac{2}{3}a^2+\frac{1}{3}-a\leq a^2\)</span>
 只需要 <span class="math inline">\(-a^2-3a+1 \leq
 0\)</span>，a满足这个要求</p>
 <p><img src="/img/exp.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="monte-carlo">Monte Carlo</h1>
+<p>有一些函数我们并不能算出它们的积分，可以通过随机取样来估计积分值</p>
+<p>Consider the integral: [ I=<em>{0}<sup>{1}e</sup>{-x^{3}}dx. ] - This
+integral has no closed - form solution. - Rewrite the integral as an
+expectation: [ I = [e<sup>{-U</sup>{3}}],U(0,1). ] - Generate (n)
+uniform random variables (U_1,,U_n) and compute: [ <em>n=</em>{i =
+1}<sup>{n}e</sup>{-U</em>{i}^{3}}. ] - By Chebyshev’s inequality, (_n)
+converges to (I) quickly as (n).</p>
+<h1 id="pdf">PDF</h1>
+<p>A continuous random variable X is a random variable that can take on
+an uncountable number of values, typically over an interval of real
+numbers.</p>
+<p><strong>Definition:</strong> The probability density function (PDF)
+of a continuous random variable X is a function ( p(x) ) such that: [
+P(a X b) = _{a}^{b} p(x) , dx ] for any interval ([a, b]).
+<strong>Properties of PDF:</strong> - ( p(x) ) for all ( x ). - The
+total area under the PDF curve is 1:</p>
+<p>[ _{-}^{} p(x) , dx = 1 ]</p>
+<p><strong>Definition:</strong> The expectation (or expected value) of a
+continuous random variable ( X ) with PDF ( p(x) ) is: [ [X] =
+<em>{-}^{} x p(x) , dx ] <strong>Definition:</strong> The variance of a
+continuous random variable ( X ) with PDF ( p(x) ) is: [ (X) = [(X -
+[X])^2] = </em>{-}^{} (x - [X])^2 p(x) , dx ] <strong>Still
+holds:</strong> - <strong>Independence:</strong> ( p(x, y) = p(x) p(y)
+). - <strong>Distributive law:</strong> ( (X) = (X^2) - ((X))^2 ). -
+<strong>Tail bounds:</strong> Markov’s inequality, Chebyshev’s
+inequality, Hoeffding’s inequality.</p>
+<h1 id="sampling">Sampling</h1>
+<p>问题：希望估计E[f(X)] with X~p</p>
+<p>挑战：p可能过于复杂</p>
+<p>关键：找到代理函数q(x)</p>
+<h2 id="importance-sampling">Importance Sampling</h2>
+<p>关键:<span class="math inline">\(\int f(x)p(x)dx=\int
+f(x)\frac{p(x)}{q(x)}q(x)\)</span> 我们可以选择已知的q(x)，用q(x) 去生成
+<span class="math inline">\(f(x)\frac{p(x)}{q(x)}\)</span></p>
+<p>一次采样： [ <em>N = </em>{i=1}^{N} f(Y_i) , Y_i q. ]
+这个公式表示通过重要性采样方法得到的估计值 (_N)。其中 (Y_i) 是从分布 (q)
+中采样的随机变量，(f(Y_i)) 是某个函数，(p(Y_i)) 和 (q(Y_i))
+分别是目标分布和采样分布的概率密度函数。</p>
+<p>unbiased
+性质，一个估计量在多次重复抽样中的平均值接近于所要估计的参数的真实值： [
+[_N] = = f(y)p(y) , dy = I. ]</p>
+<ul>
+<li><p>方差：How many samples do we need to estimate ( [f(X)] ) within
+an accuracy ( ) with probability at least ( 1 - )?</p></li>
+<li><p>Chebyshev's inequality: [ | ] , ]</p></li>
+<li><p>The variance depends on the choice of ( q ): [ (_N) = ( , dy -
+I^2 ). ]</p></li>
+</ul>
+<h2 id="reject-sampling">Reject Sampling</h2>
+<p>我们在一个给定区域内用已知函数进行采样，并判断采样点是否符合要求，不符合要求就丢弃。</p>
+<p>对于已知采样函数，必须将所要求的PDF图像包含。</p>
+<p>f(x)是想要估计的概率密度函数，g(x)是我们已知的，我们必须找到一个常数C使得<span
+class="math inline">\(Cg(x)\geq f(x)\)</span></p>
 <h1 id="buffons-neddle">Buffon's Neddle</h1>
 <p>平行线间距为d，针的长度l小于d。中点到最近的线的距离为x，针与直线的夹角为<span
 class="math inline">\(\theta\)</span>。</p>
@@ -643,6 +697,218 @@ class="math inline">\(\int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{l}{2}sin\theta}\fr
 d}dx d\theta=\int_{0}^{\frac{\pi}{2}}\frac{4}{\pi d}\frac{l}{2}sin\theta
 d\theta=\frac{2l}{\pi d}(-cos\theta)|_{0}^{\frac{\pi}{2}}=\frac{2l}{\pi
 d}\)</span></p>
+<h1 id="shannons-theorem-formal">Shannon’s Theorem (Formal)</h1>
+<p>想要发送k个Bit，加密后为n位，解码为k位</p>
+<ul>
+<li><p>Shannon’s theorem: The sender can reliably send messages of only
+about <span class="math inline">\(k = n(1 - H(p))\)</span> bits within
+each block of <span class="math inline">\(n\)</span> bits.</p></li>
+<li><p>The term <span class="math inline">\(1 - H(p)\)</span> is called
+the <strong>channel capacity</strong>: the maximum rate at which
+information can be transmitted reliably over the channel.</p></li>
+</ul>
+<h2 id="theorem-shannons-theorem">Theorem (Shannon’s Theorem)</h2>
+<p>For a binary symmetric channel with parameter <span
+class="math inline">\(p &lt; 1/2\)</span> and any constants <span
+class="math inline">\(\delta,\varepsilon &gt; 0\)</span>, when <span
+class="math inline">\(n\)</span> is sufficiently large: 1. For any <span
+class="math inline">\(k \leq n(1 - H(p)-\delta)\)</span>, there exist
+<span class="math inline">\((k, n)\)</span> encoding and decoding
+functions such that the probability of decoding error is at most <span
+class="math inline">\(\varepsilon\)</span> for every possible <span
+class="math inline">\(k\)</span>-bit input message. 2. No <span
+class="math inline">\((k, n)\)</span> encoding and decoding functions
+exist for <span class="math inline">\(k \geq n(1 - H(p)+\delta)\)</span>
+such that the probability of decoding error is at most <span
+class="math inline">\(\varepsilon\)</span> for a <span
+class="math inline">\(k\)</span>-bit input message chosen at random.</p>
+<h2 id="名词定义">名词定义</h2>
+<ul>
+<li>Hamming distance dH(s,t)：表示两个01字串有多少个不同的位数，eg <span
+class="math inline">\(d_H(1010, 0011)=2\)</span>.</li>
+<li>Let <span class="math inline">\(\mathcal{C}=\{c_1, c_2,\ldots,
+c_M\}\)</span> be some arbitrary collection of distinct codewords with
+length <span class="math inline">\(n\)</span> (we’ll call this a
+codebook). If we send <span class="math inline">\(c_i\)</span> through
+the channel, the output is a random code <span
+class="math inline">\(\tilde{c}_i\)</span>.表示长度是n的所有加密后的n位字符串集合。</li>
+<li>By Chernoff’s bound, there is some <span
+class="math inline">\(\gamma\)</span> so that with probability <span
+class="math inline">\(1 - \epsilon/2\)</span>, [(p - )nd_H(c_i, _i)(p +
+)n,] 为了表示：the distance between <span
+class="math inline">\(c_i\)</span> and <span
+class="math inline">\(\tilde{c}_i\)</span> is very likely to be close to
+<span class="math inline">\(np\)</span>.</li>
+<li>Choose <span class="math inline">\(\gamma&gt;0\)</span> as small as
+possible and define [(c_i)={c:|d_H(c_i, c)-np|n}.]</li>
+<li>So <span class="math inline">\(\tilde{c}_i \in
+\text{Ring}(c_i)\)</span> with probability at least <span
+class="math inline">\(1 - \epsilon/2\)</span>.</li>
+<li>成功的定义： <span
+class="math inline">\(\text{Success}_i(\mathcal{C})\)</span> denote the
+event that <span class="math inline">\(\tilde{c}_i \in
+\text{Ring}(c_i)\)</span>, but <span class="math inline">\(\tilde{c}_i
+\notin \text{Ring}(c_j)\)</span> for any <span class="math inline">\(j
+\neq i\)</span>. (In this case, upon receiving <span
+class="math inline">\(\tilde{c}_i\)</span> we can be very confident
+about decoding it to <span class="math inline">\(c_i\)</span>.)
+ci只在Ring(ci)周围，不再任何其他的周围。</li>
+<li>So what we eventually want is a <strong>codebook</strong> where
+<span
+class="math inline">\(\mathbb{P}(\text{Success}_i(\mathcal{C}))\)</span>
+is large for every <span class="math inline">\(i\)</span>.</li>
+</ul>
+<h2 id="lemma">lemma</h2>
+<p>The volume of a ring <span
+class="math inline">\(\text{Ring}(c_i)\)</span> (the number of codewords
+with length <span class="math inline">\(n\)</span>) is at most <span
+class="math inline">\(2^{(H(p) + \delta&#39;)n}\)</span>, where <span
+class="math inline">\(\delta&#39; \to 0\)</span> as <span
+class="math inline">\(n \to \infty\)</span>.</p>
+<p>Based on the lemma, suppose we choose <span
+class="math inline">\(c_1,\ldots,c_M\)</span> for <span
+class="math inline">\(M = 2^k\)</span> uniformly at random. What is the
+probability that <span
+class="math inline">\(\text{Success}_i(\mathcal{C})\)</span> holds for
+all <span class="math inline">\(i\)</span>? （如果我们任意选M=<span
+class="math inline">\(2^k\)</span>个c1,c2...cM（加密后字符串），k是初始的长度）</p>
+<p>The proof will proceed in two main steps: 1. <strong>Step 1</strong>:
+Pick codewords uniformly at random, but twice as many as we will
+eventually need. We show such a random code is "good on average". 2.
+<strong>Step 2</strong>: After a derandomization step that picks the
+collection of codewords that is best on average, the "worst half" of the
+codewords are thrown away, yielding a collection of codewords where
+every code has a large probability of being correctly decoded.</p>
+<p>第一步随机生成<span
+class="math inline">\(2*2^k\)</span>个字串。我们要证明这些的平均值很好。第二步我们丢掉不行的，剩下的肯定必这个平均值更好。为什么要选<span
+class="math inline">\(2*2^k\)</span>个，就是为了丢掉一半还剩下<span
+class="math inline">\(2^k\)</span>个，剩下的那些就是我们最终想要的。</p>
+<h3 id="proof-of-shannons-theorem-step-1">Proof of Shannon’s Theorem
+(Step 1)</h3>
+<ul>
+<li>Now let’s choose <span class="math inline">\(\mathcal{C}\)</span>
+randomly. Let <span class="math inline">\(M = 2\cdot2^k\)</span> (this
+is twice as big as we want in the end), and let <span
+class="math inline">\(X_i\)</span> be a uniformly chosen binary string
+in <span class="math inline">\(\{0, 1\}^n\)</span>. Let <span
+class="math inline">\(\mathcal{C}=\{X_1,\ldots,X_M\}\)</span>.</li>
+<li>Suppose now we pick a codeword <span
+class="math inline">\(i\)</span> uniformly at random from <span
+class="math inline">\(\{1,2,\ldots,M\}\)</span>, and send it through the
+channel. What is the probability that we cannot decode it, i.e., that
+the event <span
+class="math inline">\(\text{Success}_i(\mathcal{C})\)</span> does not
+occur?</li>
+</ul>
+<p>注：这里的Successi(C)指的是第i个呗成功传输的概率。</p>
+<h3 id="lemma-step-1">Lemma (Step 1)</h3>
+<p>For <span class="math inline">\(\mathcal{C}\)</span>, <span
+class="math inline">\(i\)</span> chosen randomly as described. Let <span
+class="math inline">\(\lambda_i(\mathcal{C}) =
+1-\mathbb{P}(\text{Success}_i(\mathcal{C}))\)</span>.<span
+class="math inline">\(\lambda_i\)</span>表示失败的概率。 [(_i()), n.]
+(Note: the expectation is taken over both the random choice of <span
+class="math inline">\(\mathcal{C}\)</span> and the random choice of
+<span class="math inline">\(i\)</span>.)</p>
+<h3 id="lemma-step-1-1">Lemma (Step 1)</h3>
+<p><span class="math inline">\(\mathbb{E}(\lambda_i(\mathcal{C}))\leq
+\epsilon\)</span>, <span class="math inline">\(\lambda_i(\mathcal{C}) =
+1 - \mathbb{P}(\text{Success}_i(\mathcal{C}))\)</span> and <span
+class="math inline">\(n\)</span> is large enough.
+失败的情况有两种，第一种是<span class="math inline">\(\tilde{c}_i
+\not\in \text{Ring}(c_i)\)</span>,第二种是<span
+class="math inline">\(\tilde{c}_i \in \text{Ring}(c_j)\)</span> for some
+<span class="math inline">\(j \neq i\)</span> - With probability at
+least <span class="math inline">\(1 - \epsilon/2\)</span>, <span
+class="math inline">\(\tilde{c}_i \in \text{Ring}(c_i)\)</span>. The
+main work is to show that the probability that <span
+class="math inline">\(\tilde{c}_i \in \text{Ring}(c_j)\)</span> for some
+<span class="math inline">\(j \neq i\)</span> is
+small.想要证明这两种失败概率很小。 - First, fix some arbitrary <span
+class="math inline">\(j \neq i\)</span> and fix some arbitrary <span
+class="math inline">\(\tilde{c} \in \text{Ring}(c_i)\)</span>. - The
+probability that <span class="math inline">\(\tilde{c} \in
+\text{Ring}(c_j)\)</span> is the same as the probability that <span
+class="math inline">\(c_j \in \text{Ring}(\tilde{c})\)</span>, which is
+just the "volume" of <span
+class="math inline">\(\text{Ring}(\tilde{c})\)</span> divided by the
+volume of <span class="math inline">\(\{0, 1\}^n\)</span>. - The volume
+of a ring is at most <span
+class="math inline">\(2^{(H(p)+\delta&#39;)n}\)</span>. Thus [(
+(c_j))=(c_j ())^{(H(p)+'-1)n}(两volume相除).] - This is true for any
+<span class="math inline">\(\tilde{c}\)</span> in <span
+class="math inline">\(\text{Ring}(c_i)\)</span>, and so we can deduce
+that [(_i (c_j)|_i (c_i))^{(H(p)+'-1)n}.]能写出条件概率是因为这个对any
+<span class="math inline">\(\tilde{c}\)</span> in <span
+class="math inline">\(\text{Ring}(c_i)\)</span>成立 - Now take a union
+bound, [ <span class="math display">\[\begin{align*}
+\mathbb{P}(\text{Success}_i(\mathcal{C})\text{ does not occur})&amp;\leq
+M2^{(H(p)+\delta&#39;-1)n}+\epsilon/2\\
+&amp;=2^{1+(k/n + H(p)+\delta&#39;-1)n}+\epsilon/2.
+\end{align*}\]</span> ] ？？？？为什么是M？？？？？ - Now take a union
+bound, [ <span class="math display">\[\begin{align*}
+\mathbb{P}(\text{Success}_i(\mathcal{C})\text{ does not occur})&amp;\leq
+M2^{(H(p)+\delta&#39;-1)n}+\epsilon/2\\
+&amp;=2^{1+(k/n + H(p)-1+\delta&#39;)n}+\epsilon/2.
+\end{align*}\]</span> ] - <span class="math inline">\(\delta&#39; \to
+0\)</span> as <span class="math inline">\(n \to \infty\)</span>; - Since
+<span class="math inline">\(k/n &lt; 1 -
+H(p)\)</span>（这个是根据证明条件里面k的范围得出）, it follows that
+<span class="math inline">\(k/n - H(p) + 1 + \delta&#39; &lt; 0\)</span>
+for <span class="math inline">\(n\)</span> large enough. The first term
+then goes to zero with <span class="math inline">\(n\)</span>, and so
+for <span class="math inline">\(n\)</span> large enough, [
+(_i())&lt;.（第一类失败+第二类失败） ] - QED.</p>
+<h4 id="step-2">step 2</h4>
+<ul>
+<li>Choose (n) large enough so that Lemma (Step 1) holds.</li>
+<li>Have ((<em>i())) written out explicitly as an average:注意<span
+class="math inline">\(\lambda_i\)</span>表示的是失败的概率。 [</em>{}_{i
+= 1}^{M}_i().]</li>
+<li>There must be some choice of codebook (^*) which does better than
+average, i.e., for which (_{i = 1}^{M}_i(^*)). So we have found a
+codebook that is "good on average".</li>
+<li>So let (') be the codebook consisting of just the best half of the
+codewords in (^*): those with the smallest values of (_i(^*)). Then
+(_i(^*)) for all (c_i').？？？？为什么是2<span
+class="math inline">\(\epsilon?\)</span>，不应该是<span
+class="math inline">\(\epsilon\)</span>吗？？？丢掉容易失败的那一半，剩下的失败概率小于<span
+class="math inline">\(\epsilon\)</span></li>
+<li>So (') provides a good code with (2^k) codewords, and so it can be
+used as an ((k, n)) - encoding scheme.</li>
+</ul>
+<p>If there are n random variables (x_1,x_2,x_3...x_n), we represent
+(E(X^k)) as (J_k(n)).</p>
+<p>Because(J_{0}(n)=<em>{x=0}<sup>{n}p</sup>{x}(1 - p)^{n -
+x}=(p+1-p)^n=1.)So we have(J</em>{0}(n)=J_{0}(n - i)=1,i = 1,2,,n).</p>
+<p>When (k):</p>
+<p>We know that (=), so (x<sup>k=x</sup>k=x^{k-1}). <span
+class="math display">\[\begin{align*}
+J_{k}(n)&amp;=np\sum_{x = 1}^{n}[(x - 1)+1]^{k - 1}\binom{n - 1}{x -
+1}p^{x - 1}(1 - p)^{n - x}\\
+&amp;=np\sum_{x = 1}^{n}\sum_{i = 0}^{k - 1}\binom{k - 1}{i}(x -
+1)^{i}\binom{n - 1}{x - 1}p^{x - 1}(1 - p)^{n - x}\\
+&amp;=np\sum_{i = 0}^{k - 1}\binom{k - 1}{i}\sum_{x = 1}^{n}(x -
+1)^{i}\binom{n - 1}{x - 1}p^{x - 1}(1 - p)^{(n - 1)-(x - 1)}\\
+&amp;=np\sum_{i = 0}^{k - 1}\binom{k - 1}{i}J_{i}(n - 1)
+\end{align*}\]</span> [J_{1}(n)=npJ_{0}(n - 1)=np.] [J_{2}(n)=np[J_{0}(n
+- 1)+J_{1}(n - 1)]=np[1+(n - 1)p].] <span
+class="math display">\[\begin{align*}
+J_{3}(n)&amp;=np[J_{0}(n - 1)+2J_{1}(n - 1)+J_{2}(n - 1)]\\
+&amp;=np\{1+2(n - 1)p+(n - 1)p[1+(n - 2)p]\}\\
+&amp;=np[1+3(n - 1)p+(n - 1)(n - 2)p^{2}]
+\end{align*}\]</span> <span class="math display">\[\begin{align*}
+J_{4}(n)&amp;=np[J_{0}(n - 1)+3J_{1}(n - 1)+3J_{2}(n - 1)+J_{3}(n -
+1)]\\
+&amp;=np[1+7(n - 1)p+6(n - 1)(n - 2)p^{2}+(n - 1)(n - 2)(n - 3)p^{3}]
+\end{align*}\]</span> <span class="math display">\[\begin{align*}
+E((X-E(X))^4)&amp;=E(X^4-4X^3E(X)+6X^2E(X)^2-4XE(X)^3+E(X)^4)\\
+&amp;=E(X^4)-4E(X)E(X^3)+6E(X^2)E(X)^2-4E(X)E(X)^3+E(X)^4\\
+&amp;=J_4(n)-4npJ_3(n)+6(np)^2J_2(n)-3(np)^4\\
+&amp;=np(1-p)[1+3(n-2)p(1-p)]\\
+&amp;=\sigma^2[1+\frac{3n-6}{n}\sigma^2]\\
+&amp;=\sigma^2+\frac{3n-6}{n}\sigma^4
+\end{align*}\]</span> [==O()]</p>
 
                 
               </div>
@@ -712,9 +978,9 @@ d}\)</span></p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/27/VA/" title="多元微积分笔记">
+                      <a href="/2025/02/27/VA/" title="多元函数的微分">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">多元微积分笔记</span>
+                        <span class="hidden-mobile">多元函数的微分</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
