@@ -21,15 +21,15 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="曲面的表示形式 显式曲面 (x,y,f(x,y)) 譬如 \(z&#x3D;\sqrt{9-x^2-y^2}\) 隐式曲面 F(x,y,z)&#x3D;c 譬如 \(x^2+y^2+z^2&#x3D;c\) 参数曲面 从二维到三位的映射 (u,v)→r(u,v)&#x3D;(x(u,v),y(u,v),z(u,v)) 三种形式的关系 显示曲面是一种特殊的参数表示 曲面切平面法向量 法向量 Ax+By+Cz&#x3D;D">
+    <meta name="description" content="Insturctions Arithmetic&#x2F;Logistic Instructions add x1,x2,x3 等价于 x1 &#x3D; x2 + x3 subi x1,x1,1 等价于 x1 &#x3D; x1 - 1 xor x1,x1,x1 等价于 x1 &#x3D; 0 Data Transfer Insturctions Load a 32-bit word: lw rd, offset(rs1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="曲面">
-<meta property="og:url" content="http://example.com/2025/03/11/VA1/index.html">
+<meta property="og:title" content="SysIntro">
+<meta property="og:url" content="http://example.com/2021/03/07/computer/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="曲面的表示形式 显式曲面 (x,y,f(x,y)) 譬如 \(z&#x3D;\sqrt{9-x^2-y^2}\) 隐式曲面 F(x,y,z)&#x3D;c 譬如 \(x^2+y^2+z^2&#x3D;c\) 参数曲面 从二维到三位的映射 (u,v)→r(u,v)&#x3D;(x(u,v),y(u,v),z(u,v)) 三种形式的关系 显示曲面是一种特殊的参数表示 曲面切平面法向量 法向量 Ax+By+Cz&#x3D;D">
+<meta property="og:description" content="Insturctions Arithmetic&#x2F;Logistic Instructions add x1,x2,x3 等价于 x1 &#x3D; x2 + x3 subi x1,x1,1 等价于 x1 &#x3D; x1 - 1 xor x1,x1,x1 等价于 x1 &#x3D; 0 Data Transfer Insturctions Load a 32-bit word: lw rd, offset(rs1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-11T00:35:02.000Z">
-<meta property="article:modified_time" content="2025-03-20T02:28:56.071Z">
+<meta property="article:published_time" content="2021-03-07T00:33:28.000Z">
+<meta property="article:modified_time" content="2025-03-21T13:35:53.390Z">
 <meta property="article:author" content="瑾瑜當年">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>曲面 - 港湾</title>
+  <title>SysIntro - 港湾</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="曲面"></span>
+            <span id="subtitle" data-typed-text="SysIntro"></span>
           
         </div>
 
@@ -225,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-11 08:35" pubdate>
-          2025年3月11日 早上
+        <time datetime="2021-03-07 08:33" pubdate>
+          2021年3月7日 早上
         </time>
       </span>
     
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          371 字
         
       </span>
     
@@ -248,7 +248,7 @@
         
         
         
-          9 分钟
+          4 分钟
         
       </span>
     
@@ -294,12 +294,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">曲面</h1>
+            <h1 id="seo-header">SysIntro</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-03-20T10:28:56+08:00
+                    本文最后更新于 2025-03-21T21:35:53+08:00
                   
                   
 
@@ -309,133 +309,79 @@
             
               <div class="markdown-body">
                 
-                <h1 id="曲面的表示形式">曲面的表示形式</h1>
-<h2 id="显式曲面">显式曲面</h2>
-<p>(x,y,f(x,y))</p>
-<p>譬如 <span class="math inline">\(z=\sqrt{9-x^2-y^2}\)</span></p>
-<h2 id="隐式曲面">隐式曲面</h2>
-<p>F(x,y,z)=c</p>
-<p>譬如 <span class="math inline">\(x^2+y^2+z^2=c\)</span></p>
-<h2 id="参数曲面">参数曲面</h2>
-<p>从二维到三位的映射</p>
-<p>(u,v)→r(u,v)=(x(u,v),y(u,v),z(u,v))</p>
-<h2 id="三种形式的关系">三种形式的关系</h2>
-<p>显示曲面是一种特殊的参数表示</p>
-<h1 id="曲面切平面法向量">曲面切平面法向量</h1>
-<h2 id="法向量">法向量</h2>
-<p>Ax+By+Cz=D，法向量是(A,B,C)</p>
-<h2 id="显示曲面">显示曲面</h2>
-<h3 id="切平面">切平面</h3>
-<p>定义：设(S = {(x, y, f(x, y)), (x, y) D})为显式曲面，(D
-<sup>2)开。设曲面(S)光滑，即函数(f)为(C</sup>1)的。函数(f)在((x_0, y_0)
-D)处的线性化函数为 [z = z_0 + f_x^0(x - x_0) + f_y^0(y - y_0), (*)]
-这里(z_0 = f(x_0, y_0))，((f_x^0, f_y^0) = (f_x,
-f_y)|_{(x_0,y_0)})。几何上方程((<em>))代表空间(^3)中一个平面，记(P_0 =
-(x_0, y_0, z_0))，则(P_0
-S)。我们称平面((</em>))为曲面(S)在点(P_0)处的切平面。</p>
-<h3 id="法向量-1">法向量</h3>
-<p><span class="math inline">\((-f_x^0,-f_y^0,1)\)</span></p>
-<h2 id="隐式曲面-1">隐式曲面</h2>
-<h3 id="切平面-1">切平面</h3>
-<p>定义：设 (S : F(x, y, z) = c) 为隐式曲面，正则。设 (P_0 = (x_0, y_0,
-z_0) S)，即 (F(x_0, y_0, z_0) = c)。函数 (F(x, y, z)) 在点 (P_0)
-处的线性化函数为</p>
-<p>(L_F(x, y, z) = F^0 + F_x^0(x - x_0) + F_y^0(y - y_0) + F_z^0(z -
-z_0))，</p>
-<p>这里 (F^0, F_x^0, F_y^0, F_z^0) 分别记函数 (F, F_x, F_y, F_z) 在点
-(P_0) 处取的值。线性函数 (L_F(x, y, z)) 相应的水平面为 (L_F(x, y, z) =
-c)，即</p>
-<p>(F_x^0(x - x_0) + F_y^0(y - y_0) + F_z^0(z - z_0) = 0)，(*)</p>
-<p>称平面 (*) 为曲面 (S) 在点 (P_0) 处的切平面。注意 (F^0 = F(P_0) =
-c)。</p>
-<h3 id="法向量-2">法向量</h3>
-<p><span class="math inline">\((F_x^0,F_y^0,F_z^0)\)</span></p>
-<h1 id="空间曲线">空间曲线</h1>
-<h2 id="切线方程">切线方程</h2>
-<p>记 (r(t_0) = (x(t_0), y(t_0), z(t_0)) = (x_0, y_0, z_0))，(s = t -
-t_0)，则上述切线方程有如下的分量形式</p>
-(
-<span class="math display">\[\begin{cases}
-x = x_0 + x^{\prime}(t_0)s, \\
-y = y_0 + y^{\prime}(t_0)s, \\
-z = z_0 + z^{\prime}(t_0)s.
-\end{cases}\]</span>
-<p>)</p>
-<p>上式为切线的参数方程. 对应的标准方程为</p>
-<p>( = = )</p>
-<p>这个直线的方向向量是<span
-class="math inline">\((x&#39;(t_0),y&#39;(t_0),z&#39;(t_0))\)</span></p>
-<h2 id="切线方程-1">切线方程</h2>
-<h2 id="法平面">法平面</h2>
-<h1 id="曲面交线">曲面交线</h1>
-<h2 id="切线">切线</h2>
-<p>设曲线C是两个曲面的交线，且这两个曲面均为隐式曲面<span
-class="math inline">\(S_1 : F(x, y, z) = 0\)</span>和<span
-class="math inline">\(S_2 : G(x, y, z) = 0\)</span>，这里函数F,
-G假设在开区域<span class="math inline">\(D \subset
-\mathbb{R}^3\)</span>上是<span
-class="math inline">\(C^1\)</span>的。设<span class="math inline">\(P_0
-= (x_0, y_0, z_0) \in C = S_1 \cap
-S_2\)</span>是曲线C上的一点。考虑曲线C在点<span
-class="math inline">\(P_0\)</span>处的切线方程。假设<span
-class="math inline">\(r(t) = (x(t), y(t),
-z(t))\)</span>为曲线C的正则表示，记<span class="math inline">\((x_0,
-y_0, z_0) = (x(t_0), y(t_0), z(t_0)) =
-r(t_0)\)</span>。由于曲线C位于曲面<span
-class="math inline">\(S_1\)</span>上，故 <span
-class="math inline">\(F(x(t), y(t), z(t)) \equiv 0\)</span>
-对这个等式求导，并令<span class="math inline">\(t = t_0\)</span>得<span
-class="math inline">\(F_x^0x&#39;(t_0) + F_y^0y&#39;(t_0) +
-F_z^0z&#39;(t_0) = 0\)</span>。这说明曲线C在点<span
-class="math inline">\(P_0\)</span>处的切线 <span
-class="math inline">\(\frac{x - x_0}{x&#39;(t_0)} = \frac{y -
-y_0}{y&#39;(t_0)} = \frac{z - z_0}{z&#39;(t_0)}\)</span>
-位于如下曲面<span class="math inline">\(S_1\)</span>在点<span
-class="math inline">\((x_0, y_0, z_0)\)</span>处的切平面上 <span
-class="math inline">\(F_x^0(x - x_0) + F_y^0(y - y_0) + F_z^0(z - z_0) =
-0\)</span> 同理切线也位于曲面<span class="math inline">\(S_2 : G(x, y,
-z) = 0\)</span>在点<span class="math inline">\(P_0\)</span>处的切平面
-<span class="math inline">\(G_x^0(x - x_0) + G_y^0(y - y_0) + G_z^0(z -
-z_0) = 0\)</span> 上。因此曲线C在点<span
-class="math inline">\(P_0\)</span>处的切线可表示为这两个切平面的交线，即
-<span class="math inline">\(\begin{cases}
-F_x^0(x - x_0) + F_y^0(y - y_0) + F_z^0(z - z_0) = 0 \\
-G_x^0(x - x_0) + G_y^0(y - y_0) + G_z^0(z - z_0) = 0
-\end{cases}\)</span> 这里自然应假设<span class="math inline">\(\nabla
-F^0 \times \nabla G^0 \neq 0\)</span>。</p>
-<h3 id="例子">例子</h3>
-<h3 id="例子-1">例子</h3>
-<p>例：求曲线C <span class="math inline">\(\begin{cases}
-x^2 + y^2 + z^2 = 6 \\
-z - x^2 - y^2 = 0
-\end{cases}\)</span> 在点<span class="math inline">\(P_0 = (1, 1,
-2)\)</span>处的切线方程。</p>
-<p>解：记<span class="math inline">\(F(x, y, z) = x^2 + y^2 + z^2 -
-6\)</span>，<span class="math inline">\(G(x, y, z) = z - x^2 -
-y^2\)</span>。简单计算得 <span class="math inline">\(\nabla F = (2x, 2y,
-2z)\)</span>，<span class="math inline">\(\nabla F^0 = (2, 2,
-4)\)</span> <span class="math inline">\(\nabla G = (-2x, -2y,
-1)\)</span>，<span class="math inline">\(\nabla G^0 = (-2, -2,
-1)\)</span></p>
-<p>于是所求的切线方程为 <span class="math inline">\(\begin{cases}
-2(x - 1) + 2(y - 1) + 4(z - 2) = 0 \\
--2(x - 1) - 2(y - 1) + (z - 2) = 0
-\end{cases}\)</span></p>
-<p>化简得 <span class="math inline">\(\begin{cases}
-x + y + 2z = 6 \\
-2x + 2y - z = 2
-\end{cases}\)</span></p>
-<p>注意 <span class="math inline">\(\nabla F^0 \times \nabla G^0 = (2,
-2, 4) \times (-2, -2, 1) = (10, -10, 0) \neq 0\)</span></p>
-<p>例子完毕。</p>
-<h1 id="条件极值">条件极值</h1>
-定理: 考虑条件极值问题 [
-<span class="math display">\[\begin{cases}
-\min(\max) \quad f(x_1,\cdots,x_n), \\
-\text{s.t.} \quad g(x_1,\cdots,x_n) = k,
-\end{cases}\]</span>
-<p>] 其中(f, g: ^n )均为(C^1)函数，()开，并设当(g(x)=k)时，(g(x))。</p>
-<p>若点(x_0 )是问题的解，则存在常数(_0)，使得(f(x_0)=_0g(x_0))。</p>
+                <h1 id="insturctions">Insturctions</h1>
+<h2 id="arithmeticlogistic-instructions">Arithmetic/Logistic
+Instructions</h2>
+<p>add x1,x2,x3 等价于 x1 = x2 + x3</p>
+<p>subi x1,x1,1 等价于 x1 = x1 - 1</p>
+<p>xor x1,x1,x1 等价于 x1 = 0</p>
+<h2 id="data-transfer-insturctions">Data Transfer Insturctions</h2>
+<p>Load a 32-bit word: lw rd, offset(rs1) # offset访问数组元素</p>
+<p>Save a 32-bit word: sw rs2, offset(rs1)</p>
+<p>Address is given by a base register and a signed offset immediate</p>
+<p>Effective address is a byte address = register value + offset</p>
+<p>* a = b + c[2] # assume all are 32-bit int value/pointer/array</p>
+<p>lw x28 , 8(x3) # 从c2加载数据到x28 , 8(x3) 中
+x3是存储c的地址，8意味着跳过c中c[0]c[1]两个数，一共是62bit = 8 byte</p>
+<p>add x28 , x2, x28 # c[2]+b</p>
+<p>sw x28 , 0(x1) # 存入a(x1)</p>
+<p>struct Student { int id; int score;#偏移4字节 } sturct Student s; int
+y = s.score</p>
+<p>lw x6,4(x7)</p>
+<h3 id="accessing-arrays">Accessing Arrays</h3>
+<p>a[i] = x ; i++;</p>
+<p>slli x28,x1,2 # x28 = i*4 左移2位=乘以4（2的2次方）</p>
+<p>add x29,x2,x28 # x29 = a+4*i</p>
+<p>sw x3,0(29) # a[i] = x</p>
+<p>addi x1 , x1 ,1 # i++</p>
+<h2 id="changing-program-control-flow">Changing Program Control
+Flow</h2>
+<p>beq rs1 , rs2, label</p>
+<p>rs1,rs2是要比较的两个寄存器，label表示如果rs1==rs2要跳转到的地方</p>
+<p>bne rs1 , rs2, lanel</p>
+<p>rs1,rs2是要比较的两个寄存器，label表示如果rs1!=rs2要跳转到的地方</p>
+<p>j L</p>
+<p>跳转到L标签</p>
+<h1 id="two-memories">Two Memories</h1>
+<h2 id="primary-storage">Primary storage</h2>
+<p>a.k.a., main memory, or simply memory</p>
+<p>o Fast but volatile (断电了会丢失内容)</p>
+<p>o Used to temporarily store data during program execution</p>
+<p>o Accessed through load and store instructions issued by processor
+(hardware)</p>
+<p>o Implemented with DRAMand optimized bySRAMcaches</p>
+<p>### DRAM</p>
+<p>内存小但更快</p>
+<p>cache</p>
+<p>### SRAM</p>
+<p>内存大但更慢、</p>
+<p>main memory</p>
+<h2 id="secondary-storage">Secondary storage</h2>
+<p>a.k.a., external storage (treated as I/O devices)</p>
+<p>o Slowbutnon-volatile (断电不会丢失内容)</p>
+<p>o Used to permanently keep data required/generated (input/output) by
+programs</p>
+<p>o Accessed through and managed byfile systems in OS (software)</p>
+<p>o Implemented with disks and/or SSD</p>
+<h1 id="locality">Locality</h1>
+<h2 id="temporal-localitylocality-in-time">Temporal locality(locality in
+time)</h2>
+<p>如果某个数据或指令最近被访问过，那么它在短时间内可能会再次被访问。</p>
+<h2 id="spatial-localitylocality-in-space">Spatial locality(locality in
+space)</h2>
+<p>如果某个数据或指令被访问过，那么它附近的数据或指令很可能在不久后也会被访问。</p>
+<h2 id="not-always-locality">Not Always Locality</h2>
+<p>Pointer chasing</p>
+<p>上一个节点的地址与下一个节点的地址在物理上是不相关的</p>
+<h1 id="cache">Cache</h1>
+<h2 id="access-miss">Access Miss</h2>
+<p>❑ Compulsory/cold – the first time the block is referenced</p>
+<p>一开始啥也没有</p>
+<p>❑ Capacity – not enough room in the cache to hold all blocks</p>
+<p>o I.e., this miss would disappear if the cache were big enough</p>
+<p>❑ Conflict – item was replaced because of a location conflict with
+others</p>
+<p>o I.e., this miss would disappear with higher associativity</p>
 
                 
               </div>
@@ -453,8 +399,8 @@ x + y + 2z = 6 \\
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>曲面</div>
-      <div>http://example.com/2025/03/11/VA1/</div>
+      <div>SysIntro</div>
+      <div>http://example.com/2021/03/07/computer/</div>
     </div>
     <div class="license-meta">
       
@@ -466,7 +412,7 @@ x + y + 2z = 6 \\
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月11日</div>
+          <div>2021年3月7日</div>
         </div>
       
       
@@ -498,12 +444,18 @@ x + y + 2z = 6 \\
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2021/03/11/VA1/" title="曲面">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">曲面</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/07/computer/" title="SysIntro">
-                        <span class="hidden-mobile">SysIntro</span>
+                      <a href="/2019/08/01/%E4%BA%91%E5%8D%97%E7%BA%AA%E8%A1%8C/" title="云南纪行——长调与小令">
+                        <span class="hidden-mobile">云南纪行——长调与小令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
