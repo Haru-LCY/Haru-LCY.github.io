@@ -21,12 +21,12 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Lecture 1:History Block World 1963 MIT Summer Project David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face">
+    <meta name="description" content="Lecture 1:HistoryBlock World 1963  MIT Summer Project  David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face Detect">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231N">
 <meta property="og:url" content="http://example.com/2023/01/01/cs/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="Lecture 1:History Block World 1963 MIT Summer Project David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face">
+<meta property="og:description" content="Lecture 1:HistoryBlock World 1963  MIT Summer Project  David Mars: Input-Sketch(edges)-1&#x2F;2-D Sketch-3D Generalized Cylinder &amp; Pictorial structure 用圆柱体&#x2F;小圆和线段表示图像 Image segmentation 图像分割 Face Detect">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/green.png">
 <meta property="og:image" content="http://example.com/img/distance.png">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          763 字
+          768 字
         
       </span>
     
@@ -313,95 +313,55 @@
             
               <div class="markdown-body">
                 
-                <h1 id="lecture-1history">Lecture 1:History</h1>
-<p>Block World 1963</p>
-<p>MIT Summer Project</p>
+                <h1 id="Lecture-1-History"><a href="#Lecture-1-History" class="headerlink" title="Lecture 1:History"></a>Lecture 1:History</h1><p>Block World 1963 </p>
+<p>MIT Summer Project </p>
 <p>David Mars: Input-Sketch(edges)-1/2-D Sketch-3D</p>
-<p>Generalized Cylinder &amp; Pictorial structure
-用圆柱体/小圆和线段表示图像</p>
+<p>Generalized Cylinder &amp; Pictorial structure 用圆柱体/小圆和线段表示图像</p>
 <p>Image segmentation 图像分割</p>
-<p>Face Detection 1999-2000 machine learning</p>
-<p>2000s Benchmark Dataset---PASCAL Visual Object Challenge</p>
-<p>Machine Learning Algorithms:
-如果没有足够多的训练数据，就容易过拟合。ImageNet
-希望找到最大的图像数据集。</p>
+<p>Face Detection 1999-2000 machine learning </p>
+<p>2000s Benchmark Dataset—-PASCAL Visual Object Challenge</p>
+<p>Machine Learning Algorithms: 如果没有足够多的训练数据，就容易过拟合。ImageNet 希望找到最大的图像数据集。</p>
 <p>ImageNet Classification Challenge：CNN(Focus of our course!)</p>
-<h1 id="lecture-2">Lecture 2</h1>
-<p>Semantic Gap：Computer view an image as pixels(一堆数字)</p>
-<p>Challenge：Viewpoint
-variation，illumination，deformation，occlusion（遮挡）</p>
+<h1 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture 2"></a>Lecture 2</h1><p>Semantic Gap：Computer view an image as pixels(一堆数字)</p>
+<p>Challenge：Viewpoint variation，illumination，deformation，occlusion（遮挡）</p>
 <p>Data-Drive Approach: 找很多某一类东西的图片，用ML训练</p>
-<h2 id="nearest-neighbour">Nearest Neighbour</h2>
-<p>train step→记住所有data/lable o(1)</p>
+<h2 id="Nearest-Neighbour"><a href="#Nearest-Neighbour" class="headerlink" title="Nearest Neighbour"></a>Nearest Neighbour</h2><p>train step→记住所有data/lable o(1)</p>
 <p>predict step→预测 o(N)</p>
-<p>K-nearest Neighbours: Instead of copying label from nearest
-neighbour, take the majority vote from K closest points.</p>
+<p>K-nearest Neighbours: Instead of copying label from nearest neighbour, take the majority vote from K closest points.</p>
 <p><img src="/img/green.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><img src="/img/distance.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><a target="_blank" rel="noopener" href="http://vision.stanford.edu/teaching/cs231n-demos/knn/">A Fun
-Demo</a></p>
-<p>How to choose K and the way we calculate the distance?
-(hyperparameters:choices about the algorithm that we set rather than
-learn)</p>
+<p><a target="_blank" rel="noopener" href="http://vision.stanford.edu/teaching/cs231n-demos/knn/">A Fun Demo</a></p>
+<p>How to choose K and the way we calculate the distance? (hyperparameters:choices about the algorithm that we set rather than learn)</p>
 <p>Very problem-dependet!</p>
-<p>Most data: training; validations; test
-在val选hyperparameters，最终在test上evaluate.</p>
+<p>Most data: training; validations; test 在val选hyperparameters，最终在test上evaluate.</p>
 <p><img src="/img/idea.png" srcset="/img/loading.gif" lazyload alt="另一种比较好的idea"></p>
-<h2 id="linear-classification">Linear Classification</h2>
-<p>f(x,W)=Wx+b</p>
-<h1 id="lecture-3">Lecture 3</h1>
-<p>Data Loss: Calculate the loss</p>
+<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>f(x,W)=Wx+b</p>
+<h1 id="Lecture-3"><a href="#Lecture-3" class="headerlink" title="Lecture 3"></a>Lecture 3</h1><p>Data Loss: Calculate the loss</p>
 <p>Regularization: model should be simple</p>
-<h3
-id="为什么要用对数log计算损失而不直接用概率"><strong>为什么要用对数（log）计算损失，而不直接用概率？</strong></h3>
-<p>使用对数计算损失的主要原因有
-<strong>数学性质、优化效果、概率解释</strong> 等几个方面。</p>
-<hr />
-<h2 id="概率-vs.-对数损失"><strong>1. 概率 vs. 对数损失</strong></h2>
-<p>如果直接用概率作为损失： [ L_i = 1 - P(y_i) ]
-这个损失的变化幅度较小，优化效果不好。</p>
-<p>但是，使用对数损失（交叉熵损失）： [ L_i = -P(y_i) ] 它对
-<strong>小概率的错误预测</strong>
-给予更大的惩罚，使得模型更容易学习到正确的分类。</p>
-<hr />
-<h2 id="对数损失的优点"><strong>2. 对数损失的优点</strong></h2>
-<h3 id="让小概率预测的损失更大"><strong>(1)
-让小概率预测的损失更大</strong></h3>
-<p>如果模型对正确类别的预测概率很低，例如 ( P(y_i) = 0.01 )，那么： [
-L_i = -(0.01) = 4.61 ] 损失较大，梯度也较大，使得优化过程更快收敛。</p>
-<p>如果我们直接用概率损失： [ L_i = 1 - 0.01 = 0.99 ]
-变化不够明显，优化过程可能会更慢。</p>
-<hr />
-<h3 id="使损失函数具有凸性方便优化"><strong>(2)
-使损失函数具有凸性，方便优化</strong></h3>
-<p>在优化（如梯度下降）时，我们希望损失函数是
-<strong>光滑、凸的</strong>，这样优化算法可以稳定地找到最优解。</p>
-<p>交叉熵损失是一个
-<strong>凸函数</strong>，具有良好的优化性质。相比之下，直接使用概率作为损失，优化过程可能会不稳定。</p>
-<hr />
-<h3 id="与最大似然估计mle一致"><strong>(3)
-与最大似然估计（MLE）一致</strong></h3>
-<p>在统计学中，训练模型的目标是
-<strong>最大化正确类别的概率</strong>，这叫做
-<strong>最大似然估计（MLE）</strong>： [ <em>{i} P(y_i) ] 最大化概率
-<strong>等价于</strong> <strong>最小化交叉熵损失</strong>： [ -</em>{i}
-P(y_i) ] 所以，使用对数损失可以让 Softmax
-分类器与概率论中的最大似然方法保持一致。</p>
-<hr />
-<h3 id="概率直接作为损失可能会导致梯度消失"><strong>(4)
-概率直接作为损失可能会导致梯度消失</strong></h3>
-<p>如果直接使用概率作为损失： [ L_i = 1 - P(y_i) ] 当 ( P(y_i) ) 接近 1
-时，损失变化非常小，梯度也会变小，这样参数更新速度会减慢，可能导致
-<strong>梯度消失</strong> 问题。</p>
-<p>使用对数： [ L_i = -P(y_i) ] 即使 ( P(y_i) ) 很接近
-1，梯度依然不会变得太小，有助于优化过程的稳定性。</p>
-<hr />
-<h2 id="结论"><strong>结论</strong></h2>
-<p>✅ <strong>对数损失的优点：</strong> - 小概率预测损失大，训练更有效。
-- 使损失函数光滑、凸，优化更稳定。 - 与最大似然估计一致，数学上合理。 -
-避免梯度消失，提高训练效果。</p>
-<p>所以，我们使用 <strong>对数损失（交叉熵）</strong>
-而不是直接使用概率作为损失。</p>
+<h3 id="为什么要用对数（log）计算损失，而不直接用概率？"><a href="#为什么要用对数（log）计算损失，而不直接用概率？" class="headerlink" title="为什么要用对数（log）计算损失，而不直接用概率？"></a><strong>为什么要用对数（log）计算损失，而不直接用概率？</strong></h3><p>使用对数计算损失的主要原因有 <strong>数学性质、优化效果、概率解释</strong> 等几个方面。  </p>
+<hr>
+<h2 id="1-概率-vs-对数损失"><a href="#1-概率-vs-对数损失" class="headerlink" title="1. 概率 vs. 对数损失"></a><strong>1. 概率 vs. 对数损失</strong></h2><p>如果直接用概率作为损失：<br>[<br>L_i = 1 - P(y_i)<br>]<br>这个损失的变化幅度较小，优化效果不好。  </p>
+<p>但是，使用对数损失（交叉熵损失）：<br>[<br>L_i = -\log P(y_i)<br>]<br>它对 <strong>小概率的错误预测</strong> 给予更大的惩罚，使得模型更容易学习到正确的分类。</p>
+<hr>
+<h2 id="2-对数损失的优点"><a href="#2-对数损失的优点" class="headerlink" title="2. 对数损失的优点"></a><strong>2. 对数损失的优点</strong></h2><h3 id="1-让小概率预测的损失更大"><a href="#1-让小概率预测的损失更大" class="headerlink" title="(1) 让小概率预测的损失更大"></a><strong>(1) 让小概率预测的损失更大</strong></h3><p>如果模型对正确类别的预测概率很低，例如 ( P(y_i) = 0.01 )，那么：<br>[<br>L_i = -\log(0.01) = 4.61<br>]<br>损失较大，梯度也较大，使得优化过程更快收敛。</p>
+<p>如果我们直接用概率损失：<br>[<br>L_i = 1 - 0.01 = 0.99<br>]<br>变化不够明显，优化过程可能会更慢。</p>
+<hr>
+<h3 id="2-使损失函数具有凸性，方便优化"><a href="#2-使损失函数具有凸性，方便优化" class="headerlink" title="(2) 使损失函数具有凸性，方便优化"></a><strong>(2) 使损失函数具有凸性，方便优化</strong></h3><p>在优化（如梯度下降）时，我们希望损失函数是 <strong>光滑、凸的</strong>，这样优化算法可以稳定地找到最优解。  </p>
+<p>交叉熵损失是一个 <strong>凸函数</strong>，具有良好的优化性质。相比之下，直接使用概率作为损失，优化过程可能会不稳定。</p>
+<hr>
+<h3 id="3-与最大似然估计（MLE）一致"><a href="#3-与最大似然估计（MLE）一致" class="headerlink" title="(3) 与最大似然估计（MLE）一致"></a><strong>(3) 与最大似然估计（MLE）一致</strong></h3><p>在统计学中，训练模型的目标是 <strong>最大化正确类别的概率</strong>，这叫做 <strong>最大似然估计（MLE）</strong>：<br>[<br>\max \prod<em>{i} P(y_i)<br>]<br>最大化概率 <strong>等价于</strong> <strong>最小化交叉熵损失</strong>：<br>[<br>\min -\sum</em>{i} \log P(y_i)<br>]<br>所以，使用对数损失可以让 Softmax 分类器与概率论中的最大似然方法保持一致。</p>
+<hr>
+<h3 id="4-概率直接作为损失可能会导致梯度消失"><a href="#4-概率直接作为损失可能会导致梯度消失" class="headerlink" title="(4) 概率直接作为损失可能会导致梯度消失"></a><strong>(4) 概率直接作为损失可能会导致梯度消失</strong></h3><p>如果直接使用概率作为损失：<br>[<br>L_i = 1 - P(y_i)<br>]<br>当 ( P(y_i) ) 接近 1 时，损失变化非常小，梯度也会变小，这样参数更新速度会减慢，可能导致 <strong>梯度消失</strong> 问题。</p>
+<p>使用对数：<br>[<br>L_i = -\log P(y_i)<br>]<br>即使 ( P(y_i) ) 很接近 1，梯度依然不会变得太小，有助于优化过程的稳定性。</p>
+<hr>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a><strong>结论</strong></h2><p>✅ <strong>对数损失的优点：</strong></p>
+<ul>
+<li>小概率预测损失大，训练更有效。</li>
+<li>使损失函数光滑、凸，优化更稳定。</li>
+<li>与最大似然估计一致，数学上合理。</li>
+<li>避免梯度消失，提高训练效果。</li>
+</ul>
+<p>所以，我们使用 <strong>对数损失（交叉熵）</strong> 而不是直接使用概率作为损失。</p>
 
                 
               </div>
@@ -464,9 +424,9 @@ P(y_i) ] 所以，使用对数损失可以让 Softmax
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/26/hw/" title="炼丹作业日志">
+                      <a href="/2024/08/28/%E6%97%B6%E4%BB%A3%E5%8F%98%E9%9D%A9%E4%B8%AD%E7%9A%84%E5%BD%B7%E5%BE%A8%E8%80%85%E4%BB%AC-%E8%AE%B0%E3%80%8A%E5%87%A1%E5%B0%94%E8%B5%9B%E7%8E%AB%E7%91%B0%E3%80%8B%E4%B8%8E%E3%80%8A%E8%96%84%E6%A8%B1%E9%AC%BC%E3%80%8B/" title="时代变革中的彷徨者们--记《凡尔赛玫瑰》与《薄樱鬼》">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">炼丹作业日志</span>
+                        <span class="hidden-mobile">时代变革中的彷徨者们--记《凡尔赛玫瑰》与《薄樱鬼》</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

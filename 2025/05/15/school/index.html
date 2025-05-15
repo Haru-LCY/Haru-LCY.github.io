@@ -21,23 +21,24 @@
   <meta name="author" content="瑾瑜當年">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Insturctions Arithmetic&#x2F;Logistic Instructions add x1,x2,x3 等价于 x1 &#x3D; x2 + x3 subi x1,x1,1 等价于 x1 &#x3D; x1 - 1 xor x1,x1,x1 等价于 x1 &#x3D; 0 Data Transfer Insturctions Load a 32-bit word: lw rd, offset(rs1">
+    <meta name="description" content="回忆很久很久的过去的时候，总会发觉那些理应连续的记忆在我们的脑内已经只剩下几个离散的锚点。这些锚点有难忘的场景，也有印象深刻的人。于是我们就会开始想象，从这些离散的锚点一点点延展开来，试图寻找一个最优的光滑“函数”来连缀起这些散点，来复现当年的真实情况。这个美化的过程就是“怀旧”。 怀旧是一场名为回忆的欺骗，我们总是会美化已经斑驳褪色的记忆，直到最终分不清美化与真实。就像海会把碎掉的啤酒瓶打磨成翠">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SysIntro">
-<meta property="og:url" content="http://example.com/2021/03/07/computer/index.html">
+<meta property="og:title" content="再回79中——怀旧是一场名为回忆的欺骗">
+<meta property="og:url" content="http://example.com/2025/05/15/school/index.html">
 <meta property="og:site_name" content="港湾">
-<meta property="og:description" content="Insturctions Arithmetic&#x2F;Logistic Instructions add x1,x2,x3 等价于 x1 &#x3D; x2 + x3 subi x1,x1,1 等价于 x1 &#x3D; x1 - 1 xor x1,x1,x1 等价于 x1 &#x3D; 0 Data Transfer Insturctions Load a 32-bit word: lw rd, offset(rs1">
+<meta property="og:description" content="回忆很久很久的过去的时候，总会发觉那些理应连续的记忆在我们的脑内已经只剩下几个离散的锚点。这些锚点有难忘的场景，也有印象深刻的人。于是我们就会开始想象，从这些离散的锚点一点点延展开来，试图寻找一个最优的光滑“函数”来连缀起这些散点，来复现当年的真实情况。这个美化的过程就是“怀旧”。 怀旧是一场名为回忆的欺骗，我们总是会美化已经斑驳褪色的记忆，直到最终分不清美化与真实。就像海会把碎掉的啤酒瓶打磨成翠">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-07T00:33:28.000Z">
-<meta property="article:modified_time" content="2025-03-21T13:35:53.390Z">
+<meta property="article:published_time" content="2025-05-15T03:17:46.000Z">
+<meta property="article:modified_time" content="2025-05-15T03:18:35.090Z">
 <meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="心湖观澜">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>SysIntro - 港湾</title>
+  <title>再回79中——怀旧是一场名为回忆的欺骗 - 港湾</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="SysIntro"></span>
+            <span id="subtitle" data-typed-text="再回79中——怀旧是一场名为回忆的欺骗"></span>
           
         </div>
 
@@ -225,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-03-07 08:33" pubdate>
-          2021年3月7日 早上
+        <time datetime="2025-05-15 11:17" pubdate>
+          2025年5月15日 上午
         </time>
       </span>
     
@@ -237,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          371 字
+          1.2k 字
         
       </span>
     
@@ -248,7 +249,7 @@
         
         
         
-          4 分钟
+          11 分钟
         
       </span>
     
@@ -294,12 +295,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">SysIntro</h1>
+            <h1 id="seo-header">再回79中——怀旧是一场名为回忆的欺骗</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-03-21T21:35:53+08:00
+                    本文最后更新于 2025-05-15T11:18:35+08:00
                   
                   
 
@@ -309,79 +310,17 @@
             
               <div class="markdown-body">
                 
-                <h1 id="insturctions">Insturctions</h1>
-<h2 id="arithmeticlogistic-instructions">Arithmetic/Logistic
-Instructions</h2>
-<p>add x1,x2,x3 等价于 x1 = x2 + x3</p>
-<p>subi x1,x1,1 等价于 x1 = x1 - 1</p>
-<p>xor x1,x1,x1 等价于 x1 = 0</p>
-<h2 id="data-transfer-insturctions">Data Transfer Insturctions</h2>
-<p>Load a 32-bit word: lw rd, offset(rs1) # offset访问数组元素</p>
-<p>Save a 32-bit word: sw rs2, offset(rs1)</p>
-<p>Address is given by a base register and a signed offset immediate</p>
-<p>Effective address is a byte address = register value + offset</p>
-<p>* a = b + c[2] # assume all are 32-bit int value/pointer/array</p>
-<p>lw x28 , 8(x3) # 从c2加载数据到x28 , 8(x3) 中
-x3是存储c的地址，8意味着跳过c中c[0]c[1]两个数，一共是62bit = 8 byte</p>
-<p>add x28 , x2, x28 # c[2]+b</p>
-<p>sw x28 , 0(x1) # 存入a(x1)</p>
-<p>struct Student { int id; int score;#偏移4字节 } sturct Student s; int
-y = s.score</p>
-<p>lw x6,4(x7)</p>
-<h3 id="accessing-arrays">Accessing Arrays</h3>
-<p>a[i] = x ; i++;</p>
-<p>slli x28,x1,2 # x28 = i*4 左移2位=乘以4（2的2次方）</p>
-<p>add x29,x2,x28 # x29 = a+4*i</p>
-<p>sw x3,0(29) # a[i] = x</p>
-<p>addi x1 , x1 ,1 # i++</p>
-<h2 id="changing-program-control-flow">Changing Program Control
-Flow</h2>
-<p>beq rs1 , rs2, label</p>
-<p>rs1,rs2是要比较的两个寄存器，label表示如果rs1==rs2要跳转到的地方</p>
-<p>bne rs1 , rs2, lanel</p>
-<p>rs1,rs2是要比较的两个寄存器，label表示如果rs1!=rs2要跳转到的地方</p>
-<p>j L</p>
-<p>跳转到L标签</p>
-<h1 id="two-memories">Two Memories</h1>
-<h2 id="primary-storage">Primary storage</h2>
-<p>a.k.a., main memory, or simply memory</p>
-<p>o Fast but volatile (断电了会丢失内容)</p>
-<p>o Used to temporarily store data during program execution</p>
-<p>o Accessed through load and store instructions issued by processor
-(hardware)</p>
-<p>o Implemented with DRAMand optimized bySRAMcaches</p>
-<p>### DRAM</p>
-<p>内存小但更快</p>
-<p>cache</p>
-<p>### SRAM</p>
-<p>内存大但更慢、</p>
-<p>main memory</p>
-<h2 id="secondary-storage">Secondary storage</h2>
-<p>a.k.a., external storage (treated as I/O devices)</p>
-<p>o Slowbutnon-volatile (断电不会丢失内容)</p>
-<p>o Used to permanently keep data required/generated (input/output) by
-programs</p>
-<p>o Accessed through and managed byfile systems in OS (software)</p>
-<p>o Implemented with disks and/or SSD</p>
-<h1 id="locality">Locality</h1>
-<h2 id="temporal-localitylocality-in-time">Temporal locality(locality in
-time)</h2>
-<p>如果某个数据或指令最近被访问过，那么它在短时间内可能会再次被访问。</p>
-<h2 id="spatial-localitylocality-in-space">Spatial locality(locality in
-space)</h2>
-<p>如果某个数据或指令被访问过，那么它附近的数据或指令很可能在不久后也会被访问。</p>
-<h2 id="not-always-locality">Not Always Locality</h2>
-<p>Pointer chasing</p>
-<p>上一个节点的地址与下一个节点的地址在物理上是不相关的</p>
-<h1 id="cache">Cache</h1>
-<h2 id="access-miss">Access Miss</h2>
-<p>❑ Compulsory/cold – the first time the block is referenced</p>
-<p>一开始啥也没有</p>
-<p>❑ Capacity – not enough room in the cache to hold all blocks</p>
-<p>o I.e., this miss would disappear if the cache were big enough</p>
-<p>❑ Conflict – item was replaced because of a location conflict with
-others</p>
-<p>o I.e., this miss would disappear with higher associativity</p>
+                <p>回忆很久很久的过去的时候，总会发觉那些理应连续的记忆在我们的脑内已经只剩下几个离散的锚点。这些锚点有难忘的场景，也有印象深刻的人。于是我们就会开始想象，从这些离散的锚点一点点延展开来，试图寻找一个最优的光滑“函数”来连缀起这些散点，来复现当年的真实情况。这个美化的过程就是“怀旧”。</p>
+<p>怀旧是一场名为回忆的欺骗，我们总是会美化已经斑驳褪色的记忆，直到最终分不清美化与真实。就像海会把碎掉的啤酒瓶打磨成翠绿色的磨砂卵石，是美好的，也往往是不可逆的。我们永远无法通过被海浪打磨后的卵石的形状推测出玻璃碎片的形状，就像我们早已忘却真实的曾经。</p>
+<p>恰逢今天有体育生在学校里训练，悄悄溜进去，不由得感叹这么多年七十九中真是一直没变，天还是那么蓝，校园里各班级对应的小花坛还是那么漂亮，欧式建筑还是那么庄严肃穆，走廊里还是摆满了花，图书馆的吊灯还是那么气派。现在回想起来成年前的那段无忧无虑日子，最怀念的莫过于初中。大概是因为，在那些难忘的场景中，属于初中的最多。</p>
+<p>比如初一的时候看《倚天屠龙记》被没收，把整套书乖乖交给班主任，然后转手又再买一套继续看。又比如初中写的一些“诗词”，当时用的笔名已经记不清了，现在留存的也就两三篇，但自娱自乐的目的是达到了。再比如那一个个飘雪的下午或是火烧云遍布的黄昏，在教室里看着窗外发呆。又或是在秋天的细雨里撑着伞踩着金灿灿湿哒哒的银杏叶在校门前的街道上漫步。</p>
+<p>当然，除了难忘的场景，难忘的人也是怀旧的必要因素。初中有我中学时期最重要的两位恩师，有现在还常联系的朋友。</p>
+<p>常妈和周爹两位恩师，一位教物理一位教化学，一位胖胖的，一位瘦高。二位真可谓改变我人生的恩师，没有他们的包容和鼓励，我又如何能从一个从小被认为“不是读书的料”笨小孩一点点变得相信自己？又如何能意识到自己性格上的缺陷懂得收敛锋芒？</p>
+<p>我至今还记得中考写的命题作文《你在，就心安》。当时我选取的“你”正是常老师。我依旧记得那个阴天的上午，我坐在中考考场里靠窗最后一排的座位，写完作文停笔的时候，潸然泪下。那短短的八百字，记录的是我最珍视的回忆，比如我在79中的最后一天。</p>
+<p>我可能一辈子也不会忘记我在79中的最后一天。没有催泪的送别，没有互换同学录的哀伤，有的只是周爹简单的叮嘱和常妈送给每个人的毕业寄语卡片，那张红色的心形毕业卡片现在依旧留着。离开79的那天与平日的放学并无不同，还是谈笑着下楼，那时充满着对未来的期望，还不懂何谓离别的感伤。</p>
+<p>至于那些朋友，我早已忘却我们当年是如何相识，又如何熟络，只记得我们有聊不完的话题，从批判大连中考作文雕饰过度的文风，聊到校园最新八卦、动漫游戏到时事政治，再到我们的未来和人生的终极问题，我们无话不谈。</p>
+<p>初中毕业之后我在电脑上建了好几个文档，想要写一些文章写给我的朋友和恩师作为离别的纪念。但当年还不懂如何把复杂的情感诉诸笔端，真正练就长文本写作能力还是在高中。高中或许因为疫情的缘故，与同学在一起的时间明显减少，也并没有那么多对得上电波的挚友，那些无处释放的表达欲都化为了文字。所以后来我整理这些文字的时候，把它们起了一个栏目名叫“心湖观澜”。</p>
+<p>今天回到79中的时候适逢放假，楼宇里空无一人。穿着皮鞋走在楼梯上发出哒哒的声响，既惬意又寂寥。嗯，就好像我又回到了2018年的那个夏天，但那里已经没有人了。</p>
 
                 
               </div>
@@ -391,6 +330,13 @@ others</p>
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BF%83%E6%B9%96%E8%A7%82%E6%BE%9C/" class="print-no-link">#心湖观澜</a>
+      
+    </div>
+  
 </div>
 
 
@@ -399,8 +345,8 @@ others</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>SysIntro</div>
-      <div>http://example.com/2021/03/07/computer/</div>
+      <div>再回79中——怀旧是一场名为回忆的欺骗</div>
+      <div>http://example.com/2025/05/15/school/</div>
     </div>
     <div class="license-meta">
       
@@ -412,7 +358,7 @@ others</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年3月7日</div>
+          <div>2025年5月15日</div>
         </div>
       
       
@@ -444,18 +390,12 @@ others</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/03/11/VA1/" title="曲面">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">曲面</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/08/01/%E4%BA%91%E5%8D%97%E7%BA%AA%E8%A1%8C/" title="云南纪行——长调与小令">
-                        <span class="hidden-mobile">云南纪行——长调与小令</span>
+                      <a href="/2025/05/15/food/" title="北京美食图鉴">
+                        <span class="hidden-mobile">北京美食图鉴</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
