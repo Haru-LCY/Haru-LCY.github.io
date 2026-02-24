@@ -1,0 +1,1738 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/kazuki.jpg">
+  <link rel="icon" href="/img/kazuki.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="瑾瑜當年">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Review KLD \[D_{KL}(p(x) || q(x)) &#x3D; \int_{-\infty}^{\infty} p(x) \ln \frac{p(x)}{q(x)} dx\] \[D_{KL}(p(x) || q(x)) &#x3D; \sum_{x \in X} p(x) \ln \frac{p(x)}{q(x)}\] KLD is non-symmetric 这是一个关于 KL 散度（Kullb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黎明之前：Transformer之前的自然语言处理">
+<meta property="og:url" content="http://example.com/2025/12/12/nlp2/index.html">
+<meta property="og:site_name" content="港湾">
+<meta property="og:description" content="Review KLD \[D_{KL}(p(x) || q(x)) &#x3D; \int_{-\infty}^{\infty} p(x) \ln \frac{p(x)}{q(x)} dx\] \[D_{KL}(p(x) || q(x)) &#x3D; \sum_{x \in X} p(x) \ln \frac{p(x)}{q(x)}\] KLD is non-symmetric 这是一个关于 KL 散度（Kullb">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=0.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=nnlm.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=class.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=rnn.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=rnn0.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=rnnp.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=ar.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=grnn.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=resnet.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=birnn.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=sembed.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=att.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=b.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=tf.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=head.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=win.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=vae.png">
+<meta property="og:image" content="http://example.com/img/nlp2_part1/nlp=re.png">
+<meta property="article:published_time" content="2025-12-12T14:51:02.000Z">
+<meta property="article:modified_time" content="2026-02-24T15:12:58.719Z">
+<meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/nlp2_part1/nlp=0.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>黎明之前：Transformer之前的自然语言处理 - 港湾</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>觀瀾</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/sea.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="黎明之前：Transformer之前的自然语言处理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-12 22:51" pubdate>
+          2025年12月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">黎明之前：Transformer之前的自然语言处理</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-02-24T23:12:58+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="review">Review</h1>
+<h2 id="kld">KLD</h2>
+<p><span class="math display">\[D_{KL}(p(x) || q(x)) =
+\int_{-\infty}^{\infty} p(x) \ln \frac{p(x)}{q(x)} dx\]</span></p>
+<p><span class="math display">\[D_{KL}(p(x) || q(x)) = \sum_{x \in X}
+p(x) \ln \frac{p(x)}{q(x)}\]</span></p>
+<p>KLD is non-symmetric</p>
+<p>这是一个关于 <strong>KL 散度（Kullback-Leibler Divergence）</strong>
+核心概念的非常好的问题。理解这两个方向的差异，是理解变分推断（VI）和生成模型（如
+VAE 和 GAN）的关键。</p>
+<p><span class="math display">\[D_{KL}(P_D \| P_M)\]</span>和<span
+class="math display">\[D_{KL}(P_M \| P_D)\]</span> 都表示模型分布 <span
+class="math inline">\(P_M\)</span> 接近真实数据分布 <span
+class="math inline">\(P_D\)</span>
+的程度，但它们对“接近”的定义是<strong>不对称</strong>的，因此在最小化时会产生截然不同的结果。</p>
+<hr />
+<h2 id="d_klp_d-p_m-的直觉模式覆盖-mode-covering">⚖️ <span
+class="math inline">\(D_{KL}(P_D \| P_M)\)</span>
+的直觉：<strong>模式覆盖 (Mode-Covering)</strong></h2>
+<p><span class="math display">\[D_{KL}(P_D \| P_M) = \mathbb{E}_{x \sim
+\mathbf{P_D}} \left[ \log \frac{P_D(x)}{P_M(x)} \right]\]</span></p>
+<h3
+id="核心直觉害怕错过对-p_d-的高密度区敏感">核心直觉：<strong>害怕错过（对
+<span class="math inline">\(P_D\)</span> 的高密度区敏感）</strong></h3>
+<p>这个表达式是以<strong>真实数据分布 <span
+class="math inline">\(P_D\)</span></strong> 为权重计算期望的。</p>
+<ul>
+<li><strong>惩罚机制：</strong> 如果 <span
+class="math inline">\(P_D(x)\)</span>
+的值很高（比如在一个真实数据模式的<strong>峰值</strong>处），但模型
+<span class="math inline">\(P_M(x)\)</span>
+在此处的值很低（模型<strong>错过</strong>了这个模式），那么 <span
+class="math inline">\(\log(P_D(x)/P_M(x))\)</span>
+会是一个非常大的正数。由于 <span class="math inline">\(P_D(x)\)</span>
+权重也很大，这个项的贡献会让 <span class="math inline">\(D_{KL}(P_D \|
+P_M)\)</span> <strong>急剧增大</strong>。</li>
+<li><strong>优化结果（最小化）：</strong> 为了避免这种巨大的惩罚，模型
+<span class="math inline">\(P_M\)</span> 必须确保在 <strong><span
+class="math inline">\(P_D\)</span> 所有密度高的区域（所有模式）</strong>
+都分配概率。</li>
+<li><strong>拟合特性：</strong> <strong>模式覆盖
+(Mode-Covering)</strong>。模型会<strong>扩张</strong>，努力覆盖 <span
+class="math inline">\(P_D\)</span>
+的所有模式，即使这意味着它必须在模式之间的低密度区也分配一些概率。</li>
+<li><strong>应用场景：</strong> <strong>最大似然估计 (MLE)</strong> 和
+<strong>变分自编码器 (VAE)</strong> 的主要优化方向（与 ELBO
+相关），强调<strong>多样性</strong>。</li>
+</ul>
+<blockquote>
+<p>💡 <strong>类比：</strong> <span class="math inline">\(P_M\)</span>
+就像一个<strong>广撒网的捕鱼人</strong>。他最害怕的是错过任何一个鱼群（<span
+class="math inline">\(P_D\)</span>
+的模式），所以他会尽力扩大他的网（<span
+class="math inline">\(P_M\)</span>
+的分布范围），即使这会捕到一些无关的杂物（在 <span
+class="math inline">\(P_D\)</span>
+低密度区分配概率，导致生成样本模糊）。</p>
+</blockquote>
+<hr />
+<h2 id="d_klp_m-p_d-的直觉模式搜索-mode-seeking">⚔️ <span
+class="math inline">\(D_{KL}(P_M \| P_D)\)</span>
+的直觉：<strong>模式搜索 (Mode-Seeking)</strong></h2>
+<p><span class="math display">\[D_{KL}(P_M \| P_D) = \mathbb{E}_{x \sim
+\mathbf{P_M}} \left[ \log \frac{P_M(x)}{P_D(x)} \right]\]</span></p>
+<h3
+id="核心直觉害怕犯错对-p_d-的低密度区敏感">核心直觉：<strong>害怕犯错（对
+<span class="math inline">\(P_D\)</span> 的低密度区敏感）</strong></h3>
+<p>这个表达式是以<strong>模型分布 <span
+class="math inline">\(P_M\)</span></strong> 为权重计算期望的。</p>
+<ul>
+<li><strong>惩罚机制：</strong> 如果模型 <span
+class="math inline">\(P_M(x)\)</span>
+的值很高（模型认为这是一个可能生成的样本），但真实数据 <span
+class="math inline">\(P_D(x)\)</span>
+在此处的值很低（<strong>山谷</strong>或<strong>空隙</strong>），那么
+<span class="math inline">\(\log(P_M(x)/P_D(x))\)</span>
+会是一个非常大的正数。由于 <span class="math inline">\(P_M(x)\)</span>
+权重也很大，这个项的贡献会让 <span class="math inline">\(D_{KL}(P_M \|
+P_D)\)</span> <strong>急剧增大</strong>。</li>
+<li><strong>优化结果（最小化）：</strong> 为了避免这种惩罚，模型 <span
+class="math inline">\(P_M\)</span> 会被强烈迫使将自己的概率质量集中到
+<strong><span class="math inline">\(P_D\)</span>
+密度高的区域</strong>。它宁愿忽略一些模式，也不愿意在 <span
+class="math inline">\(P_D\)</span> 的稀疏区域“说谎”（分配概率）。</li>
+<li><strong>拟合特性：</strong> <strong>模式搜索
+(Mode-Seeking)</strong>。模型会<strong>收缩</strong>，选择并聚焦于 <span
+class="math inline">\(P_D\)</span> 的一个或几个模式进行拟合。</li>
+<li><strong>应用场景：</strong> <strong>变分推断 (VI)</strong>
+中对近似后验分布 <span class="math inline">\(q\)</span> 的要求，以及
+<strong>GAN</strong> 模型的内在倾向，强调<strong>质量</strong>。</li>
+</ul>
+<blockquote>
+<p>💡 <strong>类比：</strong> <span class="math inline">\(P_M\)</span>
+就像一个<strong>精准瞄准的狙击手</strong>。他最害怕的是射偏（在 <span
+class="math inline">\(P_D\)</span>
+的低密度区分配概率），所以他只会瞄准他能确保命中的<strong>一个或几个最清晰的目标</strong>（<span
+class="math inline">\(P_D\)</span>
+的高峰）。这导致他可能会错过其他模式，但确保了极高的精度。</p>
+</blockquote>
+<h2 id="multi-class-classification">Multi-class classification</h2>
+<p>Encode: x -&gt; d-dim vector h</p>
+<p>Predict:</p>
+<p>z=Wh + b (z is logits)</p>
+<p>Use softmax to map z to probability P(y|x).</p>
+<p>防止softmax exlode: normal softmax 分子分母同时除以 <span
+class="math inline">\(e^{max}\)</span></p>
+<p>Traning:</p>
+<p>use cross entropy loss <span class="math display">\[L_{\text{CE}} =
+\sum_i -\log P(y = y_i | \mathbf{x}_i)\]</span></p>
+<p>use SGD:</p>
+<p>neural nets we don’t have a closed-form optimal solution</p>
+<p>minibatch is much faster and effective, also have some regularization
+effect</p>
+<h1 id="nn-basics">NN Basics</h1>
+<p>MLP <img src="/img/nlp2_part1/nlp=0.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="bag-of-words">Bag of words</h2>
+<p>A simple way to encode a sentence: a |V|-dim vector, the i-th
+dimension indicates whether the i-th word in V(vocabulary) exists in
+x</p>
+<h2 id="hwx-embed">h=Wx embed</h2>
+<p>注意：The difference with LSA and word2vec is that here the word
+embedding matrix is treated as part (the first layer) of the parameters
+of the NN model. But indeed, you can use word2vec/LSA (trained on larger
+data without label) to initialize this matrix.</p>
+<p><span class="math display">\[\sigma&#39;(z) = \sigma(z) \cdot (1 -
+\sigma(z))\]</span></p>
+<p>A linear transform <span class="math inline">\(y=Wx\)</span>,
+stacking linear transfroms is still a linear transform.</p>
+<h2 id="back-propagation">Back-Propagation</h2>
+<p>Chain Rule</p>
+<p><span class="math display">\[z = Wh + b \]</span></p>
+<p><span class="math display">\[ \frac{\partial z}{\partial h}=W
+\]</span></p>
+<p><span class="math display">\[ \frac{\partial z}{\partial W}=h^\top
+\]</span></p>
+<p><span class="math display">\[ \frac{\partial z}{\partial b}=I
+\]</span></p>
+<p>one hot： 只有真实的label为1，其他的全0</p>
+<p><span class="math display">\[\frac{\partial
+\mathcal{L}_{\text{CE}}(\mathbf{y}|\mathbf{x})}{\partial \mathbf{z}} =
+\frac{\partial (-\log(\text{softmax}(\mathbf{z}))[\mathbf{y}])}{\partial
+\mathbf{z}} = \text{softmax}(\mathbf{z}) -
+\mathbf{\tilde{y}}\]</span></p>
+<p>proof： <span class="math inline">\(\mathcal{L}(\mathbf{z},
+\mathbf{\tilde{y}}) = -\sum_{j=1}^K \tilde{y}_j
+\log(\hat{y}_j)\)</span></p>
+<p><span class="math inline">\(\mathbf{\hat{y}} =
+\text{softmax}(\mathbf{z})\)</span>。其中 <span
+class="math inline">\(\hat{y}_j = \frac{e^{z_j}}{\sum_{k=1}^K
+e^{z_k}}\)</span>。 * <strong>真实标签：</strong> <span
+class="math inline">\(\mathbf{\tilde{y}}\)</span>，假设真实标签是 <span
+class="math inline">\(c\)</span>，则 <span
+class="math inline">\(\tilde{y}_c = 1\)</span>，其余 <span
+class="math inline">\(\tilde{y}_j = 0\)</span>。 *
+<strong>交叉熵损失：</strong> <span
+class="math inline">\(\mathcal{L}(\mathbf{z}, \mathbf{\tilde{y}}) =
+-\sum_{j=1}^K \tilde{y}_j \log(\hat{y}_j)\)</span>。 * 因为 <span
+class="math inline">\(\mathbf{\tilde{y}}\)</span> 是 one-hot
+向量，所以上式简化为：<span class="math inline">\(\mathcal{L} =
+-\log(\hat{y}_c) = -\log\left(\frac{e^{z_c}}{\sum_{k=1}^K
+e^{z_k}}\right)\)</span>。</p>
+<h4 id="i-是正确分类-c-的索引即-ic"><span
+class="math inline">\(i\)</span> 是正确分类 <span
+class="math inline">\(c\)</span> 的索引（即 <span
+class="math inline">\(i=c\)</span>）</h4>
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial
+z_c} = \frac{\partial}{\partial z_c} \left[
+-\log\left(\frac{e^{z_c}}{\sum_{k=1}^K e^{z_k}}\right)
+\right]\]</span></p>
+<p>利用对数性质 <span class="math inline">\(\log(A/B) = \log A - \log
+B\)</span>： <span class="math display">\[\mathcal{L} = -z_c +
+\log\left(\sum_{k=1}^K e^{z_k}\right)\]</span></p>
+<p>求导： <span class="math display">\[\frac{\partial
+\mathcal{L}}{\partial z_c} = \frac{\partial}{\partial z_c}(-z_c) +
+\frac{\partial}{\partial z_c}\left(\log\left(\sum_{k=1}^K
+e^{z_k}\right)\right)\]</span> <span
+class="math display">\[\frac{\partial \mathcal{L}}{\partial z_c} = -1 +
+\underbrace{\frac{1}{\sum_{k=1}^K e^{z_k}}}_{\text{外层导数}} \cdot
+\underbrace{e^{z_c}}_{\text{内层导数}}\]</span></p>
+<p>回代 Softmax 的定义 <span class="math inline">\(\hat{y}_c =
+\frac{e^{z_c}}{\sum_{k=1}^K e^{z_k}}\)</span>： <span
+class="math display">\[\frac{\partial \mathcal{L}}{\partial z_c} = -1 +
+\hat{y}_c\]</span></p>
+<p>因为 <span class="math inline">\(i=c\)</span>，所以 <span
+class="math inline">\(\tilde{y}_i = 1\)</span>。 <span
+class="math display">\[\frac{\partial \mathcal{L}}{\partial z_i} =
+\hat{y}_i - 1 = \hat{y}_i - \tilde{y}_i\]</span></p>
+<h4 id="i-不是正确分类的索引即-i-neq-c"><span
+class="math inline">\(i\)</span> 不是正确分类的索引（即 <span
+class="math inline">\(i \neq c\)</span>）</h4>
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial
+z_i} = \frac{\partial}{\partial z_i} \left[ -z_c +
+\log\left(\sum_{k=1}^K e^{z_k}\right) \right]\]</span></p>
+<p>求导（注意 <span class="math inline">\(-z_c\)</span> 项对 <span
+class="math inline">\(z_i\)</span> 的导数为 0）： <span
+class="math display">\[\frac{\partial \mathcal{L}}{\partial z_i} = 0 +
+\underbrace{\frac{1}{\sum_{k=1}^K e^{z_k}}}_{\text{外层导数}} \cdot
+\underbrace{e^{z_i}}_{\text{内层导数}}\]</span></p>
+<p>回代 Softmax 的定义 <span class="math inline">\(\hat{y}_i =
+\frac{e^{z_i}}{\sum_{k=1}^K e^{z_k}}\)</span>： <span
+class="math display">\[\frac{\partial \mathcal{L}}{\partial z_i} =
+\hat{y}_i\]</span></p>
+<p>因为 <span class="math inline">\(i \neq c\)</span>，所以 <span
+class="math inline">\(\tilde{y}_i = 0\)</span>。 <span
+class="math display">\[\frac{\partial \mathcal{L}}{\partial z_i} =
+\hat{y}_i - 0 = \hat{y}_i - \tilde{y}_i\]</span></p>
+<h2 id="dropout">Dropout</h2>
+<ul>
+<li><p><strong>训练的时候随机失活：</strong> 在处理每个
+<strong>mini-batch</strong>
+数据时，神经网络中的<strong>每个神经元单元（Unit）</strong>（及其所有传入和传出的连接）都会以一个预设的概率
+<span class="math inline">\(p\)</span>
+被随机地“丢弃”或<strong>失活</strong>。</p></li>
+<li><p>At test time, all units are present, but with weights scaled by p
+(i.e. w becomes pw)</p></li>
+</ul>
+<p>parallel computing: For a minibatch of input, we can concat them into
+a input matrix. Matrix-vector operation now becomes matrix-matrix
+operation.</p>
+<h1 id="nnlm">NNLM</h1>
+<h2 id="feed-forward-neural-network">feed forward neural network</h2>
+<p><img src="/img/nlp2_part1/nlp=nnlm.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>Note a big difference with the sentiment classifier is that the
+output class number is now |V|, making the model slow.</p>
+<h2 id="class-based-neural-network">class-based neural network</h2>
+<p><img src="/img/nlp2_part1/nlp=class.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="rnn">RNN</h2>
+<p><img src="/img/nlp2_part1/nlp=rnn.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/img/nlp2_part1/nlp=rnn0.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>better long distance dependence： hidden states， shared <span
+class="math inline">\(W_ih\)</span> and <span
+class="math inline">\(W_hh\)</span></p>
+<p>Back propagation through time</p>
+<p>problem: gradient explode/ vanish</p>
+<p>标准的 RNN 隐藏状态计算是：<span class="math inline">\(h_t =
+\text{activation}(W_{hh} h_{t-1} + W_{ih} x_t)\)</span>。</p>
+<p>这里简化为：<span class="math inline">\(h_t \approx W_{hh} h_{t-1} +
+W_{ih} x_t\)</span>。</p>
+<ul>
+<li>从 <span class="math inline">\(h_t\)</span> 到 <span
+class="math inline">\(h_{t-1}\)</span> 的梯度 <span
+class="math inline">\(\frac{\partial h_t}{\partial h_{t-1}} \approx
+W_{hh}\)</span>。</li>
+</ul>
+<p><span class="math display">\[\frac{\partial L_t}{\partial h_1}
+\approx W_{hh}^{T^{t-1}} \frac{\partial L_t}{\partial h_t}\]</span></p>
+<p>t-1次连乘导致梯度爆炸/消失</p>
+<p>Gradient exploding is more serious because it makes training
+impossible，因为梯度无限大了</p>
+<p>解决方案：gradient clipping，set the maximum norm of gradient to be
+<span class="math inline">\(\gamma\)</span>.</p>
+<p>parallel of rnn：parallel across scentence</p>
+<p><img src="/img/nlp2_part1/nlp=rnnp.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>parallel traning: use padding to get same scentence length</p>
+<p>you can also design a cnn to deal with variable seqlen</p>
+<h3 id="autoregressive-lm">autoregressive LM</h3>
+<p><img src="/img/nlp2_part1/nlp=ar.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="gated-recurrent-unit">Gated recurrent unit</h3>
+<p><span class="math display">\[h_t = z_t \odot \hat{h}_t + (1 - z_t)
+\odot h_{t-1}\]</span></p>
+<p><img src="/img/nlp2_part1/nlp=grnn.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>resnet</p>
+<p><img src="/img/nlp2_part1/nlp=resnet.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="bidirectional-rnn">Bidirectional RNN</h3>
+<p>cannot be applied to AR-LM, because we cannot uitilize the
+information from the future. 最终的hidden
+state必须等到所有计算全部结束之后才能完成。</p>
+<p><img src="/img/nlp2_part1/nlp=birnn.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="encoder-decoder">Encoder-decoder</h3>
+<p><img src="/img/nlp2_part1/nlp=sembed.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>scentence-encoding:
+句子最开始加一个特殊的token，这个主要利用的是反向的h0</p>
+<p>We can use a bi-rnn encoder for the input sequence, and use a uni-rnn
+decoder for the output.</p>
+<h3 id="attention">attention</h3>
+<p><img src="/img/nlp2_part1/nlp=att.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>步骤一：计算对齐分数 (Alignment Score) <span
+class="math display">\[\tilde{a}_i = (h_i^{enc})^T W_a
+h_{t-1}^{dec}\]</span> 步骤二：计算注意力分布 (Attention Distribution)
+<span class="math display">\[a = \text{softmax}(\tilde{a})\]</span>
+步骤三：计算上下文向量 (Context Vector) <span class="math display">\[c_t
+= \sum_{i} a_i h_i^{enc}\]</span></p>
+<h3 id="greedy-decoding">greedy decoding</h3>
+<p>autoregressive，每一次都选择局部最优的，所以不一定是全局最优的</p>
+<h3 id="beam-search-decoding">beam search decoding</h3>
+<p><img src="/img/nlp2_part1/nlp=b.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">// 步骤 1: 初始化</span><br><span class="hljs-comment">// 初始化集束 (beams)。集束是一个列表，存储当前得分最高的 B 个候选序列。</span><br><span class="hljs-comment">// 格式：[(序列, 累积对数概率得分)]</span><br>beams = <span class="hljs-selector-attr">[[<span class="hljs-string">&quot;&lt;s&gt;&quot;</span>, 0]</span>] <br><span class="hljs-comment">// 初始序列为起始符号 &quot;&lt;s&gt;&quot;，累积得分为 0。</span><br><br><span class="hljs-comment">// 步骤 2: 迭代生成序列</span><br><span class="hljs-comment">// L 是目标序列的最大长度。循环从 t=1（生成第一个词）到 L。</span><br><span class="hljs-keyword">for</span> t from <span class="hljs-number">1</span> to L:<br>    <span class="hljs-comment">// 初始化一个新的集束列表，用于存储当前时间步 t 扩展后的所有新序列。</span><br>    new_b = <span class="hljs-selector-attr">[]</span> <br>    <br>    <span class="hljs-comment">// 遍历当前集束中的所有 B 个候选序列。</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-selector-tag">b</span> <span class="hljs-keyword">in</span> beams:<br>        <span class="hljs-comment">// 解构当前候选序列：his 是历史序列，score 是它的累积对数概率得分。</span><br>        his, score = <span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[0]</span>, <span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[1]</span><br>        <br>        <span class="hljs-comment">// 使用语言模型 (LM) 预测下一个词的概率分布。</span><br>        <span class="hljs-comment">// logprob 存储基于 his 得到的词汇表所有词的对数概率。</span><br>        logprob = LM-NextPredict<span class="hljs-selector-attr">[his]</span> <br>        <br>        <span class="hljs-comment">// 从 logprob 中选择概率最高的 k=B 个词汇及其对数概率。</span><br>        <span class="hljs-comment">// idx_s: 这 B 个词汇在词汇表中的索引。</span><br>        <span class="hljs-comment">// logprob_s: 这 B 个词汇对应的对数概率。</span><br>        idx_s, logprob_s = <span class="hljs-attribute">top</span><span class="hljs-built_in">-k</span>(logprob, k=B)<br>        <br>        <span class="hljs-comment">// 步骤 3: 扩展序列并计算新得分</span><br>        <span class="hljs-comment">// 遍历这 B 个最佳的下一个词汇。</span><br>        <span class="hljs-keyword">for</span> j from <span class="hljs-number">0</span> to (B-<span class="hljs-number">1</span>):<br>            <span class="hljs-comment">// 扩展序列：将新的最佳词 V[idx_s[j]] 添加到历史序列 his 后面。</span><br>            <span class="hljs-comment">// V 是词汇表 (Vocabulary)。</span><br>            <span class="hljs-comment">// 更新得分：新得分 = 旧得分 + 新词汇的对数概率 (因为 log(P1*P2) = log(P1)+log(P2))。</span><br>            new_b<span class="hljs-selector-class">.append</span>((his + V<span class="hljs-selector-attr">[idx_s[j]</span>], score + logprob_s<span class="hljs-selector-attr">[j]</span>))<br>    <br>    <span class="hljs-comment">// 步骤 4: 筛选和更新集束</span><br>    <span class="hljs-comment">// 对 new_b 中的所有序列（当前有 B*B 个）按得分（score）进行降序排序。</span><br>    <span class="hljs-comment">// 只保留得分最大的 B 个序列。</span><br>    sort and only keep B sequences <span class="hljs-keyword">in</span> new_b with largest score.<br>    <br>    <span class="hljs-comment">// 用筛选后的 B 个最佳序列更新 beams，进入下一轮迭代。</span><br>    beams = new_b<br><br><span class="hljs-comment">// 步骤 5: 返回结果</span><br><span class="hljs-comment">// 循环结束后，beams 中存储了长度为 L 的 B 个最佳序列。</span><br><span class="hljs-comment">// 返回得分最高（排在第一位）的序列。</span><br>return beams<span class="hljs-selector-attr">[0]</span> <br></code></pre></td></tr></table></figure>
+<p>关键；每一次一个node都会生成b个分支，但我们只保留得分最大的b个</p>
+<h3 id="belu-metric-for-machine-translation">belu metric for machine
+translation</h3>
+<p><span class="math display">\[
+\text{precision}_n = \frac{\text{number of } n\text{-gram matches in
+reference}}{\text{number of } n\text{-grams in predicted}}
+\]</span></p>
+<p>简洁惩罚用于<strong>惩罚</strong>那些<strong>比参考译文短</strong>的机器译文，以确保翻译的长度合理。</p>
+<p><span class="math display">\[
+\text{brevity-penalty} = \min \left\{ 1, \exp \left( 1 -
+\frac{|\text{reference}|}{|\text{predicted}|} \right) \right\}
+\]</span></p>
+<p>BLEU 最终得分是<strong>简洁惩罚</strong>和<strong>几何平均 <span
+class="math inline">\(n\)</span>-gram 精准度</strong>的乘积。</p>
+<p><span class="math display">\[
+\text{BLEU} = \text{brevity-penalty} \times \left( \prod_{n=1}^{4}
+\text{precision}_n \right)^{\frac{1}{4}}
+\]</span></p>
+<h3 id="creating-paired-data">creating paired data</h3>
+<p>Given a decent amount of bilingual data (X, Y) and a good amount
+monolingual data in target language Y.</p>
+<p>• Q: What can you do to create more paired bilingual data?</p>
+<p>• You can train a backward model Y-&gt;X, and conduct generation on
+the monolingual data. That’s called back translation.</p>
+<h2 id="glue-benchmark">GLUE benchmark</h2>
+<p>The General Language Understanding Evaluation , human level</p>
+<p>SuperGLUE, harder</p>
+<h2 id="elmo">ELMo</h2>
+<p>ELMo (Embeddings from Language Models): build deep contextualized
+word representation.</p>
+<p>Model: multilayer bidirectional LSTM</p>
+<p>Objective: predict the next word in both directions independently;
+i.e., left-to-right and right-to-left</p>
+<h1 id="subword-tokenization">subword tokenization</h1>
+<p>• (1) Start with a unigram vocabulary of all characters in the
+data.</p>
+<p>• (2) Each iteration: In the data, find the most frequent pair, merge
+it, and add to the vocabulary.</p>
+<p>• (3) Stop when vocabulary is of pre-determined size (e.g., 50k).</p>
+<h1 id="transformer">Transformer</h1>
+<p><img src="/img/nlp2_part1/nlp=tf.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="self-attention">Self-attention</h2>
+<p>q, k, v 均为 Wx</p>
+<p>计算第 <span class="math inline">\(i\)</span> 个位置的查询向量 <span
+class="math inline">\(\mathbf{q}_i\)</span> 对所有键向量 <span
+class="math inline">\(\mathbf{k}_*\)</span>（其中 <span
+class="math inline">\(*\)</span>
+代表句子中的所有位置）的注意力权重的公式如下：</p>
+<p><span class="math display">\[a_{i*} =
+\mathbf{softmax}\left(\frac{\mathbf{q}_i^\top
+\mathbf{k}_*}{\sqrt{\text{dim}_k}}\right)\]</span></p>
+<p>divide <span class="math inline">\(\sqrt{\text{dim}_k}\)</span>,
+normalize the variance, achieve more stable and smooth softmax
+output.</p>
+<p><span class="math inline">\(Z =
+softmax(\frac{QK^\top}{\sqrt{dimk}})V\)</span> parallel computation</p>
+<h2 id="layernorm">layernorm</h2>
+<p><span class="math display">\[\mathbf{LayerNorm}(\mathbf{h}) = \alpha
+\cdot \frac{\mathbf{h} -
+\text{mean}(\mathbf{h})}{\text{std}(\mathbf{h})} + \beta\]</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">LayerNorm</span>(nn.Module):<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, features, eps=<span class="hljs-number">1e-6</span></span>):<br>        <span class="hljs-built_in">super</span>(LayerNorm, <span class="hljs-variable language_">self</span>).__init__()<br>        <span class="hljs-variable language_">self</span>.a_2 = nn.Parameter(torch.ones(features)) <span class="hljs-comment">#参数</span><br>        <span class="hljs-variable language_">self</span>.b_2 = nn.Parameter(torch.zeros(features))<br>        <span class="hljs-variable language_">self</span>.eps = eps <span class="hljs-comment">#一个很小的数，防止除以0</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-comment"># x:(seqlen,feature)</span><br>        mean = x.mean(-<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)<br>        std = x.std(-<span class="hljs-number">1</span>, keepdim=<span class="hljs-literal">True</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.a_2 * (x - mean) / (std + <span class="hljs-variable language_">self</span>.eps) + <span class="hljs-variable language_">self</span>.b_2<br></code></pre></td></tr></table></figure>
+<p>conbined with resnet: <span
+class="math inline">\(h_{out}=F(layernorm(h))+h\)</span></p>
+<p>batchnorm往往需要batchsize比较大，但当我们训大语言模型的时候batchsize可能达不到那么大。而且qkv的维度d是确定的，但seqlen不确定，所以layernorm更加适合sequence
+model。</p>
+<h2 id="multihead">multihead</h2>
+<p>每一个head一套qkv的权重矩阵，最后concat再linear</p>
+<p><img src="/img/nlp2_part1/nlp=head.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="positional-encoding">positional encoding</h2>
+<p>Without RNN, attention alone does not have order information!</p>
+<blockquote>
+<p><strong>Exercise:</strong> Given any <span
+class="math inline">\(\text{pos}\)</span> vector and a fixed number
+<span class="math inline">\(k\)</span>, can you represent <span
+class="math inline">\(\text{pos} + k\)</span> as a linear transform of
+<span class="math inline">\(\text{pos}\)</span>?</p>
+<p><strong>Hint:</strong> <span class="math inline">\(\sin(A+B) = \sin A
+\cos B + \sin B \cos A\)</span></p>
+</blockquote>
+<p>这里的 <span class="math inline">\(\text{pos}\)</span> 是指位置 <span
+class="math inline">\(pos\)</span> 的位置编码向量，而 <span
+class="math inline">\(\text{pos}+k\)</span> 是指位置 <span
+class="math inline">\(pos+k\)</span> 的位置编码向量。</p>
+<p>假设位置编码向量的第 <span class="math inline">\(i\)</span>
+个维度分量定义如下： <span class="math display">\[\text{PE}_{\text{pos},
+i} = \sin(\omega_i \cdot \text{pos})\]</span></p>
+<p>其中 <span class="math inline">\(\omega_i\)</span> 是与维度 <span
+class="math inline">\(i\)</span> 相关的固定频率项。</p>
+<p>现在，我们来看<strong>位置 <span
+class="math inline">\(\text{pos}+k\)</span></strong> 的第 <span
+class="math inline">\(i\)</span> 个分量： <span
+class="math display">\[\text{PE}_{\text{pos}+k, i} = \sin(\omega_i \cdot
+(\text{pos} + k))\]</span></p>
+<p>利用提示中的<strong>三角恒等式</strong> <span
+class="math inline">\(\sin(A+B) = \sin A \cos B + \sin B \cos
+A\)</span>，其中 <span class="math inline">\(A = \omega_i \cdot
+\text{pos}\)</span>，<span class="math inline">\(B = \omega_i \cdot
+k\)</span>：</p>
+<p><span class="math display">\[\text{PE}_{\text{pos}+k, i} =
+\underbrace{\sin(\omega_i \cdot \text{pos})}_{\text{PE}_{\text{pos}, i}}
+\cdot \underbrace{\cos(\omega_i \cdot k)}_{\text{固定常量}} +
+\underbrace{\cos(\omega_i \cdot \text{pos})}_{\text{PE}_{\text{pos},
+i}^{\text{perp}}} \cdot \underbrace{\sin(\omega_i \cdot
+k)}_{\text{固定常量}}\]</span></p>
+<p><span class="math display">\[\mathbf{PE}_{\text{pos}+k} =
+\mathbf{A}_k \cdot \mathbf{PE}_{\text{pos}}\]</span></p>
+<h2 id="lr-warm-up-and-linear-decay">lr warm-up and linear decay</h2>
+<p>We usually start with a large learning rate (lr), and then decay over
+time.</p>
+<p>For transformer models, it is very useful to set a small warmup
+stage, where we first gradually increase lr from zero to the starting
+value.</p>
+<p>Without this trick, training is likely to get stuck.</p>
+<h1 id="bert">BERT</h1>
+<p>pretrained with <strong>self supervised training</strong>, no
+labels!</p>
+<p>Two major objective used in BERT pretraining:</p>
+<p>• Masked language modeling (MLM)</p>
+<p>• Next sentence prediction (NSP)</p>
+<h2 id="mlm-masked-language-modeling">MLM Masked language modeling</h2>
+<p>Randomly mask (via a [mask] token) 15% of the tokens in each
+sequence.</p>
+<p>Ask the transformer model to predict the masked token on the top
+layer via standard cross-entropy loss.</p>
+<table>
+
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">掩码语言建模 (MLM) - BERT</th>
+<th style="text-align: left;">连续词袋模型 (CBOW) - Word2Vec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>模型架构</strong></td>
+<td style="text-align: left;"><strong>深层</strong> Transformer 编码器
+(Deep Transformer Encoder)。</td>
+<td style="text-align: left;"><strong>浅层</strong> 神经网络 (Shallow
+Neural Network)。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>训练目标</strong></td>
+<td style="text-align: left;"><strong>预测</strong> 输入序列中被
+<strong><code>[MASK]</code></strong> 标记随机替换的词元。</td>
+<td style="text-align: left;"><strong>预测</strong> 窗口内缺失的
+<strong>目标词语</strong>，根据其周围的上下文词语。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>上下文利用</strong></td>
+<td style="text-align: left;">利用 <strong>双向上下文</strong>
+(左侧和右侧) 以及 <strong>整个序列</strong> 的信息。依赖 Transformer 的
+<strong>自注意力机制</strong> 来捕捉远距离依赖。</td>
+<td
+style="text-align: left;">仅利用<strong>固定大小</strong>窗口内的上下文词语。将上下文词语视为“词袋”，通常通过求和或平均它们的向量来表示上下文。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>词序敏感性</strong></td>
+<td style="text-align: left;"><strong>敏感。</strong> 由于使用了
+Transformer
+架构和<strong>位置编码</strong>，模型知道词语的先后顺序。</td>
+<td style="text-align: left;"><strong>不敏感。</strong>
+因为它将上下文词语视为一个“袋子”进行处理
+(求和/平均)，丢失了词语的先后顺序信息。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>输出结果</strong></td>
+<td style="text-align: left;"><strong>语境化/动态嵌入
+(Contextualized/Dynamic Embeddings)。</strong>
+同一个词在不同句子中的含义不同，其向量也<strong>不同</strong>。</td>
+<td style="text-align: left;"><strong>静态嵌入 (Static
+Embeddings)。</strong>
+无论出现在什么语境中，一个词语都只有一个<strong>固定</strong>的向量表示。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>处理多义词</strong></td>
+<td style="text-align: left;"><strong>出色。</strong>
+能区分多义词的不同含义（例如，“银行”作为金融机构和“河岸”的含义）。</td>
+<td style="text-align: left;"><strong>较弱。</strong>
+无法区分多义词的不同含义，会为所有语境下的多义词学习<strong>同一个</strong>向量。</td>
+</tr>
+</tbody>
+</table>
+<p>Problem: If we only add loss for masked tokens, then the transformer
+would not build good representations for nonmasked tokens.</p>
+<p>For 10% of the time, we replace [M] with a random token.</p>
+<p>For another 10% of the time, we do not change the original token.</p>
+<p>80% remaining time, the mask token is used.</p>
+<h2 id="nsp-next-sentence-prediction">NSP Next Sentence Prediction</h2>
+<p>In addition to MLM, we also add a [CLS] token and ask BERT to predict
+whether sentence2 is the next sentence of sentence1.</p>
+<p>[CLS] 来分类，[SEP] 来分割句子</p>
+<h2 id="finetune">finetune</h2>
+<p>BERT finetuning cont.</p>
+<p>• After pretraining, we slightly modify the top layers of BERT and
+tune it on downstream tasks</p>
+<p>top layer: 输出 <span class="math inline">\(T\)</span> 的层</p>
+<h2 id="efficient-approach">efficient approach</h2>
+<h3 id="electra">ELECTRA</h3>
+<p>生成器 (Generator)</p>
+<ul>
+<li><strong>工作原理：</strong>
+它通常是一个<strong>小型</strong>的<strong>掩码语言模型
+(MLM)</strong>。</li>
+<li><strong>输入处理：</strong> 它首先像 BERT
+那样，对输入句子进行<strong>掩码</strong>（如将 "the chef cooked the
+meal" 变为 "the chef [MASK] the meal"）。</li>
+<li><strong>输出：</strong> 它预测被掩码的词元，并用这些<strong>貌似合理
+(plausible)</strong> 的预测替代原句子中的一些词元。
+<ul>
+<li><em>示例：</em> 原始句子中的 <code>cooked</code> 被
+<code>[MASK]</code>，生成器可能会预测出 <code>ate</code>，然后用
+<code>ate</code> 替换原词。</li>
+</ul></li>
+</ul>
+<p>判别器 (Discriminator) - ELECTRA 模型本身</p>
+<ul>
+<li><strong>输入：</strong> 接收被生成器<strong>替换（损坏）</strong>
+过的输入序列。</li>
+<li>这是一个二元分类任务：对每个词元 <span
+class="math inline">\(x_i\)</span>，预测 <span
+class="math inline">\(P(\text{IsReplaced}|x_i)\)</span>。</li>
+</ul>
+<p>This new pre-training task is more efficient than MLM because the
+task is defined over all input tokens rather than just the small subset
+that was masked out.</p>
+<h3 id="longformer-sliding-window-attention">Longformer Sliding Window
+Attention</h3>
+<p><strong>每个 Token 的计算量：</strong> 对于序列中的<strong>任意一个
+token</strong>（查询 Q），它只需要计算与它局部窗口 <span
+class="math inline">\(w\)</span> 内的<strong>其他 <span
+class="math inline">\(w\)</span> 个 token</strong>（键 K）的注意力得分,
+<span class="math inline">\(O(w)\)</span>。 总计算量 <span
+class="math inline">\(\approx n \times O(w) = O(n \cdot
+w)\)</span>。</p>
+<p>For an embedding on layer L, what’s its receptive field? (how many
+input tokens does it cover?)</p>
+<p>Lxw</p>
+<p><img src="/img/nlp2_part1/nlp=win.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>Combined with dilated sliding window</p>
+<p>We can add gaps in the window to make it even wider with the same
+amount of compute(捕捉长距离依赖)</p>
+<p>We can use a combination of 2 heads of dilated and other heads with
+local sliding window.（用multihead实现短距离长距离结合）</p>
+<h1 id="vae-lm不考">VAE-LM（不考）</h1>
+<p><img src="/img/nlp2_part1/nlp=vae.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<table>
+
+<thead>
+<tr>
+<th style="text-align: left;">组件</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">功能</th>
+<th style="text-align: left;">结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><span
+class="math inline">\(q_{\phi}\)</span> (Encoder)</strong></td>
+<td style="text-align: left;"><strong>编码器/后验模型</strong></td>
+<td style="text-align: left;">接收输入句子 <span
+class="math inline">\(\mathbf{x}\)</span>，将它压缩成一个潜在语义向量
+<span class="math inline">\(\mathbf{z}\)</span> 的分布。</td>
+<td style="text-align: left;">1. <strong><span
+class="math inline">\(\text{RNNs}\)</span> (LSTM Cell):</strong>
+编码整个句子 <span class="math inline">\(\mathbf{x}\)</span>。 2.
+<strong>Linear Layers:</strong> 根据 <span
+class="math inline">\(\text{RNN}\)</span> 的最终隐藏状态，输出潜变量
+<span class="math inline">\(\mathbf{z}\)</span> 分布的参数 <span
+class="math inline">\(\mu\)</span> (均值) 和 <span
+class="math inline">\(\sigma\)</span> (方差)。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><span
+class="math inline">\(\mathbf{z}\)</span></strong></td>
+<td style="text-align: left;"><strong>潜在变量 (Latent
+Variable)</strong></td>
+<td
+style="text-align: left;">一个连续的低维向量，代表整个句子的<strong>全局语义</strong>。</td>
+<td style="text-align: left;">从 <span
+class="math inline">\(\mathbf{z}\)</span> 的分布中采样得到。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><span
+class="math inline">\(p_{\theta}\)</span> (Decoder)</strong></td>
+<td style="text-align: left;"><strong>解码器/生成模型</strong></td>
+<td style="text-align: left;">接收 <span
+class="math inline">\(\mathbf{z}\)</span>
+作为输入，并逐字生成（重构）句子 <span
+class="math inline">\(\mathbf{x}\)</span>。</td>
+<td style="text-align: left;">1. <strong><span
+class="math inline">\(\text{RNNs}\)</span> (LSTM Cell):</strong> 接收
+<span class="math inline">\(\mathbf{z}\)</span> 作为初始状态或输入。 2.
+<strong>生成过程:</strong> 从起始符号（如 <code>&lt;EOS&gt;</code>
+在图中似乎被误置，通常是 <code>&lt;BOS&gt;</code> 或 <span
+class="math inline">\(\mathbf{z}\)</span>）开始，逐步生成 <span
+class="math inline">\(\text{work} \rightarrow \text{work} \rightarrow
+\text{&lt;EOS&gt;}\)</span>。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>后验 (<span class="math inline">\(q_{\phi}\)</span>) 和先验
+(<span class="math inline">\(p(\mathbf{z})\)</span>) 分布：</strong>
+图中明确指出，先验分布 <span
+class="math inline">\(p(\mathbf{z})\)</span> 和后验分布 <span
+class="math inline">\(q_{\phi}(\mathbf{z} | \mathbf{x})\)</span>
+都是<strong>高斯分布
+(Gaussian)</strong>，且通常是对角协方差矩阵（diagonal），这意味着它们在潜空间中是可参数化的。</li>
+</ul>
+<hr />
+<h2 id="生成-generation-过程">🚀 生成 (Generation) 过程</h2>
+<p>生成新句子时，我们只使用<strong>解码器 <span
+class="math inline">\(p_{\theta}\)</span></strong>：</p>
+<ol type="1">
+<li><strong>Sample <span class="math inline">\(\mathbf{z}\)</span> from
+prior <span class="math inline">\(p(\mathbf{z})\)</span>:</strong>
+从一个简单的<strong>先验分布</strong>（如标准正态分布 <span
+class="math inline">\(\mathcal{N}(\mathbf{0},
+\mathbf{I})\)</span>）中随机采样一个潜在语义向量 <span
+class="math inline">\(\mathbf{z}\)</span>。这个 <span
+class="math inline">\(\mathbf{z}\)</span>
+就是我们希望生成句子所拥有的<strong>意图或主题</strong>。</li>
+<li><strong>Sample <span class="math inline">\(\mathbf{x}\)</span> from
+our generative model <span class="math inline">\(p_{\theta}(\mathbf{x} |
+\mathbf{z})\)</span>:</strong> 将这个采样的 <span
+class="math inline">\(\mathbf{z}\)</span>
+喂给<strong>解码器</strong>，解码器 <span
+class="math inline">\(\text{RNN}\)</span> 就会逐词生成句子 <span
+class="math inline">\(\mathbf{x}\)</span>，直到生成结束符号 (<span
+class="math inline">\(\text{&lt;EOS&gt;}\)</span>)。</li>
+</ol>
+<hr />
+<h2 id="训练目标textvae-textelbo-最大化">📈 训练目标：<span
+class="math inline">\(\text{VAE}\)</span> "<span
+class="math inline">\(\text{ELBO}\)</span>" (最大化)</h2>
+<p><span class="math display">\[
+\mathcal{L}(\theta; \mathbf{x}) =
+\underbrace{-\text{KL}(q_{\phi}(\mathbf{z} | \mathbf{x}) \|
+p(\mathbf{z}))}_{\text{I. KL Divergence (Regularization Term)}} +
+\underbrace{\mathbb{E}_{q_{\phi}(\mathbf{z} | \mathbf{x})}[\log
+p_{\theta}(\mathbf{x} | \mathbf{z})]}_{\text{II. Expectation of
+Log-Likelihood (Reconstruction Term)}}
+\]</span></p>
+<ul>
+<li><h3 id="i.-textkl-散度项-textkldots">I. <span
+class="math inline">\(\text{KL}\)</span> 散度项（<span
+class="math inline">\(-\text{KL}(\dots)\)</span>）</h3>
+<span class="math display">\[-\text{KL}(q_{\phi}(\mathbf{z} |
+\mathbf{x}) \| p(\mathbf{z}))\]</span>
+<ul>
+<li><strong>作用：</strong>
+这是一个<strong>正则化项</strong>，它衡量了<strong>编码器</strong>输出的后验分布
+<span class="math inline">\(q_{\phi}(\mathbf{z} | \mathbf{x})\)</span>
+与简单的<strong>先验分布</strong> <span
+class="math inline">\(p(\mathbf{z})\)</span> 之间的差异。</li>
+</ul></li>
+<li><h3 id="ii.-重构项-mathbbelog-p_thetamathbfx-mathbfz">II. 重构项
+(<span class="math inline">\(\mathbb{E}[\log p_{\theta}(\mathbf{x} |
+\mathbf{z})]\)</span>)</h3>
+<span class="math display">\[\mathbb{E}_{q_{\phi}(\mathbf{z} |
+\mathbf{x})}[\log p_{\theta}(\mathbf{x} | \mathbf{z})]\]</span>
+<ul>
+<li><strong>作用：</strong>
+这是一个<strong>重构项</strong>，它衡量了<strong>解码器</strong>从潜在向量
+<span class="math inline">\(\mathbf{z}\)</span> 重构出原始句子 <span
+class="math inline">\(\mathbf{x}\)</span>
+的<strong>对数概率</strong>。</li>
+</ul></li>
+<li><h3 id="证据下界">证据下界</h3>
+<span class="math inline">\(\text{ELBO}\)</span>
+的值<strong>小于或等于</strong>数据的对数边缘似然 <span
+class="math inline">\(\log p(\mathbf{x})\)</span>： <span
+class="math display">\[\mathcal{L}(\theta; \mathbf{x}) \leq \log
+p(\mathbf{x})\]</span> 因此，最大化 <span
+class="math inline">\(\mathcal{L}(\theta; \mathbf{x})\)</span>
+就是在最大化 <span class="math inline">\(\log p(\mathbf{x})\)</span>
+的一个<strong>下界</strong>，从而间接优化了整个模型。</li>
+</ul>
+<h3 id="textelbo-推导过程解释">📈 <span
+class="math inline">\(\text{ELBO}\)</span> 推导过程解释</h3>
+<p>推导的目标是找到 <span class="math inline">\(\log
+p(\mathbf{x})\)</span> 的一个<strong>下界</strong>，我们称之为 <span
+class="math inline">\(\mathcal{L}(\theta; \mathbf{x})\)</span> 或 <span
+class="math inline">\(\text{ELBO}\)</span>。</p>
+<p><span class="math display">\[
+\ln p(\mathbf{x}) = \ln \int_{\mathbf{z}} p(\mathbf{x}, \mathbf{z})
+d\mathbf{z}
+\]</span></p>
+<p><span class="math display">\[
+= \ln \int_{\mathbf{z}} p(\mathbf{x}, \mathbf{z}) \frac{q(\mathbf{z} |
+\mathbf{x})}{q(\mathbf{z} | \mathbf{x})} d\mathbf{z}
+\]</span></p>
+<p><span class="math display">\[
+\ge \mathbb{E}_{q(\mathbf{z} | \mathbf{x})}\left[\ln \frac{p(\mathbf{x},
+\mathbf{z})}{q(\mathbf{z} | \mathbf{x})}\right]
+\]</span></p>
+<ul>
+<li><strong>说明：</strong> 这是推导的关键一步。由于 <span
+class="math inline">\(\ln(\cdot)\)</span> 是一个<strong>凹函数 (concave
+function)</strong>，根据 <strong>詹森不等式 (Jensen's
+Inequality)</strong>，对于任何随机变量 <span
+class="math inline">\(Y\)</span>： <span
+class="math display">\[\ln(\mathbb{E}[Y]) \ge
+\mathbb{E}[\ln(Y)]\]</span></li>
+</ul>
+<p><span class="math display">\[
+= \mathbb{E}_{q(\mathbf{z} | \mathbf{x})}\left[\ln \frac{p(\mathbf{x},
+\mathbf{z})}{q(\mathbf{z} | \mathbf{x})}\right]
+\]</span> <span class="math display">\[
+= \mathbb{E}_{q(\mathbf{z} | \mathbf{x})}\left[\ln \frac{p(\mathbf{x} |
+\mathbf{z}) p(\mathbf{z})}{q(\mathbf{z} | \mathbf{x})}\right]
+\]</span></p>
+<p><span class="math display">\[
+= \mathbb{E}_{q(\mathbf{z} | \mathbf{x})}\left[\ln p(\mathbf{x} |
+\mathbf{z})\right] + \mathbb{E}_{q(\mathbf{z} | \mathbf{x})}\left[\ln
+\frac{p(\mathbf{z})}{q(\mathbf{z} | \mathbf{x})}\right]
+\]</span></p>
+<p><span class="math display">\[
+= \mathbb{E}_{q(\mathbf{z} | \mathbf{x})}\left[\ln p(\mathbf{x} |
+\mathbf{z})\right] - \int_{\mathbf{z}} q(\mathbf{z} | \mathbf{x}) \ln
+\frac{q(\mathbf{z} | \mathbf{x})}{p(\mathbf{z})} d\mathbf{z}
+\]</span> <span class="math display">\[
+= \text{likelihood} - \mathbb{D}_{\text{KL}}[q(\mathbf{z} | \mathbf{x})
+\| p(\mathbf{z})]
+\]</span></p>
+<p>在 <span class="math inline">\(\text{VAE}\)</span>
+训练中，我们通过<strong>最大化</strong>这个 <span
+class="math inline">\(\text{ELBO}\)</span>
+目标函数，间接实现了对真实数据分布 <span
+class="math inline">\(p(\mathbf{x})\)</span> 的建模。</p>
+<p>从 <strong>KL 散度的定义</strong>开始： <span
+class="math display">\[D_{KL}(q_{\phi}(\mathbf{z}|\mathbf{x}) ||
+p_{\theta}(\mathbf{z}|\mathbf{x})) = E_{q_{\phi}(\mathbf{z}|\mathbf{x})}
+\left[ \log
+\frac{q_{\phi}(\mathbf{z}|\mathbf{x})}{p_{\theta}(\mathbf{z}|\mathbf{x})}
+\right]\]</span></p>
+<p>将对数中的除法分解为减法： <span class="math display">\[D_{KL} =
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log
+q_{\phi}(\mathbf{z}|\mathbf{x}) \right] -
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log
+p_{\theta}(\mathbf{z}|\mathbf{x}) \right]\]</span></p>
+<p>根据贝叶斯定理 <span class="math inline">\(p(\mathbf{z}|\mathbf{x}) =
+\frac{p(\mathbf{x}, \mathbf{z})}{p(\mathbf{x})}\)</span>，我们有 <span
+class="math inline">\(\log p(\mathbf{z}|\mathbf{x}) = \log p(\mathbf{x},
+\mathbf{z}) - \log p(\mathbf{x})\)</span>。代入上式：</p>
+<p><span class="math display">\[D_{KL} =
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log
+q_{\phi}(\mathbf{z}|\mathbf{x}) \right] -
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log p_{\theta}(\mathbf{x},
+\mathbf{z}) - \log p_{\theta}(\mathbf{x}) \right]\]</span></p>
+<p>将期望中的 <span class="math inline">\(\log
+p_{\theta}(\mathbf{x})\)</span> 移出（因为它与 <span
+class="math inline">\(\mathbf{z}\)</span> 无关，期望值就是它本身）：</p>
+<p><span class="math display">\[D_{KL} =
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log
+q_{\phi}(\mathbf{z}|\mathbf{x}) \right] -
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log p_{\theta}(\mathbf{x},
+\mathbf{z}) \right] + \log p_{\theta}(\mathbf{x})\]</span></p>
+<p>重新排列各项： <span class="math display">\[\log
+p_{\theta}(\mathbf{x}) = E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log
+p_{\theta}(\mathbf{x}, \mathbf{z}) \right] -
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log
+q_{\phi}(\mathbf{z}|\mathbf{x}) \right] +
+D_{KL}(q_{\phi}(\mathbf{z}|\mathbf{x}) ||
+p_{\theta}(\mathbf{z}|\mathbf{x}))\]</span></p>
+<p>最后，我们将前两项合并，得到 ELBO 的定义： <span
+class="math display">\[\mathcal{L}(\theta, \phi) =
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} \left[ \log
+\frac{p_{\theta}(\mathbf{x},
+\mathbf{z})}{q_{\phi}(\mathbf{z}|\mathbf{x})} \right]\]</span></p>
+<p>所以，我们最终得到这个关键等式： <span class="math display">\[\log
+p(\mathbf{x}) = \mathcal{L}(\theta, \phi) +
+D_{KL}(q_{\phi}(\mathbf{z}|\mathbf{x}) ||
+p_{\theta}(\mathbf{z}|\mathbf{x}))\]</span></p>
+<h2 id="重参数">重参数</h2>
+<p><span class="math display">\[
+\mathcal{L}(\theta; \mathbf{x}) =
+\underbrace{-\text{KL}(q_{\phi}(\mathbf{z} | \mathbf{x}) \|
+p(\mathbf{z}))}_{\text{I. KL Divergence (Regularization Term)}} +
+\underbrace{\mathbb{E}_{q_{\phi}(\mathbf{z} | \mathbf{x})}[\log
+p_{\theta}(\mathbf{x} | \mathbf{z})]}_{\text{II. Expectation of
+Log-Likelihood (Reconstruction Term)}}
+\]</span></p>
+<p>the second term involves a sampling operation from the parameterized
+q, which we can not directly back-prop</p>
+<p>在引入重新参数化技巧之前，我们计算重构项的梯度是这样的：</p>
+<p><span class="math display">\[\nabla_{\phi}
+E_{q_{\phi}(\mathbf{z}|\mathbf{x})} [\log
+p_{\theta}(\mathbf{x}|\mathbf{z})]\]</span></p>
+<p>当我们使用蒙特卡洛采样来近似这个期望时：</p>
+<p><span class="math display">\[\nabla_{\phi} \left( \frac{1}{M}
+\sum_{m=1}^{M} \log p_{\theta}(\mathbf{x}|\mathbf{z}^{(m)}) \right)
+\quad \text{其中 } \mathbf{z}^{(m)} \sim
+q_{\phi}(\mathbf{z}|\mathbf{x})\]</span></p>
+<p><strong>问题核心在于：</strong></p>
+<ul>
+<li><strong>采样过程 (<span class="math inline">\(\mathbf{z} \sim
+q_{\phi}(\mathbf{z}|\mathbf{x})\)</span>)
+是一个离散的、不可逆的随机操作。</strong></li>
+<li>它就像一个<strong>黑箱</strong>，输入是参数 <span
+class="math inline">\(\phi\)</span>（决定了 <span
+class="math inline">\(q\)</span> 的 <span
+class="math inline">\(\mu\)</span> 和 <span
+class="math inline">\(\sigma\)</span>），输出是样本 <span
+class="math inline">\(\mathbf{z}\)</span>。从数学上讲，<strong>这个从
+<span class="math inline">\(\phi\)</span> 到 <span
+class="math inline">\(\mathbf{z}\)</span>
+的映射是不可导的</strong>。</li>
+<li>因此，我们无法利用链式法则计算 <span
+class="math inline">\(\mathbf{z}\)</span> 对 <span
+class="math inline">\(\phi\)</span> 的梯度 <span
+class="math inline">\(\frac{\partial \mathbf{z}}{\partial
+\phi}\)</span>，也就无法将损失函数的梯度 <span
+class="math inline">\(\frac{\partial \mathcal{L}}{\partial
+\mathbf{z}}\)</span> 传递回 <span
+class="math inline">\(\phi\)</span>。</li>
+</ul>
+<p>重新参数化技巧就是通过<strong>重写随机变量的生成过程</strong>，将随机性（<span
+class="math inline">\(\epsilon\)</span>）和参数依赖性 (<span
+class="math inline">\(\phi\)</span> 通过 <span
+class="math inline">\(\mu, \sigma\)</span>)
+<strong>分离</strong>，从而创建一条<strong>可导的路径 (pathwise
+gradient)</strong>：</p>
+<p><span class="math display">\[\mathbf{z} = \mu(\mathbf{x}, \phi) +
+\sigma(\mathbf{x}, \phi) \odot \epsilon\]</span></p>
+<p><strong>现在的计算图是：</strong></p>
+<ol type="1">
+<li><span class="math inline">\(\phi \to (\mu, \sigma)\)</span>
+(确定性，可导)</li>
+<li><span class="math inline">\((\mu, \sigma)\)</span> 和 <span
+class="math inline">\(\epsilon\)</span> (随机但<strong>独立于</strong>
+<span class="math inline">\(\phi\)</span>) <span
+class="math inline">\(\to \mathbf{z}\)</span> (确定性函数 <span
+class="math inline">\(g\)</span>，可导)</li>
+<li><span class="math inline">\(\mathbf{z} \to \log
+p(\mathbf{x}|\mathbf{z})\)</span> (确定性，可导)</li>
+<li><span class="math inline">\(\log p(\mathbf{x}|\mathbf{z}) \to
+\mathcal{L}\)</span></li>
+</ol>
+<p>由于 <span class="math inline">\(\mathbf{z}\)</span> 现在是 <span
+class="math inline">\(\phi\)</span>
+的一个<strong>确定性函数</strong>（通过 <span
+class="math inline">\(\mu\)</span> 和 <span
+class="math inline">\(\sigma\)</span>），我们可以直接使用链式法则求导：</p>
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial
+\phi} = \frac{\partial \mathcal{L}}{\partial \mathbf{z}} \frac{\partial
+\mathbf{z}}{\partial \mu} \frac{\partial \mu}{\partial \phi} +
+\frac{\partial \mathcal{L}}{\partial \mathbf{z}} \frac{\partial
+\mathbf{z}}{\partial \sigma} \frac{\partial \sigma}{\partial
+\phi}\]</span></p>
+<p>注：<span class="math inline">\(\frac{\partial \mathbf{z}}{\partial
+\sigma} =\epsilon\)</span></p>
+<p><img src="/img/nlp2_part1/nlp=re.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="optimization-challenge">optimization challenge</h2>
+<p>KL term quickly decrease to zero (throwing away latent
+information)</p>
+<p>Comparing to the second term, the KL-prior term is easier to optimize
+(why?).</p>
+<p>• The RNN decoder is strong and has ground-truth history in its
+input.</p>
+<h3 id="kl-代价退火-kl-cost-annealing">1. KL 代价退火 (KL Cost
+Annealing) 🌡️</h3>
+<ul>
+<li><strong>方法：</strong> 在目标函数中，为 KL
+散度项添加一个<strong>可变权重 <span
+class="math inline">\(\beta\)</span></strong>。
+<ul>
+<li>在训练开始时，设置 <span class="math inline">\(\beta\)</span>
+<strong>接近或等于零</strong>。</li>
+<li>随着训练的进行，<span class="math inline">\(\beta\)</span>
+<strong>逐渐增加</strong>，直到达到 1。</li>
+</ul></li>
+<li><strong>数学形式：</strong> <span
+class="math display">\[\mathcal{L}(\theta; \vec{x}) = \mathbb{E}[\log
+p_\theta(\vec{x}|\vec{z})] - \beta \cdot
+\text{KL}(q_\phi(\vec{z}|\vec{x})||p(\vec{z}))\]</span></li>
+<li><strong>直觉解释：</strong>
+<ol type="1">
+<li><strong>早期 ( <span class="math inline">\(\beta \approx 0\)</span>
+):</strong>
+目标函数几乎只剩下<strong>重构项</strong>。这给了编码器和解码器充足的机会，去学习一个<strong>最大化信息量</strong>的潜在表示
+<span class="math inline">\(\vec{z}\)</span>，而不必担心 <span
+class="math inline">\(\vec{z}\)</span> 是否接近先验分布 <span
+class="math inline">\(p(\vec{z})\)</span>。</li>
+<li><strong>后期 ( <span class="math inline">\(\beta \to 1\)</span>
+):</strong> KL
+项的权重逐渐增大，开始发挥其<strong>正则化</strong>作用，迫使学习到的潜在分布
+<span class="math inline">\(q_\phi(\vec{z}|\vec{x})\)</span> 接近先验
+<span class="math inline">\(p(\vec{z})\)</span>。</li>
+</ol></li>
+<li><strong>效果：</strong> 这种方法有效地让模型先“学会说话”（学习有用的
+<span class="math inline">\(\vec{z}\)</span>），然后再“规范语法”（满足
+KL 约束），从而避免了 <span class="math inline">\(\vec{z}\)</span>
+在训练初期就被优化器轻易抛弃。</li>
+</ul>
+<hr />
+<h3 id="输入词丢弃-input-word-dropping">2. 输入词丢弃 (Input Word
+Dropping) ✂️</h3>
+<ul>
+<li><strong>方法：</strong>
+这是一种直接<strong>削弱解码器</strong>的方法。
+<ul>
+<li>在训练时，随机地<strong>移除部分或全部</strong>用于<strong>教师强制</strong>的
+<strong>Ground-Truth 历史词</strong>（即 <span
+class="math inline">\(x_{t-1}\)</span>）。forcing the model to rely on
+the latent vector。 ---</li>
+</ul></li>
+</ul>
+<h3 id="词袋损失-bag-of-words-loss-bow-loss">3. 词袋损失 (Bag-of-Words
+Loss, BoW Loss) 🛍️</h3>
+<ul>
+<li><strong>方法：</strong>
+除了标准的序列重构损失外，<strong>并行地</strong>训练一个辅助解码器（或者在主解码器中增加一个分支）来预测输入
+<span class="math inline">\(\vec{x}\)</span> 的<strong>词袋表示
+(Bag-of-Words, BoW)</strong>。
+<ul>
+<li><strong>词袋表示：</strong> 是一个向量，只包含 <span
+class="math inline">\(\vec{x}\)</span>
+中<strong>每个词出现的次数</strong>，而忽略词的顺序（即<strong>非序列信息</strong>）。</li>
+<li>这个 BoW 损失旨在确保 <span class="math inline">\(\vec{z}\)</span>
+至少编码了 <span class="math inline">\(\vec{x}\)</span>
+的<strong>内容信息</strong>，即使没有编码顺序信息。</li>
+</ul></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/NLP/" class="print-no-link">#NLP</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>黎明之前：Transformer之前的自然语言处理</div>
+      <div>http://example.com/2025/12/12/nlp2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>瑾瑜當年</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/12/12/nlp3/" title="破晓之刻：Transformer的诞生与自然语言处理前沿">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">破晓之刻：Transformer的诞生与自然语言处理前沿</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/12/nlp1/" title="老派自然语言处理之必要">
+                        <span class="hidden-mobile">老派自然语言处理之必要</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.39/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo-haru.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname","enable":true},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:true,models:[{"path":"https://model.hacxy.cn/HK416-1-normal/model.json","scale":0.1,"motionPreloadStrategy":"ALL","position":[-10,60],"stageStyle":{"height":520},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+</html>

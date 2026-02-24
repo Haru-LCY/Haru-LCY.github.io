@@ -1,0 +1,1522 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/kazuki.jpg">
+  <link rel="icon" href="/img/kazuki.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="瑾瑜當年">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Transformer decoder and GPT Apply attention mask to forbid the attention from future timesteps to train AR-LM. A transformer model for AR-LM is also referred to as a transformer decoder. 12345678910de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="破晓之刻：Transformer的诞生与自然语言处理前沿">
+<meta property="og:url" content="http://example.com/2025/12/12/nlp3/index.html">
+<meta property="og:site_name" content="港湾">
+<meta property="og:description" content="Transformer decoder and GPT Apply attention mask to forbid the attention from future timesteps to train AR-LM. A transformer model for AR-LM is also referred to as a transformer decoder. 12345678910de">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/nlp3/nlp=rl.png">
+<meta property="og:image" content="http://example.com/img/nlp3/nlp=kld.png">
+<meta property="og:image" content="http://example.com/img/nlp3/nlp=dec.png">
+<meta property="og:image" content="http://example.com/img/nlp3/nlp=encdec.png">
+<meta property="og:image" content="http://example.com/img/nlp3/nlp=cot.png">
+<meta property="og:image" content="http://example.com/img/nlp3/nlp=comp.png">
+<meta property="article:published_time" content="2025-12-12T14:54:44.000Z">
+<meta property="article:modified_time" content="2026-02-24T15:12:56.763Z">
+<meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/nlp3/nlp=rl.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>破晓之刻：Transformer的诞生与自然语言处理前沿 - 港湾</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>觀瀾</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/sea.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="破晓之刻：Transformer的诞生与自然语言处理前沿"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-12 22:54" pubdate>
+          2025年12月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          48 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">破晓之刻：Transformer的诞生与自然语言处理前沿</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-02-24T23:12:56+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="transformer-decoder-and-gpt">Transformer decoder and GPT</h1>
+<p>Apply attention mask to forbid the attention from future timesteps to
+train AR-LM.</p>
+<p>A transformer model for AR-LM is also referred to as a transformer
+decoder.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">attention</span>(<span class="hljs-params">query, key, value, mask=<span class="hljs-literal">None</span>, dropout=<span class="hljs-literal">None</span></span>):<br>    <span class="hljs-string">&quot;Compute &#x27;Scaled Dot Product Attention&#x27;&quot;</span><br>     d_k = query.size(-<span class="hljs-number">1</span>)<br>     scores = torch.matmul(query, key.transpose(-<span class="hljs-number">2</span>, -<span class="hljs-number">1</span>)) / math.sqrt(d_k)<br>     <span class="hljs-keyword">if</span> mask <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>        scores = scores.masked_fill(mask == <span class="hljs-number">0</span>, -<span class="hljs-number">1e9</span>) <span class="hljs-comment">#在mask为0的地方加一个很小的负数，保证exp之后趋于0，形状为(L_Q,L_k)</span><br>     p_attn = scores.softmax(dim=-<span class="hljs-number">1</span>)<br>     <span class="hljs-comment"># 对key维度做softmax</span><br>    output = torch.matmul(p_attn, value)<br>    <span class="hljs-keyword">return</span> output, p_attn <br></code></pre></td></tr></table></figure>
+<h2 id="gpt2">GPT2</h2>
+<p>apply the learned model zero-shot to some downstream language
+generation task (translation, summarization, QA, etc.).</p>
+<p>zero-shot：完全不微调</p>
+<p>设计一些很好的prompt来实现，比如；</p>
+<p>“Translate the following text to French. Text: [ENG TEXT] French:”
+“Given the document, answer the question. Document: [DOC] Question: [Q]
+Answer:”</p>
+<p>open-ended generation: tasks that has big freedom and diversity, like
+story or news generation.The model needs to rely its own (memory,
+consistency or creativity)</p>
+<h2 id="topk-sampling">topk sampling</h2>
+<p>We will represent <span class="math inline">\(P(\cdot |
+W_{1..i})\)</span> by <span class="math inline">\(p = (p_1, p_2, \dots,
+p_{|V|})\)</span> (where the elements are sorted so that <span
+class="math inline">\(p_1 \geq p_2 \geq p_3 \dots \geq
+p_{|V|}\)</span>).</p>
+<p>Top-K sampling transforms <span class="math inline">\(p\)</span> to
+<span class="math inline">\(\hat{p}\)</span> by: <span
+class="math display">\[\hat{p}_i = \frac{p_i \cdot \mathbb{1}\{i \leq
+K\}}{Z}\]</span> <span class="math inline">\(Z\)</span> 是归一化常数
+(normalization constant)。 <span class="math display">\[Z =
+\sum_{i=1}^{|V|} p_i \cdot \mathbb{1}\{i \leq K\} = \sum_{i=1}^{K}
+p_i\]</span>
+保留概率最大的k个，并重新归一化总概率为1。如果k=1，那就变成了greedy
+decoding了。</p>
+<p>quality-diversity trade-off</p>
+<h1 id="rethink-mle最大似然估计">Rethink MLE（最大似然估计）</h1>
+<p>MLE 目标函数 (The MLE objective): <span class="math display">\[\log
+P(W) = \sum \log P(W_i | W_{1:i-1})\]</span> * <span
+class="math inline">\(P(W_i | W_{1:i-1})\)</span> 是在给定历史上下文
+<span class="math inline">\(W_{1:i-1}\)</span> 的情况下，下一个词是
+<span class="math inline">\(W_i\)</span> 的概率。</p>
+<ul>
+<li>“Researchers thinks the teacher forcing in MLE training is to
+blame.” 在训练过程中，当模型预测下一个词 <span
+class="math inline">\(W_i\)</span> 时，它使用的历史上下文 <span
+class="math inline">\(W_{1:i-1}\)</span>
+总是来自于真实的训练数据，而不是模型自己之前预测的词。</li>
+</ul>
+<p>The exposure bias hypothesis: Due to the exposure to ground-truth
+prefix, the model is biased to only perform well during training, but
+not generation. （训练的时候前文是完美的所以表现好）</p>
+<p>Importantly, the error is assumed to accumulate during generation,
+and the generation will be incrementally distorted（扭曲）.
+自回归中错误累加</p>
+<h2 id="we-cannot-directly-use-gan">we cannot directly use GAN</h2>
+<p>GAN 的目标是让生成器 <span class="math inline">\(G\)</span> 和判别器
+<span class="math inline">\(D\)</span> 互相竞争： <span
+class="math display">\[\min_{G} \max_{D} V(D, G) =
+\mathbb{E}_{\mathbf{x} \sim p_{\text{data}}(\mathbf{x})}[\log
+D(\mathbf{x})] + \mathbb{E}_{\mathbf{z} \sim
+p_{\mathbf{z}}(\mathbf{z})}[\log(1 - D(G(\mathbf{z})))]\]</span> *
+判别器 <span class="math inline">\(D\)</span> 的目标 (最大化 <span
+class="math inline">\(\max_{D}\)</span>): * 最大化 <span
+class="math inline">\(\log D(\mathbf{x})\)</span> (真实数据 <span
+class="math inline">\(\mathbf{x}\)</span> 被判别为真的概率)。 * 最大化
+<span class="math inline">\(\log(1 - D(G(\mathbf{z})))\)</span>
+(生成数据 <span class="math inline">\(G(\mathbf{z})\)</span>
+被判别为假的概率)。 * 生成器 <span class="math inline">\(G\)</span>
+的目标 (最小化 <span class="math inline">\(\min_{G}\)</span>): * 最小化
+<span class="math inline">\(\log(1 - D(G(\mathbf{z})))\)</span>
+(即让生成数据 <span class="math inline">\(G(\mathbf{z})\)</span>
+被判别为真的概率 <span class="math inline">\(D(G(\mathbf{z}))\)</span>
+尽量高)。</p>
+<ul>
+<li><span class="math inline">\(G\)</span> (生成器)
+输出的是词汇表上概率分布。
+<ul>
+<li>为了得到一个具体的词序列（文本），需要从这个分布中进行采样（例如，选择概率最高的词或用
+Top-K 采样）。</li>
+<li>语言模型中的词是离散的（例如，"猫"、"狗"、"跑"），而不是像图像像素值那样的连续值。
+gradient cannot flow back through discrete sampling！</li>
+</ul></li>
+</ul>
+<h2 id="the-gumbel-softmax-reparameterization">The gumbel-softmax
+reparameterization</h2>
+<p>Gumbel-Max：离散采样的过程：argmax非连续不可微 <span
+class="math display">\[z = \text{one\_hot}(\arg \max_i [\log \pi_i +
+g_i])\]</span></p>
+<p>Gumbel-Softmax用 Softmax 函数替换了 <span class="math inline">\(\arg
+\max\)</span> 操作</p>
+<p><span class="math display">\[y_i = \frac{\exp((\log \pi_i + g_i) /
+\tau)}{\sum_{j=1}^{k} \exp((\log \pi_j + g_j) / \tau)}\]</span></p>
+<p>温度的作用： * <span class="math inline">\(\tau\)</span> 较大：<span
+class="math inline">\(y\)</span>
+的分布会更平滑，更接近均匀分布，但近似误差较大。 * <span
+class="math inline">\(\tau\)</span> 较小：<span
+class="math inline">\(y\)</span> 的分布会更尖锐 (sharper)，更接近
+One-Hot 向量，从而更好地近似离散的采样，并且更接近 Gumbel-Max
+的结果。</p>
+<p>对于温度也有diversity-quality trade-off</p>
+<p>However, it is shown that language GANs are actually worse than the
+MLE baseline.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">gumbel_softmax</span>(<span class="hljs-params">logits, tau=<span class="hljs-number">1.0</span>, hard=<span class="hljs-literal">False</span>, dim=-<span class="hljs-number">1</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    实现了 Gumbel-Softmax 重参数化技巧。</span><br><span class="hljs-string">    </span><br><span class="hljs-string">    参数说明:</span><br><span class="hljs-string">        logits (Tensor): 未标准化的对数概率（来自生成器 G 的输出）。</span><br><span class="hljs-string">        tau (float): 温度参数 (τ)，控制 Softmax 近似的平滑程度。</span><br><span class="hljs-string">        hard (bool): 如果为 True，则应用 Straight-Through（直通）技巧：</span><br><span class="hljs-string">                     在前向传播中使用 One-Hot 向量，而在反向传播中使用连续梯度。</span><br><span class="hljs-string">        dim (int): 应用 Softmax 的维度（通常是词汇表维度）。</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><br>    <span class="hljs-comment"># --- 1. Gumbel 噪声注入 ---</span><br>    <br>    <span class="hljs-comment"># 1a. 生成 Gumbel 噪声 g_i ~ Gumbel(0, 1)。</span><br>    <span class="hljs-comment"># 这是通过逆变换采样方法实现的：g_i = -log(-log(U))，其中 U ~ Uniform(0, 1)。</span><br>    gumbels = -torch.empty_like(logits).exponential_().log() <br>    <br>    <span class="hljs-comment"># 1b. 将 Gumbel 噪声添加到 logits 并除以温度 (tau)。</span><br>    <span class="hljs-comment"># 这对应于 Gumbel-Softmax 公式中的分子部分：(log(pi_i) + g_i) / tau</span><br>    gumbels = (logits + gumbels) / tau<br>    <br>    <span class="hljs-comment"># --- 2. 连续 Softmax 输出 (y_soft) ---</span><br>    <br>    <span class="hljs-comment"># 计算连续的、可微分的 Softmax 输出。</span><br>    <span class="hljs-comment"># 这个 y_soft 值用于在反向传播中计算梯度。</span><br>    y_soft = gumbels.softmax(dim)<br><br>    <span class="hljs-comment"># --- 3. Straight-Through（直通）技巧实现 ---</span><br>    <br>    <span class="hljs-keyword">if</span> hard:<br>        <span class="hljs-comment"># A. 前向传播（使用硬性 One-Hot 向量）</span><br>        <br>        <span class="hljs-comment"># 找到 y_soft 中最大概率值对应的索引。</span><br>        <span class="hljs-comment"># [1] 从 .max() 返回的元组中提取索引（max_indices）。</span><br>        <span class="hljs-comment"># 这模拟了 Gumbel-Max 技巧中的 arg max 操作。</span><br>        index = y_soft.<span class="hljs-built_in">max</span>(dim, keepdim=<span class="hljs-literal">True</span>)[<span class="hljs-number">1</span>]<br>        <br>        <span class="hljs-comment"># 基于最大索引，创建一个硬性（离散）的 One-Hot 向量 y_hard。</span><br>        <span class="hljs-comment"># 在前向计算中（例如作为判别器 D 的输入），使用的是 y_hard。</span><br>        y_hard = torch.zeros_like(logits).scatter_(dim, index, <span class="hljs-number">1.0</span>)<br>        <br>        <span class="hljs-comment"># B. 反向传播（使用柔性连续梯度）</span><br>        <br>        <span class="hljs-comment"># Straight-Through 表达式：ret = y_hard - y_soft.detach() + y_soft</span><br>        <span class="hljs-comment"># 梯度分析（链式法则）：</span><br>        <span class="hljs-comment"># 1. d(y_hard)/d(logits) ≈ 0 （由于离散/arg max 操作，梯度被忽略）。</span><br>        <span class="hljs-comment"># 2. d(y_soft.detach())/d(logits) = 0 （梯度被 .detach() 显式切断）。</span><br>        <span class="hljs-comment"># 3. d(y_soft)/d(logits) 是唯一有效的、平滑的梯度。</span><br>        <span class="hljs-comment"># 最终梯度：d(ret)/d(logits) ≈ d(y_soft)/d(logits)</span><br>        ret = y_hard - y_soft.detach() + y_soft<br>        <br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-comment"># 标准重参数化技巧（不使用 ST 技巧）。</span><br>        <span class="hljs-comment"># 连续的 y_soft 向量用于前向和反向传播。</span><br>        ret = y_soft<br>        <br>    <span class="hljs-keyword">return</span> ret<br></code></pre></td></tr></table></figure>
+<h2 id="policy-gradient">policy gradient</h2>
+<p><img src="/img/nlp3/nlp=rl.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>避免了采样导致的不可微分</p>
+<p>公式右侧的梯度 <span class="math inline">\(\nabla_{\theta}\)</span>
+只作用于对数概率 <span class="math inline">\(\log
+P_{\theta}(\mathbf{y}|\mathbf{x})\)</span>。 * <span
+class="math inline">\(\log P_{\theta}(\mathbf{y}|\mathbf{x})\)</span>
+是一个连续且可微分的函数，它是模型输出概率的对数，与模型参数 <span
+class="math inline">\(\theta\)</span> 之间有明确的、可微分的计算图。 *
+回报 <span class="math inline">\(r(\mathbf{x}, \mathbf{y})\)</span>
+只是一个在采样完成后计算出来的标量权重（它不依赖于 <span
+class="math inline">\(\theta\)</span>，因此求梯度时被视为常量）。 *
+采样过程 <span class="math inline">\(\mathbf{y} \sim P_{\theta}\)</span>
+被移到了期望 <span class="math inline">\(\mathbb{E}\)</span>
+的外部，通过蒙特卡洛（Monte Carlo）方法近似实现。</p>
+<h2 id="mle-希望更多的diversity">MLE 希望更多的diversity</h2>
+<p>最大似然估计 - MLE： <span class="math display">\[\arg \min_{\theta}
+\underset{W \sim P_D}{\mathbb{E}} \left[ -\frac{1}{L} \sum_{l=0}^{L-1}
+\log P_M(W_{l+1}|W_{1:l}) \right]\]</span></p>
+<p>根据链式法则，<span class="math inline">\(P_M(W) = P_M(W_1) \cdot
+P_M(W_2|W_1) \cdots
+P_M(W_L|W_{1:L-1})\)</span>，因此负对数似然可以简化为对整个序列 <span
+class="math inline">\(W\)</span> 的负对数似然的期望。</p>
+<p><span class="math display">\[\arg \min_{\theta} \underset{W \sim
+P_D}{\mathbb{E}} \left[ -\log P_M(W) \right]\]</span></p>
+<p><span class="math display">\[D_{KL}(P_D || P_M) = \underset{W \sim
+P_D}{\mathbb{E}} [\log P_D(W)] - \underset{W \sim P_D}{\mathbb{E}} [\log
+P_M(W)]\]</span></p>
+<p>前一项就是真实分布的entropy的负数，所以我们可以看出MLE是希望model的分布非常接近真实的分布</p>
+<p><img src="/img/nlp3/nlp=kld.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2
+id="exposure-bias-不是大问题the-prefix-switching-experiment">exposure
+bias 不是大问题——The Prefix Switching Experiment</h2>
+<p>第一组，给真实的句子</p>
+<p>第二组，自回归</p>
+<p>第三组，随机token前缀</p>
+<p>Did the error accumulate ?
+模型在前缀中接收到了严重的错误或干扰（打乱的或随机的
+Token），但它并没有导致整个后续序列的生成质量灾难性地下降。</p>
+<p>Mysteriously, the model self-recovers from the errors in the
+prefix.</p>
+<p>For the shuffled data prefix, the model still generates something
+related to the air force.</p>
+<p>EB-M, quantifies the quality ratio between generations from data
+prefix and a given (imperfect) prefix.</p>
+<p>The combination of MLE training and sampling algorithm is very strong
+and is the default choice.</p>
+<h1 id="sampling">sampling</h1>
+<p>topk</p>
+<p><span class="math display">\[\hat{p}_i = \frac{p_i \cdot
+\mathbf{1}\{i \leq K\}}{Z}\]</span></p>
+<p>topp</p>
+<p><span class="math display">\[\hat{p}_i = \frac{p_i \cdot
+\mathbf{1}\{\sum_{j=1}^{i-1} p_j &lt; P\}}{Z}\]</span></p>
+<p>Temperature Sampling</p>
+<p><span class="math display">\[\hat{p}_i = \frac{\exp(\log(p_i)/T)}{Z}
+= \frac{(p_i)^{1/T}}{Z}\]</span></p>
+<h2 id="它们有什么共同点">🤔 它们有什么共同点？</h2>
+<p>Entropy Reduction Order Preservation Slope Preservation</p>
+<h3 id="元素顺序得以保留">1. 元素顺序得以保留</h3>
+<p><span class="math inline">\(p_i \ge p_j \implies \hat{p}_i \ge
+\hat{p}_j\)</span></p>
+<h3 id="分布的熵被降低">2. 分布的熵被降低</h3>
+<p><span class="math inline">\(\mathcal{H}(\hat{p}) \le
+\mathcal{H}(p)\)</span></p>
+<h3 id="分布的斜率得以保留">3. 分布的斜率得以保留</h3>
+<p><span class="math display">\[\frac{\log p_i - \log p_j}{\log p_l -
+\log p_k} = \frac{\log \hat{p}_i - \log \hat{p}_j}{\log \hat{p}_l - \log
+\hat{p}_k}\]</span></p>
+<h1 id="correcting-bad-behavior-of-nlg-models">Correcting bad behavior
+of NLG models</h1>
+<h2 id="repeat">repeat</h2>
+<p>这种基于点积的匹配机制，尤其是在解码 (Decoding) 阶段与贪婪搜索
+(Greedy Search) 或波束搜索 (Beam Search) 结合时，特别容易导致重复：</p>
+<ul>
+<li>语义惯性：Transformer
+本质上是擅长捕捉局部依赖和语义一致性的。当一个序列在短时间内重复出现时，模型会认为“保持这种模式”是最安全、最一致的选择，从而在众多可能的下一个词中，倾向于选择与当前历史相似度最高的词（即点积分数最高的词）。</li>
+<li>缺乏全局抑制：标准的 Transformer
+架构在设计上缺乏一个内置的机制来惩罚或抑制刚刚生成过的内容。它只是在寻找局部最佳匹配，而点积正是找到这个局部最佳匹配（相似度）的有效工具。</li>
+</ul>
+<h3 id="biased-decoding">Biased decoding</h3>
+<p><span class="math display">\[p_i = \frac{\exp(x_i / (T \cdot I(i \in
+g)))}{\sum_{j} \exp(x_j / (T \cdot I(j \in g)))}\]</span></p>
+<ul>
+<li><p><span class="math inline">\(I(c)\)</span>：这是一个指示函数
+(Indicator Function) 或惩罚因子，定义如下： <span
+class="math display">\[I(c) = \begin{cases} \theta &amp; \text{if } c
+\text{ is True} \\ 1 &amp; \text{else} \end{cases}\]</span></p></li>
+<li><p><span class="math inline">\(\theta\)</span> (Theta)：设定为 <span
+class="math inline">\(1.2\)</span>，对重复 token
+的惩罚/偏差因子。</p></li>
+<li><p>对于新的、未重复的 Token <span class="math inline">\(i\)</span>：
+指示函数 <span class="math inline">\(I(i \in g)\)</span> 的值为 <span
+class="math inline">\(1\)</span>。</p></li>
+<li><p>对于已生成的、重复的 Token <span
+class="math inline">\(j\)</span>： 指示函数 <span
+class="math inline">\(I(j \in g)\)</span> 的值为 <span
+class="math inline">\(\theta = 1.2\)</span>，导致整个分数 <span
+class="math inline">\(x_j / (T \cdot \theta)\)</span>
+变小，降低重复的概率</p></li>
+</ul>
+<h3 id="unlikelihood-training-for-repetition">Unlikelihood training for
+repetition</h3>
+<p><span class="math display">\[\mathcal{L}^t_{\text{UL-token}} \left(
+p_\theta(\cdot|x_{&lt;t}), c^t \right) = - \alpha \sum_{c \in c^t}
+\log(1 - p_\theta(c|x_{&lt;t})) - \log
+p_\theta(x_t|x_{&lt;t})\]</span></p>
+<p>最大化似然（后一项），最小化预测出重复token的概率（前一项）</p>
+<h2 id="generic-response-problem">Generic Response Problem</h2>
+<p>模型给出的generic的回复，而不是有针对性的信息量大的回复</p>
+<p>Combined with MLE training, when the model is not sure about what to
+say, it degrades to some simple and “safe” pattern in data.</p>
+<h3 id="maximum-mutual-information-mmi">Maximum Mutual Information
+（MMI）</h3>
+<p><span class="math display">\[\text{MMI}(S; T) = \log \frac{P(S,
+T)}{P(S)P(T)}\]</span></p>
+<p><span class="math display">\[\hat{T} = \arg \max_T \left\{ \log
+P(T|S) - \log P(T) \right\}\]</span></p>
+<p>在有前文的条件下后文出现的概率-后文单独出现的概率，惩罚和前文关系不大的通用回答。</p>
+<h3 id="negative-training">negative training</h3>
+<p>用负样本告诉大模型不应该去说什么</p>
+<p><span class="math display">\[\text{Loss}_{\text{new}} = \underbrace{-
+\log P_\theta(y_{\text{pos}}|x_{\text{pos}})}_{\text{最大似然项
+(正样本)}} + \underbrace{\log
+P_\theta(y_{\text{neg}}|x_{\text{neg}})}_{\text{负样本惩罚项}}\]</span></p>
+<h1 id="transformer-encoder-decoder">Transformer encoder-decoder</h1>
+<p>Each decoder layer is a selfattention followed by a
+crossattention.</p>
+<p>The query vector for a transformer decoder’s cross-attention head is
+from the output of the previous decoder layer. However, the key and
+value vectors are from the encoders’ outputs.</p>
+<h2
+id="why-decoder-only-lm-is-more-convenient-less-design-choiceto-consider-or-efficient-for-both-training-or-application">Why
+decoder-only LM is more convenient (less design choiceto consider) or
+efficient (for both training or application)?</h2>
+<p>Pretraining (left) and chatbot generation (right) are highly
+consistent.</p>
+<p>• Naturally handles variable-length text generation during
+pretraining!</p>
+<p>• During application, we just do natural concatenation (always causal
+attention). No computation is wasted (assuming we save hidden states of
+the history).</p>
+<p><img src="/img/nlp3/nlp=dec.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>In pretraining, we need to build text of variable length, and the
+training signal is only from the decoder side.</p>
+<p>• During application, we need to re-encode (especially when the
+encoder is bi-directional) the whole history for each dialogue turn.</p>
+<p><img src="/img/nlp3/nlp=encdec.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="rope">rope</h2>
+<p>We want the dot product between query (position <span
+class="math inline">\(m\)</span>) and key (position <span
+class="math inline">\(n\)</span>) to directly be a function of (<span
+class="math inline">\(m-n\)</span>).</p>
+<p><span class="math display">\[
+        \langle \boldsymbol{f}_{\boldsymbol{q}}(\boldsymbol{x}_m, m),
+\boldsymbol{f}_{\boldsymbol{k}}(\boldsymbol{x}_n, n) \rangle =
+\boldsymbol{g}(\boldsymbol{x}_m, \boldsymbol{x}_n, m-n)
+        \]</span></p>
+<h1 id="gpt3-and-in-context-learning">GPT3 and in-context learning</h1>
+<p>上下文学习（ICL）是指
+大型语言模型通过分析其输入提示（Prompt）中嵌入的少数示例或演示（Demonstrations），来快速理解并执行特定下游任务的能力，而无需进行传统的模型参数更新（即无需微调或梯度下降）。</p>
+<h2 id="few-shot-before-gpt3">few shot before GPT3</h2>
+<p>Before GPT3, few-shot learning still refers to how a model can
+quickly adapt to a new task demonstrated with only a few examples via
+gradient update.</p>
+<p>We have a meta-learning phase on a wide set of tasks. In effect, the
+meta-learning problem treats entire tasks as training
+examples.（把一个任务看作一个样本，想要学习到一个比较好的初始配置）</p>
+<h2 id="chain-of-thought-cot">chain of thought （cot）</h2>
+<p>idea：reasoning is more consuming than computation，give llm more
+time to think</p>
+<p>cot 的效果在模型大的时候更加明显</p>
+<p>few-shot: 给几个例子——add manually written reasoning before giving
+answer in prompt.</p>
+<p>zero-shot: chaining of 2 prompts.
+第一步明确说要一步一步推理，获得推理的过程。第二步接着这个告诉它输出的格式，获得正确的输出。</p>
+<h3 id="research">research</h3>
+<h4 id="cot-with-self-consistency">CoT with self-consistency</h4>
+<p>For CoT, we could sample multiple reasoning path from the LLM with
+temperature sampling. 温度越高越随机，越有diversity</p>
+<p>And then take a majority voting over the answers!</p>
+<h4 id="tree-of-thoughts">Tree of Thoughts</h4>
+<p>Maintain and expand a thought-tree.</p>
+<p>• For each existing step, we prompt the LLM to propose multiple next
+steps, and also to judge which path (by giving a value) is more
+promising (pls refer to paper for how the prompts are designed).</p>
+<p>• The nodes that are judged to be unlikely will be discarded</p>
+<p><img src="/img/nlp3/nlp=cot.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="bias-in-icl">bias in icl</h4>
+<p>Majority and recency bias</p>
+<p>多数偏差是指在少样本学习的提示中，如果提供的训练示例的类别分布是不平衡的，模型就会倾向于预测出现次数最多的那个类别。即使一个新的测试样本客观上属于少数类别，模型也更倾向于输出多数类别，从而牺牲了少数类别的召回率和整体准确性。</p>
+<p>近因偏差是指在少样本学习的提示中，模型会倾向于预测在提示末尾（或最近）出现的类别。即使提示中的类别分布是平衡的，仅仅改变示例的顺序，也会显著改变模型的预测结果，导致预测的高方差（不稳定）。</p>
+<p>Calibration （修正）of few-shot prediction</p>
+<p><span class="math display">\[\mathbf{\hat{q}} =
+\text{softmax}(\mathbf{W}\mathbf{\hat{p}} + \mathbf{b})\]</span> * <span
+class="math inline">\(\mathbf{\hat{p}}\)</span>：模型（如大型语言模型
+LLM）原始预测的类别概率分布向量。 * <span
+class="math inline">\(\mathbf{W}\)</span>：权重矩阵。 * <span
+class="math inline">\(\mathbf{b}\)</span>：偏置向量 (bias)。 * <span
+class="math inline">\(\mathbf{\hat{q}}\)</span>：校准后的类别概率分布向量。</p>
+<p>利用模型对“空输入”的预测 <span
+class="math inline">\(\text{prediction}_{\text{null}}\)</span>
+来抵消其固有的偏差。 * 设置 <span
+class="math inline">\(\mathbf{b}\)</span>： 将偏置向量 <span
+class="math inline">\(\mathbf{b}\)</span> 设为 <span
+class="math inline">\(\mathbf{0}\)</span>。 * 设置 <span
+class="math inline">\(\mathbf{W}\)</span>： 将权重矩阵 <span
+class="math inline">\(\mathbf{W}\)</span>
+设为一个对角矩阵，其对角线元素是空输入预测概率的倒数。 <span
+class="math display">\[\mathbf{W} =
+\text{diag}(\text{prediction}_{\text{null}})^{-1}\]</span>
+这是希望最后空输入的输出分布是均匀的</p>
+<h4 id="induction-attention-head-for-repetition">Induction attention
+head: for repetition</h4>
+<p>“归纳注意力头”不是 Transformer
+架构中预设的组件，而是模型在训练过程中自发学习到的、由一个或多个注意力头（通常是两个头在不同层中协作）组成的功能性电路（Circuit）。</p>
+<p>假设输入序列是：...[A][B]...[A]</p>
+<p>当模型处理第二个 [A] 时，归纳头会执行以下操作：</p>
+<p>匹配（Match）： 它会回顾序列，找到上一次出现 [A] 的位置。</p>
+<p>复制/预测（Copy/Predict）： 它会查看上一次 [A] 后面紧跟着的标记
+[B]，并利用这个信息来预测当前第二个 [A] 后面也应该跟着 [B]。</p>
+<p>简单来说，它能发现并应用序列中重复出现的 [A] → [B] 模式。</p>
+<h1 id="instruction-tuning">Instruction tuning</h1>
+<p>motivation: we are lazy, 希望zero-shot prompting（不给例子）</p>
+<h2 id="flan-finetuned-language-net">FLAN (Finetuned Language Net)</h2>
+<p>Simple idea: After pretraining, we finetune the language model on a
+good amount of “instruction following” data.</p>
+<p>Each training samples contains the task description, an input, and
+the target output.</p>
+<p>During evaluation, we hope the model can generalize to unseen task
+type.</p>
+<p>FLAN data construction: Collected data from 62 existing NLP tasks.
+For each task, manually compose ten unique templates (for diversity)
+that use natural language instructions to describe the task.</p>
+<p><img src="/img/nlp3/nlp=comp.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1
+id="alignment-with-reinforcement-learning-human-feed-back-rlhf">Alignment
+with reinforcement learning human feed back (RLHF)</h1>
+<p>We collect samples from the model, and ask labelers to rank them.
+These ranks are used to train the reward model</p>
+<p>This reward model is used for RL.</p>
+<h2 id="why-is-it-practical">Why is it practical?</h2>
+<p>• It’s also easier for the human labeler to rank the responses, than
+coming up with a better response.</p>
+<p>• From pretraining, the LLM might be strong enough to give a good
+sample when you sample enough times.</p>
+<h2 id="what-could-be-its-advantage">what could be its advantage</h2>
+<p>(comparing to, say, more supervised finetuning on high-quality
+data)?</p>
+<p>• It’s usually easier to train a good discriminator than a good
+generator (especially now that we can use base the reward model on an
+existing LLM).</p>
+<p>• By giving low reward, we are teaching the model “what not to say”
+by sampling from it.</p>
+<h2
+id="让机器生成更符合我们需求的回答">让机器生成更符合我们需求的回答</h2>
+<p>Trivial method: Prompting（Directly prompt the LM to align）</p>
+<p>Pros: Training-free;</p>
+<p>Cons: No guarantee that the model will precisely follow, and requires
+careful prompt design</p>
+<p>Best-of-N</p>
+<ol type="1">
+<li>Samples multiple solutions;</li>
+<li>Chooses the one with the highest score given by a reward model.</li>
+</ol>
+<p>Pros: Do not need to train the policy model, simple and powerful;</p>
+<p>Cons: not efficient and you might need a large N</p>
+<h2 id="objective">objective</h2>
+<p><span class="math display">\[\max_{\pi_{\theta}} \mathbb{E}_{x \sim
+\mathcal{D}, y \sim \pi_{\theta}(\cdot|x)} \left[ r_{\phi}(x, y) \right]
+- \beta \mathbb{D}_{\text{KL}} \left[ \pi_{\theta}(\cdot | x) \parallel
+\pi_{\text{ref}}(\cdot | x) \right]\]</span></p>
+<p><span class="math display">\[\mathbb{E}_{x \sim \mathcal{D}, y \sim
+\pi_{\theta}(\cdot|x)} \left[ r_{\phi}(x, y) - \beta (\log
+\pi_{\theta}(y|x) - \log \pi_{\text{ref}}(y|x)) \right]\]</span></p>
+<p>奖励模型 <span class="math inline">\(\phi\)</span> ,
+前一项是为了提高奖励</p>
+<p>后一项防止优化后的模型 <span
+class="math inline">\(\pi_{\theta}\)</span> 偏离太远（deviating too
+far）于初始参考模型 <span
+class="math inline">\(\pi_{\text{ref}}\)</span> （Reward
+over-optimization issue） The reward model is an imperfect proxy,
+optimizing its value too much can hinder ground truth performance (first
+increase, then decrease).</p>
+<p><span class="math inline">\(\pi_{\theta}(\cdot | x)\)</span> 和 <span
+class="math inline">\(\pi_{\text{ref}}(\cdot | x)\)</span>含义：
+它们代表在给定输入 <span class="math inline">\(x\)</span>
+的条件下，所有可能的输出 <span class="math inline">\(y\)</span>
+上的完整概率分布。</p>
+<p><span class="math inline">\(\pi_{\theta}(y|x)\)</span> 和 <span
+class="math inline">\(\pi_{\text{ref}}(y|x)\)</span>含义：
+它们代表在给定输入 <span class="math inline">\(x\)</span>
+的条件下，模型生成特定回复 <span class="math inline">\(y\)</span>
+的概率。</p>
+<p>synthetic（人造的） setting for the Gold
+model：实际上并没有真的用人类标记，而是使用大模型标记</p>
+<h2 id="ppo">PPO</h2>
+<table>
+
+<thead>
+<tr>
+<th style="text-align: left;">算法</th>
+<th style="text-align: left;">对应行为</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">策略梯度 (PG)</td>
+<td
+style="text-align: left;">司机非常激进，一脚油门到底或一脚刹车踩死。</td>
+<td style="text-align: left;">方差太大 (Variances are too
+high)，容易导致训练不稳定甚至崩溃。</td>
+</tr>
+<tr>
+<td style="text-align: left;">TRPO</td>
+<td
+style="text-align: left;">司机知道要温和驾驶，但每次启动前都要用复杂的数学公式精确计算方向盘转角和油门深度。</td>
+<td
+style="text-align: left;">安全稳定，但实现极其复杂，计算成本高。</td>
+</tr>
+<tr>
+<td style="text-align: left;">PPO-Clip</td>
+<td
+style="text-align: left;">司机学了一个简单的“安全规则”：如果当前操作被认为很好，就鼓励他继续，但不能超过一个固定的限度。如果操作不好，就限制他别做得太差。</td>
+<td style="text-align: left;">安全且高效。
+它用一个简单的“截断”机制，达到了与 TRPO
+相似的稳定效果，但避免了复杂的计算。</td>
+</tr>
+</tbody>
+</table>
+<p>PPO 的直觉就体现在它的 CLIP 目标函数中：</p>
+<p><span class="math display">\[L^{CLIP}(\theta) = \mathbb{E}_t \left[
+\min\left( p_t(\theta) \hat{A}_t, \text{clip}(p_t(\theta), 1-\epsilon,
+1+\epsilon) \hat{A}_t \right) \right]\]</span></p>
+<ol type="1">
+<li><span class="math inline">\(p_t(\theta)\)</span>
+(新旧策略的比率)：代表新策略 <span
+class="math inline">\(\pi_\theta\)</span> 相对于旧策略 <span
+class="math inline">\(\pi_{\theta_{old}}\)</span> “变动了多少”。</li>
+<li>优势函数 <span
+class="math inline">\(\hat{A}_t\)</span>：代表当前动作 <span
+class="math inline">\(a_t\)</span> 的好坏程度。</li>
+<li>核心直觉（最小化和截断）：
+<ul>
+<li>当 <span class="math inline">\(\hat{A}_t\)</span>
+为正（动作好）：PPO 想要提高这个动作的概率（增大 <span
+class="math inline">\(p_t(\theta)\)</span>），但 <span
+class="math inline">\(\min\)</span> 函数会确保这个比率不会超过 <span
+class="math inline">\(1+\epsilon\)</span>。这就好像在说：“你做得很好，但我只奖励你到这个程度，防止你太得意忘形，把策略改得面目全非。”</li>
+<li>当 <span class="math inline">\(\hat{A}_t\)</span>
+为负（动作差）：PPO 想要降低这个动作的概率（减小 <span
+class="math inline">\(p_t(\theta)\)</span>），但 <span
+class="math inline">\(\min\)</span> 函数会确保这个比率不会低于 <span
+class="math inline">\(1-\epsilon\)</span>。这就好像在说：“你做得很差，我惩罚你，但惩罚不能太重，防止你一次性把策略改错。”</li>
+</ul></li>
+</ol>
+<p>PPO的问题： too much hyper parameters</p>
+<h2 id="dpo">DPO</h2>
+<p>Advantage: We no longer need a reward model or a value model.</p>
+<p><span class="math display">\[\mathcal{L}_{\text{DPO}}(\pi_{\theta};
+\pi_{\text{ref}}) = -\mathbb{E}_{(x, y_w, y_l) \sim \mathcal{D}} \left[
+\log \sigma \left( \beta \log \frac{\pi_{\theta}(y_w |
+x)}{\pi_{\text{ref}}(y_w | x)} - \beta \log \frac{\pi_{\theta}(y_l |
+x)}{\pi_{\text{ref}}(y_l | x)} \right) \right].\]</span> <span
+class="math inline">\(y_w\)</span>：模型对 <span
+class="math inline">\(x\)</span> 生成的被选择/偏好 (winner)
+的回复。<span class="math inline">\(y_l\)</span>：模型对 <span
+class="math inline">\(x\)</span> 生成的被拒绝/不偏好 (loser)
+的回复。</p>
+<p><span
+class="math display">\[\nabla_{\theta}\mathcal{L}_{\text{DPO}}(\pi_{\theta};
+\pi_{\text{ref}}) = -\beta \mathbb{E}_{(x, y_w, y_l) \sim \mathcal{D}}
+\left[ \sigma(\hat{r}_{\theta}(x, y_l) - \hat{r}_{\theta}(x, y_w))
+\left[ \nabla_{\theta} \log \pi_{\theta}(y_w | x) - \nabla_{\theta} \log
+\pi_{\theta}(y_l | x) \right] \right].\]</span></p>
+<h4 id="a.-策略更新方向-action-term">A. 策略更新方向 (Action Term)</h4>
+<p><span class="math display">\[\left[ \nabla_{\theta} \log
+\pi_{\theta}(y_w | x) - \nabla_{\theta} \log \pi_{\theta}(y_l | x)
+\right]\]</span> * 这是梯度上升方向</p>
+<h4 id="b.-奖励估计-estimated-reward">B. 奖励估计 (Estimated
+Reward)</h4>
+<p><span class="math display">\[\hat{r}_{\theta}(x, y) = \beta \log
+\frac{\pi_{\theta}(y | x)}{\pi_{\text{ref}}(y | x)}\]</span> * DPO
+的关键在于，它隐含地将奖励模型 <span class="math inline">\(r(x,
+y)\)</span> 替换成了策略模型 <span
+class="math inline">\(\pi_{\theta}\)</span> 相对于参考模型 <span
+class="math inline">\(\pi_{\text{ref}}\)</span> 的对数概率比，再乘以
+<span class="math inline">\(\beta\)</span>。这个 <span
+class="math inline">\(\hat{r}_{\theta}(x, y)\)</span> 被称为经验奖励
+(empirical reward)，它是策略 <span
+class="math inline">\(\pi_{\theta}\)</span> 在当前参数下对 <span
+class="math inline">\(y\)</span> 的奖励估计。</p>
+<h4 id="c.-权重项-weight-term">C. 权重项 (Weight Term)</h4>
+<p><span class="math display">\[\sigma(\hat{r}_{\theta}(x, y_l) -
+\hat{r}_{\theta}(x, y_w))\]</span> * 如果当前策略 <span
+class="math inline">\(\pi_{\theta}\)</span> 已经正确地捕捉了偏好（即
+<span class="math inline">\(\hat{r}_{\theta}(x, y_w) &gt;
+\hat{r}_{\theta}(x, y_l)\)</span>），那么这个奖励差异 <span
+class="math inline">\((\hat{r}_{\theta}(x, y_l) - \hat{r}_{\theta}(x,
+y_w))\)</span> 是一个较大的负数。Sigmoid 函数 <span
+class="math inline">\(\sigma(\text{大负数})\)</span> 接近
+0，因此权重很小。 * 如果当前策略 <span
+class="math inline">\(\pi_{\theta}\)</span> 错误地捕捉了偏好（即 <span
+class="math inline">\(\hat{r}_{\theta}(x, y_w) &lt; \hat{r}_{\theta}(x,
+y_l)\)</span>），那么这个奖励差异是一个正数。Sigmoid 函数 <span
+class="math inline">\(\sigma(\text{正数})\)</span> 接近 1 或 0.5
+以上，因此权重很大。</p>
+<h3 id="进一步的直觉正则化-regularization-intuition">✨
+进一步的直觉：正则化 (Regularization Intuition)</h3>
+<p><span class="math inline">\(\beta [\log \pi_{\theta}(y_l|x) - \log
+\pi_{\theta}(y_w|x)] - \beta [\log \pi_{\text{ref}}(y_l|x) - \log
+\pi_{\text{ref}}(y_w|x)]\)</span></p>
+<p>这个表达式实际上是： <span class="math display">\[\underbrace{\beta
+(\log \frac{\pi_{\theta}(y_l|x)}{\pi_{\theta}(y_w|x)})}_{\text{策略 }
+\pi_{\theta} \text{的 log-prob 差异}} - \underbrace{\beta (\log
+\frac{\pi_{\text{ref}}(y_l|x)}{\pi_{\text{ref}}(y_w|x)})}_{\text{参考 }
+\pi_{\text{ref}} \text{的 log-prob 差异}}\]</span></p>
+<ul>
+<li>DPO 目标： DPO 损失的目标是让策略 <span
+class="math inline">\(\pi_{\theta}\)</span> 对 <span
+class="math inline">\(y_w\)</span> 和 <span
+class="math inline">\(y_l\)</span> 的对数概率差异 (<span
+class="math inline">\(\log \pi_{\theta}(y_w|x) - \log
+\pi_{\theta}(y_l|x)\)</span>) 增大（即让 <span
+class="math inline">\(y_w\)</span> 比 <span
+class="math inline">\(y_l\)</span> 更可能出现）。</li>
+<li>正则化作用： DPO 损失要求 <span
+class="math inline">\(\pi_{\theta}\)</span>
+的这个差异不仅要大，而且要相对于参考模型 <span
+class="math inline">\(\pi_{\text{ref}}\)</span>
+的原始差异进行调整。</li>
+<li>结论： DPO 实际上是在正则化策略 <span
+class="math inline">\(\pi_{\theta}\)</span>
+的对数概率差异，使其在拟合人类偏好的同时，不会过度偏离基础模型 <span
+class="math inline">\(\pi_{\text{ref}}\)</span> 的行为。这与 RLHF-PPO
+中使用 KL 散度进行正则化有相似的目的，但 DPO
+将这个正则化直接嵌入到了损失函数的定义中。</li>
+</ul>
+<p>DPO 通过绕过 奖励模型 (Reward Model) 和 强化学习 (RL)
+步骤，使得训练过程更简单、更稳定。 RLHF-PPO
+由于引入了复杂的强化学习和奖励模型，被认为有更大的潜力（可能在复杂的对齐任务上表现更好）。</p>
+<h1 id="mixture-of-experts-model">Mixture of Experts Model</h1>
+<p>Idea of conditional computation: We still build a super big model,
+but we only selectively activate a relevant portion for each training
+sample.</p>
+<p>MoE is natural for model parallel</p>
+<p><span class="math display">\[
+G(x) = \text{Softmax}(\text{KeepTopK}(H(x), k))
+\]</span></p>
+<p><span class="math display">\[
+\text{KeepTopK}(v, k)_i = \begin{cases} v_i &amp; \text{if } v_i \text{
+is in the top } k \text{ elements of } v \\ -\infty &amp;
+\text{otherwise} \end{cases}
+\]</span></p>
+<p><span class="math display">\[
+H(x)_i = (x \cdot W_{g})_i + \text{StandardNormal}() \cdot
+\text{Softplus}((x \cdot W_{\text{noise}})_i)
+\]</span></p>
+<ul>
+<li>核心线性变换： <span class="math inline">\((x \cdot
+W_{g})_i\)</span> 是对输入 <span class="math inline">\(x\)</span>
+应用权重矩阵 <span class="math inline">\(W_{g}\)</span> 后的第 <span
+class="math inline">\(i\)</span> 个元素。这是计算专家 <span
+class="math inline">\(i\)</span> 初始得分的基础。</li>
+<li>噪声项： 防止专家过度专业化 (Over-Specialization) 或坍塌
+(Collapse):门控网络 <span class="math inline">\(G(x)\)</span>
+倾向于将相似的输入持续路由到得分最高的少数专家。这会导致这些少数专家被过度使用
+(over-utilized)，而其他大多数专家则利用不足
+(under-utilized)，参数更新少，形同虚设。这种不平衡也被称为“路由坍塌”
+(Routing Collapse)。</li>
+</ul>
+<h2 id="balancing-loads-between-experts">Balancing loads between
+experts</h2>
+<p><span class="math display">\[\text{Importance}(X) = \sum_{x \in X}
+G(x) \quad \text{(6)}\]</span></p>
+<ul>
+<li><span class="math inline">\(G(x)\)</span> 是指门控值（gate
+value）。在MoE模型中，门控网络会为每个输入 <span
+class="math inline">\(x\)</span>
+输出一个分布，决定将该输入分配给哪个专家。</li>
+<li><span class="math inline">\(\text{Importance}(X)\)</span>
+是该专家在整个批次 <span class="math inline">\(X\)</span>
+中所有样本门控值（使用概率）的总和。这个值衡量了该专家在当前批次中被激活和使用的程度。</li>
+</ul>
+<p>负载均衡损失 <span
+class="math inline">\(\mathcal{L}_{\text{importance}}\)</span>
+是根据所有专家的重要性值集合计算得出的：</p>
+<p><span class="math display">\[\mathcal{L}_{\text{importance}}(X) =
+w_{\text{importance}} \cdot \text{CV}(\text{Importance}(X))^2 \quad
+\text{(7)}\]</span></p>
+<ul>
+<li><span class="math inline">\(\text{Importance}(X)\)</span>
+此时是一个向量，包含了所有专家各自的 <span
+class="math inline">\(\text{Importance}\)</span> 值。</li>
+<li><span class="math inline">\(\text{CV}(\cdot)\)</span>
+是变异系数（Coefficient of Variation），其定义如下： <span
+class="math display">\[\text{CV} = \text{std}/\text{mean}\]</span>
+即：<span class="math inline">\(\text{CV} = \text{标准差} /
+\text{均值}\)</span>。</li>
+<li><span class="math inline">\(w_{\text{importance}}\)</span>
+是一个手动调整的缩放因子（scaling
+factor），用于控制此损失在总损失中的权重和影响力。</li>
+</ul>
+<p>最小化 <span
+class="math inline">\(\mathcal{L}_{\text{importance}}\)</span>
+意味着最小化 <span
+class="math inline">\(\text{CV}(\text{Importance}(X))\)</span>。由于
+<span class="math inline">\(CV\)</span>
+越小表示数据越集中，因此这鼓励所有专家具有近似相等的“重要性”，从而实现了专家间的均衡负载。</p>
+<h2 id="更简单的负载均衡损失解析">更简单的负载均衡损失”解析</h2>
+<p><span class="math display">\[\text{loss} = \alpha \cdot
+\sum_{i=1}^{N} f_i \cdot P_i \quad \text{(4)}\]</span></p>
+<p>在这里，<span class="math inline">\(p\)</span> 指的是
+路由器概率（Router Probability），也称为 门控概率（Gate
+Probability）。</p>
+<ul>
+<li><span class="math inline">\(p_i(x)\)</span>：
+是指门控网络（Router）对输入 <span class="math inline">\(x\)</span>
+计算得到的、将其分派给第 <span class="math inline">\(i\)</span>
+个专家的概率。
+<ul>
+<li>在MoE模型中，门控网络通常会输出一个 <span
+class="math inline">\(N\)</span> 维的概率向量 <span
+class="math inline">\(p(x)\)</span>，其中 <span
+class="math inline">\(N\)</span> 是专家数量，<span
+class="math inline">\(\sum_{i=1}^{N} p_i(x) = 1\)</span>。</li>
+</ul></li>
+<li><span class="math inline">\(P_i\)</span> (公式 6)： 是指在整个批次
+<span class="math inline">\(B\)</span> 中，分配给第 <span
+class="math inline">\(i\)</span> 个专家的概率的平均值。 <span
+class="math display">\[P_i = \frac{1}{T} \sum_{x \in B} p_i(x) \quad
+\]</span></li>
+</ul>
+<p><span class="math inline">\(f_i\)</span> 表示在当前批次 <span
+class="math inline">\(B\)</span> 中实际被分派（hard-routed）给专家 <span
+class="math inline">\(i\)</span> 的 tokens 的比例（Actual Usage）：</p>
+<p><span class="math display">\[f_i = \frac{1}{T} \sum_{x \in B}
+\mathbb{I}\{\operatorname{argmax} p(x) = i\} \quad \]</span></p>
+<ul>
+<li><span class="math inline">\(\operatorname{argmax} p(x) = i\)</span>
+表示 <span class="math inline">\(p_i(x)\)</span>
+是所有专家中概率最大的，即样本 <span class="math inline">\(x\)</span>
+最终被确定分派给了专家 <span class="math inline">\(i\)</span>。</li>
+<li><span class="math inline">\(f_i\)</span> 衡量的是专家 <span
+class="math inline">\(i\)</span> 在当前批次中
+“硬性”处理的实际工作量。</li>
+</ul>
+<p>惩罚少数专家被过度使用</p>
+<table>
+
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;"><span
+class="math inline">\(f_i\)</span>（实际使用率 - Actual Usage）</th>
+<th style="text-align: left;"><span
+class="math inline">\(P_i\)</span>（概率分配率 - Allocated
+Probability）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">公式</td>
+<td style="text-align: left;"><span class="math display">\[f_i =
+\frac{1}{T} \sum_{x \in B} \mathbb{I}\{\operatorname{argmax} p(x) =
+i\}\]</span></td>
+<td style="text-align: left;"><span class="math display">\[P_i =
+\frac{1}{T} \sum_{x \in B} p_i(x)\]</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">含义</td>
+<td style="text-align: left;">硬性选择结果。实际被分派给专家 <span
+class="math inline">\(i\)</span> 的 tokens 占总 tokens 数 <span
+class="math inline">\(T\)</span> 的比例。</td>
+<td style="text-align: left;">软性概率均值。门控网络分配给专家 <span
+class="math inline">\(i\)</span> 的概率 <span
+class="math inline">\(p_i(x)\)</span> 在整个批次 <span
+class="math inline">\(B\)</span> 中的平均值。</td>
+</tr>
+<tr>
+<td style="text-align: left;">计算基准</td>
+<td style="text-align: left;">基于 <span
+class="math inline">\(\operatorname{argmax}\)</span>
+运算：只关心哪个专家获得了最高的概率，结果是 0 或 1（指示函数 <span
+class="math inline">\(\mathbb{I}\)</span>）。</td>
+<td style="text-align: left;">基于 软概率 <span
+class="math inline">\(p_i(x)\)</span>
+的求和：考虑了门控网络对所有专家的概率分配大小。</td>
+</tr>
+<tr>
+<td style="text-align: left;">代表性</td>
+<td style="text-align: left;">衡量专家 <span
+class="math inline">\(i\)</span> 实际处理的工作量。</td>
+<td style="text-align: left;">衡量专家 <span
+class="math inline">\(i\)</span> 预期被使用的平均概率权重。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fine-grained-expert-segmentation">Fine-Grained Expert
+Segmentation</h2>
+<p>while maintaining the number of parameters constant, we segment the
+experts into a finer grain by splitting the FFN intermediate hidden
+dimension.</p>
+<h2 id="shared-expert-isolation">Shared Expert Isolation</h2>
+<p>we isolate certain experts to serve as shared experts that are always
+activated, aiming at capturing and consolidating common knowledge across
+varying contexts. （一部分是专家for通用知识，一直被激活）</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/NLP/" class="print-no-link">#NLP</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>破晓之刻：Transformer的诞生与自然语言处理前沿</div>
+      <div>http://example.com/2025/12/12/nlp3/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>瑾瑜當年</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/02/24/post-2/" title="Diffusion LM初探：LLaDA">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Diffusion LM初探：LLaDA</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/12/nlp2/" title="黎明之前：Transformer之前的自然语言处理">
+                        <span class="hidden-mobile">黎明之前：Transformer之前的自然语言处理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.39/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo-haru.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname","enable":true},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:true,models:[{"path":"https://model.hacxy.cn/HK416-1-normal/model.json","scale":0.1,"motionPreloadStrategy":"ALL","position":[-10,60],"stageStyle":{"height":520},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+</html>

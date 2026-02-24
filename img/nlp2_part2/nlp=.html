@@ -1,0 +1,369 @@
+<h1 id="Transformer-decoder-and-GPT"><a href="#Transformer-decoder-and-GPT" class="headerlink" title="Transformer decoder and GPT"></a>Transformer decoder and GPT</h1><p>Apply attention mask to forbid the attention from future timesteps to train AR-LM.</p>
+<p>A transformer model for AR-LM is also<br>referred to as a transformer decoder.</p>
+<pre><code class="lang-python">def attention(query, key, value, mask=None, dropout=None):
+    &quot;Compute &#39;Scaled Dot Product Attention&#39;&quot;
+     d_k = query.size(-1)
+     scores = torch.matmul(query, key.transpose(-2, -1)) / math.sqrt(d_k)
+     if mask is not None:
+        scores = scores.masked_fill(mask == 0, -1e9) #在mask为0的地方加一个很小的负数，保证exp之后趋于0，形状为(L_Q,L_k)
+     p_attn = scores.softmax(dim=-1)
+     # 对key维度做softmax
+    output = torch.matmul(p_attn, value)
+    return output, p_attn
+</code></pre>
+<h2 id="GPT2"><a href="#GPT2" class="headerlink" title="GPT2"></a>GPT2</h2><p>apply the learned model zero-shot to some<br>downstream language generation task (translation,<br>summarization, QA, etc.).</p>
+<p>zero-shot：完全不微调</p>
+<p>设计一些很好的prompt来实现，比如；</p>
+<p>“Translate the following text to French. Text: [ENG TEXT] French:”<br>“Given the document, answer the question. Document: [DOC] Question:<br>[Q] Answer:”</p>
+<p>open-ended generation:  tasks that has big<br>freedom and diversity, like story or news generation.The model needs to rely its own (memory, consistency or<br>creativity)</p>
+<h2 id="topk-sampling"><a href="#topk-sampling" class="headerlink" title="topk sampling"></a>topk sampling</h2><p> We will represent $P(\cdot | W<em>{1..i})$ by $p = (p_1, p_2, \dots, p</em>{|V|})$ (where the elements are sorted so that $p<em>1 \geq p_2 \geq p_3 \dots \geq p</em>{|V|}$).</p>
+<p> Top-K sampling transforms $p$ to $\hat{p}$ by:</p>
+<script type="math/tex; mode=display">\hat{p}_i = \frac{p_i \cdot \mathbb{1}\{i \leq K\}}{Z}</script><p><strong>$Z$</strong> 是<strong>归一化常数 (normalization constant)</strong>。</p>
+<pre><code>        $$Z = \sum_{i=1}^{|V|} p_i \cdot \mathbb{1}\{i \leq K\} = \sum_{i=1}^{K} p_i$$
+</code></pre><p>保留概率最大的k个，并重新归一化总概率为1。如果k=1，那就变成了greedy decoding了。</p>
+<p>quality-diversity trade-off</p>
+<h1 id="Rethink-MLE（最大似然估计）"><a href="#Rethink-MLE（最大似然估计）" class="headerlink" title="Rethink MLE（最大似然估计）"></a>Rethink MLE（最大似然估计）</h1><p> <strong>MLE 目标函数 (The MLE objective):</strong></p>
+<pre><code>$$\log P(W) = \sum \log P(W_i | W_{1:i-1})$$
+</code></pre><ul>
+<li><strong>$P(W<em>i | W</em>{1:i-1})$</strong> 是在给定历史上下文 $W_{1:i-1}$ 的情况下，下一个词是 $W_i$ 的概率。</li>
+</ul>
+<ul>
+<li><strong>“Researchers thinks the </strong>teacher forcing<strong> in MLE training is to blame.”</strong>     在训练过程中，当模型预测下一个词 $W<em>i$ 时，它使用的历史上下文 $W</em>{1:i-1}$ <strong>总是</strong>来自于<strong>真实的训练数据</strong>，而不是模型自己之前预测的词。</li>
+</ul>
+<p>The exposure bias hypothesis: Due to the exposure to ground-truth prefix, the model is biased to only perform well during training, but not generation. （训练的时候前文是完美的所以表现好）</p>
+<p>Importantly, the error is assumed to accumulate during generation, and the generation will be incrementally distorted（扭曲）. 自回归中错误累加</p>
+<h2 id="we-cannot-directly-use-GAN"><a href="#we-cannot-directly-use-GAN" class="headerlink" title="we cannot directly use GAN"></a>we cannot directly use GAN</h2><p>GAN 的目标是让生成器 $G$ 和判别器 $D$ 互相竞争：</p>
+<script type="math/tex; mode=display">\min_{G} \max_{D} V(D, G) = \mathbb{E}_{\mathbf{x} \sim p_{\text{data}}(\mathbf{x})}[\log D(\mathbf{x})] + \mathbb{E}_{\mathbf{z} \sim p_{\mathbf{z}}(\mathbf{z})}[\log(1 - D(G(\mathbf{z})))]</script><ul>
+<li><strong>判别器 $D$ 的目标 (最大化 $\max_{D}$):</strong><ul>
+<li>最大化 $\log D(\mathbf{x})$ (真实数据 $\mathbf{x}$ 被判别为真的概率)。</li>
+<li>最大化 $\log(1 - D(G(\mathbf{z})))$ (生成数据 $G(\mathbf{z})$ 被判别为假的概率)。</li>
+</ul>
+</li>
+<li><strong>生成器 $G$ 的目标 (最小化 $\min_{G}$):</strong><ul>
+<li>最小化 $\log(1 - D(G(\mathbf{z})))$ (即让生成数据 $G(\mathbf{z})$ 被判别为真的概率 $D(G(\mathbf{z}))$ 尽量高)。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>$G$ (生成器) 输出的是词汇表上<strong>概率</strong>分布。<ul>
+<li>为了得到一个具体的词序列（文本），需要从这个分布中进行<strong>采样</strong>（例如，选择概率最高的词或用 Top-K 采样）。<ul>
+<li>语言模型中的词是<strong>离散的</strong>（例如，”猫”、”狗”、”跑”），而不是像图像像素值那样的<strong>连续</strong>值。<br>gradient cannot flow back through discrete sampling！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="The-gumbel-softmax-reparameterization"><a href="#The-gumbel-softmax-reparameterization" class="headerlink" title="The gumbel-softmax reparameterization"></a>The gumbel-softmax reparameterization</h2><p>Gumbel-Max：离散采样的过程：argmax非连续不可微</p>
+<pre><code>$$z = \text{one\_hot}(\arg \max_i [\log \pi_i + g_i])$$
+</code></pre><p>Gumbel-Softmax用 <strong>Softmax 函数</strong>替换了 $\arg \max$ 操作</p>
+<script type="math/tex; mode=display">y_i = \frac{\exp((\log \pi_i + g_i) / \tau)}{\sum_{j=1}^{k} \exp((\log \pi_j + g_j) / \tau)}</script><p>温度的作用：</p>
+<ul>
+<li><strong>$\tau$ 较大</strong>：$y$ 的分布会更<strong>平滑</strong>，更接近均匀分布，但<strong>近似误差较大</strong>。</li>
+<li><strong>$\tau$ 较小</strong>：$y$ 的分布会更<strong>尖锐 (sharper)</strong>，更接近 One-Hot 向量，从而更好地<strong>近似离散的采样</strong>，并且更接近 Gumbel-Max 的结果。</li>
+</ul>
+<p>对于温度也有diversity-quality trade-off</p>
+<p>However, it is shown that language GANs are actually worse than the MLE baseline.</p>
+<pre><code class="lang-python">def gumbel_softmax(logits, tau=1.0, hard=False, dim=-1):
+    &quot;&quot;&quot;
+    实现了 Gumbel-Softmax 重参数化技巧。
+
+    参数说明:
+        logits (Tensor): 未标准化的对数概率（来自生成器 G 的输出）。
+        tau (float): 温度参数 (τ)，控制 Softmax 近似的平滑程度。
+        hard (bool): 如果为 True，则应用 Straight-Through（直通）技巧：
+                     在前向传播中使用 One-Hot 向量，而在反向传播中使用连续梯度。
+        dim (int): 应用 Softmax 的维度（通常是词汇表维度）。
+    &quot;&quot;&quot;
+
+    # --- 1. Gumbel 噪声注入 ---
+
+    # 1a. 生成 Gumbel 噪声 g_i ~ Gumbel(0, 1)。
+    # 这是通过逆变换采样方法实现的：g_i = -log(-log(U))，其中 U ~ Uniform(0, 1)。
+    gumbels = -torch.empty_like(logits).exponential_().log() 
+
+    # 1b. 将 Gumbel 噪声添加到 logits 并除以温度 (tau)。
+    # 这对应于 Gumbel-Softmax 公式中的分子部分：(log(pi_i) + g_i) / tau
+    gumbels = (logits + gumbels) / tau
+
+    # --- 2. 连续 Softmax 输出 (y_soft) ---
+
+    # 计算连续的、可微分的 Softmax 输出。
+    # 这个 y_soft 值用于在反向传播中计算梯度。
+    y_soft = gumbels.softmax(dim)
+
+    # --- 3. Straight-Through（直通）技巧实现 ---
+
+    if hard:
+        # A. 前向传播（使用硬性 One-Hot 向量）
+
+        # 找到 y_soft 中最大概率值对应的索引。
+        # [1] 从 .max() 返回的元组中提取索引（max_indices）。
+        # 这模拟了 Gumbel-Max 技巧中的 arg max 操作。
+        index = y_soft.max(dim, keepdim=True)[1]
+
+        # 基于最大索引，创建一个硬性（离散）的 One-Hot 向量 y_hard。
+        # 在前向计算中（例如作为判别器 D 的输入），使用的是 y_hard。
+        y_hard = torch.zeros_like(logits).scatter_(dim, index, 1.0)
+
+        # B. 反向传播（使用柔性连续梯度）
+
+        # Straight-Through 表达式：ret = y_hard - y_soft.detach() + y_soft
+        # 梯度分析（链式法则）：
+        # 1. d(y_hard)/d(logits) ≈ 0 （由于离散/arg max 操作，梯度被忽略）。
+        # 2. d(y_soft.detach())/d(logits) = 0 （梯度被 .detach() 显式切断）。
+        # 3. d(y_soft)/d(logits) 是唯一有效的、平滑的梯度。
+        # 最终梯度：d(ret)/d(logits) ≈ d(y_soft)/d(logits)
+        ret = y_hard - y_soft.detach() + y_soft
+
+    else:
+        # 标准重参数化技巧（不使用 ST 技巧）。
+        # 连续的 y_soft 向量用于前向和反向传播。
+        ret = y_soft
+
+    return ret
+</code></pre>
+<h2 id="policy-gradient"><a href="#policy-gradient" class="headerlink" title="policy gradient"></a>policy gradient</h2><p><img src="nlp=rl.png" alt=""></p>
+<p>避免了采样导致的不可微分</p>
+<p>公式右侧的<strong>梯度 $\nabla<em>{\theta}$ 只作用于对数概率 $\log P</em>{\theta}(\mathbf{y}|\mathbf{x})$</strong>。</p>
+<ul>
+<li><strong>$\log P_{\theta}(\mathbf{y}|\mathbf{x})$</strong> 是一个<strong>连续</strong>且<strong>可微分</strong>的函数，它是模型输出概率的对数，与模型参数 $\theta$ 之间有明确的、可微分的计算图。</li>
+<li><strong>回报 $r(\mathbf{x}, \mathbf{y})$</strong> 只是一个在<strong>采样完成后</strong>计算出来的<strong>标量权重</strong>（它不依赖于 $\theta$，因此求梯度时被视为常量）。</li>
+<li><strong>采样过程 $\mathbf{y} \sim P_{\theta}$</strong> 被移到了<strong>期望 $\mathbb{E}$ 的外部</strong>，通过蒙特卡洛（Monte Carlo）方法近似实现。</li>
+</ul>
+<h2 id="MLE-希望更多的diversity"><a href="#MLE-希望更多的diversity" class="headerlink" title="MLE 希望更多的diversity"></a>MLE 希望更多的diversity</h2><p>最大似然估计 - MLE：</p>
+<script type="math/tex; mode=display">\arg \min_{\theta} \underset{W \sim P_D}{\mathbb{E}} \left[ -\frac{1}{L} \sum_{l=0}^{L-1} \log P_M(W_{l+1}|W_{1:l}) \right]</script><p>根据链式法则，$P<em>M(W) = P_M(W_1) \cdot P_M(W_2|W_1) \cdots P_M(W_L|W</em>{1:L-1})$，因此负对数似然可以简化为对整个序列 $W$ 的负对数似然的期望。</p>
+<script type="math/tex; mode=display">\arg \min_{\theta} \underset{W \sim P_D}{\mathbb{E}} \left[ -\log P_M(W) \right]</script><script type="math/tex; mode=display">D_{KL}(P_D || P_M) = \underset{W \sim P_D}{\mathbb{E}} [\log P_D(W)] - \underset{W \sim P_D}{\mathbb{E}} [\log P_M(W)]</script><p>前一项就是真实分布的entropy的负数，所以我们可以看出MLE是希望model的分布非常接近真实的分布</p>
+<p><img src="nlp=kld.png" alt=""></p>
+<h2 id="exposure-bias-不是大问题——The-Prefix-Switching-Experiment"><a href="#exposure-bias-不是大问题——The-Prefix-Switching-Experiment" class="headerlink" title="exposure bias 不是大问题——The Prefix Switching Experiment"></a>exposure bias 不是大问题——The Prefix Switching Experiment</h2><p>第一组，给真实的句子</p>
+<p>第二组，自回归</p>
+<p>第三组，随机token前缀</p>
+<p>Did the error accumulate ?<br>模型在前缀中接收到了严重的错误或干扰（打乱的或随机的 Token），但它并没有导致整个后续序列的生成质量灾难性地下降。</p>
+<p>Mysteriously, the model self-recovers from the errors in the prefix.</p>
+<p>For the shuffled data prefix, the model still generates something related<br>to the air force.</p>
+<p>EB-M, quantifies the<br>quality ratio between generations from data prefix and a given (imperfect)<br>prefix.</p>
+<p>The combination of MLE training and sampling algorithm is very<br>strong and is the default choice.</p>
+<h1 id="sampling"><a href="#sampling" class="headerlink" title="sampling"></a>sampling</h1><p>topk </p>
+<script type="math/tex; mode=display">\hat{p}_i = \frac{p_i \cdot \mathbf{1}\{i \leq K\}}{Z}</script><p>topp</p>
+<script type="math/tex; mode=display">\hat{p}_i = \frac{p_i \cdot \mathbf{1}\{\sum_{j=1}^{i-1} p_j < P\}}{Z}</script><p>Temperature Sampling</p>
+<script type="math/tex; mode=display">\hat{p}_i = \frac{\exp(\log(p_i)/T)}{Z} = \frac{(p_i)^{1/T}}{Z}</script><h2 id="🤔-它们有什么共同点？"><a href="#🤔-它们有什么共同点？" class="headerlink" title="🤔 它们有什么共同点？"></a>🤔 它们有什么共同点？</h2><p>Entropy Reduction<br>Order Preservation<br>Slope Preservation</p>
+<h3 id="1-元素顺序得以保留"><a href="#1-元素顺序得以保留" class="headerlink" title="1. 元素顺序得以保留"></a>1. 元素顺序得以保留</h3><p> $p_i \ge p_j \implies \hat{p}_i \ge \hat{p}_j$</p>
+<h3 id="2-分布的熵被降低"><a href="#2-分布的熵被降低" class="headerlink" title="2. 分布的熵被降低"></a>2. 分布的熵被降低</h3><p> $\mathcal{H}(\hat{p}) \le \mathcal{H}(p)$</p>
+<h3 id="3-分布的斜率得以保留"><a href="#3-分布的斜率得以保留" class="headerlink" title="3. 分布的斜率得以保留"></a>3. 分布的斜率得以保留</h3><script type="math/tex; mode=display">\frac{\log p_i - \log p_j}{\log p_l - \log p_k} = \frac{\log \hat{p}_i - \log \hat{p}_j}{\log \hat{p}_l - \log \hat{p}_k}</script><h1 id="Correcting-bad-behavior-of-NLG-models"><a href="#Correcting-bad-behavior-of-NLG-models" class="headerlink" title="Correcting bad behavior of NLG models"></a>Correcting bad behavior of NLG models</h1><h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h2><p>这种基于点积的匹配机制，尤其是在<strong>解码 (Decoding)</strong> 阶段与<strong>贪婪搜索 (Greedy Search)</strong> 或<strong>波束搜索 (Beam Search)</strong> 结合时，特别容易导致重复：</p>
+<ul>
+<li><strong>语义惯性</strong>：Transformer 本质上是擅长捕捉<strong>局部依赖</strong>和<strong>语义一致性</strong>的。当一个序列在短时间内重复出现时，模型会认为“保持这种模式”是<strong>最安全、最一致</strong>的选择，从而在众多可能的下一个词中，<strong>倾向于选择与当前历史相似度最高的词</strong>（即点积分数最高的词）。</li>
+<li><strong>缺乏全局抑制</strong>：标准的 Transformer 架构在设计上缺乏一个<strong>内置的机制</strong>来<strong>惩罚</strong>或<strong>抑制</strong>刚刚生成过的内容。它只是在寻找局部最佳匹配，而点积正是找到这个局部最佳匹配（相似度）的有效工具。</li>
+</ul>
+<h3 id="Biased-decoding"><a href="#Biased-decoding" class="headerlink" title="Biased decoding"></a>Biased decoding</h3><script type="math/tex; mode=display">p_i = \frac{\exp(x_i / (T \cdot I(i \in g)))}{\sum_{j} \exp(x_j / (T \cdot I(j \in g)))}</script><ul>
+<li>$I(c)$：这是一个<strong>指示函数 (Indicator Function)</strong> 或<strong>惩罚因子</strong>，定义如下：<script type="math/tex; mode=display">I(c) = \begin{cases} \theta & \text{if } c \text{ is True} \\ 1 & \text{else} \end{cases}</script></li>
+<li>$\theta$ (Theta)：设定为 $1.2$，对重复 token 的<strong>惩罚/偏差因子</strong>。</li>
+</ul>
+<ul>
+<li>对于新的、未重复的 Token $i$：<br>  指示函数 $I(i \in g)$ 的值为 $1$。</li>
+</ul>
+<ul>
+<li>对于已生成的、重复的 Token $j$：<br>   指示函数 $I(j \in g)$ 的值为 $\theta = 1.2$，导致整个分数 $x_j / (T \cdot \theta)$ <strong>变小</strong>，降低重复的概率</li>
+</ul>
+<h3 id="Unlikelihood-training-for-repetition"><a href="#Unlikelihood-training-for-repetition" class="headerlink" title="Unlikelihood training for repetition"></a>Unlikelihood training for repetition</h3><script type="math/tex; mode=display">\mathcal{L}^t_{\text{UL-token}} \left( p_\theta(\cdot|x_{<t}), c^t \right) = - \alpha \sum_{c \in c^t} \log(1 - p_\theta(c|x_{<t})) - \log p_\theta(x_t|x_{<t})</script><p>最大化似然（后一项），最小化预测出重复token的概率（前一项）</p>
+<h2 id="Generic-Response-Problem"><a href="#Generic-Response-Problem" class="headerlink" title="Generic Response Problem"></a>Generic Response Problem</h2><p>模型给出的generic的回复，而不是有针对性的信息量大的回复</p>
+<p>Combined with MLE training, when the model is not sure about what to say, it<br>degrades to some simple and “safe” pattern in data.</p>
+<h3 id="Maximum-Mutual-Information-（MMI）"><a href="#Maximum-Mutual-Information-（MMI）" class="headerlink" title="Maximum Mutual Information （MMI）"></a>Maximum Mutual Information （MMI）</h3><script type="math/tex; mode=display">\text{MMI}(S; T) = \log \frac{P(S, T)}{P(S)P(T)}</script><script type="math/tex; mode=display">\hat{T} = \arg \max_T \left\{ \log P(T|S) - \log P(T) \right\}</script><p>在有前文的条件下后文出现的概率-后文单独出现的概率，惩罚和前文关系不大的通用回答。</p>
+<h3 id="negative-training"><a href="#negative-training" class="headerlink" title="negative training"></a>negative training</h3><p>用负样本告诉大模型不应该去说什么</p>
+<script type="math/tex; mode=display">\text{Loss}_{\text{new}} = \underbrace{- \log P_\theta(y_{\text{pos}}|x_{\text{pos}})}_{\text{最大似然项 (正样本)}} + \underbrace{\log P_\theta(y_{\text{neg}}|x_{\text{neg}})}_{\text{负样本惩罚项}}</script><h1 id="Transformer-encoder-decoder"><a href="#Transformer-encoder-decoder" class="headerlink" title="Transformer encoder-decoder"></a>Transformer encoder-decoder</h1><p>Each decoder layer is a selfattention followed by a crossattention.</p>
+<p>The query vector for a transformer<br>decoder’s cross-attention head<br>is from the output of the previous<br>decoder layer. However, the key<br>and value vectors are from the<br>encoders’ outputs.</p>
+<h2 id="Why-decoder-only-LM-is-more-convenient-less-design-choiceto-consider-or-efficient-for-both-training-or-application"><a href="#Why-decoder-only-LM-is-more-convenient-less-design-choiceto-consider-or-efficient-for-both-training-or-application" class="headerlink" title="Why decoder-only LM is more convenient (less design choiceto consider) or efficient (for both training or application)?"></a>Why decoder-only LM is more convenient (less design choiceto consider) or efficient (for both training or application)?</h2><p>Pretraining (left) and chatbot generation (right) are highly consistent.</p>
+<p>• Naturally handles variable-length text generation during pretraining!</p>
+<p>• During application, we just do natural concatenation (always causal<br>attention). No computation is wasted (assuming we save hidden<br>states of the history).</p>
+<p><img src="nlp=dec.png" alt=""></p>
+<p>In pretraining, we need to build text of variable length, and the<br>training signal is only from the decoder side.</p>
+<p>• During application, we need to re-encode (especially when the<br>encoder is bi-directional) the whole history for each dialogue turn.</p>
+<p><img src="nlp=encdec.png" alt=""></p>
+<h2 id="rope"><a href="#rope" class="headerlink" title="rope"></a>rope</h2><p>We want the dot product between query (position $m$) and key (position $n$) to directly be a function of ($m-n$).</p>
+<script type="math/tex; mode=display">
+        \langle \boldsymbol{f}_{\boldsymbol{q}}(\boldsymbol{x}_m, m), \boldsymbol{f}_{\boldsymbol{k}}(\boldsymbol{x}_n, n) \rangle = \boldsymbol{g}(\boldsymbol{x}_m, \boldsymbol{x}_n, m-n)</script><h1 id="GPT3-and-in-context-learning"><a href="#GPT3-and-in-context-learning" class="headerlink" title="GPT3 and in-context learning"></a>GPT3 and in-context learning</h1><p>上下文学习（ICL）是指 大型语言模型通过分析其输入提示（Prompt）中嵌入的少数示例或演示（Demonstrations），来快速理解并执行特定下游任务的能力，而无需进行传统的模型参数更新（即无需微调或梯度下降）。</p>
+<h2 id="few-shot-before-GPT3"><a href="#few-shot-before-GPT3" class="headerlink" title="few shot before GPT3"></a>few shot before GPT3</h2><p>Before GPT3, few-shot learning still refers to how a model can quickly<br>adapt to a new task demonstrated with only a few examples via<br>gradient update.</p>
+<p>We have a meta-learning phase on a wide set of tasks. In effect, the<br>meta-learning problem treats entire tasks as training examples.（把一个任务看作一个样本，想要学习到一个比较好的初始配置）</p>
+<h2 id="chain-of-thought-（cot）"><a href="#chain-of-thought-（cot）" class="headerlink" title="chain of thought （cot）"></a>chain of thought （cot）</h2><p>idea：reasoning is more consuming than computation，give llm more time to think</p>
+<p>cot 的效果在模型大的时候更加明显</p>
+<p>few-shot: 给几个例子——add manually written reasoning before giving answer in prompt.</p>
+<p>zero-shot: chaining of 2 prompts. 第一步明确说要一步一步推理，获得推理的过程。第二步接着这个告诉它输出的格式，获得正确的输出。</p>
+<h3 id="research"><a href="#research" class="headerlink" title="research"></a>research</h3><h4 id="CoT-with-self-consistency"><a href="#CoT-with-self-consistency" class="headerlink" title="CoT with self-consistency"></a>CoT with self-consistency</h4><p>For CoT, we could sample multiple reasoning path from the LLM<br>with temperature sampling. 温度越高越随机，越有diversity</p>
+<p>And then take a majority voting over the answers!</p>
+<h4 id="Tree-of-Thoughts"><a href="#Tree-of-Thoughts" class="headerlink" title="Tree of Thoughts"></a>Tree of Thoughts</h4><p>Maintain and expand a thought-tree.</p>
+<p>• For each existing step, we prompt the LLM to propose multiple next steps,<br>and also to judge which path (by giving a value) is more promising (pls refer<br>to paper for how the prompts are designed).</p>
+<p>• The nodes that are judged to be unlikely will be discarded</p>
+<p><img src="nlp=cot.png" alt=""></p>
+<h4 id="bias-in-icl"><a href="#bias-in-icl" class="headerlink" title="bias in icl"></a>bias in icl</h4><p>Majority and recency bias</p>
+<p>多数偏差是指在少样本学习的提示中，如果提供的训练示例的类别分布是不平衡的，模型就会倾向于预测出现次数最多的那个类别。即使一个新的测试样本客观上属于少数类别，模型也更倾向于输出多数类别，从而牺牲了少数类别的召回率和整体准确性。</p>
+<p>近因偏差是指在少样本学习的提示中，模型会倾向于预测在提示末尾（或最近）出现的类别。即使提示中的类别分布是平衡的，仅仅改变示例的顺序，也会显著改变模型的预测结果，导致预测的高方差（不稳定）。</p>
+<p>Calibration （修正）of few-shot prediction</p>
+<script type="math/tex; mode=display">\mathbf{\hat{q}} = \text{softmax}(\mathbf{W}\mathbf{\hat{p}} + \mathbf{b})</script><ul>
+<li>$\mathbf{\hat{p}}$：模型（如大型语言模型 LLM）原始预测的类别概率分布向量。</li>
+<li>$\mathbf{W}$：权重矩阵。</li>
+<li>$\mathbf{b}$：偏置向量 (bias)。</li>
+<li>$\mathbf{\hat{q}}$：校准后的类别概率分布向量。</li>
+</ul>
+<p>利用模型对“空输入”的预测 $\text{prediction}_{\text{null}}$ 来抵消其固有的偏差。</p>
+<ul>
+<li><strong>设置 $\mathbf{b}$：</strong> 将偏置向量 $\mathbf{b}$ 设为 $\mathbf{0}$。</li>
+<li><strong>设置 $\mathbf{W}$：</strong> 将权重矩阵 $\mathbf{W}$ 设为一个对角矩阵，其对角线元素是空输入预测概率的倒数。<script type="math/tex; mode=display">\mathbf{W} = \text{diag}(\text{prediction}_{\text{null}})^{-1}</script>这是希望最后空输入的输出分布是均匀的</li>
+</ul>
+<h4 id="Induction-attention-head-for-repetition"><a href="#Induction-attention-head-for-repetition" class="headerlink" title="Induction attention head: for repetition"></a>Induction attention head: for repetition</h4><p>“归纳注意力头”不是 Transformer 架构中预设的组件，而是模型在训练过程中自发学习到的、由一个或多个注意力头（通常是两个头在不同层中协作）组成的功能性电路（Circuit）。</p>
+<p>假设输入序列是：…[A][B]…[A]</p>
+<p>当模型处理第二个 [A] 时，归纳头会执行以下操作：</p>
+<p>匹配（Match）： 它会回顾序列，找到上一次出现 [A] 的位置。</p>
+<p>复制/预测（Copy/Predict）： 它会查看上一次 [A] 后面紧跟着的标记 [B]，并利用这个信息来预测当前第二个 [A] 后面也应该跟着 [B]。</p>
+<p>简单来说，它能发现并应用序列中重复出现的 [A] → [B] 模式。</p>
+<h1 id="Instruction-tuning"><a href="#Instruction-tuning" class="headerlink" title="Instruction tuning"></a>Instruction tuning</h1><p>motivation: we are lazy, 希望zero-shot prompting（不给例子）</p>
+<h2 id="FLAN-Finetuned-Language-Net"><a href="#FLAN-Finetuned-Language-Net" class="headerlink" title="FLAN (Finetuned Language Net)"></a>FLAN (Finetuned Language Net)</h2><p> Simple idea: After pretraining, we finetune the language model on a good amount of<br>“instruction following” data.</p>
+<p> Each training samples contains the task description, an input, and the target output.</p>
+<p>During evaluation, we hope the model can generalize to unseen task type.</p>
+<p>FLAN data construction: Collected data from 62<br>existing NLP tasks. For each task, manually<br>compose ten unique templates<br>(for diversity) that use natural<br>language instructions to<br>describe the task.</p>
+<p><img src="nlp=comp.png" alt=""></p>
+<h1 id="Alignment-with-reinforcement-learning-human-feed-back-RLHF"><a href="#Alignment-with-reinforcement-learning-human-feed-back-RLHF" class="headerlink" title="Alignment with reinforcement learning human feed back (RLHF)"></a>Alignment with reinforcement learning human feed back (RLHF)</h1><p>We collect samples<br>from the model, and ask<br>labelers to rank them.<br>These ranks are used to<br>train the reward model</p>
+<p>This reward<br>model is<br>used for RL.</p>
+<h2 id="Why-is-it-practical"><a href="#Why-is-it-practical" class="headerlink" title="Why is it practical?"></a>Why is it practical?</h2><p>• It’s also easier for the human labeler to rank the responses, than coming up<br>with a better response.</p>
+<p>• From pretraining, the LLM might be strong enough to give a good sample<br>when you sample enough times.</p>
+<h2 id="what-could-be-its-advantage"><a href="#what-could-be-its-advantage" class="headerlink" title="what could be its advantage"></a>what could be its advantage</h2><p>(comparing to, say, more supervised finetuning on high-quality data)?</p>
+<p>• It’s usually easier to train a good discriminator than a good generator<br>(especially now that we can use base the reward model on an existing LLM).</p>
+<p>• By giving low reward, we are teaching the model “what not to say” by<br>sampling from it.</p>
+<h2 id="让机器生成更符合我们需求的回答"><a href="#让机器生成更符合我们需求的回答" class="headerlink" title="让机器生成更符合我们需求的回答"></a>让机器生成更符合我们需求的回答</h2><p>Trivial method: Prompting（Directly prompt the LM to align）</p>
+<p>Pros: Training-free;</p>
+<p>Cons: No guarantee that the model will precisely follow, and requires<br>careful prompt design</p>
+<p>Best-of-N</p>
+<p>1) Samples multiple solutions;<br>2) Chooses the one with the highest score given by a reward model.</p>
+<p>Pros: Do not need to train the policy model, simple and powerful;</p>
+<p>Cons: not efficient and you might need a large N</p>
+<h2 id="objective"><a href="#objective" class="headerlink" title="objective"></a>objective</h2><script type="math/tex; mode=display">\max_{\pi_{\theta}} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(\cdot|x)} \left[ r_{\phi}(x, y) \right] - \beta \mathbb{D}_{\text{KL}} \left[ \pi_{\theta}(\cdot | x) \parallel \pi_{\text{ref}}(\cdot | x) \right]</script><script type="math/tex; mode=display">\mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_{\theta}(\cdot|x)} \left[ r_{\phi}(x, y) - \beta (\log \pi_{\theta}(y|x) - \log \pi_{\text{ref}}(y|x)) \right]</script><p>奖励模型 $\phi$ , 前一项是为了提高奖励</p>
+<p>后一项防止优化后的模型 $\pi<em>{\theta}$ <strong>偏离太远</strong>（deviating too far）于初始参考模型 $\pi</em>{\text{ref}}$<br>（Reward over-optimization issue）<br>The reward model is an<br>imperfect proxy, optimizing its<br>value too much can hinder<br>ground truth performance (first<br>increase, then decrease).</p>
+<p>$\pi<em>{\theta}(\cdot | x)$ 和 $\pi</em>{\text{ref}}(\cdot | x)$含义： 它们代表在给定输入 $x$ 的条件下，所有可能的输出 $y$ 上的完整概率分布。</p>
+<p>$\pi<em>{\theta}(y|x)$ 和 $\pi</em>{\text{ref}}(y|x)$含义： 它们代表在给定输入 $x$ 的条件下，模型生成特定回复 $y$ 的概率。</p>
+<p>synthetic（人造的） setting for the Gold model：实际上并没有真的用人类标记，而是使用大模型标记</p>
+<h2 id="PPO"><a href="#PPO" class="headerlink" title="PPO"></a>PPO</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">算法</th>
+<th style="text-align:left">对应行为</th>
+<th style="text-align:left">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>策略梯度 (PG)</strong></td>
+<td style="text-align:left">司机非常激进，一脚油门到底或一脚刹车踩死。</td>
+<td style="text-align:left"><strong>方差太大 (Variances are too high)</strong>，容易导致训练不稳定甚至崩溃。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>TRPO</strong></td>
+<td style="text-align:left">司机知道要温和驾驶，但每次启动前都要用复杂的数学公式精确计算方向盘转角和油门深度。</td>
+<td style="text-align:left"><strong>安全稳定</strong>，但<strong>实现极其复杂</strong>，计算成本高。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>PPO-Clip</strong></td>
+<td style="text-align:left">司机学了一个简单的“安全规则”：<strong>如果当前操作被认为很好，就鼓励他继续，但不能超过一个固定的限度。如果操作不好，就限制他别做得太差。</strong></td>
+<td style="text-align:left"><strong>安全且高效。</strong> 它用一个简单的“截断”机制，达到了与 TRPO 相似的稳定效果，但避免了复杂的计算。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>PPO 的直觉就体现在它的 <strong>CLIP 目标函数</strong>中：</p>
+<script type="math/tex; mode=display">L^{CLIP}(\theta) = \mathbb{E}_t \left[ \min\left( p_t(\theta) \hat{A}_t, \text{clip}(p_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]</script><ol>
+<li><strong>$p_t(\theta)$ (新旧策略的比率)</strong>：代表新策略 $\pi<em>\theta$ 相对于旧策略 $\pi</em>{\theta_{old}}$ <strong>“变动了多少”</strong>。</li>
+<li><strong>优势函数 $\hat{A}_t$</strong>：代表当前动作 $a_t$ 的<strong>好坏程度</strong>。</li>
+<li><strong>核心直觉（最小化和截断）：</strong><ul>
+<li><strong>当 $\hat{A}_t$ 为正（动作好）</strong>：PPO 想要提高这个动作的概率（增大 $p_t(\theta)$），但 $\min$ 函数会确保这个比率<strong>不会超过 $1+\epsilon$</strong>。这就好像在说：“你做得很好，但我只奖励你到这个程度，防止你太得意忘形，把策略改得面目全非。”</li>
+<li><strong>当 $\hat{A}_t$ 为负（动作差）</strong>：PPO 想要降低这个动作的概率（减小 $p_t(\theta)$），但 $\min$ 函数会确保这个比率<strong>不会低于 $1-\epsilon$</strong>。这就好像在说：“你做得很差，我惩罚你，但惩罚不能太重，防止你一次性把策略改错。”</li>
+</ul>
+</li>
+</ol>
+<p>PPO的问题： too much hyper parameters</p>
+<h2 id="DPO"><a href="#DPO" class="headerlink" title="DPO"></a>DPO</h2><p>Advantage: We no longer need a reward model or a value model.</p>
+<script type="math/tex; mode=display">\mathcal{L}_{\text{DPO}}(\pi_{\theta}; \pi_{\text{ref}}) = -\mathbb{E}_{(x, y_w, y_l) \sim \mathcal{D}} \left[ \log \sigma \left( \beta \log \frac{\pi_{\theta}(y_w | x)}{\pi_{\text{ref}}(y_w | x)} - \beta \log \frac{\pi_{\theta}(y_l | x)}{\pi_{\text{ref}}(y_l | x)} \right) \right].</script><p>$y_w$：模型对 $x$ 生成的<strong>被选择/偏好 (winner)</strong> 的回复。$y_l$：模型对 $x$ 生成的<strong>被拒绝/不偏好 (loser)</strong> 的回复。</p>
+<script type="math/tex; mode=display">\nabla_{\theta}\mathcal{L}_{\text{DPO}}(\pi_{\theta}; \pi_{\text{ref}}) = -\beta \mathbb{E}_{(x, y_w, y_l) \sim \mathcal{D}} \left[ \sigma(\hat{r}_{\theta}(x, y_l) - \hat{r}_{\theta}(x, y_w)) \left[ \nabla_{\theta} \log \pi_{\theta}(y_w | x) - \nabla_{\theta} \log \pi_{\theta}(y_l | x) \right] \right].</script><h4 id="A-策略更新方向-Action-Term"><a href="#A-策略更新方向-Action-Term" class="headerlink" title="A. 策略更新方向 (Action Term)"></a>A. 策略更新方向 (Action Term)</h4><script type="math/tex; mode=display">\left[ \nabla_{\theta} \log \pi_{\theta}(y_w | x) - \nabla_{\theta} \log \pi_{\theta}(y_l | x) \right]</script><ul>
+<li>这是<strong>梯度上升</strong>方向</li>
+</ul>
+<h4 id="B-奖励估计-Estimated-Reward"><a href="#B-奖励估计-Estimated-Reward" class="headerlink" title="B. 奖励估计 (Estimated Reward)"></a>B. 奖励估计 (Estimated Reward)</h4><script type="math/tex; mode=display">\hat{r}_{\theta}(x, y) = \beta \log \frac{\pi_{\theta}(y | x)}{\pi_{\text{ref}}(y | x)}</script><ul>
+<li>DPO 的关键在于，它<strong>隐含地</strong>将奖励模型 $r(x, y)$ 替换成了策略模型 $\pi<em>{\theta}$ 相对于参考模型 $\pi</em>{\text{ref}}$ 的<strong>对数概率比</strong>，再乘以 $\beta$。这个 $\hat{r}<em>{\theta}(x, y)$ 被称为<strong>经验奖励 (empirical reward)</strong>，它是策略 $\pi</em>{\theta}$ 在当前参数下对 $y$ 的奖励估计。</li>
+</ul>
+<h4 id="C-权重项-Weight-Term"><a href="#C-权重项-Weight-Term" class="headerlink" title="C. 权重项 (Weight Term)"></a>C. 权重项 (Weight Term)</h4><script type="math/tex; mode=display">\sigma(\hat{r}_{\theta}(x, y_l) - \hat{r}_{\theta}(x, y_w))</script><ul>
+<li>如果<strong>当前策略 $\pi_{\theta}$ 已经正确地捕捉了偏好</strong>（即 $\hat{r}<em>{\theta}(x, y_w) &gt; \hat{r}</em>{\theta}(x, y<em>l)$），那么这个奖励差异 $(\hat{r}</em>{\theta}(x, y<em>l) - \hat{r}</em>{\theta}(x, y_w))$ 是一个<strong>较大的负数</strong>。Sigmoid 函数 $\sigma(\text{大负数})$ 接近 <strong>0</strong>，因此<strong>权重很小</strong>。</li>
+<li>如果<strong>当前策略 $\pi_{\theta}$ 错误地捕捉了偏好</strong>（即 $\hat{r}<em>{\theta}(x, y_w) &lt; \hat{r}</em>{\theta}(x, y_l)$），那么这个奖励差异是一个<strong>正数</strong>。Sigmoid 函数 $\sigma(\text{正数})$ 接近 <strong>1</strong> 或 <strong>0.5</strong> 以上，因此<strong>权重很大</strong>。</li>
+</ul>
+<h3 id="✨-进一步的直觉：正则化-Regularization-Intuition"><a href="#✨-进一步的直觉：正则化-Regularization-Intuition" class="headerlink" title="✨ 进一步的直觉：正则化 (Regularization Intuition)"></a>✨ 进一步的直觉：正则化 (Regularization Intuition)</h3><p> $\beta [\log \pi<em>{\theta}(y_l|x) - \log \pi</em>{\theta}(y<em>w|x)] - \beta [\log \pi</em>{\text{ref}}(y<em>l|x) - \log \pi</em>{\text{ref}}(y_w|x)]$</p>
+<p>这个表达式实际上是：</p>
+<script type="math/tex; mode=display">\underbrace{\beta (\log \frac{\pi_{\theta}(y_l|x)}{\pi_{\theta}(y_w|x)})}_{\text{策略 } \pi_{\theta} \text{的 log-prob 差异}} - \underbrace{\beta (\log \frac{\pi_{\text{ref}}(y_l|x)}{\pi_{\text{ref}}(y_w|x)})}_{\text{参考 } \pi_{\text{ref}} \text{的 log-prob 差异}}</script><ul>
+<li><strong>DPO 目标：</strong> DPO 损失的目标是让策略 $\pi<em>{\theta}$ 对 $y_w$ 和 $y_l$ 的对数概率<strong>差异</strong> ($\log \pi</em>{\theta}(y<em>w|x) - \log \pi</em>{\theta}(y_l|x)$) <strong>增大</strong>（即让 $y_w$ 比 $y_l$ 更可能出现）。</li>
+<li><strong>正则化作用：</strong> DPO 损失要求 $\pi<em>{\theta}$ 的这个差异<strong>不仅要大</strong>，而且要相对于<strong>参考模型</strong> $\pi</em>{\text{ref}}$ 的<strong>原始差异</strong>进行调整。</li>
+<li><strong>结论：</strong> DPO 实际上是在<strong>正则化</strong>策略 $\pi<em>{\theta}$ 的对数概率差异，使其在拟合人类偏好的同时，<strong>不会过度偏离</strong>基础模型 $\pi</em>{\text{ref}}$ 的行为。这与 RLHF-PPO 中使用 KL 散度进行正则化有相似的目的，但 DPO 将这个正则化直接嵌入到了<strong>损失函数</strong>的定义中。</li>
+</ul>
+<p>DPO 通过绕过 奖励模型 (Reward Model) 和 强化学习 (RL) 步骤，使得训练过程更简单、更稳定。<br>RLHF-PPO 由于引入了复杂的强化学习和奖励模型，被认为有更大的潜力（可能在复杂的对齐任务上表现更好）。</p>
+<h1 id="Mixture-of-Experts-Model"><a href="#Mixture-of-Experts-Model" class="headerlink" title="Mixture of Experts Model"></a>Mixture of Experts Model</h1><p>Idea of conditional computation:<br> We still build a super big model, but<br>we only selectively activate a relevant<br>portion for each training sample.</p>
+<p> MoE is natural for model parallel</p>
+<script type="math/tex; mode=display">
+G(x) = \text{Softmax}(\text{KeepTopK}(H(x), k))</script><script type="math/tex; mode=display">
+\text{KeepTopK}(v, k)_i = \begin{cases} v_i & \text{if } v_i \text{ is in the top } k \text{ elements of } v \\ -\infty & \text{otherwise} \end{cases}</script><script type="math/tex; mode=display">
+H(x)_i = (x \cdot W_{g})_i + \text{StandardNormal}() \cdot \text{Softplus}((x \cdot W_{\text{noise}})_i)</script><ul>
+<li><strong>核心线性变换：</strong> $(x \cdot W<em>{g})_i$ 是对输入 $x$ 应用权重矩阵 $W</em>{g}$ 后的第 $i$ 个元素。这是计算专家 $i$ 初始得分的基础。</li>
+<li><strong>噪声项：</strong> 防止专家过度专业化 (Over-Specialization) 或坍塌 (Collapse):门控网络 $G(x)$ 倾向于将相似的输入持续路由到得分最高的少数专家。这会导致这些少数专家被过度使用 (over-utilized)，而其他大多数专家则利用不足 (under-utilized)，参数更新少，形同虚设。这种不平衡也被称为“路由坍塌” (Routing Collapse)。</li>
+</ul>
+<h2 id="Balancing-loads-between-experts"><a href="#Balancing-loads-between-experts" class="headerlink" title="Balancing loads between experts"></a>Balancing loads between experts</h2><script type="math/tex; mode=display">\text{Importance}(X) = \sum_{x \in X} G(x) \quad \text{(6)}</script><ul>
+<li>$G(x)$ 是指<strong>门控值（gate value）</strong>。在MoE模型中，门控网络会为每个输入 $x$ 输出一个分布，决定将该输入分配给哪个专家。</li>
+<li>$\text{Importance}(X)$ 是该专家在整个批次 $X$ 中所有样本<strong>门控值（使用概率）的总和</strong>。这个值衡量了该专家在当前批次中被激活和使用的程度。</li>
+</ul>
+<p>负载均衡损失 $\mathcal{L}_{\text{importance}}$ 是根据所有专家的重要性值集合计算得出的：</p>
+<script type="math/tex; mode=display">\mathcal{L}_{\text{importance}}(X) = w_{\text{importance}} \cdot \text{CV}(\text{Importance}(X))^2 \quad \text{(7)}</script><ul>
+<li>$\text{Importance}(X)$ 此时是一个<strong>向量</strong>，包含了所有专家各自的 $\text{Importance}$ 值。</li>
+<li>$\text{CV}(\cdot)$ 是<strong>变异系数（Coefficient of Variation）</strong>，其定义如下：<script type="math/tex; mode=display">\text{CV} = \text{std}/\text{mean}</script>  即：$\text{CV} = \text{标准差} / \text{均值}$。</li>
+<li><p>$w_{\text{importance}}$ 是一个<strong>手动调整的缩放因子（scaling factor）</strong>，用于控制此损失在总损失中的权重和影响力。</p>
+<p>最小化 $\mathcal{L}_{\text{importance}}$ 意味着最小化 $\text{CV}(\text{Importance}(X))$。由于 $CV$ 越小表示数据越集中，因此这鼓励所有专家具有近似相等的“重要性”，从而实现了专家间的均衡负载。</p>
+</li>
+</ul>
+<h2 id="更简单的负载均衡损失”解析"><a href="#更简单的负载均衡损失”解析" class="headerlink" title="更简单的负载均衡损失”解析"></a>更简单的负载均衡损失”解析</h2><script type="math/tex; mode=display">\text{loss} = \alpha \cdot \sum_{i=1}^{N} f_i \cdot P_i \quad \text{(4)}</script><p>在这里，$p$ 指的是 <strong>路由器概率（Router Probability）</strong>，也称为 <strong>门控概率（Gate Probability）</strong>。</p>
+<ul>
+<li><strong>$p_i(x)$：</strong> 是指门控网络（Router）对输入 $x$ 计算得到的、将其分派给<strong>第 $i$ 个专家</strong>的概率。<ul>
+<li>在MoE模型中，门控网络通常会输出一个 <strong>$N$ 维的概率向量</strong> $p(x)$，其中 $N$ 是专家数量，$\sum_{i=1}^{N} p_i(x) = 1$。</li>
+</ul>
+</li>
+<li><strong>$P_i$ (公式 6)：</strong> 是指在整个批次 $B$ 中，分配给<strong>第 $i$ 个专家</strong>的<strong>概率的平均值</strong>。<script type="math/tex; mode=display">P_i = \frac{1}{T} \sum_{x \in B} p_i(x) \quad</script></li>
+</ul>
+<p>$f_i$ 表示在当前批次 $B$ 中<strong>实际被分派（hard-routed）给专家 $i$ 的 tokens 的比例</strong>（Actual Usage）：</p>
+<script type="math/tex; mode=display">f_i = \frac{1}{T} \sum_{x \in B} \mathbb{I}\{\operatorname{argmax} p(x) = i\} \quad</script><ul>
+<li>$\operatorname{argmax} p(x) = i$ 表示 $p_i(x)$ 是所有专家中概率最大的，即样本 $x$ 最终被确定分派给了专家 $i$。</li>
+<li>$f_i$ 衡量的是专家 $i$ 在当前批次中 <strong>“硬性”处理的实际工作量</strong>。</li>
+</ul>
+<p>惩罚少数专家被过度使用</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left"><strong>$f_i$（实际使用率 - Actual Usage）</strong></th>
+<th style="text-align:left"><strong>$P_i$（概率分配率 - Allocated Probability）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>公式</strong></td>
+<td style="text-align:left"><script type="math/tex">f_i = \frac{1}{T} \sum_{x \in B} \mathbb{I}\{\operatorname{argmax} p(x) = i\}</script></td>
+<td style="text-align:left"><script type="math/tex">P_i = \frac{1}{T} \sum_{x \in B} p_i(x)</script></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>含义</strong></td>
+<td style="text-align:left"><strong>硬性选择结果</strong>。实际被分派给专家 $i$ 的 tokens 占总 tokens 数 $T$ 的比例。</td>
+<td style="text-align:left"><strong>软性概率均值</strong>。门控网络分配给专家 $i$ 的概率 $p_i(x)$ 在整个批次 $B$ 中的平均值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>计算基准</strong></td>
+<td style="text-align:left">基于 <strong>$\operatorname{argmax}$</strong> 运算：只关心哪个专家获得了最高的概率，结果是 0 或 1（指示函数 $\mathbb{I}$）。</td>
+<td style="text-align:left">基于 <strong>软概率 $p_i(x)$</strong> 的求和：考虑了门控网络对所有专家的概率分配大小。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>代表性</strong></td>
+<td style="text-align:left">衡量专家 $i$ <strong>实际处理的工作量</strong>。</td>
+<td style="text-align:left">衡量专家 $i$ <strong>预期被使用的平均概率权重</strong>。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Fine-Grained-Expert-Segmentation"><a href="#Fine-Grained-Expert-Segmentation" class="headerlink" title="Fine-Grained Expert Segmentation"></a>Fine-Grained Expert Segmentation</h2><p>while maintaining<br>the number of parameters<br>constant, we segment the experts<br>into a finer grain by splitting the<br>FFN intermediate hidden<br>dimension.</p>
+<h2 id="Shared-Expert-Isolation"><a href="#Shared-Expert-Isolation" class="headerlink" title="Shared Expert Isolation"></a>Shared Expert Isolation</h2><p>we<br>isolate certain experts to serve as<br>shared experts that are always<br>activated, aiming at capturing and<br>consolidating common knowledge<br>across varying contexts. （一部分是专家for通用知识，一直被激活）</p>
