@@ -1,0 +1,1631 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/kazuki.jpg">
+  <link rel="icon" href="/img/kazuki.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="瑾瑜當年">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="计算内容 求极限：二重极限，累次极限 函数连续性、可微性的判断 全微分计算 方向导数的计算 二重极限 考查函数的连续性计算的就是二重极限，二重极限可以理解为x,y两个变量同时趋于某一点。当然，趋于某一点的路径是随意的。在证伪时，路径的多样性是一个很好的工具。 存在 放缩 此方法适用于证明&#x2F;求解极限为0者。最终利用的是\(\rho→0\),或者是x→0且y→0 均值不等式 \(\lim_{(x,y)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多元函数微分">
+<meta property="og:url" content="http://example.com/2025/02/27/VA/index.html">
+<meta property="og:site_name" content="港湾">
+<meta property="og:description" content="计算内容 求极限：二重极限，累次极限 函数连续性、可微性的判断 全微分计算 方向导数的计算 二重极限 考查函数的连续性计算的就是二重极限，二重极限可以理解为x,y两个变量同时趋于某一点。当然，趋于某一点的路径是随意的。在证伪时，路径的多样性是一个很好的工具。 存在 放缩 此方法适用于证明&#x2F;求解极限为0者。最终利用的是\(\rho→0\),或者是x→0且y→0 均值不等式 \(\lim_{(x,y)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E6%83%A0.jpg">
+<meta property="article:published_time" content="2025-02-27T02:19:23.000Z">
+<meta property="article:modified_time" content="2026-02-24T13:10:21.261Z">
+<meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="微积分">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/%E6%83%A0.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>多元函数微分 - 港湾</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>觀瀾</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/%E6%83%A0.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="多元函数微分"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-27 10:19" pubdate>
+          2025年2月27日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">多元函数微分</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-02-24T21:10:21+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="计算内容">计算内容</h1>
+<p>求极限：二重极限，累次极限</p>
+<p>函数连续性、可微性的判断</p>
+<p>全微分计算</p>
+<p>方向导数的计算</p>
+<h1 id="二重极限">二重极限</h1>
+<p>考查函数的连续性计算的就是二重极限，二重极限可以理解为x,y两个变量同时趋于某一点。当然，趋于某一点的路径是随意的。在证伪时，路径的多样性是一个很好的工具。</p>
+<h2 id="存在">存在</h2>
+<h3 id="放缩">放缩</h3>
+<p>此方法适用于证明/求解极限为0者。最终利用的是<span
+class="math inline">\(\rho→0\)</span>,或者是x→0且y→0</p>
+<h4 id="均值不等式">均值不等式</h4>
+<p><span
+class="math inline">\(\lim_{(x,y)→(0,0)}\frac{x^2y^2}{x^2+y^2}\)</span></p>
+<p><span class="math inline">\(\frac{x^2y^2}{x^2+y^2} \leq
+\frac{x^4+y^4}{2(x^2+y^2)}\leq
+\frac{1}{2}\frac{x^2}{x^2+y^2}x^2+\frac{1}{2}\frac{y^2}{x^2+y^2}y^2\leq  \frac{1}{2}(x^2+y^2)\)</span></p>
+<p>趋于0，证毕</p>
+<h4 id="中值定理">中值定理</h4>
+<p><span
+class="math inline">\(\frac{e^{x^3+y^3}-1}{x^2+y^2}\)</span>在(0,0)处的极限是否存在？</p>
+<p><span class="math inline">\(e^{x^3+y^3}-e^0=e^\epsilon
+(x^3+y^3)\)</span> 注意<span class="math inline">\(\epsilon \in
+(0,1)\)</span></p>
+<p>$||e||e(|x|+|y|) e(|x|+|y|) $</p>
+<p>趋于0，证毕</p>
+<h4 id="分离绝对值或平方">分离绝对值或平方</h4>
+<p>上面的两道例题也用了这个方法，我们可以各提取出一个x,y的平方或者绝对值，然后把剩下的直接放大到1</p>
+设 [ f(x, y)=
+<span class="math display">\[\begin{cases}
+\frac{x^{2}+y^{2}}{\vert x\vert+\vert y\vert}, &amp; (x, y)\neq(0, 0)\\
+0, &amp; (x, y)=(0, 0)
+\end{cases}\]</span>
+<p>] 证明函数 <span class="math inline">\(f\)</span> 在原点 <span
+class="math inline">\((0, 0)\)</span> 处连续。</p>
+<p>[ <span class="math display">\[\begin{align*}
+\vert f(x, y)-f(0, 0)\vert&amp;=\frac{x^{2}+y^{2}}{\vert x\vert+\vert
+y\vert}\\
+&amp;=\vert x\vert\frac{\vert x\vert}{\vert x\vert+\vert y\vert}+\vert
+y\vert\frac{\vert y\vert}{\vert x\vert+\vert y\vert}\leq\vert
+x\vert+\vert y\vert
+\end{align*}\]</span> ]</p>
+<p>因此当 <span class="math inline">\(\|(x, y)-(0,
+0)\|=\sqrt{x^{2}+y^{2}}\)</span> 充分小时，<span
+class="math inline">\(\vert f(x, y)-f(0, 0)\vert\)</span> 可以任意小。故
+<span class="math inline">\(\lim_{(x, y)\to(0, 0)}f(x, y)=f(0,
+0)\)</span>。这就证明了函数 <span class="math inline">\(f(x, y)\)</span>
+在原点 <span class="math inline">\((0, 0)\)</span>
+处连续。命题得证。</p>
+<h3 id="整体看">整体看</h3>
+<p><span
+class="math inline">\(\lim_{(x,y)→(0,0)}\frac{xy-sin(xy)}{xy-cos(xy)}\)</span></p>
+<p>直接xy=u，泰勒即可，答案三分之一</p>
+<h3 id="分而治之">分而治之</h3>
+<p><span
+class="math inline">\(\lim_{(x,y)→(0,0)}(x+1)^\frac{1+y}{xy}\)</span></p>
+<p><span
+class="math inline">\(\frac{1}{x+1}\frac{x+1}{x}\frac{1+y}{y}\)</span>
+如此拆分指数部分即可</p>
+<p>得出最终的极限为<span class="math inline">\(e^1=e\)</span></p>
+<h2 id="不存在">不存在</h2>
+<p>两种思想。要么找一条特殊路径让极限不存在，要么找俩路径极限存在但不等。</p>
+<h3 id="正比例函数">正比例函数</h3>
+<p>此方法适用于否定齐次函数的极限</p>
+<p>eg.<span
+class="math inline">\(\lim_{(x,y)→(0,0)}\frac{x^2-y^2}{x^2+y^2}\)</span></p>
+<p>从y=kx趋近，极限为<span
+class="math inline">\(\frac{1-k^2}{1+k^2}\)</span>，取不同的k极限存在但不相等。</p>
+<h3 id="二次函数">二次函数</h3>
+<p>这个适用的类型类似于上面的齐次函数</p>
+<p><span
+class="math inline">\(\lim_{(x,y)→(0,0)}\frac{x^2y}{x^4+y^2}\)</span></p>
+<p>取<span class="math inline">\(y=kx^2\)</span>趋近，则极限为<span
+class="math inline">\(\frac{k}{1+k^2}\)</span></p>
+<h1 id="累次极限">累次极限</h1>
+<p>对于二元的就是二次极限，每一次求极限都只取一个变量，剩下是常量。当然，只有前一个极限存在才能继续算下一个。</p>
+<p>例子</p>
+<p>设 <span class="math inline">\(f(x, y)=\frac{x^2 - y^2}{x^2 +
+y^2}\)</span>，其定义域为 <span class="math inline">\(D =
+\mathbb{R}^2\setminus\{(0, 0)\}\)</span>。之前已证，函数 <span
+class="math inline">\(f(x, y)\)</span> 在点 <span
+class="math inline">\((0, 0)\)</span>
+处的全面极限不存在。现考察累次极限。不难证明</p>
+<p><span class="math display">\[
+\lim_{y \to 0}\lim_{x \to 0}f(x, y)=\lim_{y \to 0}\frac{-y^2}{y^2}=-1.
+\]</span> <span class="math display">\[
+\lim_{x \to 0}\lim_{y \to 0}f(x, y)=\lim_{x \to 0}\frac{x^2}{x^2}=1.
+\]</span></p>
+<h2 id="累次极限与重极限">累次极限与重极限</h2>
+<p>定理：</p>
+<ol type="i">
+<li><p>若以下三个极限均存在 <span class="math display">\[\lim_{y \to
+y_0}\lim_{x \to x_0}f(x, y), \lim_{x \to x_0}\lim_{y \to y_0}f(x, y),
+\lim_{(x, y)\to(x_0, y_0)}f(x, y),\]</span>
+则它们的极限值均相等；</p></li>
+<li><p>若两个累次极限存在，但极限值不等，则重极限不存在。</p></li>
+</ol>
+<h1 id="可微与偏导">可微与偏导</h1>
+<p>定义：记二元函数 <span class="math inline">\(f(x, y)\)</span>
+定义域为 <span class="math inline">\(D\)</span>，设点 <span
+class="math inline">\((x_0, y_0)\)</span> 是 <span
+class="math inline">\(D\)</span> 的一个内点。若存在两个数 <span
+class="math inline">\(\lambda, \mu \in \mathbb{R}\)</span>，使得对 <span
+class="math inline">\(\forall h, k \in (-\delta, \delta)\)</span>， [
+f(x_0 + h, y_0 + k) - f(x_0, y_0) - (h + k) = o(), ] 则称函数 <span
+class="math inline">\(f(x, y)\)</span> 在点 <span
+class="math inline">\((x_0, y_0)\)</span> 处可微，并称线性函数 <span
+class="math inline">\(\lambda h + \mu k\)</span> 为 <span
+class="math inline">\(f(x, y)\)</span> 在点 <span
+class="math inline">\((x_0, y_0)\)</span> 处的微分，记作 <span
+class="math inline">\(\left.\mathrm{d}f\right|_{(x_0,y_0)} = \lambda h +
+\mu k\)</span>。自变量 <span class="math inline">\(x, y\)</span> 的增量
+<span class="math inline">\(h, k\)</span> 常写作 <span
+class="math inline">\(h = \Delta x, k = \Delta y\)</span>。故微分常写作
+<span class="math inline">\(\left.\mathrm{d}f\right|_{(x_0,y_0)} =
+\lambda\Delta x + \mu\Delta y\)</span>。</p>
+<p>微分是唯一的,也就是说<span class="math inline">\(\lambda
+,\mu\)</span>是唯一的。其中<span
+class="math inline">\(\lambda=\frac{\partial f}{\partial x}\)</span>
+<span class="math inline">\(\mu=\frac{\partial f}{\partial
+y}\)</span></p>
+<h2 id="可微">可微→</h2>
+<p>如果一个函数在某一点可微，那么.....?</p>
+<p>1、函数在这一点连续</p>
+<p>2、在这一点沿着任意方向的方向导数均存在，当然偏导数也存在。</p>
+<p>（偏导数不存在一定不可微）</p>
+<p>注意:偏导数存在不能推出连续，更不能推出可微。</p>
+考虑函数 [ f(x, y)=
+<span class="math display">\[\begin{cases}
+0, &amp; xy = 0\\
+1, &amp; xy \neq 0
+\end{cases}\]</span>
+<p>] 显然函数 <span class="math inline">\(f\)</span> 在原点处不连续。但
+<span class="math inline">\(f\)</span> 在原点的两个偏导数存在。因为 [
+==0, x ] 这说明偏导数 <span class="math inline">\(f_x(0, 0)\)</span>
+存在，且 <span class="math inline">\(f_x(0,
+0)=0\)</span>。同理可证偏导数 <span class="math inline">\(f_y(0,
+0)\)</span> 存在，且 <span class="math inline">\(f_y(0,
+0)=0\)</span>。</p>
+<h2 id="判断是否可微">判断是否可微</h2>
+<p>首先看偏导是否存在，偏导数不存在就不可微。</p>
+<p>然后计算[_{→0} ]</p>
+<p><span class="math inline">\(\rho=\sqrt{h^2+k^2}\)</span></p>
+<h2 id="高阶偏导">高阶偏导</h2>
+<p>n阶偏导有<span
+class="math inline">\(2^n\)</span>个高阶偏导。感觉高阶偏导和累次极限有点像。</p>
+<p><span class="math inline">\(\frac{\partial^2 f}{\partial
+x^2}=f_{xx}=D_{xx}f\)</span></p>
+<p><span class="math inline">\(\frac{\partial ^2 f}{\partial y\partial x
+}=f_{xy}=D_{xy}f\)</span></p>
+<h2 id="clairaut定理">Clairaut定理</h2>
+<p>设<span class="math inline">\(f(x, y)\)</span>在开区域<span
+class="math inline">\(D \subset
+\mathbb{R}^2\)</span>上定义。假设两个二阶混合偏导数<span
+class="math inline">\(f_{xy}(x, y)\)</span>和<span
+class="math inline">\(f_{yx}(x, y)\)</span>在<span
+class="math inline">\(D\)</span>上处处存在，且在点<span
+class="math inline">\((x_0, y_0)\)</span>处均连续，则<span
+class="math inline">\(f_{xy}(x_0, y_0) = f_{yx}(x_0, y_0)\)</span>。</p>
+<p>证明思路大概是累次极限+中值定理，最后利用连续性。</p>
+<p>Clairaut定理断言，如果</p>
+<ol type="i">
+<li><p>两个混合偏导数 <span class="math inline">\(f_{xy},
+f_{yx}\)</span> 在开区域 <span class="math inline">\(D\)</span>
+上存在；</p></li>
+<li><p><span class="math inline">\(f_{xy}\)</span> 和 <span
+class="math inline">\(f_{yx}\)</span> 在点 <span
+class="math inline">\((x_0, y_0)\)</span> 处均连续</p></li>
+</ol>
+<p>则 <span class="math inline">\(f_{xy}(x_0, y_0) = f_{yx}(x_0,
+y_0)\)</span>。</p>
+<p>条件 (ii) 可减弱为 (ii)' <span class="math inline">\(f_{xy}\)</span>
+或 <span class="math inline">\(f_{yx}\)</span> 在点 <span
+class="math inline">\((x_0, y_0)\)</span> 处连续。</p>
+<h3 id="f_xyf_yx"><span class="math inline">\(f_{xy}\)</span>≠<span
+class="math inline">\(f_{yx}\)</span></h3>
+(课本第40页例1.4.16.) 设 [ f(x, y)=
+<span class="math display">\[\begin{cases}
+\frac{xy(x^{2}-y^{2})}{x^{2}+y^{2}}, &amp; (x, y)\neq(0, 0)\\
+0, &amp; (x, y)=(0, 0)
+\end{cases}\]</span>
+<p>]</p>
+<p>考虑 (f(x, y)) 的两个二阶混合偏导数 (f_{xy}) 和 (f_{yx})。判断
+(f_{xy}(0, 0)) 和 (f_{yx}(0, 0)) 是否存在。存在时求出它们的值。</p>
+<p>解答：</p>
+<p>在开区域 (^2{(0, 0)}) 上，(f(x, y))
+是分式函数，故它的各阶偏导数均连续。计算得它的一阶和二阶混合偏导数如下 [
+f_x(x, y)=, f_y(x, y)=, ] [ f_{xy}(x, y)= = f_{yx}(x, y). ]</p>
+<p>不难看出 (f_{xy}, f_{yx}) 在点 ((0,0)) 处的极限都不存在.
+(因为它们沿着两个坐标轴趋于 ((0,0)) 时有极限 (1) 和 (-1).)
+因此二阶混合偏导在点 ((0,0)) 处均不连续.</p>
+<p>！但这并不表明 (f_{xy}(0, 0), f_{yx}(0, 0)) 不存在！</p>
+<p>以下考虑它们的存在性与计算. 由于 [ ==0 , (x ). ] 故 (f_x(0,0)) 存在且
+(f_x(0,0)=0). 同理可证 (f_y(0,0)) 存在且 (f_y(0,0)=0). 由于 [ ==-1 , (y
+), ] 这说明 (f_{xy}(0,0)) 存在且 (f_{xy}(0,0)= -1). 类似地, 由于 [ ==1 ,
+(x ), ] 故 (f_{yx}(0,0)) 存在, 且 (f_{yx}(0,0)= 1 = f_{xy}(0,0)).
+解答完毕.</p>
+<h1 id="方向导数">方向导数</h1>
+<h2 id="定义">定义</h2>
+<p>f(x,y)的定义域包含点<span class="math inline">\(z_0\)</span>=<span
+class="math inline">\((x_0,y_0)\)</span>的一个领域，u=(a,b)为一个单位向量，往下称单位向量u为一个方向。若极限<span
+class="math inline">\(\lim_{t→0}\frac{f(z_0+tu)-f(z_0)}{t}=\lim_{t→0}\frac{f(x_0+ta,y_0+tb)-f(x_0,y_0)}{t}\)</span>存在，则称之为函数f再点<span
+class="math inline">\(z_0\)</span>处沿着方向u的导数。</p>
+<p>记作<span class="math inline">\(\frac{\partial f}{\partial
+u}(x_0,y-0)\)</span>或者<span
+class="math inline">\(D_uf|_{(x_0,y_0)}\)</span></p>
+<h2 id="几何意义">几何意义</h2>
+<p>偏导数就是一种特殊的方向导数</p>
+<p><img src="/img/方向.jpg" srcset="/img/loading.gif" lazyload alt="美妙的几何意义"></p>
+<h2 id="计算">计算</h2>
+<p>偏导数=梯度与方向的内积</p>
+<p>$D_uf(x,y)=f(x,y)u $</p>
+<p><span class="math inline">\(\nabla f(x_1,x_2,x_3,...)=(\frac{\partial
+f}{\partial x_1},\frac{\partial f}{\partial x_2},\frac{\partial
+f}{\partial x_3})\)</span></p>
+<p>注意这里求梯度代入的点就是趋近于的点</p>
+<h3 id="梯度的性质">梯度的性质</h3>
+<ol type="i">
+<li><p>常数函数的梯度为零，即 <span class="math inline">\(\nabla c =
+0\)</span>；</p></li>
+<li><p><span class="math inline">\(\nabla(\lambda f)=\lambda\nabla
+f\)</span>，<span class="math inline">\(\lambda\)</span>
+为常数；</p></li>
+<li><p><span class="math inline">\(\nabla(f\pm g)=\nabla f\pm\nabla
+g\)</span>；</p></li>
+<li><p><span class="math inline">\(\nabla(fg)=g\nabla f + f\nabla
+g\)</span>；</p></li>
+<li><p><span class="math inline">\(\nabla(f/g)=\frac{1}{g^2}(g\nabla f -
+f\nabla g)\)</span>，<span class="math inline">\(g\neq
+0\)</span>；</p></li>
+<li><p><span class="math inline">\(\nabla u(f)=u&#39;(f)\nabla
+f\)</span>，这里 <span class="math inline">\(u(t)\)</span>
+为一元可微函数。</p></li>
+</ol>
+<h2 id="最值">最值</h2>
+<p>定理：设函数 <span class="math inline">\(f(x)\)</span> 在点 <span
+class="math inline">\(x_0\)</span> 处可微，且 <span
+class="math inline">\(\nabla f(x_0) \neq 0\)</span>，则函数 <span
+class="math inline">\(f(x)\)</span> 沿着梯度方向 <span
+class="math inline">\(\nabla f(x_0)/\|\nabla f(x_0)\|\)</span>
+可取得方向导数的最大值，且最大值为 <span class="math inline">\(\|\nabla
+f(x_0)\|\)</span>；沿负梯度方向 <span class="math inline">\(-\nabla
+f(x_0)/\|\nabla f(x_0)\|\)</span> 取得方向导数值最小值且最小值为 <span
+class="math inline">\(-\|\nabla f(x_0)\|\)</span>。</p>
+<p>证明很简单，两个向量的内积同方向达到最大，反向则最小。</p>
+<h3 id="例题">例题</h3>
+<p>设 <span class="math inline">\(f(x, y)=xe^y\)</span>。</p>
+<ol type="i">
+<li><p>求函数在点 <span class="math inline">\(P = (2, 0)\)</span>
+处，沿着方向 <span class="math inline">\(\overrightarrow{PQ}\)</span>
+的方向导数，这里 <span class="math inline">\(Q=(0.5,
+2)\)</span>；</p></li>
+<li><p>求函数在点 <span class="math inline">\(P\)</span>
+处的方向导数的最大值。</p></li>
+</ol>
+<p>简单计算得 <span class="math inline">\(\nabla f(x, y)=(e^y,
+xe^y)\)</span>，<span class="math inline">\(\nabla f(2, 0)=(1,
+2)\)</span>。</p>
+<ol type="i">
+<li>计算 <span class="math inline">\(\overrightarrow{PQ}=(0.5, 2)-(2,
+0)=(-1.5, 2)\)</span>，其单位向量为 <span class="math inline">\(u =
+(-\frac{3}{5}, \frac{4}{5})\)</span>。</li>
+</ol>
+<p>故函数在点 <span class="math inline">\(P = (2, 0)\)</span> 处沿着方向
+<span class="math inline">\(u\)</span> 的方向导数为 <span
+class="math inline">\(D_uf(2, 0)=\nabla f(2, 0)\cdot u=(1,
+2)\cdot(-\frac{3}{5}, \frac{4}{5}) = 1\)</span></p>
+<ol start="2" type="i">
+<li>由定理知，函数在点 <span class="math inline">\(P\)</span>
+处沿着梯度方向 <span class="math inline">\(\nabla f(2, 0)=(1,
+2)\)</span> 的方向导数可取得最大值 <span class="math inline">\(\|\nabla
+f(2, 0)\|=\sqrt{5}\)</span>。图示如下。</li>
+</ol>
+<p><img src="/img/梯度.jpg" srcset="/img/loading.gif" lazyload alt="红色的线的水平线"></p>
+<h4 id="水平线补充">水平线（补充）</h4>
+<p>定义：对二元函数 <span class="math inline">\(f(x, y)\)</span>，称集合
+<span class="math inline">\(\{(x, y) \in D, f(x, y)=k\}\)</span> 为函数
+<span class="math inline">\(f\)</span> 的水平线，或简单地说 <span
+class="math inline">\(f(x, y)=k\)</span> 是水平线，这里 <span
+class="math inline">\(k \in \mathbb{R}\)</span>，<span
+class="math inline">\(D \subset \mathbb{R}^2\)</span> 是函数 <span
+class="math inline">\(f\)</span> 的定义域。</p>
+<p>例：考虑函数 <span class="math inline">\(f(x, y)=4x^2 +
+y^2\)</span>。对于任意正数 <span
+class="math inline">\(k&gt;0\)</span>，水平线 <span
+class="math inline">\(4x^2 + y^2=k\)</span> 为椭圆，其标准形式为</p>
+<p><span
+class="math display">\[\frac{x^2}{k/4}+\frac{y^2}{k}=1,\]</span></p>
+<p>两个半轴的长度分别为 <span
+class="math inline">\(\sqrt{k}/2\)</span>，<span
+class="math inline">\(\sqrt{k}\)</span>。函数图像及其水平线如下。</p>
+<p><img src="/img/水平线.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于二元函数是水平线，如果推广到三元就是水平面了。</p>
+<h1 id="jacobian-矩阵">Jacobian 矩阵</h1>
+<p>设 ( f = (f_1, , f_m) ): ( D ^n ^m ) 为向量值函数，( D ) 为开集，(
+x_0 D )，则：</p>
+<ol type="1">
+<li>( f ) 在点 ( x_0 ) 处可微 () 每个分量函数 ( f_i ) 在点 ( x_0 )
+处可微；</li>
+<li>当 ( f ) 在点 ( x_0 ) 处可微时，( f'(x_0) ) 可表示为：</li>
+</ol>
+[ f'(x_0) =
+<span class="math display">\[\begin{bmatrix}
+\frac{\partial f_1}{\partial x_1} &amp; \frac{\partial f_1}{\partial
+x_2} &amp; \cdots &amp; \frac{\partial f_1}{\partial x_n} \\
+\frac{\partial f_2}{\partial x_1} &amp; \frac{\partial f_2}{\partial
+x_2} &amp; \cdots &amp; \frac{\partial f_2}{\partial x_n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial f_m}{\partial x_1} &amp; \frac{\partial f_m}{\partial
+x_2} &amp; \cdots &amp; \frac{\partial f_m}{\partial x_n}
+\end{bmatrix}\]</span>
+<p>_{x_0} ]</p>
+<p>上述矩阵 ( f'(x_0) ) 称为映射 ( f ) 在点 ( x_0 ) 处的
+<strong>Jacobian 矩阵</strong>。当 ( m = n ) 时，Jacobian
+矩阵是方阵，其行列式称为 <strong>Jacobian 行列式</strong>。</p>
+<h2 id="例子">例子</h2>
+<p>称二维映射 ( F: ^2 ^2 )， [ (r, ) (r, r) ] 为极坐标映射，其中： [ =
+{(r, ) r &gt; 0, (0, 2) }. ] 映射在点 ( (r, ) ) 处的 <strong>Jacobian
+矩阵</strong> 为：</p>
+[ DF(r, ) =
+<span class="math display">\[\begin{bmatrix}
+\cos\theta &amp; -r\sin\theta \\
+\sin\theta &amp; r\cos\theta
+\end{bmatrix}\]</span>
+<p>, ]</p>
+<p>注：<span class="math inline">\(cos\theta\)</span>是<span
+class="math inline">\(rcos\theta\)</span>对x求导，<span
+class="math inline">\(-rsin\theta\)</span>是<span
+class="math inline">\(rcos\theta\)</span>对<span
+class="math inline">\(\theta\)</span>求导。</p>
+<p><span class="math inline">\(A_{ij}=\frac{\partial f_i}{\partial
+x_j}\)</span></p>
+<p>其 <strong>Jacobian 行列式</strong> 为： [ DF(r, ) = r &gt; 0. ]</p>
+<h1 id="锁链规则">锁链规则</h1>
+<h2 id="二元函数">二元函数</h2>
+<p>定理：设二元函数<span class="math inline">\(f(x,
+y)\)</span>，以及两个一元函数<span class="math inline">\(x(t),
+y(t)\)</span>均可微，<span class="math inline">\(t \in
+J\)</span>，且它们可以复合，则复合函数<span
+class="math inline">\(f(x(t), y(t))\)</span>也可微，且 [ [f(x(t),
+y(t))]' = f_x(x, y)x'(t) + f_y(x, y)y'(t), ] 其中<span
+class="math inline">\((x, y) = (x(t), y(t)), t \in J\)</span>。</p>
+<h2 id="多元函数">多元函数</h2>
+<p>定理：设<span class="math inline">\(n\)</span>元函数<span
+class="math inline">\(f(u_1, \cdots, u_n)\)</span>在开集<span
+class="math inline">\(D \subset \mathbb{R}^n\)</span>上为<span
+class="math inline">\(C^1\)</span>的，映射<span class="math inline">\(u:
+J \subset \mathbb{R}^1 \to \mathbb{R}^n\)</span>是<span
+class="math inline">\(C^1\)</span>的，<span class="math inline">\(u =
+(u_1, \cdots, u_n)\)</span>，且<span class="math inline">\(u(t) \in D,
+\forall t \in J\)</span>，这里<span
+class="math inline">\(J\)</span>为一个开区间，则复合函数<span
+class="math inline">\(f(u(t))\)</span>在<span
+class="math inline">\(J\)</span>上也是<span
+class="math inline">\(C^1\)</span>的，且 [ [f(u_1(t), , u_n(t))]' =
+u_1'(t) + + u_n'(t), ] 或简写为<span
+class="math inline">\([f(u(t))]&#39; = \nabla f(u) \cdot
+u&#39;(t)\)</span>，其中<span class="math inline">\(u = u(t), t \in
+J\)</span>。</p>
+<h3 id="例题-1">例题</h3>
+<h4 id="课本第50页例1.5.4">课本第50页例1.5.4</h4>
+<p>设<span class="math inline">\(z = u^2v - uv^2\)</span>，<span
+class="math inline">\(u = x\sin y\)</span>，<span
+class="math inline">\(v = x\cos y\)</span>，求偏导数<span
+class="math inline">\(z_x\)</span>。</p>
+<p><strong>解</strong>： 记<span class="math inline">\(f(u, v) = u^2v -
+uv^2\)</span>，则<span class="math inline">\(z = f(u,
+v)\)</span>。根据上述定理可知 [ <span
+class="math display">\[\begin{align*}
+z_x &amp;= f_u(u, v)u_x + f_v(u, v)v_x = (2uv - v^2)u_x + (u^2 -
+2uv)v_x\\
+&amp;= x^2[(2\cos y\sin y - \cos^2y)\sin y + (\sin^2y - 2\sin y\cos
+y)\cos y]\\
+&amp;= x^2[(\sin 2y - \cos^2y)\sin y + (\sin^2y - \sin 2y)\cos y]\\
+&amp;= \frac{3x^2}{2}\sin 2y(\sin y - \cos y)
+\end{align*}\]</span> ]</p>
+<h4 id="例题2">例题2</h4>
+<p>设<span class="math inline">\(f(x, y)\)</span>在全平面<span
+class="math inline">\(\mathbb{R}^2\)</span>上连续可微，且<span
+class="math inline">\(f(x, x^2) \equiv 1, \forall x \in
+\mathbb{R}\)</span>。</p>
+<ol type="i">
+<li><p>若<span class="math inline">\(f_x(x, x^2) \equiv x, \forall x \in
+\mathbb{R}\)</span>，求<span class="math inline">\(f_y(x,
+x^2)\)</span></p></li>
+<li><p>若<span class="math inline">\(f_y(x, y) \equiv x^2 + 2y, \forall
+(x, y) \in \mathbb{R}^2\)</span>，求<span class="math inline">\(f(x,
+y)\)</span>。</p></li>
+</ol>
+<p><strong>注</strong>：符号<span class="math inline">\(f_x(x,
+x^2)\)</span>表示偏导数<span class="math inline">\(f_x(x,
+y)\)</span>在抛物线<span class="math inline">\(y =
+x^2\)</span>上取值，即<span class="math inline">\(f_x(x, x^2)= f_x(x,
+y)|_{y = x^2}\)</span>。符号<span class="math inline">\(f_y(x,
+x^2)\)</span>的意义类似。</p>
+<p><strong>解</strong>： (i) 对恒等式<span class="math inline">\(f(x,
+x^2) \equiv 1\)</span>两边求导得<span class="math inline">\(f_x(x, x^2)
++ f_y(x, x^2)2x \equiv 0\)</span>。若<span class="math inline">\(f_x(x,
+x^2) \equiv x\)</span>，则<span class="math inline">\(x + 2xf_y(x, x^2)
+\equiv 0, \forall x \in \mathbb{R}\)</span>。约去因子<span
+class="math inline">\(x\)</span>得<span class="math inline">\(1 +
+2f_y(x, x^2)\equiv 0\)</span>。由此可得<span
+class="math inline">\(f_y(x, x^2) = -\frac{1}{2}, \forall x \in
+\mathbb{R}\)</span>。</p>
+<ol start="2" type="i">
+<li>令<span class="math inline">\(F(x, y) = f(x, y) - (x^2y +
+y^2)\)</span>【<strong>为了构造<span
+class="math inline">\(F_y(x,y)=0\)</span></strong>】</li>
+</ol>
+<p>则<span class="math inline">\(F(x, y)\)</span>在<span
+class="math inline">\(\mathbb{R}^2\)</span>上连续可微，且<span
+class="math inline">\(F_y(x, y)= f_y(x, y) - (x^2 + 2y) = 0, \forall (x,
+y) \in \mathbb{R}^2\)</span>。故<span class="math inline">\(F(x,
+y)\)</span>在<span
+class="math inline">\(\mathbb{R}^2\)</span>上<strong>与变量<span
+class="math inline">\(y\)</span>无关</strong>，即<span
+class="math inline">\(F(x, y) = \phi(x), \forall (x, y) \in
+\mathbb{R}^2\)</span>，亦即<span class="math inline">\(f(x, y) = x^2y +
+y^2 + \phi(x)\)</span>。</p>
+<p>由假设<span class="math inline">\(f(x, x^2) \equiv
+1\)</span>可知<span class="math inline">\(x^2 \cdot x^2 + x^4 + \phi(x)
+\equiv 1\)</span>，即<span class="math inline">\(\phi(x) = 1 -
+2x^4\)</span>。因此<span class="math inline">\(f(x, y)= x^2y + y^2 + 1 -
+2x^4\)</span>。解答完毕。</p>
+<h1 id="隐函数定理ift">隐函数定理IFT</h1>
+<h2 id="二元情形">二元情形</h2>
+<p>设二元函数<span class="math inline">\(F(x, y)\)</span>在平面开集<span
+class="math inline">\(D \subset \mathbb{R}^2\)</span>上是<span
+class="math inline">\(C^1\)</span>的。假设<span
+class="math inline">\(F(x_0, y_0) = 0\)</span>且<span
+class="math inline">\(F_y(x_0, y_0) \neq 0\)</span>，<span
+class="math inline">\((x_0, y_0) \in D\)</span>，则存在唯一的 (隐)
+函数<span class="math inline">\(f: J_{\alpha} \to
+J&#39;_{\beta}\)</span>，其中<span class="math inline">\(J_{\alpha}
+\triangleq (x_0 - \alpha, x_0 + \alpha)\)</span>，<span
+class="math inline">\(J&#39;_{\beta} \triangleq (y_0 - \beta, y_0 +
+\beta)\)</span>，使得</p>
+<ol type="i">
+<li><p><span class="math inline">\(y_0 = f(x_0)\)</span>，<span
+class="math inline">\(F(x, f(x)) \equiv 0\)</span>，<span
+class="math inline">\(\forall x \in J_{\alpha}\)</span>；</p></li>
+<li><p>对于<span class="math inline">\((x, y) \in J_{\alpha} \times
+J&#39;_{\beta}\)</span>，<span class="math inline">\(F(x, y) =
+0\)</span>当且仅当<span class="math inline">\(y =
+f(x)\)</span>；</p></li>
+<li><p>隐函数<span class="math inline">\(f(x)\)</span>是<span
+class="math inline">\(C^1\)</span>的，且 [ f'(x) = -.|<em>{y = f(x)}, x
+J</em>{} ]</p></li>
+</ol>
+<h2 id="多元情形">多元情形</h2>
+<p>设<span class="math inline">\(F(x, y)\)</span>为<span
+class="math inline">\(m + 1\)</span>个变量<span
+class="math inline">\(C^1\)</span>函数，定义域<span
+class="math inline">\(D \subset \mathbb{R}^{m +
+1}\)</span>为开集，这里<span class="math inline">\(x = (x_1, \cdots,
+x_m) \in \mathbb{R}^m\)</span>，<span class="math inline">\(y \in
+\mathbb{R}\)</span>。假设在点<span class="math inline">\((x_0, y_0) \in
+D\)</span>处，<span class="math inline">\(F(x_0, y_0) =
+0\)</span>且<span class="math inline">\(F_y(x_0, y_0) \neq
+0\)</span>，则<span class="math inline">\(\exists\varepsilon, \delta
+&gt; 0\)</span>以及函数<span class="math inline">\(f(x)\)</span>，<span
+class="math inline">\(x \in B_{\delta}(x_0)\)</span>，使得</p>
+<ol type="i">
+<li><p><span class="math inline">\(y_0 = f(x_0)\)</span>，<span
+class="math inline">\(F(x, f(x)) \equiv 0\)</span>，<span
+class="math inline">\(\forall x \in B_{\delta}(x_0)\)</span>；</p></li>
+<li><p><span class="math inline">\(F(x, y) = 0\)</span>当且仅当<span
+class="math inline">\(y = f(x)\)</span>，<span
+class="math inline">\(\forall (x, y) \in B_{\delta}(x_0)
+\times J_{\varepsilon}(y_0)\)</span>，这里<span
+class="math inline">\(J_{\varepsilon}(y_0)=(y_0 - \varepsilon, y_0 +
+\varepsilon)\)</span>；</p></li>
+<li><p><span class="math inline">\(f(x)\)</span>是<span
+class="math inline">\(C^1\)</span>的，且<span
+class="math inline">\(\nabla f(x) = -F_y(x, y)^{-1}\nabla_xF(x,
+y)\big|_{y = f(x)}\)</span>，<span class="math inline">\(x \in
+B_{\delta}(x_0)\)</span>。</p></li>
+</ol>
+<h2 id="太长不看">太长不看</h2>
+<p>隐函数问题是在探讨能不能通过方程F(x,y)=0写出来y(x)(或者x(y))。比如我们想要写出y(x),就要求每一个x有唯一的y与之对应。这样就需要F(x,y)在某一个区间内关于y单调变化，这样就可以唯一地解出来y(x)了。因此我们需要<span
+class="math inline">\(F_y(x,y)\neq
+0\)</span>，即每一个x对应唯一的y(局部)。</p>
+<h3 id="反函数定理">反函数定理</h3>
+<p>这个定理很直观，函数在某个区间单调可以写出反函数。实际上它就是隐函数定理的特殊化版本。</p>
+<h4 id="theorem">Theorem</h4>
+<p>设<span class="math inline">\(f(x)\)</span>在开区间<span
+class="math inline">\((a, b)\)</span>上连续可微。若<span
+class="math inline">\(f&#39;(x_0) \neq 0\)</span>，<span
+class="math inline">\(x_0 \in (a, b)\)</span>，则存在<span
+class="math inline">\(\delta &gt; 0\)</span>，以及函数<span
+class="math inline">\(x = g(y)\)</span>，<span class="math inline">\(y
+\in J\)</span>，其中<span class="math inline">\(J = (y_0 - \delta, y_0 +
+\delta)\)</span>，<span class="math inline">\(y_0 =
+f(x_0)\)</span>，使得</p>
+<ol type="i">
+<li><p><span class="math inline">\(x_0 = g(y_0)\)</span>；</p></li>
+<li><p>当<span class="math inline">\(|x - x_0|\)</span>和<span
+class="math inline">\(|y - y_0|\)</span>均充分小时，<span
+class="math inline">\(y = f(x) \Longleftrightarrow x =
+g(y)\)</span>；</p></li>
+<li><p><span class="math inline">\(g(y)\)</span>在<span
+class="math inline">\(J\)</span>连续可微，且 [ g'(y)=.|_{x = g(y)}, y J
+]</p></li>
+</ol>
+<h4 id="proof">Proof</h4>
+<p><strong>证</strong>：记<span class="math inline">\(F(x, y) = y -
+f(x)\)</span>，则<span class="math inline">\(F(x, y)\)</span>是<span
+class="math inline">\(C^1\)</span>的，<span class="math inline">\(F(x_0,
+y_0) = 0\)</span>，且<span class="math inline">\(F_x(x_0, y_0)=
+-f&#39;(x_0) \neq 0\)</span>。故由IFT（隐函数定理，Implicit Function
+Theorem）知存在<span class="math inline">\(\varepsilon, \delta &gt;
+0\)</span>，以及函数<span class="math inline">\(x = g(y)\)</span>，<span
+class="math inline">\(y \in J\)</span>，其中<span
+class="math inline">\(J = (y_0 - \delta, y_0 + \delta)\)</span>，使得
+(i) <span class="math inline">\(x_0 = g(y_0)\)</span>； (ii) <span
+class="math inline">\(y = f(x) \Longleftrightarrow x =
+g(y)\)</span>，<span class="math inline">\((x, y) \in K \times
+J\)</span>，<span class="math inline">\(K = (x_0 - \varepsilon, x_0 +
+\varepsilon)\)</span>； (iii) 函数<span class="math inline">\(x =
+g(y)\)</span>是<span class="math inline">\(C^1\)</span>的，且 [
+g'(y)=-.|<em>{x = g(y)}=.|</em>{x = g(y)}, y J ]</p>
+<p>定理得证。</p>
+<p>做题的时候分两步，先找到F(x,y),然后判断需不需要用“存在隐函数”这个条件进行推导，还是说直接把隐函数看成一个“结果”。</p>
+<h3 id="用它作为条件">用它作为“条件”</h3>
+<p>考虑下列方程，指出在哪些点处方程确定了隐函数<span
+class="math inline">\(y = y(x)\)</span>或<span class="math inline">\(x =
+x(y)\)</span>等。 <span class="math inline">\(e^{-(x + y+z)} = x + y +
+z\)</span>.</p>
+<p><span class="math inline">\(F(x,y,z)=e^{-(x + y+z)} - (x + y +
+z)\)</span></p>
+<p>y=y(x)存在：<span class="math inline">\(F_y=-e^{-(x + y+z)}
+-1\)</span> 恒小于0</p>
+<p>x=x(y)存在:<span class="math inline">\(F_x=-e^{-(x + y+z)}
+-1\)</span> 恒小于0</p>
+<p>因此整个平面上都可以确定y(x)和x(y)。</p>
+<h3 id="看成结果">看成“结果”</h3>
+<p>设<span class="math inline">\(f(u, v)\)</span>可微，且有方程<span
+class="math inline">\(f(ax - cz, ay - bz) =
+0\)</span>确定了一个可微的隐函数<span class="math inline">\(z = z(x,
+y)\)</span>，求<span class="math inline">\(cz_x + bz_y\)</span>;</p>
+<p><span
+class="math inline">\(f_x=f_uu_x+f_vv_x=f_u(a-cz_x)+f_v(-bz_x)=0\)</span>
+得出<span class="math inline">\(z_x=\frac{af_u}{cf_u+bf_v}\)</span></p>
+<p>类似可以解出<span class="math inline">\(f_y\)</span>，容易验证。</p>
+<h2 id="一般情形">一般情形</h2>
+<p>设映射<span class="math inline">\(F(x, y)\)</span>在<span
+class="math inline">\(\Omega\)</span>上是<span
+class="math inline">\(C^1\)</span>的，<span class="math inline">\(F(x_0,
+y_0) = 0\)</span>且<span class="math inline">\(m\)</span>阶矩阵<span
+class="math inline">\(F_y(x_0, y_0)\)</span>非奇，则存在<span
+class="math inline">\(\varepsilon, \delta &gt; 0\)</span>，以及映射<span
+class="math inline">\(\phi(\cdot): B_{\delta}(x_0) \to
+\mathbb{R}^m\)</span>，使得 (i) <span class="math inline">\(y_0 =
+\phi(x_0)\)</span>； (ii) <span class="math inline">\(F(x, \phi(x))
+\equiv 0\)</span>，<span class="math inline">\(\forall x \in
+B_{\delta}(x_0)\)</span>； (iii) 对于<span class="math inline">\((x, y)
+\in B_{\delta}(x_0) \times B_{\varepsilon}(y_0)\)</span>，<span
+class="math inline">\(F(x, y) = 0\)</span> 当且仅当<span
+class="math inline">\(y = \phi(x)\)</span>； (iv) <span
+class="math inline">\(\phi(\cdot)\)</span>是<span
+class="math inline">\(C^1\)</span>的，且 [ D(x)=-.[D_yF(x,
+y)]^{-1}D_xF(x, y)|<em>{y = (x)}, x B</em>{}(x_0) ]</p>
+<h3 id="jacobian矩阵">jacobian矩阵</h3>
+<h4 id="题1">题1</h4>
+设<span class="math inline">\(F = (f, g): \mathbb{R}^4 \to
+\mathbb{R}^2\)</span>， [
+<span class="math display">\[\begin{cases}
+f(x, y, u, v) = 3x^2 + y^2 + u^2 + v^2 - 1\\
+g(x, y, u, v) = x^2 + 2y^2 - u^2 + v^2 - 1
+\end{cases}\]</span>
+<p>]</p>
+不难验证，点<span class="math inline">\(P_0 = (0, \frac{1}{2},
+\frac{1}{\sqrt{8}}, \sqrt{\frac{5}{8}})\)</span>是方程组<span
+class="math inline">\(F(x, y, u, v) = 0\)</span>的一个解。考虑映射<span
+class="math inline">\(F\)</span>在点<span
+class="math inline">\(P_0\)</span>处的Jacobian矩阵 [
+<span class="math display">\[\begin{bmatrix}
+6x &amp; 2y &amp; 2u &amp; 2v\\
+2x &amp; 4y &amp; -2u &amp; 2v
+\end{bmatrix}\]</span>
+_{P_0}=
+<span class="math display">\[\begin{bmatrix}
+0 &amp; 1 &amp; \frac{1}{\sqrt{2}} &amp; \sqrt{\frac{5}{2}}\\
+0 &amp; 2 &amp; -\frac{1}{\sqrt{2}} &amp; \sqrt{\frac{5}{2}}
+\end{bmatrix}\]</span>
+<p>]</p>
+由于矩阵 [ .D_{(u, v)}F|_{P_0}=
+<span class="math display">\[\begin{bmatrix}
+\frac{1}{\sqrt{2}} &amp; \sqrt{\frac{5}{2}}\\
+-\frac{1}{\sqrt{2}} &amp; \sqrt{\frac{5}{2}}
+\end{bmatrix}\]</span>
+<p>]</p>
+<p><strong>注</strong>，其实这里<span
+class="math inline">\(\frac{\partial (f,g)}{\partial
+(u,v)}\)</span>,<span class="math inline">\(\frac{\partial
+(f,g)}{\partial (y,v)}\)</span>,<span
+class="math inline">\(\frac{\partial (f,g)}{\partial
+(y,u)}\)</span>都非奇，我们取这个是为了把(x,y)映射到(u,v).</p>
+<p>非奇，故由IFT（隐函数定理，Implicit Function Theorem）知存在<span
+class="math inline">\(C^1\)</span>映射<span class="math inline">\(h:
+B_{\delta} \subset \mathbb{R}^2 \to \mathbb{R}^2\)</span>，<span
+class="math inline">\((x, y) \mapsto (u, v) = (u(x, y), v(x,
+y))\)</span>，使得</p>
+[
+<span class="math display">\[\begin{cases}
+u(x_0, y_0) = u_0\\
+v(x_0, y_0) = v_0
+\end{cases}\]</span>
+<p>]</p>
+<p>其中<span class="math inline">\(B_{\delta} = \{(x, y), (x - x_0)^2 +
+(y - y_0)^2 &lt; \delta^2\}\)</span>，且 [F(x, y, u(x, y), v(x, y)) ,
+(x, y) B_{}]</p>
+<p>进一步映射<span class="math inline">\(h\)</span>在点<span
+class="math inline">\((x_0, y_0)\)</span>处的Jacobian矩阵为 [ <span
+class="math display">\[\begin{align*}
+\begin{bmatrix}
+u_x &amp; u_y\\
+v_x &amp; v_y
+\end{bmatrix}_{(x_0,y_0)}&amp;=-\begin{bmatrix}
+f_u &amp; f_v\\
+g_u &amp; g_v
+\end{bmatrix}_{P_0}^{-1}\begin{bmatrix}
+f_x &amp; f_y\\
+g_x &amp; g_y
+\end{bmatrix}_{P_0}\\
+&amp;=-\begin{bmatrix}
+\frac{1}{\sqrt{2}}&amp;\sqrt{\frac{5}{2}}\\
+\frac{-1}{\sqrt{2}}&amp;\sqrt{\frac{5}{2}}
+\end{bmatrix}^{-1}\begin{bmatrix}
+0&amp;1\\
+0&amp;2
+\end{bmatrix}=\begin{bmatrix}
+0&amp;\frac{1}{\sqrt{2}}\\
+0&amp;\frac{-3}{\sqrt{10}}
+\end{bmatrix}
+\end{align*}\]</span> ]</p>
+<p><strong>注</strong>：这里可以进行联系二元情形的隐函数定理<span
+class="math inline">\(f&#39;(x)=-\frac{F_x(x,y)}{F_y(x,y)}\)</span>，分母对应y分子对应x。</p>
+<h4 id="题2">题2</h4>
+<p>证明由方程组 <span class="math display">\[
+\begin{cases}
+x^{2}+y^{2}=\frac{1}{2}z^{2}\\
+x + y+z = 2
+\end{cases}
+\]</span> 在点<span class="math inline">\((x,y,z)=(1,
+-1,2)\)</span>附近，确定了两个隐函数<span class="math inline">\(x =
+x(z)\)</span>，<span class="math inline">\(y = y(z)\)</span>，<span
+class="math inline">\(z \in (2-\delta,2 + \delta)\)</span>，满足<span
+class="math inline">\(x(2)=1\)</span>，<span class="math inline">\(y(2)=
+-1\)</span>，并且它们是<span
+class="math inline">\(C^{\infty}\)</span>的。求<span
+class="math inline">\(x&#39;(2)\)</span>，<span
+class="math inline">\(y&#39;(2)\)</span>，<span
+class="math inline">\(x&#39;&#39;(2)\)</span>，<span
+class="math inline">\(y&#39;&#39;(2)\)</span>。</p>
+<p><strong>解</strong>：记<span
+class="math inline">\(F(x,y,z)=x^{2}+y^{2}-\frac{1}{2}z^{2}\)</span>，<span
+class="math inline">\(G(x,y,z)=x + y+z - 2\)</span>，则 <span
+class="math display">\[
+\begin{cases}
+F(1,-1,2)=0\\
+G(1,-1,2)=0
+\end{cases}
+\]</span></p>
+<p>计算得 <span class="math display">\[
+\frac{\partial(F,G)}{\partial(x,y)}=\begin{bmatrix}
+2x&amp;2y\\
+1&amp;1
+\end{bmatrix}
+\]</span> 由于 <span class="math display">\[
+\left.\frac{\partial(F,G)}{\partial(x,y)}\right|_{(1,-1,2)}=\begin{bmatrix}
+2&amp; -2\\
+1&amp;1
+\end{bmatrix}
+\]</span> 非奇，故根据IFT知方程组 <span class="math display">\[
+\begin{cases}
+F(x,y,z)=0\\
+G(x,y,z)=0
+\end{cases}
+\]</span>
+<strong>注：关于某几个变量的Jacobian矩阵非奇，说明存在由其他的变量到这几个变量的映射。比如这道题就是z到x,y，即x(z),y(z)。上面的那一道题是x,y→u,v即u=(x,y),v=(x,y)。Jacobian矩阵非奇与偏导数不为零也有联系，比如我们想把z表示成关于x,y的函数，要求对z偏导数不为0，就是要求关于z的导数的jacobian矩阵（虽然只是一个元素）不为0</strong>
+在点<span class="math inline">\((x,y,z)=(1,
+-1,2)\)</span>附近，确定了两个隐函数<span class="math inline">\(x =
+x(z)\)</span>，<span class="math inline">\(y = y(z)\)</span>，满足<span
+class="math inline">\(x(2)=1\)</span>，<span class="math inline">\(y(2)=
+-1\)</span>。</p>
+<p>由于函数 (F(x,y,z))，(G(x,y,z)) 是 (C^{}) 的，故隐函数 (x(z))，(y(z))
+也是 (C^{}) 的。以下求 (x<sup>{}(2))，(y</sup>{}(2))。对恒等式</p>
+(
+<span class="math display">\[\begin{cases}
+F(x(z),y(z),z) = 0 \\
+G(x(z),y(z),z) = 0
+\end{cases}\]</span>
+) 即 (
+<span class="math display">\[\begin{cases}
+x(z)^2 + y(z)^2 - \frac{1}{2}z^2 = 0 \\
+x(z) + y(z) + z - 2 = 0
+\end{cases}\]</span>
+<p>)</p>
+<p>求导得</p>
+(
+<span class="math display">\[\begin{cases}
+2x(z)x^{\prime}(z) + 2y(z)y^{\prime}(z) - z = 0, \\
+x^{\prime}(z) + y^{\prime}(z) + 1 = 0.
+\end{cases}\]</span>
+<p>)</p>
+<p>令 (z = 2)，并注意到 (x(2) = 1)，(y(2) = -1) 得</p>
+(
+<span class="math display">\[\begin{cases}
+2x^{\prime}(2) - 2y^{\prime}(2) - 2 = 0, \\
+x^{\prime}(2) + y^{\prime}(2) + 1 = 0.
+\end{cases}\]</span>
+<p>)</p>
+<p>易解得 (x^{}(2) = 0)，(y^{}(2) = -1)。为求
+(x<sup>{}(2))，(y</sup>{}(2))，我们需要对恒等式</p>
+(
+<span class="math display">\[\begin{cases}
+2x(z)x^{\prime}(z) + 2y(z)y^{\prime}(z) - z = 0, \\
+x^{\prime}(z) + y^{\prime}(z) + 1 = 0,
+\end{cases}\]</span>
+<p>)</p>
+<p>再次求导得</p>
+(
+<span class="math display">\[\begin{cases}
+2x^{\prime}(z)^2 + 2x(z)x^{\prime\prime}(z) + 2y^{\prime}(z)^2 +
+2y(z)y^{\prime\prime}(z) - 1 = 0, \\
+x^{\prime\prime}(z) + y^{\prime\prime}(z) = 0.
+\end{cases}\]</span>
+<p>)</p>
+<p>令 (z = 2)，并注意 (x(2) = 1)，(y(2) = -1)，(x^{}(2) = 0)，(y^{}(2) =
+-1) 得</p>
+(
+<span class="math display">\[\begin{cases}
+2x^{\prime\prime}(2) + 2 - 2y^{\prime\prime}(2) - 1 = 0, \\
+x^{\prime\prime}(z) + y^{\prime\prime}(z) = 0,
+\end{cases}\]</span>
+) 即 (
+<span class="math display">\[\begin{cases}
+x^{\prime\prime}(2) - y^{\prime\prime}(2) = -1/2, \\
+x^{\prime\prime}(z) + y^{\prime\prime}(z) = 0.
+\end{cases}\]</span>
+<p>)</p>
+<p>易解得 (x^{}(2) = -)，(y^{}(2) = )。解答完毕。</p>
+<h2 id="逆映射定理">逆映射定理</h2>
+<p>设<span
+class="math inline">\(f:\Omega\subset\mathbb{R}^n\to\mathbb{R}^n\)</span>是<span
+class="math inline">\(C^1\)</span>映射，<span
+class="math inline">\(\Omega\)</span>开，<span
+class="math inline">\(x_0\in\Omega\)</span>。若<span
+class="math inline">\(n\)</span>阶Jacobian矩阵<span
+class="math inline">\(Df(x_0)\)</span>非奇，则存在映射<span
+class="math inline">\(g:B_{\delta}(y_0)\subset\mathbb{R}^n\to\mathbb{R}^n(y_0
+= f(x_0))\)</span>使得 (i) <span class="math inline">\(x_0 =
+g(y_0)\)</span>； (ii) <span class="math inline">\(f(g(y)) =
+y\)</span>，<span class="math inline">\(y\in B_{\delta}(y_0)\)</span>；
+(iii) <span class="math inline">\(g(f(x)) = x\)</span>，<span
+class="math inline">\(\forall x\in B_{\varepsilon}(x_0)\)</span>； (iv)
+映射<span class="math inline">\(g(\cdot)\)</span>是<span
+class="math inline">\(C^1\)</span>的，且 [ Dg(y)=.[Df(x)]^{-1}|<em>{x =
+g(y)}, yB</em>{}(y_0) ]</p>
+<h3 id="例">例</h3>
+极坐标变换为<span class="math inline">\(x = r\cos\theta\)</span>，<span
+class="math inline">\(y = r\sin\theta\)</span>，其Jacobian矩阵为 [ =
+<span class="math display">\[\begin{bmatrix}
+\cos\theta &amp; -r\sin\theta\\
+\sin\theta &amp; r\cos\theta
+\end{bmatrix}\]</span>
+<p>]</p>
+易证极坐标变换在区域<span class="math inline">\(r &gt; 0\)</span>，<span
+class="math inline">\(0 &lt; \theta &lt;
+2\pi\)</span>上可逆，逆变换为<span class="math inline">\(r = \sqrt{x^2 +
+y^2}\)</span>，<span class="math inline">\(\theta = \theta(x,
+y)\)</span>的Jacobian矩阵为 [ =^{-1}=
+<span class="math display">\[\begin{bmatrix}
+r\cos\theta &amp; r\sin\theta\\
+-\sin\theta &amp; \cos\theta
+\end{bmatrix}\]</span>
+<p>]</p>
+<h1 id="隐函数的高阶导数">隐函数的高阶导数</h1>
+<h3 id="隐函数的高阶导数计算">隐函数的高阶导数计算</h3>
+<p>例：设三元函数<span
+class="math inline">\(F(x,y,z)\)</span>在开集<span
+class="math inline">\(\Omega \subset \mathbb{R}^3\)</span>上是<span
+class="math inline">\(C^1\)</span>的。设<span class="math inline">\(P_0
+= (x_0,y_0,z_0) \in \Omega\)</span>，使得<span
+class="math inline">\(F(x_0,y_0,z_0) = 0\)</span>且<span
+class="math inline">\(F_z(x_0,y_0,z_0) \neq
+0\)</span>。于是由IFT知可由方程<span class="math inline">\(F(x,y,z) =
+0\)</span>在点<span
+class="math inline">\(P_0\)</span>附近解出唯一的隐函数<span
+class="math inline">\(z = z(x,y)\)</span>，<span
+class="math inline">\((x,y) \in B_\delta\)</span>，这里<span
+class="math inline">\(B_\delta\)</span>表以点<span
+class="math inline">\((x_0,y_0)\)</span>为心，以<span
+class="math inline">\(\delta &gt;
+0\)</span>为半径的开球域。进一步函数<span
+class="math inline">\(z(x,y)\)</span>的偏导数可表为 <span
+class="math display">\[(z_x,z_y)|_{(x,y)} =
+-\frac{(F_x,F_y)}{F_z}|_{(x,y,z(x,y))}, \quad (x,y) \in B_\delta. \quad
+(*)\]</span> 如之前所提及过的，隐函数<span
+class="math inline">\(z(x,y)\)</span>的光滑性同函数<span
+class="math inline">\(F(x,y,z)\)</span>。故当<span
+class="math inline">\(F\)</span>是<span
+class="math inline">\(C^2\)</span>时，隐函数<span
+class="math inline">\(z(x,y)\)</span>也是<span
+class="math inline">\(C^2\)</span>的。以下以计算二阶偏导数<span
+class="math inline">\(z_{xx}\)</span>为例，来说明如何计算隐函数的高阶偏导数。由导数公式知<span
+class="math inline">\(z_x = -F_x/F_z\)</span>。于是</p>
+<p><span class="math display">\[
+\begin{align*}
+z_{xx} &amp;= -\left[\frac{F_x(x,y,z(x,y))}{F_z(x,y,z(x,y))}\right]_x =
+-\frac{1}{F_z^2}[F_z(F_x)_x - F_x(F_z)_x]\\
+&amp;= -\frac{1}{F_z^2}[F_z(F_{xx} + F_{xz}z_x) - F_x(F_{zx} +
+F_{zz}z_x)]\\
+&amp;= -\frac{1}{F_z^2}\left[F_z\left(F_{xx} +
+F_{xz}\left[-\frac{F_x}{F_z}\right]\right) - F_x\left(F_{zx} +
+F_{zz}\left[-\frac{F_x}{F_z}\right]\right)\right]\\
+&amp;= \frac{1}{F_z^3}\left(2F_xF_zF_{xz} - F_z^2F_{xx} -
+F_x^2F_{zz}\right)\Bigg|_{(x,y,z(x,y))}
+\end{align*}
+\]</span> 类似可求其他两个二阶偏导数<span
+class="math inline">\(z_{xy}\)</span>，<span
+class="math inline">\(z_{yy}\)</span>。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/" class="print-no-link">#微积分</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>多元函数微分</div>
+      <div>http://example.com/2025/02/27/VA/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>瑾瑜當年</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/05/15/THU/" title="我在清华为你撑一把伞">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">我在清华为你撑一把伞</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/17/post/" title="Probability Theory">
+                        <span class="hidden-mobile">Probability Theory</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.39/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo-haru.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname","enable":true},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:true,models:[{"path":"https://model.hacxy.cn/HK416-1-normal/model.json","scale":0.1,"motionPreloadStrategy":"ALL","position":[-10,60],"stageStyle":{"height":520},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+</html>

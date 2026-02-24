@@ -1,0 +1,1340 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/kazuki.jpg">
+  <link rel="icon" href="/img/kazuki.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="瑾瑜當年">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="运动学内容 以下讨论简谐振动 运动方程 首先考虑一个匀速圆周运动的直径分运动，把这个分运动称为简谐振动  \(x&#x3D;Rcos(\omega t+\phi)\) \(v_x&#x3D;-\omega Rsin(\omega t+\phi)\) \(a_x&#x3D;-\omega^2 R cos(\omega t+\phi)\) 注意简谐振动可以写成\(x&#39;&#39;+\omega^2 x&#x3D;0\)的微分方程 将R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="振动与波">
+<meta property="og:url" content="http://example.com/2025/01/26/chap6/index.html">
+<meta property="og:site_name" content="港湾">
+<meta property="og:description" content="运动学内容 以下讨论简谐振动 运动方程 首先考虑一个匀速圆周运动的直径分运动，把这个分运动称为简谐振动  \(x&#x3D;Rcos(\omega t+\phi)\) \(v_x&#x3D;-\omega Rsin(\omega t+\phi)\) \(a_x&#x3D;-\omega^2 R cos(\omega t+\phi)\) 注意简谐振动可以写成\(x&#39;&#39;+\omega^2 x&#x3D;0\)的微分方程 将R">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/cp.png">
+<meta property="article:published_time" content="2025-01-26T12:17:39.000Z">
+<meta property="article:modified_time" content="2026-02-24T13:10:21.263Z">
+<meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="力学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/cp.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>振动与波 - 港湾</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>觀瀾</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/cp.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="振动与波"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-26 20:17" pubdate>
+          2025年1月26日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          33 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">振动与波</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-02-24T21:10:21+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="运动学内容">运动学内容</h1>
+<p>以下讨论简谐振动</p>
+<h2 id="运动方程">运动方程</h2>
+<p>首先考虑一个匀速圆周运动的直径分运动，把这个分运动称为简谐振动</p>
+<p><img src="/img/振动.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><span class="math inline">\(x=Rcos(\omega t+\phi)\)</span></p>
+<p><span class="math inline">\(v_x=-\omega Rsin(\omega
+t+\phi)\)</span></p>
+<p><span class="math inline">\(a_x=-\omega^2 R cos(\omega
+t+\phi)\)</span></p>
+<p>注意简谐振动可以写成<span class="math inline">\(x&#39;&#39;+\omega^2
+x=0\)</span>的微分方程</p>
+<p>将R换成A（振幅取正）</p>
+<p><span class="math inline">\(\omega\)</span> 角频率</p>
+<p><span class="math inline">\(\nu=\frac{\omega}{2\phi}\)</span>
+频率</p>
+<p><span
+class="math inline">\(T=\frac{1}{\nu}=\frac{2\phi}{\omega}\)</span>
+周期</p>
+<p><span class="math inline">\(\omega
+t+\phi\)</span>称为t时刻振动的相位</p>
+<p><span class="math inline">\(\phi\)</span> 初相</p>
+<h2 id="运动合成">运动合成</h2>
+<h3 id="同方向同频率">同方向，同频率</h3>
+<p><span class="math inline">\(x_1=A_1cos(\omega t+\phi_1)\)</span></p>
+<p><span class="math inline">\(x_2=A_2cos(\omega t+\phi_2)\)</span></p>
+<p>直接相加即可：<span class="math inline">\(x=x_1+x_2=Acos(\omega
+t+\phi)\)</span></p>
+<p><span
+class="math inline">\(A=\sqrt{A_1^2+A_2^2+2A_1A_2cos(\phi_2-\phi_1)}\)</span></p>
+<p><span
+class="math inline">\(tan\phi=\frac{A_1sin\phi_1+A_2sin\phi_2}{A_1cos\phi_1+A_2cos\phi_2}\)</span></p>
+<p>若<span class="math inline">\(\phi_2-\phi_1=2k\pi\)</span> 则<span
+class="math inline">\(A=A_1+A_2\)</span> 取得最大值</p>
+<p>若<span class="math inline">\(\phi_2-\phi_1=(2k+1)\pi\)</span>
+则<span class="math inline">\(A=|A_1-A_2|\)</span> 取得最小值</p>
+<h3 id="方向振幅初相同不同频率">方向振幅初相同，不同频率</h3>
+<p><span class="math inline">\(x_1=Acos(\omega_1t+\phi)\)</span></p>
+<p><span class="math inline">\(x_2=Acos(\omega_2t+\phi)\)</span></p>
+<p><span
+class="math inline">\(x=x_1+x_2=2Acos(\frac{\omega_1-\omega_2}{2}t)cos(\frac{\omega_1+\omega_2}{2}t+\phi)\)</span>这不是简谐振动</p>
+<p><img src="/img/拍.png" srcset="/img/loading.gif" lazyload alt="拍现象"></p>
+<p><span
+class="math inline">\(cos(\frac{\omega_1-\omega_2}{2}t)\)</span>
+可以看成对“振幅”的描述</p>
+<p><span
+class="math inline">\(cos(\frac{\omega_1+\omega_2}{2}t+\phi)\)</span>可以看成简谐振动</p>
+<p>引入<span
+class="math inline">\(\nu_1=\frac{\omega_1}{2\pi}\)</span>和<span
+class="math inline">\(\nu_2=\frac{\omega_2}{2\pi}\)</span></p>
+<p>“振幅”绝对值变化的周期频率,也是振幅平方的变化频率，即振动强度的变化频率</p>
+<p><span
+class="math inline">\(\nu=2\cdot|\frac{\nu_1-\nu_2}{2}|=|\nu_1-\nu_2|\)</span>
+把这个频率称之为拍频率</p>
+<h3 id="垂直方向同频率">垂直方向同频率</h3>
+<p>合成出来的可能性：圆、正/斜椭圆、直线段</p>
+<h4 id="一般的情况">一般的情况</h4>
+<p><span class="math inline">\(x=A_xcos(\omega t+\phi_x)\)</span></p>
+<p><span class="math inline">\(y=A_ycos(\omega t+\phi_y)\)</span></p>
+<p><span
+class="math inline">\(\vec{r}=x\vec{i}+y\vec{j}\)</span>，这个就是运动轨迹</p>
+<p><span
+class="math inline">\(\frac{x^2}{A_x^2}+\frac{y^2}{A_y^2}-\frac{2}{A_xA_y}cos(\phi_x-\phi_y)=sin^2(\phi_x-\phi_y)\)</span></p>
+<p>一般的运动轨迹是斜椭圆</p>
+<h4 id="正椭圆">正椭圆</h4>
+<p>如果<span
+class="math inline">\(\phi_x-\phi_y=(k+\frac{1}{2}\pi)\)</span></p>
+<p>则<span
+class="math inline">\(\frac{x^2}{A_x^2}+\frac{y^2}{A_y^2}=1\)</span>，正椭圆</p>
+<p>如果k=0或者k是一个偶数</p>
+<p>这时x振动比y振动超前了<span
+class="math inline">\(\frac{\pi}{2}\)</span>,分别画出xy坐标与时间的关系，不难看出是逆时针旋转</p>
+<p>如果k=-1（或者k是一个奇数）</p>
+<p>这时y振动比x振动超前了<span
+class="math inline">\(\frac{\pi}{2}\)</span>,分别画出xy坐标与时间的关系，不难看出是顺时针旋转</p>
+<h4 id="线">线</h4>
+<p><img src="/img/线振动.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="垂直方向不同频率">垂直方向不同频率</h3>
+<p><img src="/img/李.png" srcset="/img/loading.gif" lazyload alt="李萨如图形"></p>
+<h2 id="非简谐振动的简谐分解">非简谐振动的简谐分解</h2>
+<p>振动分为有周期T（T为有限量）和没有周期的。比如阻尼振动就没有周期。</p>
+<h3 id="有周期的振动">有周期的振动</h3>
+<p>x(t+T)=x(t) 数学上有傅里叶级数展开</p>
+<p><img src="/img/傅里叶.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/img/叶.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="矢量表述">矢量表述</h2>
+<p><span class="math inline">\(x=Acos(\omega t+\phi)\)</span>
+用圆周运动分运动来表述简谐运动，我们约定只画出t=0时的位置矢量，来进行简化。</p>
+<p><img src="/img/矢量.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><span class="math inline">\(x(t)=\vec{A}(t)\cdot\vec{i}\)</span>
+注意<span class="math inline">\(\vec{i}\)</span>是x轴方向向量</p>
+<p><span class="math inline">\(x_1=A_1cos(\omega t+\phi_1)\)</span></p>
+<p><span class="math inline">\(x_2=A_2cos(\omega t+\phi_2)\)</span></p>
+<p><span
+class="math inline">\(x=x_1+x_2=(\vec{A_1}(t)+\vec{A_2}(t))\cdot\vec{i}\)</span></p>
+<p>引入<span
+class="math inline">\(\vec{A}=\vec{A_1}+\vec{A_2}\)</span></p>
+<p><img src="/img/叠加.png" srcset="/img/loading.gif" lazyload alt="在t=0时刻叠加"></p>
+<p>因为旋转角速度相同，所以可以用这种叠加代表任意时刻的</p>
+<h2 id="复数表述">复数表述</h2>
+<p><span class="math inline">\(x=Acos(\omega t+\phi)\)</span></p>
+<p><span class="math inline">\(y=Asin(\omega t+\phi)\)</span></p>
+<p>y轴虚轴，x轴实轴</p>
+<p>转化成一个复数<span
+class="math inline">\(A&#39;(t)=x(t)+iy(t)\)</span></p>
+<p>利用欧拉公式我们可以把它表述为复振动<span
+class="math inline">\(Ae^{i(\omega t+\phi)}\)</span>，实部是真实振动</p>
+<p>对<span class="math inline">\(A&#39;(t)\)</span>求导得<span
+class="math inline">\(i\omega Ae^{i(\omega
+t+\phi)}\)</span>发现实部就是真是振动的导函数</p>
+<h1 id="动力学内容">动力学内容</h1>
+<h2 id="动力学方程">动力学方程</h2>
+<p>回顾运动学内容：</p>
+<p>匀速圆周运动，x直径方向分运动的运动方程<span
+class="math inline">\(x=Acos(\omega t+\phi)\)</span></p>
+<p>两边对t求二阶导，知道<span
+class="math inline">\(x&#39;&#39;+\omega^2x=0\)</span></p>
+<p>动力学考查：</p>
+<p><span
+class="math inline">\(F_x=\vec{F}\cdot\vec{i}=-m\omega^2\vec{r}\cdot\vec{i}=-m\omega^2x\)</span></p>
+<p>我们把<span
+class="math inline">\(F_x\)</span>写成mx''代入上面的等式，同样也可以得到动力学微分方程<span
+class="math inline">\(x&#39;&#39;+\omega^2x=0\)</span></p>
+<p>简谐运动的通解是<span class="math inline">\(x=Acos(\omega
+t+\phi)\)</span> A和<span class="math inline">\(\phi\)</span>
+由初始条件所确定</p>
+<p><span class="math inline">\(x_0=Acos(\phi)\)</span></p>
+<p><span class="math inline">\(v_0=-\omega Asin\phi\)</span></p>
+<p><span
+class="math inline">\(A=\sqrt{x_0^2+\frac{v_0^2}{\omega^2}}\)</span></p>
+<p><span class="math inline">\(tan\phi=\frac{-v_0}{\omega
+x_0}\)</span></p>
+<p>若<span class="math inline">\(tan\phi&gt;0\)</span>, <span
+class="math inline">\(\phi\)</span>可以在第一或第三象限</p>
+<p>若<span class="math inline">\(tan\phi&lt;0\)</span>, <span
+class="math inline">\(\phi\)</span>可以在第二或第四象限</p>
+<p>接下来可以利用<span
+class="math inline">\(x_0,v_0\)</span>协助判定在第几象限</p>
+<h3 id="水平弹簧振子">水平弹簧振子</h3>
+<p><img src="/img/弹簧.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>劲度系数k，物体质量m。<span
+class="math inline">\(F_x=-kx=mx&#39;&#39;\)</span></p>
+<p>得出微分方程<span
+class="math inline">\(x&#39;&#39;+\frac{k}{m}x=0\)</span></p>
+<p><span class="math inline">\(\omega=\sqrt{\frac{k}{m}}\)</span>
+具有动力学性质</p>
+<p><span class="math inline">\(\omega=\frac{2\pi}{T}\)</span>
+运动学性质</p>
+<h3 id="复摆">复摆</h3>
+<p><img src="/img/复摆.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>逆时针旋转为正方向，写出角动量定理：</p>
+<p><span class="math inline">\(M=I_o\beta\)</span></p>
+<p><span class="math inline">\(M=-mgsin\theta l_{oc}\)</span>
+负数，因为力矩方向指向纸面内</p>
+<p>代入之后写出微分方程：<span
+class="math inline">\(\theta&#39;&#39;+\frac{mgl_{oc}}{I_0}sin\theta\)</span></p>
+<p>考虑小量近似<span
+class="math inline">\(sin\theta近似为\theta\)</span></p>
+<p>于是<span
+class="math inline">\(\theta&#39;&#39;+\omega^2\theta=0\)</span></p>
+<p><span
+class="math inline">\(\omega=\sqrt{\frac{mgl_{oc}}{I_0}}\)</span></p>
+<p>与简谐振动数学上同构，因此<span
+class="math inline">\(\theta=\theta_0cos(\omega t+\phi)\)</span></p>
+<h4 id="特例单摆">特例：单摆</h4>
+<p>质量全集中在质心上就是单摆，此时<span
+class="math inline">\(I_o=ml_{oc}^2\)</span></p>
+<p>此时<span
+class="math inline">\(\omega=\sqrt{\frac{g}{l}}\)</span></p>
+<h1 id="振动的能量">振动的能量</h1>
+<p><span class="math inline">\(x=Acos(\omega t+\phi)\)</span></p>
+<p><span class="math inline">\(E_k=\frac{1}{2}m\omega^2A^2sin^2(\omega
+t+\phi)\)</span></p>
+<p><span class="math inline">\(E_p=\frac{1}{2}kx^2\)</span></p>
+<p>可以看出<span
+class="math inline">\(E_p+E_k=\frac{1}{2}kA^2=E\)</span></p>
+<p>简谐运动中E守恒：可以通过能量守恒求导后获得动力学微分方程</p>
+<p>例子：复摆</p>
+<p><img src="/img/复摆.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><span
+class="math inline">\(E=E_k+E_p=\frac{1}{2}I_0\theta&#39;^2+mgl_{OC}(1-ccos\theta)\)</span>（注意，是<span
+class="math inline">\(\theta\)</span>的导数）</p>
+<p>两边求导，E守恒，因此左边为0</p>
+<p><span
+class="math inline">\(0=I_0\theta&#39;\theta&#39;&#39;+mgl_{oc}sin\theta
+\theta&#39;\)</span></p>
+<p>同样可以得到复摆动力学微分方程<span
+class="math inline">\(\theta&#39;&#39;+\frac{mgl_{oc}}{I_0}sin\theta=0\)</span></p>
+<h2 id="保守力与势能">保守力与势能</h2>
+<p><span class="math inline">\(-dE_p=\vec{F}\cdot\vec{dl}\)</span></p>
+<p><span class="math inline">\(dE_p=\frac{\partial E_p}{\partial
+x}dx+\frac{\partial E_p}{\partial y}dy+\frac{\partial E_p}{\partial
+z}dz\)</span></p>
+<p><span
+class="math inline">\(\vec{F}\cdot\vec{dl}=F_xdx+F_ydy+F_zdz\)</span></p>
+<p><span class="math inline">\(-dE_p=\vec{F}\cdot\vec{dl}\)</span></p>
+<p>于是<span class="math inline">\(F_x=-\frac{\partial
+E_p}{dx}\)</span>,<span class="math inline">\(F_y=-\frac{\partial
+E_p}{dy}\)</span>,<span class="math inline">\(F_z=-\frac{\partial
+E_p}{dz}\)</span></p>
+<p>于是<span
+class="math inline">\(\vec{F}=-(\frac{\partial}{dx}\vec{i}+\frac{\partial}{dy}\vec{j}+\frac{\partial}{dz}\vec{k})E_p\)</span></p>
+<p>引出哈密顿算符<span class="math inline">\(\nabla\)</span></p>
+<p><span class="math inline">\(\vec{F}=-\nabla E_p\)</span></p>
+<p>把<span class="math inline">\(\nabla E_p\)</span>成为<span
+class="math inline">\(E_p\)</span>的梯度</p>
+<h1 id="阻尼振动">阻尼振动</h1>
+<p>定义：除了恢复性的保守力（不损耗能量）之外，还有一个阻尼力（损耗能量），动能逐渐减小，有衰减现象，形成阻尼振动。</p>
+<p>取<span class="math inline">\(F_x=-kx\)</span>,<span
+class="math inline">\(f_x=-\gamma x&#39;\)</span></p>
+<p><span class="math inline">\(mx&#39;&#39;=-kx-\gamma
+x&#39;\)</span></p>
+<p><span
+class="math inline">\(x&#39;&#39;+\frac{\gamma}{m}x&#39;+\frac{k}{m}x=0\)</span></p>
+<p><span class="math inline">\(x&#39;&#39;+2\beta
+x&#39;+\omega_0^2x=0\)</span></p>
+<p><span class="math inline">\(\beta=\frac{\gamma}{2m}\)</span>
+阻尼系数</p>
+<p><span class="math inline">\(\omega_0=\sqrt{\frac{k}{m}}\)</span>
+本征/固有频率</p>
+<h2 id="三种解的情况">三种解的情况</h2>
+<p>按照微分方程特征值正常讨论</p>
+<p>（1）<span class="math inline">\(\beta&gt;\omega_0\)</span>
+过阻尼</p>
+<p>(2)<span class="math inline">\(\beta=\omega_0\)</span> 临界阻尼</p>
+<p>(3)<span class="math inline">\(\beta&lt;\omega_0\)</span> 低阻尼</p>
+<p><span class="math inline">\(x=Ae^{-\beta t}cos(\omega
+t+\phi)\)</span></p>
+<p><span
+class="math inline">\(\omega=\sqrt{\omega_0^2-\beta^2}\)</span></p>
+<p>振动无周期，“振幅”随时间衰减</p>
+<p>引入对数缩减<span class="math inline">\(\lambda\)</span></p>
+<p><img src="/img/过.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/img/临界.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/img/低.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h1 id="受迫振动">受迫振动</h1>
+<p>恢复性保守力+阻尼力+周期性变化的外力（策动力）</p>
+<p><span class="math inline">\(F_x=-kx\)</span>,<span
+class="math inline">\(f_x=-\gamma x&#39;\)</span>,$F=F_0cost $</p>
+<p>微分方程可以写出：</p>
+<p><span class="math inline">\(mx&#39;&#39;+\gamma x&#39;+\beta
+x=F_0cos\omega t\)</span></p>
+<p><span class="math inline">\(x&#39;&#39;+2\beta x&#39;+\omega_0^2
+x=f_0 cos \omega t\)</span></p>
+<p><span class="math inline">\(\beta=\frac{\gamma}{2m}\)</span>
+阻尼系数</p>
+<p><span class="math inline">\(\omega_0=\sqrt{\frac{k}{m}}\)</span>
+本征/固有频率</p>
+<p><span class="math inline">\(f_0=\frac{F_0}{m}\)</span></p>
+<p>微分方程找特殊解常常可以考虑<span
+class="math inline">\(x*=Acos(\omega t+\phi)\)</span>,<span
+class="math inline">\(A=\frac{f_0}{\sqrt{(\omega_0^2-\omega^2)+4\beta^2\omega^2}}\)</span></p>
+<p><span class="math inline">\(tan\phi=\frac{-2\beta \omega
+}{\omega_0^2-\omega^2}\)</span></p>
+<h2 id="三种解的情况-1">三种解的情况</h2>
+<p>与阻尼振动的情况类似</p>
+<h3 id="低阻尼情况">低阻尼情况</h3>
+<p><span class="math inline">\(x=e^{-\beta
+t}cos(\sqrt{\omega_0^2-\beta^2}+\phi_0)+Acos(\omega t+\phi)\)</span>
+暂态解</p>
+<p><span class="math inline">\(Acos(\omega t+\phi)\)</span>
+稳态解，与初始状态无关</p>
+<h4 id="共振现象">共振现象</h4>
+<p>条件：必须在低阻尼情况下讨论</p>
+<p>给定<span class="math inline">\(\beta\)</span> 讨论A与<span
+class="math inline">\(\omega\)</span>的关系</p>
+<p>当 <span class="math inline">\(\beta
+&lt;\frac{\omega_0}{\sqrt{2}}\)</span>
+会出现振幅共振现象，即外加频率=固有频率时，振幅最大</p>
+<p><img src="/img/振幅.png" srcset="/img/loading.gif" lazyload alt="振幅共振现象"></p>
+<h1 id="波动现象">波动现象</h1>
+<p>波是振动状态传播形成的物理现象</p>
+<p>要素：波源、介质</p>
+<h2 id="分类">分类</h2>
+<p>机械波（水波、地震波）、非机械波（电磁波）</p>
+<p>简谐波、非简谐波</p>
+<p>横波（水面波、线波、电磁波）、纵波（声波、长弹簧波）；地震波既有横波也有纵波</p>
+<p>线波、面波、空间波</p>
+<h3 id="空间波">空间波</h3>
+<h4 id="分类-1">分类</h4>
+<p>平面波、柱面波、球面波、其他</p>
+<p><img src="/img/波图.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="定义">定义</h4>
+<p>波阵面：某时刻空间振动相位相同的点组成的面</p>
+<p>波前：t时刻最前方的波阵面</p>
+<p>波线：波的传播方向线</p>
+<h1 id="简谐波">简谐波</h1>
+<h2 id="平面简谐波">平面简谐波</h2>
+<p>能量密度不变，因此A不变</p>
+<p><img src="/img/线波.png" srcset="/img/loading.gif" lazyload alt="代替真实空间的简谐波"></p>
+<p><span class="math inline">\(\xi=\xi(t,x)\)</span>定义为振动量</p>
+<p>波是振动状态的传播，而这个振动状态是简谐振动</p>
+<p>于是只需要找x=0,<span class="math inline">\(\xi(t,x=0)=Acos(\omega
+t+\phi)\)</span></p>
+<p><span
+class="math inline">\(\xi(t,x)=\xi(t-\frac{x}{u},x=0)\)</span></p>
+<p>u波速，<span class="math inline">\(\lambda\)</span>波长</p>
+<p>因此<span class="math inline">\(\xi(t,x)=Acos(\omega
+(t-+\frac{x}{u})+\phi)\)</span>右传播-左传播+</p>
+<p><span class="math inline">\(\lambda=uT\)</span></p>
+<p><span
+class="math inline">\(\frac{\omega}{u}=\frac{2\pi}{\lambda}\)</span></p>
+<p>于是<span class="math inline">\(\xi(t,x)=Acos(\omega
+t-+\frac{2\pi}{\lambda}x+\phi)\)</span>右传播-左传播+，这种表示方式可以看出相对位置的影响</p>
+<p>定义<span
+class="math inline">\(k=\frac{2\pi}{\lambda}\)</span>为波数（可以理解为空间中的"角频率"）</p>
+<p>矢量化<span class="math inline">\(\vec{k}=k\vec{i}\)</span></p>
+<p>于是<span class="math inline">\(\xi(t,x)=Acos(\omega t-
+\vec{k}\cdot\vec{x} +\phi)\)</span></p>
+<p><img src="/img/波.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h2 id="球面简谐波">球面简谐波</h2>
+<p>能量密度与<span class="math inline">\(r^2\)</span>成反比，因此<span
+class="math inline">\(A_r\)</span>与<span
+class="math inline">\(\frac{1}{r}\)</span>成正比</p>
+<p><span class="math inline">\(\xi(r,t)=\frac{A}{r}cos(\omega
+t-\frac{2\pi}{\lambda}r+\phi)\)</span> 注意这里的A并不是振幅</p>
+<p><span class="math inline">\(\xi(r,t)=\frac{r_0}{r}A_0cos(\omega
+t-\frac{2\pi}{\lambda}r+\phi)\)</span>
+这种表示方式可以给定一个位置的振幅，来求其他的振幅</p>
+<h1 id="波干涉与驻波">波干涉与驻波</h1>
+<p>波的独立传播现象：若干列相同种类的波，在介质中传播的时候，如果动力方程是线性的，则每一列波的传播不受其他波列的影响。</p>
+<p>波的叠加：满足上述现象的波，在空间每一个点形成的合振动即为各自独立存在时振动量的叠加。</p>
+<h2 id="干涉">干涉</h2>
+<p>相干波列：同频率，同振动方向，有固定的初相位或者有固定的初相位差。</p>
+<p>相干波源：产生相干波列的波源。</p>
+<p>波的干涉：相干波列在介质中各处合振动振幅有不随时间变化的空间分布。</p>
+<p><img src="/img/干涉.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>特例：<span class="math inline">\(\phi_1-\phi_2=0\)</span></p>
+<p>则<span class="math inline">\(r_2-r_1=k\lambda\)</span> 有A最大值</p>
+<p><span class="math inline">\(r_2-r_1=k+\frac{1}{2}\lambda\)</span>
+有A最大值</p>
+<h2 id="驻波">驻波</h2>
+<p><span class="math inline">\(A_1=A_2=A\)</span></p>
+<p>则最大振幅为2A，最小振幅为0</p>
+<p><img src="/img/驻波.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h1 id="波的衍射反射折射">波的衍射反射折射</h1>
+<h2 id="惠更斯原理">惠更斯原理</h2>
+<p>t时刻波前的每一个点部位都可以看作是产生球面子波的新波源，这些子波在<span
+class="math inline">\(t+\Delta
+t\)</span>时刻波前的包络面就是整个波在<span
+class="math inline">\(t+\Delta t\)</span>时刻的波前</p>
+<h3 id="折射定律">折射定律</h3>
+<p><img src="/img/折射.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>折射定律:<span
+class="math inline">\(\frac{u_1}{sin\theta_i}=\frac{u_2}{sin\theta_t}\)</span></p>
+<h3 id="反射定律">反射定律</h3>
+<p>如果镜子不动，则反射角等于入射角</p>
+<p>镜子向下运动，则反射角大于入射角</p>
+<p>镜子向上运动，则反射角小于入射角</p>
+<p><img src="/img/运动.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h2 id="半波损失">半波损失</h2>
+<p>假设遇上某一个介质分界面，只有反射没有透射。</p>
+<p>反射有<span
+class="math inline">\(\pi\)</span>相位突变，相当于减少半个波长。</p>
+<h2 id="多普勒效应">多普勒效应</h2>
+<p>讨论相对接收者运动的波源</p>
+<p>定义观测者B在单位时间内接收到的波列长度为u，其中包含波长个数即为单位时间内接收到的全振动次数，定义为接收频率。<span
+class="math inline">\(\nu=\frac{u}{\lambda}\)</span></p>
+<h3 id="都不动">都不动</h3>
+<p>显然<span class="math inline">\(\nu=\nu_0\)</span></p>
+<h3 id="s不动b动">S不动B动</h3>
+<p>假设B向S运动，则单位时间接收到波列长度为<span
+class="math inline">\(u+v_B\)</span></p>
+<p><span
+class="math inline">\(\nu=\frac{u+v_B}{\lambda_0}=\frac{u+v_B}{u}\nu_0\)</span></p>
+<p>如果B背离S运动，则上述式子中的+改为-（要求<span
+class="math inline">\(v_B&lt;u\)</span>）</p>
+<p>注意如果<span
+class="math inline">\(v_B&gt;u\)</span>不属于多普勒效应</p>
+<h4 id="冲击波">冲击波</h4>
+<p><span class="math inline">\(v_B&gt;u\)</span>时是冲击波</p>
+<p><span class="math inline">\(sin\theta=\frac{u}{v}\)</span></p>
+<p><img src="/img/冲击波.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h3 id="s动b不动">S动B不动</h3>
+<p>观测者认为波长改变了</p>
+<p>假设B向S运动，<span
+class="math inline">\(\lambda&#39;=\lambda_0-v_ST_0=(u-v_S)T_0\)</span></p>
+<p><span
+class="math inline">\(\nu=\frac{u}{\lambda&#39;}=\frac{u}{u-v_S}\nu_0\)</span></p>
+<p>如果B背离S运动，则上述式子中的-改为+</p>
+<h3 id="sb都动">SB都动</h3>
+<p><span class="math inline">\(\nu=\frac{u+-v_B}{u+-v_S}\)</span></p>
+<h1 id="一维线性波动方程">一维线性波动方程</h1>
+<h2 id="波动方程">波动方程</h2>
+<p>平面简谐波：<span
+class="math inline">\(\xi(x,t)=Acos[\omega(t-\frac{x}{u})+\phi]\)</span></p>
+<p>简谐振动动力学微分方程：<span
+class="math inline">\(x&#39;&#39;+\omega^2x=0\)</span></p>
+<p><span class="math inline">\(\frac{\partial^2\xi}{\partial
+t^2}=-\omega^2\xi\)</span></p>
+<p><span class="math inline">\(\frac{\partial^2\xi}{\partial
+x^2}=-\frac{\omega^2}{u^2}\xi\)</span></p>
+<p><span class="math inline">\(\frac{\partial^2\xi}{\partial
+t^2}-u^2\frac{\partial^2\xi}{\partial x^2}=0\)</span></p>
+<h2 id="弹性介质中的纵波横波">弹性介质中的纵波横波</h2>
+<h3 id="波速">波速</h3>
+<h4 id="横波">横波</h4>
+<p>取一小段弹簧dx，记它的伸长量为<span
+class="math inline">\(d\xi\)</span></p>
+<p>弹性，则知道<span
+class="math inline">\(\frac{d\xi}{dx}\)</span>与<span
+class="math inline">\(\frac{F}{S}\)</span>成正比</p>
+<p><span
+class="math inline">\(E\frac{d\xi}{dx}=\frac{F}{S}\)</span>,E为常量，定义为杨氏模量</p>
+<p><span
+class="math inline">\(k_{dx}=\frac{F}{d\xi}=\frac{ES}{dx}\)</span>(很小一段的伸长量)</p>
+<p><span class="math inline">\(k=\frac{ES}{l}\)</span>
+长度为l的弹性介质的劲度系数</p>
+<p><img src="/img/切变.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>假设匀质柱体密度为<span
+class="math inline">\(\rho\)</span>初始长度为x</p>
+<p><img src="/img/柱.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>则<span class="math inline">\(\rho s \Delta x
+\frac{d^2\xi}{dt^2}=\rho s \Delta x g+F_2-F_1\)</span></p>
+<p><span class="math inline">\(F_1=ES(\frac{d\xi}{dx})_x\)</span></p>
+<p><span
+class="math inline">\(F_2=ES(\frac{d\xi}{dx})_{x+\Delta  x}\)</span></p>
+<p>代入把右边化简为二阶导再约分</p>
+<p><span class="math inline">\(\frac{d^2
+\xi}{dt^2}-\frac{E}{\rho}\frac{d^2 \xi}{dx^2}=g\)</span></p>
+<p>变成偏导得一阶线性非齐次方程</p>
+<p><span class="math inline">\(\frac{\partial^2 \xi}{\partial
+t^2}-\frac{E}{\rho}\frac{\partial^2 \xi}{\partial x^2}=g\)</span></p>
+<p>如果改为水平放置，则<span class="math inline">\(\frac{\partial^2
+\xi}{\partial t^2}-\frac{E}{\rho}\frac{\partial^2 \xi}{\partial
+x^2}=0\)</span></p>
+<p>水平放置时<span
+class="math inline">\(u=\sqrt{\frac{E}{\rho}}\)</span></p>
+<h4 id="纵波">纵波</h4>
+<p>纵波波速：<span
+class="math inline">\(u=\sqrt{\frac{G}{\rho}}\)</span></p>
+<h2 id="线波">线波</h2>
+<p><img src="/img/xian.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h2 id="波动方程的解">波动方程的解</h2>
+<p><span class="math inline">\(\frac{\partial^2\xi}{\partial
+t^2}-u^2\frac{\partial^2\xi}{\partial x^2}=0\)</span></p>
+<p>通解：设x=0为<span
+class="math inline">\(\xi(0,t)=\Phi(t)\)</span></p>
+<p>右形波<span
+class="math inline">\(\xi(x,t)=\xi(0,t-\frac{x}{u})=\Phi(t-\frac{x}{u})\)</span></p>
+<p>左形波<span
+class="math inline">\(\xi(x,t)=\xi(0,t+\frac{x}{u})=\Phi(t+\frac{x}{u})\)</span></p>
+<p>通解：<span
+class="math inline">\(\xi(x,t)=\Phi_1(t-\frac{x}{u})+\Phi_2(t+\frac{x}{u})\)</span></p>
+<p>如果引入t=0时各个x的振动量分布函数，表示为<span
+class="math inline">\(F_1(x)\)</span></p>
+<p>再给出各个x振动的速度分布函数，表示为<span
+class="math inline">\(F_2(x)\)</span></p>
+<p>则<span class="math inline">\(\Phi_1，\Phi_2\)</span>函数形式由<span
+class="math inline">\(F_1(x)\)</span>和<span
+class="math inline">\(F_2(x)\)</span>确定</p>
+<h1 id="波的能量">波的能量</h1>
+<p>弹性介质纵波为例取简谐波</p>
+<p><span
+class="math inline">\(\xi(x,t)=Acos[\omega(t-\frac{x}{u})+\phi]\)</span></p>
+<p>为方便取<span class="math inline">\(\phi=0\)</span></p>
+<p>取一段介质，面积dS，长度从x到x+dx，密度<span
+class="math inline">\(\rho\)</span></p>
+<p>dV=dSdx</p>
+<p><span class="math inline">\(dE_k=\frac{1}{2}(\rho dS
+dx)(\frac{\partial \xi}{\partial t})^2\)</span></p>
+<p><span class="math inline">\(dE_k=\frac{1}{2}\rho \omega^2
+A^2  sin^2[\omega(t-\frac{x}{u})]dsdx\)</span></p>
+<p><span
+class="math inline">\(dE_p=\frac{1}{2}k_{dx}[\xi(x+dx,t)-\xi(x,t)]^2\)</span></p>
+<p><span class="math inline">\(dE_p=\frac{1}{2}Edsdx(\frac{\partial
+\xi}{\partial x})^2\)</span></p>
+<p><span class="math inline">\(dE_p=\frac{1}{2}\rho \omega^2 A^2
+sin^2[\omega(t-\frac{x}{u})]dsdx\)</span></p>
+<p>发现一个重要规律：<span class="math inline">\(dE_p=dE_k\)</span></p>
+<h2 id="能量密度">能量密度</h2>
+<p><span class="math inline">\(\epsilon=\frac{dE}{dV}\)</span> <span
+class="math inline">\(dE=dE_k+dE_p\)</span></p>
+<p><span class="math inline">\(\epsilon=\rho \omega^2 A^2
+sin^2[\omega(t-\frac{x}{u})]\)</span></p>
+<h2 id="波场的能流密度">波场的能流密度</h2>
+<p>u是波的传播速度</p>
+<p><span class="math inline">\(i=\frac{dE}{ds dt}=\epsilon
+u\)</span></p>
+<p>把它矢量化为<span class="math inline">\(\vec{i}=\epsilon
+\vec{u}\)</span></p>
+<h1 id="习题">习题</h1>
+<h2 id="题1">题1</h2>
+<p><img src="/img/例5.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><span class="math inline">\(\omega=\sqrt{\frac{k}{m}}\)</span></p>
+<p><span class="math inline">\(T=\frac{2\pi}{\omega}\)</span></p>
+<p><span class="math inline">\(t=\frac{T}{4}\)</span></p>
+<p><span class="math inline">\(h+\Delta l=\frac{1}{2}gt^2\)</span></p>
+<p>算出<span
+class="math inline">\(h=(\frac{\pi^2}{8}-1)\frac{M}{k}g\)</span></p>
+<p>碰后粘连，讨论其后的运动</p>
+<p><span class="math inline">\(v_0=\frac{1}{2}(gt+\omega \Delta
+l)\)</span> 注意，这个<span class="math inline">\(\Delta
+l\)</span>也是振幅</p>
+<p>因此<span
+class="math inline">\(v_0=\frac{1}{2}(1+\frac{\pi}{2})\sqrt{\frac{M}{k}}g\)</span></p>
+<p>把碰上的时刻看成t=0时刻。新的力平衡位置要再下移<span
+class="math inline">\(\Delta l\)</span></p>
+<p>建立向下的坐标，取新的平衡位置为坐标原点，取向下为正方向</p>
+<p><span class="math inline">\(y=Acos(\omega&#39;t+\phi)\)</span></p>
+<p><span
+class="math inline">\(\omega&#39;=\sqrt{\frac{k}{2M}}\)</span></p>
+<p>t=0时，<span class="math inline">\(y_0=-\Delta l\)</span></p>
+<p>用公式<span
+class="math inline">\(A=\sqrt{y_0^2+\frac{v_0^2}{\omega^2}}=\sqrt{1+\frac{1}{2}(1+\frac{\pi}{2})^2}\sqrt{\frac{M}{k}}g\)</span></p>
+<p>A大约2.07<span
+class="math inline">\(\frac{Mg}{k}&gt;2\frac{Mg}{k}\)</span>
+因此并不是纯粹的简谐振动</p>
+<p><span
+class="math inline">\(tan\phi=\frac{1}{\sqrt{2}}(1+\frac{\pi}{2})&gt;0\)</span></p>
+<p>又由于<span
+class="math inline">\(y_0=Acos\phi\)</span>是负的，可以确定<span
+class="math inline">\(\phi\)</span>是第三象限</p>
+<p><span
+class="math inline">\(\phi=\pi+arctan(\frac{1}{\sqrt{2}}(1+\frac{\pi}{2}))\)</span></p>
+<h2 id="题2">题2</h2>
+<p><img src="/img/例7.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>重点：碰之后B和B'的质心匀速直线运动，B相对于质心简谐运动</p>
+<p><img src="/img/弹簧1.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><img src="/img/弹簧2.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h2 id="题3">题3</h2>
+<p><img src="/img/十.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>纯滚动，静摩擦力做功为零，因此机械能守恒</p>
+<p><span
+class="math inline">\(E=\frac{1}{2}mv_c^2+\frac{1}{2}I_c+mg(R-r)(1-cos\theta)\)</span></p>
+<p><span class="math inline">\(v_c=(R-r)\theta &#39;\)</span></p>
+<p><span
+class="math inline">\(\phi&#39;=(\frac{R}{r}-1)\theta\)</span></p>
+<p>把方程两边对t求导，并取小角度近似<span
+class="math inline">\(sin\theta=\theta\)</span></p>
+<p><span
+class="math inline">\(\theta&#39;&#39;+\frac{5g}{7(R-r)}\theta=0\)</span></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8A%9B%E5%AD%A6/" class="print-no-link">#力学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>振动与波</div>
+      <div>http://example.com/2025/01/26/chap6/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>瑾瑜當年</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/27/sakura/" title="这时能隐约听见樱花在唱歌——《樱之诗》通关感想">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">这时能隐约听见樱花在唱歌——《樱之诗》通关感想</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/22/chap5/" title="质心与刚体">
+                        <span class="hidden-mobile">质心与刚体</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.39/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo-haru.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname","enable":true},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:true,models:[{"path":"https://model.hacxy.cn/HK416-1-normal/model.json","scale":0.1,"motionPreloadStrategy":"ALL","position":[-10,60],"stageStyle":{"height":520},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+</html>

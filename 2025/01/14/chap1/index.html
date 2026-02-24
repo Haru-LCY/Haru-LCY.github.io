@@ -1,0 +1,1112 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/kazuki.jpg">
+  <link rel="icon" href="/img/kazuki.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="瑾瑜當年">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="质点运动学 运动：物体各点部位的位置随时间变化 空间 绝对空间观： 存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中，空间的内在性质（三维欧几里得性质，平直的）与物体（物质）的存在、运动与否无关。 相对论空间观： 设想或讨论不存在物体（物质）的空间是没有意义的。 真实空间是物体（物质）延展而成而且物体运动所在的空间。 真是空间的度量性质随着测量者（其载体是物体&#x2F;物质）而异。 时间 绝">
+<meta property="og:type" content="article">
+<meta property="og:title" content="质点运动学">
+<meta property="og:url" content="http://example.com/2025/01/14/chap1/index.html">
+<meta property="og:site_name" content="港湾">
+<meta property="og:description" content="质点运动学 运动：物体各点部位的位置随时间变化 空间 绝对空间观： 存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中，空间的内在性质（三维欧几里得性质，平直的）与物体（物质）的存在、运动与否无关。 相对论空间观： 设想或讨论不存在物体（物质）的空间是没有意义的。 真实空间是物体（物质）延展而成而且物体运动所在的空间。 真是空间的度量性质随着测量者（其载体是物体&#x2F;物质）而异。 时间 绝">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/blue.png">
+<meta property="article:published_time" content="2025-01-14T12:38:23.000Z">
+<meta property="article:modified_time" content="2026-02-24T13:10:21.262Z">
+<meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="力学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/blue.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>质点运动学 - 港湾</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>觀瀾</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/blue.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="质点运动学"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-14 20:38" pubdate>
+          2025年1月14日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">质点运动学</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-02-24T21:10:21+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="质点运动学">质点运动学</h1>
+<p>运动：物体各点部位的位置随时间变化</p>
+<h2 id="空间">空间</h2>
+<h3 id="绝对空间观">绝对空间观：</h3>
+<p>存在着没有物体（物质）的空间，物体（物质）存在并运动于该空间中，空间的内在性质（三维欧几里得性质，平直的）与物体（物质）的存在、运动与否无关。</p>
+<h4 id="相对论空间观">相对论空间观：</h4>
+<p>设想或讨论不存在物体（物质）的空间是没有意义的。</p>
+<p>真实空间是物体（物质）延展而成而且物体运动所在的空间。</p>
+<p>真是空间的度量性质随着测量者（其载体是物体/物质）而异。</p>
+<h2 id="时间">时间</h2>
+<h4 id="绝对时间观">绝对时间观:</h4>
+<p>存在着没有事物演化的时间流逝，事物演化于该时间流逝中。时间流逝的内在性质与事物的存在，以及演化的出现与否无关。</p>
+<h4 id="相对论时间观">相对论时间观：</h4>
+<p>设想或者讨论，不存在事物演化的时间是没有意义的。</p>
+<p>真实的时间是事物演化表现的时间。</p>
+<p>真实时间的度量随测量者而异。</p>
+<h2 id="参考系">参考系</h2>
+<h4 id="参考物">参考物</h4>
+<p>物体始终处于相对运动状态之中，最基本的运动关系或者运动内容便是两个物体之间的相对运动。</p>
+<h4 id="参考空间">参考空间</h4>
+<p>参考物在体结构上静态延展而成的三维平直空间（在宏观世界里）</p>
+<h4 id="空间坐标系">空间坐标系</h4>
+<p>来标定空间</p>
+<h4 id="时间坐标">时间坐标</h4>
+<p>来标定时间</p>
+<h2 id="质点">质点</h2>
+<p>物体各个小部位模型化为质点。</p>
+<p>如果物体中各个小部位运动相同的时候（平动），可以把物体整体模型化为一个质点。</p>
+<p>物体当中各个小部位运动情况虽然不同，但其间差异相对所考察的运动线度可以忽略，可以把物体整体模型化为一个质点。</p>
+<h2 id="直线运动">直线运动</h2>
+<h3 id="位移">位移</h3>
+<p>x=x(t)称为运动方程</p>
+<p><span class="math inline">\(\Delta x=x(t+\Delta
+t)-x(t)，被标量化了，用正负号表示方向\)</span></p>
+<p>无穷小位移，从t→t+dt，dx（也被标量化）</p>
+<p>dx=x(t+dt)-x(t)</p>
+<p><span class="math inline">\(\Delta x=\int_{t}^{t+\Delta
+t}dx\)</span></p>
+<h4 id="路程">路程</h4>
+<p><span class="math inline">\(ds=|dx|,\Delta s=\int_{t}^{t+\Delta
+t}|dx|\)</span></p>
+<h4 id="速度">速度</h4>
+<p><span class="math inline">\(\vec{v}=\frac{\Delta \vec{x}}{\Delta
+t}\)</span></p>
+<h4 id="加速度">加速度</h4>
+<p><span class="math inline">\(\vec{a}=\frac{d\vec{v}}{dt}\)</span></p>
+<h2 id="三类直线运动">三类直线运动</h2>
+<h4 id="匀速直线运动">匀速直线运动</h4>
+<p>a=0, v常量</p>
+<h4 id="匀加速">匀加速</h4>
+<p>a=常量,<span
+class="math inline">\(v=v_0+at,x=x_0+v_0t+\frac{1}{2}at^2,v_x^{2}-v_0^{2}=2a(x-x_0)\)</span></p>
+<h4 id="变加速">变加速</h4>
+<p>范例：简谐振动 <span class="math inline">\(x=Acos(\omega
+t+\phi)\)</span></p>
+<h2 id="平面曲线运动">平面曲线运动</h2>
+<p><span
+class="math inline">\(\vec{r}=\vec{r}(t)=x(t)\vec{i}+y(t)\vec{j}\)</span>分解为X,Y两个方向的运动</p>
+<p>位移<span class="math inline">\(\Delta \vec{r}=\vec{r}(t+\Delta
+t)-\vec{r}(t)\)</span></p>
+<p>速度<span class="math inline">\(\vec{v}=\frac{d\vec{r}}{dt}=v_x
+\vec{i}+v_y \vec{j}\)</span></p>
+<p>加速度<span class="math inline">\(\vec{a}=\frac{d\vec{v}}{dt}=a_x
+\vec{i}+a_y \vec{j}\)</span></p>
+<h4 id="斜抛运动">斜抛运动</h4>
+<p>初速度<span class="math inline">\(v_0\)</span>斜向上，与x轴夹角<span
+class="math inline">\(\theta\)</span></p>
+<p>通过写出x,y关于t的方程可以解出来轨道方程</p>
+<p><span
+class="math inline">\(y=\frac{-g}{2v_0^{2}cos^2\theta}x^2+(tan\theta)
+x\)</span></p>
+<p>射高:<span
+class="math inline">\(H=\frac{v_0^2sin^2\theta}{2g}\)</span></p>
+<p>水平射程:<span
+class="math inline">\(s=\frac{v_0^2sin2\theta}{g}\)</span> 给定的<span
+class="math inline">\(v_0\)</span>有两个互余的锐角对应相同的s</p>
+<p>下面我们考虑<span class="math inline">\(v_0\)</span>给定，<span
+class="math inline">\(\theta\)</span>可变，我们求解包络线的方程</p>
+<p>包络线的数学定义： 如果一族曲线由方程 F(x,y,t)=0 表示，其中 t
+是参数，那么该族曲线的包络线满足以下两个条件：</p>
+<p>F(x,y,t)=0 （曲线本身的方程）</p>
+<p><span class="math inline">\(\frac{\partial F}{\partial
+t}=0\)</span></p>
+<p>解法一 <img src="/img/b.png" srcset="/img/loading.gif" lazyload alt="示例图片"></p>
+<p>解法二 这里<span class="math inline">\(\frac{\partial F}{\partial
+t}=0\)</span>意味着对于每个x,y只有一个<span
+class="math inline">\(\theta\)</span>与之对应</p>
+<p><span class="math inline">\(tan
+\theta=\frac{v_0^{2}+-\sqrt{v_0^4-2v_0^2gy-g^2x^2}}{gx}\)</span></p>
+<p><span class="math inline">\(\Delta=0\)</span>可知<span
+class="math inline">\(v_0^4-2v_0^2gy-g^2x^2=0\)</span>
+包络线本身也是一个数学上的抛物线</p>
+<h3 id="自然坐标系分解">自然坐标系分解</h3>
+<h4 id="平面曲线运动的一般特点">平面曲线运动的一般特点</h4>
+<p><span
+class="math inline">\(\vec{r}=x(t)\vec{i}+y(t)\vec{j}\)</span></p>
+<p>如果x(t),y(t)相互独立，则称这个质点运动有两个自由度</p>
+<p>若质点运动被约束在一条平面曲线上，则有F(x,y)=0,此时x(t)y(t)并非相互独立，此时只有一个自由度</p>
+<h4 id="圆周运动">圆周运动</h4>
+<p><span class="math inline">\(x^2+y^2=R^2,R为不变量\)</span></p>
+<p>角位移，角速度都是标量</p>
+<p>角加速度<span
+class="math inline">\(\beta=\frac{d\omega}{dt}\)</span></p>
+<p>线位移<span class="math inline">\(d
+\vec{l}=dl\vec{\tau}=Rd\theta\vec{\tau}（\vec{\tau}是切向方向向量）\)</span></p>
+<p>线速度<span class="math inline">\(d
+\vec{v}=R\omega\vec{\tau}\)</span></p>
+<p><span
+class="math inline">\(d\vec{v}=d\vec{v}_心+d\vec{v}_切\)</span></p>
+<p><span class="math inline">\(d\vec{v}_心\)</span> 方向向心，大小<span
+class="math inline">\(vd\theta\)</span></p>
+<p><span class="math inline">\(d\vec{v}_切
+方向切向，大小dv（注意不是|d\vec{v}|）=Rd\omega\)</span></p>
+<p><span class="math inline">\(\vec{a}_心
+方向向心，大小v\omega\)</span></p>
+<p><span class="math inline">\(\vec{a}_切
+方向切向，大小R\beta\)</span></p>
+<h5 id="角量的矢量化">角量的矢量化</h5>
+<p>引入<span class="math inline">\(\vec{k}\)</span></p>
+<p><span class="math inline">\(\vec{d\theta}=d\theta\vec{k}\)</span></p>
+<p><span
+class="math inline">\(\vec{dl}=\vec{d\theta}\times\vec{r}\)</span></p>
+<p><span class="math inline">\(\vec{\omega}=\omega \vec{k}\)</span></p>
+<p><span
+class="math inline">\(\vec{v}=\vec{\omega}\times\vec{r}\)</span></p>
+<p><span
+class="math inline">\(\vec{\beta}=\frac{d\omega}{dt}\vec{k}=\beta\vec{k}\)</span></p>
+<p><span
+class="math inline">\(\vec{a}=\frac{d(\vec{\omega}\times\vec{r})}{dt}=\frac{d\vec{\omega}}{dt}\times\vec{r}+\vec{\omega}\times\frac{d\vec{r}}{dt}\)</span></p>
+<p>注意到<span class="math inline">\(d\vec{r}=d\vec{l}\)</span></p>
+<p>所以<span
+class="math inline">\(\vec{a}=\vec{\beta}\times\vec{r}(a_{切})+\vec{\omega}\times\vec{v}（a_{心}）\)</span></p>
+<h3 id="平面光滑曲线运动的圆分解">平面光滑曲线运动的圆分解</h3>
+<p>曲率半径<span class="math inline">\(\rho\)</span></p>
+<p>曲率<span class="math inline">\(k=\frac{1}{\rho}\)</span></p>
+<p><span class="math inline">\(a_心(a_n)=\frac{v^2}{\rho}\)</span></p>
+<p><span class="math inline">\(a_切(a_\tau)=\frac{dv}{dt}\)</span></p>
+<p>通过物理方法来求解曲率半径<span
+class="math inline">\(\rho=\frac{v^2}{a_心}\)</span></p>
+<p>例如:<span
+class="math inline">\(y=Acosx\)</span>求顶点处的曲率半径</p>
+<p>设：<span class="math inline">\(x=v_0t\)</span> <span
+class="math inline">\(y=Acosv_0t\)</span></p>
+<p><span class="math inline">\(v_x=v_0\)</span></p>
+<p><span class="math inline">\(v_y=-v_0Asinv_0t\)</span></p>
+<p><span class="math inline">\(a_x=0\)</span></p>
+<p><span class="math inline">\(a_y=-v_0^2Acosv_0t\)</span></p>
+<p>取t=0，这时<span
+class="math inline">\(v=v_0,a_x=0,a_y=-v_0^2A（向心加速度）代入得\rho=\frac{1}{A}\)</span></p>
+<h3 id="极坐标系分解">极坐标系分解</h3>
+<h4 id="用极坐标表示的曲线">用极坐标表示的曲线</h4>
+<p><span class="math inline">\(x=rcos\theta,y=rsin\theta\)</span></p>
+<p><span class="math inline">\(r=A(1-cos\theta)心脏线\)</span></p>
+<p><span class="math inline">\(r=r_0\theta阿基米德螺旋线\)</span></p>
+<p><span
+class="math inline">\(r=r_0e^{\frac{\theta}{\alpha}}(\alpha&gt;0)对数螺线\)</span></p>
+<h4 id="极坐标观点下的运动学">极坐标观点下的运动学</h4>
+<p><span
+class="math inline">\(\vec{e_r}径向方向矢量；\vec{e_\theta}角向（横向）方向矢量——移动的正交分解\)</span></p>
+<p>运动方程<span class="math inline">\(\vec{r}=\vec{r}(t)\)</span></p>
+<p><span class="math inline">\(\vec{v}=\frac{\vec{dr}}{dt}\)</span></p>
+<p><span class="math inline">\(\vec{r}=r\vec{e_r}\)</span></p>
+<p><span
+class="math inline">\(\vec{de_r}=d\theta\vec{e_\theta}\)</span></p>
+<p><span
+class="math inline">\(\vec{de_\theta}=-d\theta\vec{e_r}注意负号！\)</span></p>
+<p><span
+class="math inline">\(\vec{v}=\frac{dr}{dt}\vec{e_r}+r\frac{\vec{de_r}}{dt}=\frac{dr}{dt}\vec{e_r}+r\frac{d\theta}{dt}\vec{e_\theta}\)</span></p>
+<p><span
+class="math inline">\(\vec{v}=v_r\vec{e_r}+v_\theta\vec{e_\theta}\)</span></p>
+<p><span
+class="math inline">\(v_r=\frac{dr}{dt};v_\theta=r\frac{d\theta}{dt}\)</span></p>
+<p><span
+class="math inline">\(\vec{a}=\{\frac{d^2r}{dt^2}-r(\frac{d\theta}{dt})^2\}\vec{e_r}+\{r\frac{d^2\theta}{dt^2}+2\frac{dr}{dt}\frac{d\theta}{dt}\}\vec{e_\theta}\)</span></p>
+<p><span
+class="math inline">\(径向加速度a_r=\frac{d^2r}{dt^2}-r(\frac{d\theta}{dt})^2\)</span></p>
+<p><span
+class="math inline">\(角向加速度a_\theta=r\frac{d^2\theta}{dt^2}+2\frac{dr}{dt}\frac{d\theta}{dt}（第二项是科里奥利加速度）\)</span></p>
+<h4 id="平面曲线的运动轨道">平面曲线的运动轨道</h4>
+<p><span class="math inline">\(r=r(\theta)\)</span></p>
+<p><span
+class="math inline">\(r=r(t),\theta=\theta(t)联立把t消掉可以得到r(\theta)\)</span></p>
+<p><span
+class="math inline">\(v_r=\frac{dr}{dt};v_\theta=r\frac{d\theta}{dt}\)</span></p>
+<p><span
+class="math inline">\(\frac{dr}{d\theta}=r\frac{v_r}{v_\theta}\)</span></p>
+<p><span
+class="math inline">\(若已知v_r,v_\theta与r和\theta的表达式，可以推出r(\theta)。这种方式多见于天体运动种的推导\)</span></p>
+<h2 id="空间曲线运动">空间曲线运动</h2>
+<h3 id="质点的空间运动">质点的空间运动</h3>
+<p>运动方程：<span
+class="math inline">\(\vec{r}(t)=x(t)\vec{i}+y(t)\vec{j}+z(t)\vec{k}\)</span></p>
+<p><span
+class="math inline">\(\vec{v}=v_x\vec{i}+v_y\vec{j}+v_z\vec{k}\)</span></p>
+<p><span
+class="math inline">\(\vec{a}=a_x\vec{i}+a_y\vec{j}+a_z\vec{k}\)</span></p>
+<h3 id="质点系和刚性质点系">质点系和刚性质点系</h3>
+<h4 id="质点系">质点系</h4>
+<p>定义：由若干质点构成的系统</p>
+<h5 id="自由度">自由度</h5>
+<p>取出第i个质点，运动不受约束，它的运动方程<span
+class="math inline">\(\vec{r_i}(t)=x_i(t)\vec{i}+y_i(t)\vec{j}+z_i(t)\vec{k}\)</span>。有三个独立坐标，称为有三个运动自由度。</p>
+<p>N个质点构成 质点系，各个质点的运动都不受约束，那么有3N个自由度。</p>
+<h4 id="刚性质点系">刚性质点系</h4>
+<p>定义：每两个质点的间距不变。</p>
+<h5 id="自由度-1">自由度</h5>
+<p>取出三个不共线的质点，那么可以唯一确定一个平面。命名为1，2，3号质点。如果<span
+class="math inline">\(\vec{r_1},\vec{r_2},\vec{r_3}\)</span>确定，可以确定整个系统所有点的位置。此时自由度取决于1，2，3.</p>
+<p>1，2，3还有三个约束方程（来刻画距离不变）</p>
+<p>因此刚性质点系运动的参量只有6个。</p>
+<h5 id="运动分解">运动分解</h5>
+<p>平动+转动</p>
+<p>平动有三个自由度；转动有三个自由度</p>
+<h2 id="参考系间的相对运动">参考系间的相对运动</h2>
+<h3 id="参考系间平动">参考系间平动</h3>
+<p>在S系，<span class="math inline">\(\vec{r}(t)\)</span>;在S'系,<span
+class="math inline">\(\vec{r}(t)\)</span>;刻画O'相对S系运动<span
+class="math inline">\(\vec{r_{O&#39;}(t)}\)</span></p>
+<p>伽利略变换：</p>
+<p><span
+class="math inline">\(\vec{r}(t)=\vec{r_{O&#39;}(t)+\vec{r&#39;}(t)}\)</span></p>
+<p><span
+class="math inline">\(\vec{v}(t)=\vec{v_{O&#39;}}(t)+\vec{v&#39;}(t)\)</span></p>
+<p><span
+class="math inline">\(\vec{a}(t)=\vec{a_{O&#39;}}(t)+\vec{a&#39;}(t)\)</span></p>
+<h3 id="参考系间的匀速定轴转动">参考系间的匀速定轴转动</h3>
+<p>例子：地球参考系相对于地心参考系做匀速定轴转动</p>
+<h3 id="参考系中质点间的相对运动">参考系中质点间的相对运动</h3>
+<p>某参考系如果有两个运动质点A，B。建立一个随A一起相对S系运动（平动）的参考系，称之为平动参考系A系，便可以描述B在A系中的运动。这个运动就是在背景参考系S中B相对A的运动。</p>
+<p>例子：滚轮线运动</p>
+<h2 id="习题">习题</h2>
+<h4 id="题1">题1</h4>
+<p>长(L)的均匀弹性绳(AB)自由伸直地放在光滑水平桌面上，绳的(A)端固定。(t
+=
+0)时，一小虫开始从(A)端出发以相对绳的匀速度(u)在绳上朝(B)端爬去，同时绳的(B)端以匀速度(v)沿绳伸长方向运动，试求小虫爬到(B)端的时间(T)。</p>
+<p>解答：
+这道题目求解的难点在于，绳子的长度随着时间的变化而变化，所以我们不方便对绳子的真实长度直接做讨论。</p>
+<p>因此我们引入一个（相对于绳子）的坐标系，即便绳子的真实长度改变了，我们依旧把它看作L。在这种坐标系之下，设小虫子的坐标为x。</p>
+<p>那么小虫子的真实坐标<span
+class="math inline">\(x&#39;=x\frac{L+vt}{L}\)</span></p>
+<p>因此，<span class="math inline">\(dx&#39;=\frac{L+vt}{L}dx\)</span>
+注意到<span class="math inline">\(dx&#39;=udt\)</span></p>
+<p>于是我们可以把dx'替换为dx，即<span
+class="math inline">\(dx=\frac{L}{L+vt}udt\)</span></p>
+<p><span class="math inline">\(\int_{0}^{T}
+\frac{dt}{1+v\frac{t}{L}}=\int_{0}^{L}\frac{dx}{u}\)</span></p>
+<p><span
+class="math inline">\(T=\frac{L}{v}(e^\frac{v}{u}-1)\)</span></p>
+<h4 id="题2">题2</h4>
+<p>一个小虫子以相对圆柱速度为u爬行，圆柱半径<span
+class="math inline">\(r=r_0(1+\alpha t)\)</span></p>
+<p>解答：类似于题1，但有一种更简单的方式</p>
+<p>考虑<span
+class="math inline">\(d\theta=\frac{udt}{r(t)}\)</span>，两边积分即可</p>
+<h4 id="题3">题3</h4>
+<p><img src="/img/1.jpg" srcset="/img/loading.gif" lazyload alt="A点固定"></p>
+<p><span
+class="math inline">\(加速度\vec{a}速度\vec{v}\)</span>,求此时B点加速度。（A固定）</p>
+<p>解答：这个问题我们可以用两种方式求两个加速度的分量，然后把这两个分量进行合成。</p>
+<p>方式一：水平竖直分解</p>
+<p>注意到B点的水平方向速度是<span
+class="math inline">\(\frac{1}{2}v\)</span>，水平加速度是<span
+class="math inline">\(\frac{1}{2}a\)</span></p>
+<p>方式二：把B看作绕A的圆周运动</p>
+<p>用圆周运动向心加速度公式求出向心加速度。</p>
+<h4 id="题4">题4</h4>
+<p><img src="/img/3.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>解答： <span
+class="math inline">\(以O为坐标系原点建立极坐标系，可以观察到\omega(P&#39;的速度)=2\omega_0\)</span></p>
+<p><span class="math inline">\(v_r=-v_0（指向O所以是负的）\)</span></p>
+<p><span class="math inline">\(v_\theta=r\omega=2r\omega_0\)</span></p>
+<p><span
+class="math inline">\(a_r=0-r\omega^2=-4r\omega_0^2\)</span></p>
+<p><span
+class="math inline">\(a_\theta=0+2(-v_0)\omega=-4v_0\omega_0\)</span></p>
+<p><img src="/img/11.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p><span
+class="math inline">\(a_心=(4rw_0^2)cos\phi+(4v_0\omega_0)sin\phi\)</span></p>
+<p><span
+class="math inline">\(cos\phi=\frac{2r\omega_0}{v};sin\phi=\frac{v_0}{v}\)</span></p>
+<p><span
+class="math inline">\(v=\sqrt{v_0^2+4r^2\omega_0^2}\)</span></p>
+<p><span class="math inline">\(\rho=\frac{v^2}{a_心}\)</span></p>
+<p><span
+class="math inline">\(\rho=\frac{(v_0^2+4r^2w_0^2)^\frac{3}{2}}{4\omega_0(v_0^2+2r^2\omega_0^2)}\)</span></p>
+<h4 id="题5">题5</h4>
+<p>狐狸沿半径R的圆轨道以恒定速率v奔跑，在狐狸出发的同时，猎犬从圆心出发以相同的速率v追击过程中，圆心、猎犬和狐狸始终连成一直线。取圆心O为坐标原点，从O到狐狸初始位置设置极轴，建立极坐标系。</p>
+<ol type="1">
+<li><p>导出猎犬<span
+class="math inline">\(v_r,a_r,a_\theta\)</span>与猎犬所在位置参量<span
+class="math inline">\(r,\theta\)</span>间的关系；</p></li>
+<li><p>确定猎犬运动轨道的极坐标方程，并画出轨道曲线；</p></li>
+<li><p>判断猎犬能否追上狐狸？</p></li>
+</ol>
+<p>解答: 对猎犬分析：因为共线，<span
+class="math inline">\(v_\theta=r\omega=\frac{r}{R}v,v_r=\sqrt{v^2-v_0^2}\)</span></p>
+<p><span
+class="math inline">\(\frac{dr}{d\theta}=r\frac{v_r}{v_\theta}=\sqrt{R^2-r^2}\)</span></p>
+<p><span
+class="math inline">\(\int_{0}^{r}\frac{dr}{\sqrt{R^2-r^2}}=\int_{0}^{\theta}d\theta\)</span></p>
+<p><span
+class="math inline">\(arcsin\frac{r}{R}=\theta或者r=Rsin\theta（圆）\)</span></p>
+<p><img src="/img/dog.png" srcset="/img/loading.gif" lazyload alt="猎犬运动半径为0.5R"></p>
+<p>二者正好在顶点相遇（走过的弧长相同）</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8A%9B%E5%AD%A6/" class="print-no-link">#力学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>质点运动学</div>
+      <div>http://example.com/2025/01/14/chap1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>瑾瑜當年</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/16/chap2/" title="牛顿定律与动量定理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">牛顿定律与动量定理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/13/math4phy/" title="数学准备">
+                        <span class="hidden-mobile">数学准备</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.39/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo-haru.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname","enable":true},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:true,models:[{"path":"https://model.hacxy.cn/HK416-1-normal/model.json","scale":0.1,"motionPreloadStrategy":"ALL","position":[-10,60],"stageStyle":{"height":520},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+</html>

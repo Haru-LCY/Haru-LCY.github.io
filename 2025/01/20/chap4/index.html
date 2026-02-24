@@ -1,0 +1,946 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/kazuki.jpg">
+  <link rel="icon" href="/img/kazuki.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="瑾瑜當年">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="角动量定理 质点角动量定理 概念引入 质点速度\(\vec{v}\)：是一个相对参考系整体的运动学量 不同的参考系可以测量出不同的\(\vec{v}\)，在同一参考系内相对不同参考点（参考点相对参考系不动）具有相同的\(\vec{v}\) 动量、动能也有相似性质 刻画质点相对同一参考系，不同参考点有不同效果的是质点相对这个参考点的旋转运动。为了描述这种效果，我们引入面积速度。  \(dS&#x3D;\fra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="角动量定理与天体运动">
+<meta property="og:url" content="http://example.com/2025/01/20/chap4/index.html">
+<meta property="og:site_name" content="港湾">
+<meta property="og:description" content="角动量定理 质点角动量定理 概念引入 质点速度\(\vec{v}\)：是一个相对参考系整体的运动学量 不同的参考系可以测量出不同的\(\vec{v}\)，在同一参考系内相对不同参考点（参考点相对参考系不动）具有相同的\(\vec{v}\) 动量、动能也有相似性质 刻画质点相对同一参考系，不同参考点有不同效果的是质点相对这个参考点的旋转运动。为了描述这种效果，我们引入面积速度。  \(dS&#x3D;\fra">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/sakura.png">
+<meta property="article:published_time" content="2025-01-20T02:10:59.000Z">
+<meta property="article:modified_time" content="2026-02-24T13:10:21.262Z">
+<meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="力学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/sakura.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>角动量定理与天体运动 - 港湾</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>觀瀾</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/sakura.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="角动量定理与天体运动"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-20 10:10" pubdate>
+          2025年1月20日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">角动量定理与天体运动</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-02-24T21:10:21+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="角动量定理">角动量定理</h1>
+<h2 id="质点角动量定理">质点角动量定理</h2>
+<h3 id="概念引入">概念引入</h3>
+<p>质点速度<span
+class="math inline">\(\vec{v}\)</span>：是一个相对参考系整体的运动学量</p>
+<p>不同的参考系可以测量出不同的<span
+class="math inline">\(\vec{v}\)</span>，在同一参考系内相对不同参考点（参考点相对参考系不动）具有相同的<span
+class="math inline">\(\vec{v}\)</span></p>
+<p>动量、动能也有相似性质</p>
+<p>刻画质点相对同一参考系，不同参考点有不同效果的是质点相对这个参考点的旋转运动。为了描述这种效果，我们引入面积速度。</p>
+<p><img src="/img/角动量.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><span
+class="math inline">\(dS=\frac{1}{2}|\vec{r}\times\vec{v}dt|\)</span></p>
+<p>引入面积速度<span
+class="math inline">\(k=\frac{dS}{dt}=\frac{1}{2}|\vec{r}\times\vec{v}|\)</span></p>
+<p>矢量化为<span
+class="math inline">\(\vec{k}=\frac{1}{2}\vec{r}\times\vec{v}\)</span></p>
+<p>速度<span class="math inline">\(\vec{v}\)</span>对应动量<span
+class="math inline">\(\vec{P}\)</span></p>
+<p>类似地，面积速度<span
+class="math inline">\(\vec{k}\)</span>对应角动量<span
+class="math inline">\(\vec{L}=2m\vec{k}=\vec{r}\times\vec{P}\)</span></p>
+<p><span
+class="math inline">\(\vec{k}和\vec{L}\)</span>相对不同参考系和同意参考系的不同参考点是不同的。</p>
+<p>为什么速度<span
+class="math inline">\(\vec{v}\)</span>随着t变化？我们有<span
+class="math inline">\(\frac{\vec{dP}}{dt}=\vec{F}\)</span></p>
+<p>类似地，面积速度<span
+class="math inline">\(\vec{k}\)</span>是否随着t变化？我们通过<span
+class="math inline">\(\frac{dL}{dt}\)</span>确定。</p>
+<p><span
+class="math inline">\(\frac{dL}{dt}=\frac{d(\vec{r}\times\vec{p})}{dt}=\frac{d\vec{}r}{dt}\times\vec{P}+\vec{r}\times\frac{d\vec{P}}{dt}=\vec{r}\times\vec{F}\)</span></p>
+<p>这是因为<span
+class="math inline">\(\frac{\vec{dr}}{dt}=\vec{v}\)</span>和<span
+class="math inline">\(\vec{P}\)</span>平行，叉乘为零。</p>
+<p>于是我们引入力矩<span
+class="math inline">\(\vec{M}=\frac{d\vec{L}}{dt}=\vec{r}\times\vec{F}\)</span></p>
+<h3 id="角动量守恒">角动量守恒</h3>
+<p>若过程中恒有<span class="math inline">\(\vec{M}=0\)</span>,则<span
+class="math inline">\(\vec{L}\)</span> 整体守恒</p>
+<p>若某个分量力矩恒为零，则角动量在这个分量上守恒</p>
+<h3 id="例子">例子</h3>
+<h4 id="匀速圆周运动">匀速圆周运动</h4>
+<p>质点做匀速圆周运动，相对O角动量守恒。因为向心力指向圆心，力矩为零。</p>
+<h4 id="行星运动">行星运动</h4>
+<p>找太阳所在位置F，相对F角动量守恒。</p>
+<h4 id="圆锥摆">圆锥摆</h4>
+<p>竖直方向上角动量守恒</p>
+<p><img src="/img/摆.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>摆线长度l，半顶角<span
+class="math inline">\(\theta\)</span>。取悬挂点O为参考点。</p>
+<p>分析方式1：用力矩</p>
+<p><span class="math inline">\(\vec{M}=\vec{l}\times mg\)</span></p>
+<p><span
+class="math inline">\(\vec{M}\)</span>水平旋转，方向指向纸面外，<span
+class="math inline">\(\vec{M_z}=0\)</span>（竖直方向上角动量守恒）</p>
+<p>分析方式2：直接分析</p>
+<p><span class="math inline">\(\vec{L}=\vec{l}\times m\vec{v}\)</span>
+斜向上，旋转</p>
+<p><span class="math inline">\(\vec{L_水}\)</span>旋转，<span
+class="math inline">\(\vec{L_z}\)</span>守恒量</p>
+<h4 id="单摆">单摆</h4>
+<p><img src="/img/蛋白.png" srcset="/img/loading.gif" lazyload alt="考虑一个单摆"></p>
+<p>取指向纸面外为z轴</p>
+<p><span
+class="math inline">\(\vec{M}=\vec{l}\times(\vec{T}+m\vec{g})=\vec{l}\times
+m\vec{g}\)</span></p>
+<p><span class="math inline">\(\vec{M}=-lmgsin\theta \vec{k}\)</span>,
+<span class="math inline">\(\vec{k}\)</span>是z轴正方向的方向向量</p>
+<p><span class="math inline">\(\vec{L}=\vec{l}\times
+m\vec{v}=lmv\vec{k}\)</span></p>
+<p><span class="math inline">\(v=l\frac{d\theta}{dt}\)</span></p>
+<p><span
+class="math inline">\(\vec{L}=ml^2\frac{d\theta}{dt}\vec{k}\)</span></p>
+<p>由质点角动量定理，<span
+class="math inline">\(\vec{M}=\frac{d\vec{L}}{dt}\)</span></p>
+<p><span
+class="math inline">\(-lmgsin\theta=ml^2\frac{d^2\theta}{dt^2}\)</span></p>
+<p><span
+class="math inline">\(\frac{d^2\theta}{dt^2}+\frac{g}{l}sin\theta=0\)</span></p>
+<p>若取小角度，可近似把<span
+class="math inline">\(sin\theta=\theta\)</span></p>
+<p>即<span
+class="math inline">\(\frac{d^2\theta}{dt^2}+\frac{g}{l}\theta=0\)</span></p>
+<p>注意到这个方程与简谐运动方程数值上同构</p>
+<p>简谐运动方程：<span
+class="math inline">\(\frac{d^2x}{dt^2}+\omega^2\theta=0\)</span></p>
+<h2 id="质点系角动量定理">质点系角动量定理</h2>
+<h3 id="惯性系">惯性系</h3>
+<p>引理：</p>
+<p>一对作用力与反作用力相对同一参考点力矩和为0</p>
+<p>S系由1，2两个质点构成，参考点为O，1的位置是<span
+class="math inline">\(\vec{r_1}\)</span>,2的位置是<span
+class="math inline">\(\vec{r_2}\)</span> 表示从1指向2的矢量为<span
+class="math inline">\(\vec{r}\)</span></p>
+<p><span
+class="math inline">\(\vec{r_1}\times\vec{F_1}+\vec{r_2}\times\vec{F_2}=(-\vec{r_1}+\vec{r_2})\times\vec{F_2}=\vec{r}\times\vec{F_2}\)</span></p>
+<p>因为<span
+class="math inline">\(\vec{r}\)</span>和作用力同一方向，因此力矩之和为零。</p>
+<p>定义：<span
+class="math inline">\(\vec{L}=\Sigma_i\vec{L_i}\)</span></p>
+<p><span
+class="math inline">\(\frac{\vec{dL}}{dt}=\Sigma_i\frac{d\vec{L_i}}{dt}=\Sigma\vec{M_i}\)</span></p>
+<p>因为作用力与反作用力之和为零，故内力力矩为零。我们可以得出：</p>
+<p>质点系角动量定理：<span
+class="math inline">\(\vec{M_外}=\frac{d\vec{L}}{dt}\)</span>，<span
+class="math inline">\(M_外\)</span>是外力力矩之和。</p>
+<h3 id="非惯性系">非惯性系</h3>
+<p><span
+class="math inline">\(\vec{F&#39;}=\vec{F_真}+\vec{F_惯}=m\vec{a&#39;}\)</span></p>
+<p><span
+class="math inline">\(\vec{M_外}+\vec{M_惯}=\frac{d\vec{L}}{dt}\)</span>，<span
+class="math inline">\(M_惯\)</span>是惯性力矩之和</p>
+<h3 id="角动量守恒定律">角动量守恒定律</h3>
+<p>如果恒有<span class="math inline">\(\vec{M_外}=0\)</span>
+则质点系角动量守恒</p>
+<h1 id="天体运动">天体运动</h1>
+<h2 id="二体引力系统">二体引力系统</h2>
+<p>把其中一个天体看作不动，简化为一体运动</p>
+<h3 id="开普勒三定律">开普勒三定律</h3>
+<h4 id="轨道定律">轨道定律</h4>
+<p>可以引申为圆锥曲线运动轨道。椭圆、抛物线、双曲线。焦点是太阳的位置。</p>
+<p>轨道能量<span class="math inline">\(E_p\)</span>。椭圆<span
+class="math inline">\(E_p&lt;0\)</span>,抛物线<span
+class="math inline">\(E_p=0\)</span>,双曲线<span
+class="math inline">\(E_p&gt;0\)</span></p>
+<p><del>到ep2，先鸽了，学质心刚体去了</del></p>
+<h1 id="题目">题目</h1>
+<h2 id="题1">题1</h2>
+<p>圆锥面光滑，小球一开始在高度为H做匀速圆周运动，给小球一个冲量，使其速度变成<span
+class="math inline">\(\sqrt{1+\alpha}\)</span>倍。求小球上升的最大高度</p>
+<p><img src="/img/锥.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>可以通过牛顿定律算出小球做圆周运动的速度是<span
+class="math inline">\(v_0=\sqrt{gH_0}\)</span></p>
+<p>突破口：取O点为参考点，发现<span
+class="math inline">\(M_z=0\)</span>，即<span
+class="math inline">\(L_z\)</span>守恒（z方向是竖直方向）</p>
+<p>这个角动量守恒关系结合能量守恒就可以求解</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8A%9B%E5%AD%A6/" class="print-no-link">#力学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>角动量定理与天体运动</div>
+      <div>http://example.com/2025/01/20/chap4/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>瑾瑜當年</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/22/chap5/" title="质心与刚体">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">质心与刚体</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/01/17/chap3/" title="机械能定理">
+                        <span class="hidden-mobile">机械能定理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.39/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo-haru.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname","enable":true},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:true,models:[{"path":"https://model.hacxy.cn/HK416-1-normal/model.json","scale":0.1,"motionPreloadStrategy":"ALL","position":[-10,60],"stageStyle":{"height":520},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+</html>

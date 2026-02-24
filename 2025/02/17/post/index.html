@@ -1,0 +1,1373 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/kazuki.jpg">
+  <link rel="icon" href="/img/kazuki.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="瑾瑜當年">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="中英双语随机使用，目的是为了让自己看懂，比较informal的lecture note，见谅。 4 Probability TOOLS Distirbutive Law for Expectation Tail Estimates Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2 doors">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Probability Theory">
+<meta property="og:url" content="http://example.com/2025/02/17/post/index.html">
+<meta property="og:site_name" content="港湾">
+<meta property="og:description" content="中英双语随机使用，目的是为了让自己看懂，比较informal的lecture note，见谅。 4 Probability TOOLS Distirbutive Law for Expectation Tail Estimates Monte Hall Problem 3 closed doors. Behind one door is a car, while the other 2 doors">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/OIP.jpg">
+<meta property="article:published_time" content="2025-02-17T05:16:30.000Z">
+<meta property="article:modified_time" content="2026-02-24T13:10:21.263Z">
+<meta property="article:author" content="瑾瑜當年">
+<meta property="article:tag" content="计智应数">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/OIP.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Probability Theory - 港湾</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>觀瀾</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/OIP.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Probability Theory"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-17 13:16" pubdate>
+          2025年2月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Probability Theory</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-02-24T21:10:21+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>中英双语随机使用，目的是为了让自己看懂，比较informal的lecture
+note，见谅。</p>
+<p>4 Probability TOOLS</p>
+<p>Distirbutive Law for Expectation</p>
+<p>Tail Estimates</p>
+<h1 id="monte-hall-problem">Monte Hall Problem</h1>
+<p>3 closed doors. Behind one door is a car, while the other 2 doors
+each has a donkey behind it.</p>
+<p>First the guest pick a door, then Monte opens a different door which
+has a donkey. Monte ask the guest:"Would you like to change your
+choice?"</p>
+<p>P=(U.p)</p>
+<p>直观认为的<span
+class="math inline">\(\frac{1}{2}\)</span>是先开门后选的结果，真实的概率应该是<span
+class="math inline">\(\frac{2}{3}\)</span></p>
+<p>100doors, 只有一个有车，98 revealed, 胜率为99%</p>
+<h1 id="birthday-paradox">Birthday Paradox</h1>
+<p>n random people, how likely is it to have 2 people with the same
+birthday?</p>
+<p>考虑没有两个人生日相同的情况</p>
+<p><span class="math inline">\(\frac{365\cdot 364 \cdot \cdot \cdot
+(365-n+1)}{365^n}\)</span></p>
+<p>When we calculate, use the approximation <span
+class="math inline">\(1-x=e^{-x}\)</span></p>
+<p>P=1-<span class="math inline">\((1-\frac{1}{365})\cdot\cdot \cdot
+(1-\frac{n-1}{365})\)</span></p>
+<p>=1-<span class="math inline">\(e^{-\frac{n(n-1)}{2\cdot
+365}}\)</span></p>
+<h1 id="online-auction-problem">Online Auction Problem</h1>
+<p>Sell a ticket to n=<span class="math inline">\(10^6\)</span>
+interested buyers</p>
+<p>A stream of distinct offers <span
+class="math inline">\(x_1,x_2,...,x_n\)</span> you have to make the
+decision at real time. You want to maximize the probability pf accpeting
+the highest offer.</p>
+<p>Strategy K 1）skip first k offers, the maxium in first k is MAX
+2）Accept <span class="math inline">\(x_j\)</span> if j is the first j
+satisfying <span class="math inline">\(x_j&gt;MAX\)</span></p>
+<p>U is the set of all permutations（排列）of {1,2,...,n} (n!)</p>
+<p>T describe the case that one succeed</p>
+<p><span class="math inline">\(T_j=(n-1)!\frac{k}{j-1}\)</span>
+(n-1)!考虑第n个最大，分数考虑条件（2）</p>
+<p><span class="math inline">\(P=\frac{\Sigma T_j}{n!}\)</span></p>
+<p><span
+class="math inline">\(H_n=1+\frac{1}{2}+...+\frac{1}{n}=lnn+C\)</span></p>
+<p><span class="math inline">\(P=\frac{k}{n}(lnn-lnk)\)</span></p>
+<h1 id="basic-volcabulary-for-graph">Basic Volcabulary for Graph</h1>
+<p>multiset is like a set except its members need not be distinct.</p>
+<p>Def of multiset: a set together with a function that assigns to each
+member of the set a positive integer or <span
+class="math inline">\(\infin\)</span>(called multiplicity)</p>
+<p>图 graph 点 vertices 边 edge</p>
+<p>A simple graph G is a pair of set (V,E). E is edege. Each element of
+E is a subset of size two of V.</p>
+<p>Multigraph(graph with repeated edges)</p>
+<p>|V|=number of vertices=the order of G</p>
+<h1 id="ramsey-numbers"><a
+target="_blank" rel="noopener" href="https://youtu.be/rK484PiJ9t8?si=FfFMYtNyfd4HlVMj">Ramsey
+numbers</a></h1>
+<p>The Union Bound</p>
+<p>Among 6 people, there must exist either 3 mutual friends, or 3 nutual
+strangers</p>
+<p>Proof:</p>
+<p><img src="/img/ramsey.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="/img/R.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>If you color the edges of K5 red and blue arbitraryly, then you are
+not guaranteed a red K3 or blue K3</p>
+<p><img src="/img/反例.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>Define Ramsey Number:</p>
+<h1 id="chain-rule">Chain Rule</h1>
+<p>这个法则对于用条件概率计算总概率很有用</p>
+<p><span class="math inline">\(Pr(S_1\cap S_2\cdot\cdot\cdot\cap
+S_m)=Pr(S_1)Pr(S_2|S_1)Pr(S_3|S_2\cap S_1)\cdot \cdot Pr(S_m|S_1\cap
+\cdot \cdot S_{m-1})\)</span></p>
+<p>特殊情形：<span class="math inline">\(S_k \subset S_{k-1} \cdot \cdot
+\cdot \subset S_{1}\)</span></p>
+<p>此时<span class="math inline">\(Pr\{S_1\cap S_2\cdot \cdot \cdot \cap
+S_m\}=Pr\{S_1\}Pr\{S_2|S_1\}Pr\{S_3|S_2\}\cdot \cdot
+Pr\{S_m|S_{m-1}\}\)</span></p>
+<h1 id="permutation">Permutation</h1>
+<p>P=(U,p) where U is the set of all permutations, p(<span
+class="math inline">\(\sigma\)</span>)=1/|U| for all <span
+class="math inline">\(\sigma \in U\)</span></p>
+<p>For each <span class="math inline">\(1\leq i \leq n\)</span>, let
+<span class="math inline">\(L_i(\theta)=\)</span> length of cycle
+containing i.</p>
+<h2 id="qprobability">Q:Probability</h2>
+<p>Q: What is the probability of 1 being in a cycle of length s?</p>
+<p>Lemma:Pr(<span class="math inline">\(L_1=s\)</span>)=<span
+class="math inline">\(\frac{1}{n}\)</span> for any s<span
+class="math inline">\(\in\)</span>{1,...,n}.</p>
+<p>Proof:</p>
+<h3 id="step1">Step1</h3>
+<p>Pr{<span class="math inline">\(L_1&gt;s\)</span>|<span
+class="math inline">\(L_1&gt;s-1\)</span>}=<span
+class="math inline">\(\frac{n-s}{n-s+1}\)</span></p>
+<p>解析：</p>
+<p>假设这个循环从1开始。为了得到这个概率表达式，我们可以考虑一个循环的前s位，由于<span
+class="math inline">\(L_1&gt;s-1\)</span>，必有前s个点各不相同。<span
+class="math inline">\(L_1\)</span>是否大于s取决于第s+1位是否又回到了1。如果在第s+1位回到了1，那么就有<span
+class="math inline">\(L_1=s\)</span>。</p>
+<p>下面我们考虑第s+1位的元素又多少种可能性。</p>
+<p>第一种可能性又回到了1，这时<span
+class="math inline">\(L_1=s\)</span></p>
+<p>第二种可能性不回到1，则这一位只能选择除了循环的前s位（包含1）的所有数，即有n-s种选择。</p>
+<p>于是总共有n-s+1种选项，能选的是n-s（第二种情况）</p>
+<h3 id="step2">Step2</h3>
+<p>Pr{<span class="math inline">\(L_1\)</span>=s}=<span
+class="math inline">\(\frac{n-1}{n}\frac{n-2}{n-1}\cdot \cdot
+\cdot\frac{n-s+1}{n-s+2}\frac{1}{n-s+1}=\frac{1}{n}\)</span></p>
+<p>解析：</p>
+<p>我们可以使用Chain Rule来计算Pr{<span
+class="math inline">\(L_1&gt;s-1\)</span>}的大小。因为<span
+class="math inline">\(L_1&gt;s \subset
+L_1&gt;s-1\)</span>，我们可以使用特殊情形的。</p>
+<p>回忆：P(AB)=P(A)P(B|A) 在这里我们令<span
+class="math inline">\(L_1&gt;s-1\)</span>作为事件A，因为它的概率很好求；令B为<span
+class="math inline">\(L_1=s\)</span></p>
+<p>于是<span
+class="math inline">\(Pr(L_1&gt;s-1)=\frac{n-1}{n}\frac{n-2}{n-1}\cdot
+\cdot \cdot\frac{n-s+1}{n-s+2}=\frac{n-s+1}{n}\)</span></p>
+<p><span
+class="math inline">\(Pr(L_1=1|L_1&gt;s-1)=\frac{1}{n-s+1}\)</span>
+详见step1的“第一种可能性”</p>
+<p>代入之后即可算出概率。</p>
+<h2 id="qexpectation">Q：Expectation</h2>
+<p>继承原始的题目条件，Let X be the random variable X(<span
+class="math inline">\(\sigma\)</span>)=# of cycles in <span
+class="math inline">\(\sigma\)</span>'s cycle repesentation.</p>
+<p>Q:What is E(X)?</p>
+<p><span class="math inline">\(\sigma=(3,5,1,4,2)\)</span> contains
+cycle (2,5) and (3,4,1) <span
+class="math inline">\(L_1(\sigma)=3\)</span> and <span
+class="math inline">\(L_5(\sigma
+)=2\)</span></p>
+<p>Note that <span
+class="math inline">\(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)}=\frac{1}{2}\cdot
+2+\frac{1}{3}\cdot 3=2\)</span></p>
+<p>From this we know that X=<span
+class="math inline">\(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)}\)</span> is
+the number of cycles.</p>
+<p>注释：每一个长度为s的cycle在上面的算式中都可以得出一个<span
+class="math inline">\(s\cdot
+\frac{1}{s}=1\)</span>，因此我们可以这样断言。</p>
+<p>E（X）=<span
+class="math inline">\(E(\Sigma_{i=1}^{n}\frac{1}{L_i(\sigma)})\)</span></p>
+<p>因为在一个排列里n个元素地位是平等的，所以我们有<span
+class="math inline">\(E(L_1)=\cdot \cdot \cdot =E(L_i)\)</span>
+于是<span
+class="math inline">\(E(X)=nE(\frac{1}{L_1(\sigma)})\)</span></p>
+<p><span
+class="math inline">\(E(\frac{1}{L_1})=\Sigma_{s=1}^{n}P(L_1=s)\frac{1}{s}=\frac{1}{n}\Sigma_{s=1}^{n}\frac{1}{s}\)</span></p>
+<p>Harmonic Number（调和级数）：<span
+class="math inline">\(\Sigma_{s=1}^{n}\frac{1}{s}=H_n\)</span></p>
+<p>E(X)=nE(<span class="math inline">\(\frac{1}{L_1}\)</span>)=<span
+class="math inline">\(H_n\)</span></p>
+<p>（Q2配合下面一条食用）</p>
+<h1 id="finding-my-pet">Finding My Pet</h1>
+<p>这个问题也可以抽象成找permutation中的cycle</p>
+<p><img src="/img/pet.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>我们只需要关心这个cycle的大小和<span
+class="math inline">\(\frac{n}{2}\)</span>的关系即可，如果<span
+class="math inline">\(\leq \frac{n}{2}\)</span>的话，就成功了。</p>
+<p><img src="/img/PET2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>P(|<span class="math inline">\(C_i\)</span>|=j)=<span
+class="math inline">\(\frac{1}{n}\)</span></p>
+<p><span class="math inline">\(B\cap
+T\)</span>意味着两个cycle完全相同，所以2也在<span
+class="math inline">\(C_1\)</span>中就等价于满足B。</p>
+<p><span
+class="math inline">\(C_1\)</span>我们已经知道有j个不同的元素，而且有1。于是剩下的元素有j-1个坑位，</p>
+<h1 id="random-variables">Random Variables</h1>
+<p>Random Variable Expectation的定义以及重要理论</p>
+<h2 id="law-of-linear-expectation">Law of linear Expectation</h2>
+<p>$X=C_1X_1+C_2X_2+C_nX_n $</p>
+<p>Then E(X)=<span class="math inline">\(\Sigma_i C_i
+E(X_i)\)</span></p>
+<h2 id="新conditional-expectation">(新)Conditional Expectation</h2>
+<p>Random Variable X and Event T, u是各种可能的情况（事件）</p>
+<p>E(X|T)=<span class="math inline">\(\frac{\Sigma_{u\in
+T}p(u)X(u)}{P(T)}\)</span> if P(T)&gt;0</p>
+<p>当P（T）=0 E(X|T)=0</p>
+<h2 id="distributive-law-for-条件概率">Distributive Law for
+条件概率</h2>
+<p>X is random variable, U is the DISJOINT union of <span
+class="math inline">\(W_1,W_2,\cdot \cdot W_n\)</span></p>
+<p>E(X)=<span class="math inline">\(\Sigma_i P(W_i)E(X|W_i)\)</span></p>
+<h2 id="variance">Variance</h2>
+<p>Variance：Var(X)=<span
+class="math inline">\(E((X-E(X))^2)\)</span></p>
+<p>Standard Deviation of X: <span
+class="math inline">\(\sigma(X)=\sqrt{Var(X)}\)</span></p>
+<p>Fact:<span class="math inline">\(Var(X)=E(X^2)-(E(X))^2\)</span></p>
+<h2 id="独立随机变量">独立随机变量</h2>
+<p>X.Y are independent if P(X=x,Y=y)=P(X=x)P(Y=y), in other words
+P(X=x|Y=y)=P(X=x)</p>
+<p>If X,Y are independent</p>
+<h3 id="thm1">Thm1</h3>
+<p>E(XY)=E(X)E(Y)</p>
+<h3 id="thm2">Thm2</h3>
+<p>Var(X+Y)=Var(X)+Var(Y)</p>
+<p><span
+class="math inline">\(Var(X+Y)=E(X^2+2XY+Y^2)-(E(X+Y))^2\)</span></p>
+<p><span
+class="math inline">\(=E(X^2)+2E(X)E(Y)+E(Y^2)-E(X)^2-2E(X)E(Y)-E(Y)^2\)</span></p>
+<p>对比？</p>
+<h1 id="geometric-distribution">Geometric Distribution</h1>
+<p>扔一枚硬币，正面朝上的概率为p，X是第一次扔出来正面的次数。</p>
+<h2 id="ex">E(X)</h2>
+<p>E(X)=p<span class="math inline">\(\cdot 1+(1-p)E(X+1)\)</span>
+分类讨论第一次是否成功来计算期望。</p>
+<p>由于E（X+1）=E（X）+1我们可以轻松算出E（X）=<span
+class="math inline">\(\frac{1}{p}\)</span></p>
+<h2 id="varx">Var(X)</h2>
+<p><span class="math inline">\(Var(X)=E(X^2)-(E(X))^2\)</span></p>
+<p><span class="math inline">\(E(X^2)=p\cdot 1+(1-p)\cdot
+E((X+1)^2)\)</span></p>
+<p><span
+class="math inline">\(E((X+1)^2)=E((X^2+2X+1))=E(X^2)+2E(X)+1\)</span>
+then substitute it to the equation.</p>
+<p>We have <span
+class="math inline">\(Var(X)=\frac{1-p}{p^2}\)</span></p>
+<h1 id="tail-estimates">Tail Estimates</h1>
+<h2 id="markovs-inequality">Markov's Inequality</h2>
+<p>X是一个非负的随机变量,then for any c&gt;0, P(X&gt;cE(X))&lt;<span
+class="math inline">\(\frac{1}{c}\)</span></p>
+<p>另一种形式:P(X&gt;A)&lt;<span
+class="math inline">\(\frac{E(X)}{A}\)</span></p>
+<p>If E(X)=0, 那么所有X均为0，不等式显然成立</p>
+<p>If E(X)&gt;0, then E(X)=<span class="math inline">\(\Sigma
+p(u)X(u)&gt;?\)</span></p>
+<p>进行两步缩小：</p>
+<p>第一步，只保留X&gt;cE(X)</p>
+<p>第二部，把这些留下来的X的期望全缩小到cE(X)</p>
+<p>于是<span
+class="math inline">\(E(X)&gt;P(X&gt;cE(X))cE(X)\)</span>，两边约掉期望即可证毕。</p>
+<h2 id="chebyshevs-inequality">Chebyshev's Inequality</h2>
+<p>For any c&gt;0, <span class="math inline">\(P(|X-E(X)|&gt;c
+\sigma(X))&lt;\frac{1}{c^2}\)</span></p>
+<p>另一种形式： <span
+class="math inline">\(P(|X-E(X)|&gt;A)&lt;\frac{Var(X)}{A^2}\)</span></p>
+<p><span class="math inline">\(|X-E(X)|&gt;c \sigma(X)\)</span> 等价于
+<span class="math inline">\((X-E(X))^2&gt;c^2 Var(X)\)</span></p>
+<p>平方之后可以转换为Var(x)，不然|X-E(X)|的期望无意义。</p>
+<p>Use Markov's Inequality <span
+class="math inline">\(P((X-E(X))^2&gt;c^2
+Var(X))&lt;\frac{E((X-E(X))^2)}{c^2 Var(X)}=\frac{1}{c^2}\)</span></p>
+<h1 id="greedy-clique">Greedy Clique</h1>
+<p><img src="/img/greedy.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="upper-bound">Upper Bound</h2>
+<p>p(<span class="math inline">\(|A(G)|&gt;\log_2
+n+\log_2\log_2n\)</span>)=o(1)</p>
+<p>Let <span class="math inline">\(K=\log_2 n+\log_2\log_2n\)</span> for
+<span class="math inline">\(2\leq i \leq n\)</span>.</p>
+<p><span class="math inline">\(T_i\)</span> repesent the algorithm
+selects vertex i（初始给的图里的序号） as the K-th（选出的图里面的序号）
+vertex to join S.</p>
+<p>Distributive Law: <span
+class="math inline">\(P(|S|&gt;K)=\Sigma_{2\leq i \leq
+n}P(T_i)P(|S|&gt;K|T_i)\)</span></p>
+<p>至于为什么从2开始？因为1原先就在图里，无需算法选择。</p>
+<p><span class="math inline">\(P(|S|&gt;K|T_i)\leq
+(n-i)\frac{1}{2^k}\leq\frac{n}{2^k}\)</span></p>
+<p>解析：</p>
+<p>如果S中已经有了k个点，那么下一个点想要加入必须和已经有的这k个都相连。这个概率就是<span
+class="math inline">\(\frac{1}{2^k}\)</span>。</p>
+<p>回忆Union
+Bound,一堆事件的“至少一个发生”的概率，不会超过它们各自发生的概率之和。</p>
+<p>[ P(A_1 A_2 A_n) P(A_1) + P(A_2) + + P(A_n) ]</p>
+<p>这个算法已经遍历了前i个点，因此我们能选的点就是剩下的n-i个。再用Union
+Bound，就得出了小于(n-i)乘以每一个点被加入的概率。</p>
+<p>因此P(|S|&gt;k)<span class="math inline">\(\leq
+\frac{n}{2^K}\Sigma_{2\leq i\leq n}P(T_i)\leq \frac{n}{2^K}\)</span></p>
+<p><span class="math inline">\(2^K=n\cdot \log_2 n\)</span></p>
+<p>所以P(|S|&gt;K)<span class="math inline">\(\leq \frac{1}{\log_2
+n}=o(1)\)</span></p>
+<h2 id="lower-bound">Lower Bound</h2>
+<p><img src="/img/low.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><span
+class="math inline">\(X_m(G)\)</span>来表示G（算法生成的）第m个点。Y用来刻画前一个被选中的和后一个被选中的点之间的距离。</p>
+<p><span class="math inline">\(P(Y_j=t)=(1-b_j)^{t-1}b_j\)</span> <span
+class="math inline">\(Y_j=t\)</span>表示第j+1个加入的和第j个之间的间隔是t。<span
+class="math inline">\((1-b_j)^{t-1}\)</span>刻画j之后的t-1个都不行，<span
+class="math inline">\(b_j\)</span>刻画第j+1个加入的。</p>
+<p>Lemma1：<span
+class="math inline">\(X_m\)</span>就是初始值1加上所有的变化量Y</p>
+<p>A(G)<span class="math inline">\(\geq
+K\)</span>：选出来的图至少有K个点。这个说法等价于，选到第K个点的时候，还可以继续选。也就是说第K个点的编号并没有超出n，即<span
+class="math inline">\(X_k(G)\leq n\)</span>。</p>
+<p><img src="/img/C.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>解析:记<span class="math inline">\(\Sigma_{1\leq j \leq
+K}Y_j=X&#39;\)</span></p>
+<p>Lemma2: <span class="math inline">\(Y_j\)</span>
+是现在有j个点，再添加一个点需要经过的间隔的期望。由于下一点就能加入图的概率是<span
+class="math inline">\(b_j=\frac{1}{2^j}\)</span>，所以我们可以把它看成一个几何分布。</p>
+<p>E(X)=<span
+class="math inline">\(\frac{1}{p}\)</span>（几何分布性质）于是<span
+class="math inline">\(E(Y_j)=\frac{1}{b_j}=2^j\)</span></p>
+<p>直接根据期望能够线性相加，然后放大即可</p>
+<p>Lemma3:<span
+class="math inline">\(Y_j\)</span>相互独立，因为前一个点经过多少间隔走到下一个符合条件的点，不会互相影响</p>
+<p><span
+class="math inline">\(2(\frac{2}{3}(\frac{n^2}{(\log_2n)^2}-1)-\frac{n}{\log_2n}+1)\)</span></p>
+<p>显然<span class="math inline">\(a=\frac{n}{\log_2
+n}&gt;1\)</span></p>
+<p>如果我们要<span
+class="math inline">\(\frac{2}{3}a^2+\frac{1}{3}-a\leq a^2\)</span>
+只需要 <span class="math inline">\(-a^2-3a+1 \leq
+0\)</span>，a满足这个要求</p>
+<p><img src="/img/exp.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1 id="monte-carlo">Monte Carlo</h1>
+<p>有一些函数我们并不能算出它们的积分，可以通过随机取样来估计积分值</p>
+<p>Consider the integral: [ I=<em>{0}<sup>{1}e</sup>{-x^{3}}dx. ] - This
+integral has no closed - form solution. - Rewrite the integral as an
+expectation: [ I = [e<sup>{-U</sup>{3}}],U(0,1). ] - Generate (n)
+uniform random variables (U_1,,U_n) and compute: [ <em>n=</em>{i =
+1}<sup>{n}e</sup>{-U</em>{i}^{3}}. ] - By Chebyshev’s inequality, (_n)
+converges to (I) quickly as (n).</p>
+<h1 id="pdf">PDF</h1>
+<p>A continuous random variable X is a random variable that can take on
+an uncountable number of values, typically over an interval of real
+numbers.</p>
+<p><strong>Definition:</strong> The probability density function (PDF)
+of a continuous random variable X is a function ( p(x) ) such that: [
+P(a X b) = _{a}^{b} p(x) , dx ] for any interval ([a, b]).
+<strong>Properties of PDF:</strong> - ( p(x) ) for all ( x ). - The
+total area under the PDF curve is 1:</p>
+<p>[ _{-}^{} p(x) , dx = 1 ]</p>
+<p><strong>Definition:</strong> The expectation (or expected value) of a
+continuous random variable ( X ) with PDF ( p(x) ) is: [ [X] =
+<em>{-}^{} x p(x) , dx ] <strong>Definition:</strong> The variance of a
+continuous random variable ( X ) with PDF ( p(x) ) is: [ (X) = [(X -
+[X])^2] = </em>{-}^{} (x - [X])^2 p(x) , dx ] <strong>Still
+holds:</strong> - <strong>Independence:</strong> ( p(x, y) = p(x) p(y)
+). - <strong>Distributive law:</strong> ( (X) = (X^2) - ((X))^2 ). -
+<strong>Tail bounds:</strong> Markov’s inequality, Chebyshev’s
+inequality, Hoeffding’s inequality.</p>
+<h1 id="sampling">Sampling</h1>
+<p>问题：希望估计E[f(X)] with X~p</p>
+<p>挑战：p可能过于复杂</p>
+<p>关键：找到代理函数q(x)</p>
+<h2 id="importance-sampling">Importance Sampling</h2>
+<p>关键:<span class="math inline">\(\int f(x)p(x)dx=\int
+f(x)\frac{p(x)}{q(x)}q(x)\)</span> 我们可以选择已知的q(x)，用q(x) 去生成
+<span class="math inline">\(f(x)\frac{p(x)}{q(x)}\)</span></p>
+<p>一次采样： [ <em>N = </em>{i=1}^{N} f(Y_i) , Y_i q. ]
+这个公式表示通过重要性采样方法得到的估计值 (_N)。其中 (Y_i) 是从分布 (q)
+中采样的随机变量，(f(Y_i)) 是某个函数，(p(Y_i)) 和 (q(Y_i))
+分别是目标分布和采样分布的概率密度函数。</p>
+<p>unbiased
+性质，一个估计量在多次重复抽样中的平均值接近于所要估计的参数的真实值： [
+[_N] = = f(y)p(y) , dy = I. ]</p>
+<ul>
+<li><p>方差：How many samples do we need to estimate ( [f(X)] ) within
+an accuracy ( ) with probability at least ( 1 - )?</p></li>
+<li><p>Chebyshev's inequality: [ | ] , ]</p></li>
+<li><p>The variance depends on the choice of ( q ): [ (_N) = ( , dy -
+I^2 ). ]</p></li>
+</ul>
+<h2 id="reject-sampling">Reject Sampling</h2>
+<p>我们在一个给定区域内用已知函数进行采样，并判断采样点是否符合要求，不符合要求就丢弃。</p>
+<p>对于已知采样函数，必须将所要求的PDF图像包含。</p>
+<p>f(x)是想要估计的概率密度函数，g(x)是我们已知的，我们必须找到一个常数C使得<span
+class="math inline">\(Cg(x)\geq f(x)\)</span></p>
+<h1 id="buffons-neddle">Buffon's Neddle</h1>
+<p>平行线间距为d，针的长度l小于d。中点到最近的线的距离为x，针与直线的夹角为<span
+class="math inline">\(\theta\)</span>。</p>
+<p><span class="math inline">\(0\leq x\leq \frac{d}{2}\)</span>, <span
+class="math inline">\(0 \leq \theta \leq \frac{pi}{2}\)</span></p>
+<p>假设x，<span class="math inline">\(\theta\)</span>
+都是完全随机分布。下面是它们各自的概率密度函数。</p>
+<p><span class="math inline">\(x:f_x(x)=\frac{2}{d}\)</span></p>
+<p><span
+class="math inline">\(\theta:f_{\theta}(\theta)=\frac{2}{\pi}\)</span></p>
+<p>Intersect if <span class="math inline">\(x \leq
+\frac{l}{2}sin\theta\)</span></p>
+<p><img src="/img/exp.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><span class="math inline">\(f(x,\theta)=\frac{4}{\pi
+d}\)</span>是概率密度函数。</p>
+<p>P(<span class="math inline">\(x\leq
+\frac{l}{2}sin\theta\)</span>)=<span
+class="math inline">\(\int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{l}{2}sin\theta}\frac{4}{\pi
+d}dx d\theta=\int_{0}^{\frac{\pi}{2}}\frac{4}{\pi d}\frac{l}{2}sin\theta
+d\theta=\frac{2l}{\pi d}(-cos\theta)|_{0}^{\frac{\pi}{2}}=\frac{2l}{\pi
+d}\)</span></p>
+<h1 id="shannons-theorem-formal">Shannon’s Theorem (Formal)</h1>
+<p>想要发送k个Bit，加密后为n位，解码为k位</p>
+<ul>
+<li><p>Shannon’s theorem: The sender can reliably send messages of only
+about <span class="math inline">\(k = n(1 - H(p))\)</span> bits within
+each block of <span class="math inline">\(n\)</span> bits.</p></li>
+<li><p>The term <span class="math inline">\(1 - H(p)\)</span> is called
+the <strong>channel capacity</strong>: the maximum rate at which
+information can be transmitted reliably over the channel.</p></li>
+</ul>
+<h2 id="theorem-shannons-theorem">Theorem (Shannon’s Theorem)</h2>
+<p>For a binary symmetric channel with parameter <span
+class="math inline">\(p &lt; 1/2\)</span> and any constants <span
+class="math inline">\(\delta,\varepsilon &gt; 0\)</span>, when <span
+class="math inline">\(n\)</span> is sufficiently large: 1. For any <span
+class="math inline">\(k \leq n(1 - H(p)-\delta)\)</span>, there exist
+<span class="math inline">\((k, n)\)</span> encoding and decoding
+functions such that the probability of decoding error is at most <span
+class="math inline">\(\varepsilon\)</span> for every possible <span
+class="math inline">\(k\)</span>-bit input message. 2. No <span
+class="math inline">\((k, n)\)</span> encoding and decoding functions
+exist for <span class="math inline">\(k \geq n(1 - H(p)+\delta)\)</span>
+such that the probability of decoding error is at most <span
+class="math inline">\(\varepsilon\)</span> for a <span
+class="math inline">\(k\)</span>-bit input message chosen at random.</p>
+<h2 id="名词定义">名词定义</h2>
+<ul>
+<li>Hamming distance dH(s,t)：表示两个01字串有多少个不同的位数，eg <span
+class="math inline">\(d_H(1010, 0011)=2\)</span>.</li>
+<li>Let <span class="math inline">\(\mathcal{C}=\{c_1, c_2,\ldots,
+c_M\}\)</span> be some arbitrary collection of distinct codewords with
+length <span class="math inline">\(n\)</span> (we’ll call this a
+codebook). If we send <span class="math inline">\(c_i\)</span> through
+the channel, the output is a random code <span
+class="math inline">\(\tilde{c}_i\)</span>.表示长度是n的所有加密后的n位字符串集合。</li>
+<li>By Chernoff’s bound, there is some <span
+class="math inline">\(\gamma\)</span> so that with probability <span
+class="math inline">\(1 - \epsilon/2\)</span>, [(p - )nd_H(c_i, _i)(p +
+)n,] 为了表示：the distance between <span
+class="math inline">\(c_i\)</span> and <span
+class="math inline">\(\tilde{c}_i\)</span> is very likely to be close to
+<span class="math inline">\(np\)</span>.</li>
+<li>Choose <span class="math inline">\(\gamma&gt;0\)</span> as small as
+possible and define [(c_i)={c:|d_H(c_i, c)-np|n}.]</li>
+<li>So <span class="math inline">\(\tilde{c}_i \in
+\text{Ring}(c_i)\)</span> with probability at least <span
+class="math inline">\(1 - \epsilon/2\)</span>.</li>
+<li>成功的定义： <span
+class="math inline">\(\text{Success}_i(\mathcal{C})\)</span> denote the
+event that <span class="math inline">\(\tilde{c}_i \in
+\text{Ring}(c_i)\)</span>, but <span class="math inline">\(\tilde{c}_i
+\notin \text{Ring}(c_j)\)</span> for any <span class="math inline">\(j
+\neq i\)</span>. (In this case, upon receiving <span
+class="math inline">\(\tilde{c}_i\)</span> we can be very confident
+about decoding it to <span class="math inline">\(c_i\)</span>.)
+ci只在Ring(ci)周围，不再任何其他的周围。</li>
+<li>So what we eventually want is a <strong>codebook</strong> where
+<span
+class="math inline">\(\mathbb{P}(\text{Success}_i(\mathcal{C}))\)</span>
+is large for every <span class="math inline">\(i\)</span>.</li>
+</ul>
+<h2 id="lemma">lemma</h2>
+<p>The volume of a ring <span
+class="math inline">\(\text{Ring}(c_i)\)</span> (the number of codewords
+with length <span class="math inline">\(n\)</span>) is at most <span
+class="math inline">\(2^{(H(p) + \delta&#39;)n}\)</span>, where <span
+class="math inline">\(\delta&#39; \to 0\)</span> as <span
+class="math inline">\(n \to \infty\)</span>.</p>
+<p>Based on the lemma, suppose we choose <span
+class="math inline">\(c_1,\ldots,c_M\)</span> for <span
+class="math inline">\(M = 2^k\)</span> uniformly at random. What is the
+probability that <span
+class="math inline">\(\text{Success}_i(\mathcal{C})\)</span> holds for
+all <span class="math inline">\(i\)</span>? （如果我们任意选M=<span
+class="math inline">\(2^k\)</span>个c1,c2...cM（加密后字符串），k是初始的长度）</p>
+<p>The proof will proceed in two main steps: 1. <strong>Step 1</strong>:
+Pick codewords uniformly at random, but twice as many as we will
+eventually need. We show such a random code is "good on average". 2.
+<strong>Step 2</strong>: After a derandomization step that picks the
+collection of codewords that is best on average, the "worst half" of the
+codewords are thrown away, yielding a collection of codewords where
+every code has a large probability of being correctly decoded.</p>
+<p>第一步随机生成<span
+class="math inline">\(2*2^k\)</span>个字串。我们要证明这些的平均值很好。第二步我们丢掉不行的，剩下的肯定必这个平均值更好。为什么要选<span
+class="math inline">\(2*2^k\)</span>个，就是为了丢掉一半还剩下<span
+class="math inline">\(2^k\)</span>个，剩下的那些就是我们最终想要的。</p>
+<h3 id="proof-of-shannons-theorem-step-1">Proof of Shannon’s Theorem
+(Step 1)</h3>
+<ul>
+<li>Now let’s choose <span class="math inline">\(\mathcal{C}\)</span>
+randomly. Let <span class="math inline">\(M = 2\cdot2^k\)</span> (this
+is twice as big as we want in the end), and let <span
+class="math inline">\(X_i\)</span> be a uniformly chosen binary string
+in <span class="math inline">\(\{0, 1\}^n\)</span>. Let <span
+class="math inline">\(\mathcal{C}=\{X_1,\ldots,X_M\}\)</span>.</li>
+<li>Suppose now we pick a codeword <span
+class="math inline">\(i\)</span> uniformly at random from <span
+class="math inline">\(\{1,2,\ldots,M\}\)</span>, and send it through the
+channel. What is the probability that we cannot decode it, i.e., that
+the event <span
+class="math inline">\(\text{Success}_i(\mathcal{C})\)</span> does not
+occur?</li>
+</ul>
+<p>注：这里的Successi(C)指的是第i个呗成功传输的概率。</p>
+<h3 id="lemma-step-1">Lemma (Step 1)</h3>
+<p>For <span class="math inline">\(\mathcal{C}\)</span>, <span
+class="math inline">\(i\)</span> chosen randomly as described. Let <span
+class="math inline">\(\lambda_i(\mathcal{C}) =
+1-\mathbb{P}(\text{Success}_i(\mathcal{C}))\)</span>.<span
+class="math inline">\(\lambda_i\)</span>表示失败的概率。 [(_i()), n.]
+(Note: the expectation is taken over both the random choice of <span
+class="math inline">\(\mathcal{C}\)</span> and the random choice of
+<span class="math inline">\(i\)</span>.)</p>
+<h3 id="lemma-step-1-1">Lemma (Step 1)</h3>
+<p><span class="math inline">\(\mathbb{E}(\lambda_i(\mathcal{C}))\leq
+\epsilon\)</span>, <span class="math inline">\(\lambda_i(\mathcal{C}) =
+1 - \mathbb{P}(\text{Success}_i(\mathcal{C}))\)</span> and <span
+class="math inline">\(n\)</span> is large enough.
+失败的情况有两种，第一种是<span class="math inline">\(\tilde{c}_i
+\not\in \text{Ring}(c_i)\)</span>,第二种是<span
+class="math inline">\(\tilde{c}_i \in \text{Ring}(c_j)\)</span> for some
+<span class="math inline">\(j \neq i\)</span> - With probability at
+least <span class="math inline">\(1 - \epsilon/2\)</span>, <span
+class="math inline">\(\tilde{c}_i \in \text{Ring}(c_i)\)</span>. The
+main work is to show that the probability that <span
+class="math inline">\(\tilde{c}_i \in \text{Ring}(c_j)\)</span> for some
+<span class="math inline">\(j \neq i\)</span> is
+small.想要证明这两种失败概率很小。 - First, fix some arbitrary <span
+class="math inline">\(j \neq i\)</span> and fix some arbitrary <span
+class="math inline">\(\tilde{c} \in \text{Ring}(c_i)\)</span>. - The
+probability that <span class="math inline">\(\tilde{c} \in
+\text{Ring}(c_j)\)</span> is the same as the probability that <span
+class="math inline">\(c_j \in \text{Ring}(\tilde{c})\)</span>, which is
+just the "volume" of <span
+class="math inline">\(\text{Ring}(\tilde{c})\)</span> divided by the
+volume of <span class="math inline">\(\{0, 1\}^n\)</span>. - The volume
+of a ring is at most <span
+class="math inline">\(2^{(H(p)+\delta&#39;)n}\)</span>. Thus [(
+(c_j))=(c_j ())^{(H(p)+'-1)n}(两volume相除).] - This is true for any
+<span class="math inline">\(\tilde{c}\)</span> in <span
+class="math inline">\(\text{Ring}(c_i)\)</span>, and so we can deduce
+that [(_i (c_j)|_i (c_i))^{(H(p)+'-1)n}.]能写出条件概率是因为这个对any
+<span class="math inline">\(\tilde{c}\)</span> in <span
+class="math inline">\(\text{Ring}(c_i)\)</span>成立 - Now take a union
+bound, [ <span class="math display">\[\begin{align*}
+\mathbb{P}(\text{Success}_i(\mathcal{C})\text{ does not occur})&amp;\leq
+M2^{(H(p)+\delta&#39;-1)n}+\epsilon/2\\
+&amp;=2^{1+(k/n + H(p)+\delta&#39;-1)n}+\epsilon/2.
+\end{align*}\]</span> ] ？？？？为什么是M？？？？？ - Now take a union
+bound, [ <span class="math display">\[\begin{align*}
+\mathbb{P}(\text{Success}_i(\mathcal{C})\text{ does not occur})&amp;\leq
+M2^{(H(p)+\delta&#39;-1)n}+\epsilon/2\\
+&amp;=2^{1+(k/n + H(p)-1+\delta&#39;)n}+\epsilon/2.
+\end{align*}\]</span> ] - <span class="math inline">\(\delta&#39; \to
+0\)</span> as <span class="math inline">\(n \to \infty\)</span>; - Since
+<span class="math inline">\(k/n &lt; 1 -
+H(p)\)</span>（这个是根据证明条件里面k的范围得出）, it follows that
+<span class="math inline">\(k/n - H(p) + 1 + \delta&#39; &lt; 0\)</span>
+for <span class="math inline">\(n\)</span> large enough. The first term
+then goes to zero with <span class="math inline">\(n\)</span>, and so
+for <span class="math inline">\(n\)</span> large enough, [
+(_i())&lt;.（第一类失败+第二类失败） ] - QED.</p>
+<h4 id="step-2">step 2</h4>
+<ul>
+<li>Choose (n) large enough so that Lemma (Step 1) holds.</li>
+<li>Have ((<em>i())) written out explicitly as an average:注意<span
+class="math inline">\(\lambda_i\)</span>表示的是失败的概率。 [</em>{}_{i
+= 1}^{M}_i().]</li>
+<li>There must be some choice of codebook (^*) which does better than
+average, i.e., for which (_{i = 1}^{M}_i(^*)). So we have found a
+codebook that is "good on average".</li>
+<li>So let (') be the codebook consisting of just the best half of the
+codewords in (^*): those with the smallest values of (_i(^*)). Then
+(_i(^*)) for all (c_i').？？？？为什么是2<span
+class="math inline">\(\epsilon?\)</span>，不应该是<span
+class="math inline">\(\epsilon\)</span>吗？？？丢掉容易失败的那一半，剩下的失败概率小于<span
+class="math inline">\(\epsilon\)</span></li>
+<li>So (') provides a good code with (2^k) codewords, and so it can be
+used as an ((k, n)) - encoding scheme.</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E6%99%BA%E5%BA%94%E6%95%B0/" class="print-no-link">#计智应数</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Probability Theory</div>
+      <div>http://example.com/2025/02/17/post/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>瑾瑜當年</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/27/VA/" title="多元函数微分">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">多元函数微分</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/06/chap7/" title="狭义相对论">
+                        <span class="hidden-mobile">狭义相对论</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.39/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo-haru.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname","enable":true},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.utils.listenDOMLoaded(function() {
+                var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+                Fluid.plugins.imageCaption(imgSelector);
+                Fluid.plugins.fancyBox(imgSelector);
+              });
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d = OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:true,models:[{"path":"https://model.hacxy.cn/HK416-1-normal/model.json","scale":0.1,"motionPreloadStrategy":"ALL","position":[-10,60],"stageStyle":{"height":520},"mobileScale":0.06,"mobilePosition":[10,30],"mobileStageStyle":{"height":250}}],parentElement:document.body,primaryColor:"#336699",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+</html>
