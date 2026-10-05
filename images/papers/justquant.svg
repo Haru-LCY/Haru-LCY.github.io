@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="JustQuant paper thumbnail">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#422c55"/><stop offset="1" stop-color="#c47f70"/></linearGradient></defs>
+  <rect width="960" height="540" fill="url(#g)"/><g fill="#f6e8cf"><rect x="110" y="190" width="92" height="210" rx="8" opacity=".55"/><rect x="236" y="140" width="92" height="260" rx="8" opacity=".7"/><rect x="362" y="225" width="92" height="175" rx="8" opacity=".45"/><rect x="488" y="110" width="92" height="290" rx="8" opacity=".8"/><rect x="614" y="175" width="92" height="225" rx="8" opacity=".62"/></g><path d="M82 424h760" stroke="#f6e8cf" stroke-width="5" opacity=".8"/>
+  <text x="64" y="92" fill="#f6e8cf" font-family="Georgia,serif" font-size="42">JustQuant</text><text x="64" y="490" fill="#f6e8cf" font-family="monospace" font-size="21">4-bit / activation / QAD</text>
+</svg>

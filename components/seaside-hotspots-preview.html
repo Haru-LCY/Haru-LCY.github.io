@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>觀瀾入口</title>
+    <link rel="stylesheet" href="./SeasideStudyHotspots.css" />
+    <style>
+      :root {
+        --gateway-bar-height: 58px;
+        --gateway-room-offset-x: -17vw;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #17120e;
+        overflow: hidden;
+      }
+
+      .seaside-gateway {
+        display: grid;
+        grid-template-rows: var(--gateway-bar-height) minmax(0, 1fr);
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .seaside-gateway__bar {
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(244, 217, 139, 0.22);
+        background: rgba(18, 14, 11, 0.94);
+        color: #fff7df;
+        text-decoration: none;
+        line-height: 1;
+      }
+
+      .seaside-gateway__bar-text {
+        font-size: 1.18rem;
+        font-weight: 650;
+      }
+
+      .seaside-gateway__bar-subtext {
+        margin-left: 0.58rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        opacity: 0.72;
+        text-transform: uppercase;
+      }
+
+      .seaside-gateway__stage {
+        display: grid;
+        place-items: center;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .seaside-gateway .seaside-study {
+        align-self: center;
+        justify-self: center;
+        transform: translateX(var(--gateway-room-offset-x));
+        width: min(132vw, calc((100vh - var(--gateway-bar-height)) * 2.5525));
+      }
+
+      .seaside-study[data-debug-hotspots="true"] .seaside-study__hotspot {
+        outline: 2px solid rgba(55, 180, 255, 0.92);
+        background: rgba(55, 180, 255, 0.2);
+      }
+
+      .seaside-study[data-debug-hotspots="true"] .seaside-study__chair-hit-area {
+        fill: rgba(255, 186, 73, 0.2);
+        stroke: rgba(255, 186, 73, 0.95);
+        stroke-width: 3;
+      }
+
+      .seaside-study__debug-label {
+        position: absolute;
+        z-index: 4;
+        display: none;
+        max-width: 11rem;
+        padding: 0.18rem 0.34rem;
+        border-radius: 4px;
+        background: rgba(6, 12, 18, 0.84);
+        color: #ffffff;
+        font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        pointer-events: none;
+        transform: translate(0.25rem, 0.25rem);
+        white-space: nowrap;
+      }
+
+      .seaside-study[data-debug-hotspots="true"] .seaside-study__debug-label {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="seaside-gateway" aria-label="觀瀾入口">
+      <a class="seaside-gateway__bar" href="/tags/心湖观澜/" aria-label="进入观澜">
+        <span class="seaside-gateway__bar-text">觀瀾</span>
+        <span class="seaside-gateway__bar-subtext">Inner Tides</span>
+      </a>
+      <figure
+        class="seaside-study"
+        aria-label="Interactive seaside study room"
+        data-room-awake="false"
+        data-entrance-state="initialEntrance"
+      >
+        <img class="seaside-study__image" src="../img/main-guanlan.png" alt="Seaside study room illustration" />
+        <div class="seaside-study__hotspot-layer" aria-label="Clickable objects in the seaside study room"></div>
+        <svg
+          class="seaside-study__chair-layer"
+          viewBox="0 0 1774 695"
+          aria-label="Chair entrance hotspot"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <filter id="seaside-study-chair-aura" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="18" />
+            </filter>
+          </defs>
+        </svg>
+        <button class="seaside-study__floating-label" type="button" hidden>
+          <span class="seaside-study__floating-label-chinese"></span>
+          <span class="seaside-study__floating-label-english"></span>
+        </button>
+        <div class="seaside-study__entrance-overlay" aria-live="polite"></div>
+      </figure>
+    </main>
+
+    <script>
+      const hotspots = [
+        ["inner-tides", "观澜", "Inner Tides", 650, 0, 485, 340, 925, 180, "/tags/心湖观澜/"],
+        ["sunken-memories", "滨城旧梦", "Sunken Memories", 625, 345, 280, 110, 765, 330],
+        ["wayfarers-ballads", "行旅图志", "Wayfarer’s Ballads", 385, 0, 225, 300, 510, 150],
+        ["half-drawn-dreams", "未竟之画", "Half-Drawn Dreams", 1385, 235, 175, 310, 1475, 220],
+        ["echoes-of-strings", "弦歌残响", "Echoes of Strings", 445, 205, 180, 205, 535, 190],
+        ["taste-atlas", "美食图鉴", "A Taste Atlas", 420, 375, 150, 70, 495, 360],
+        ["the-second-self", "身外之身", "The Second Self", 245, 85, 105, 545, 300, 70],
+        ["the-scriptorium", "藏经阁", "The Scriptorium", 1175, 25, 215, 475, 1285, 10],
+        ["paper-psychedelica", "纸上异境", "Paper Psychedelica", 515, 500, 230, 125, 630, 485],
+        ["floral-letters", "花信", "Floral Letters", 355, 470, 85, 130, 398, 455],
+        ["palette-of-moods", "调色盘", "A Palette of Moods", 1315, 555, 195, 115, 1412, 540],
+        ["hourglass-archive", "砂时计", "Hourglass Archive", 1145, 375, 105, 125, 1198, 360],
+        ["the-girl-who-dwells-here", "此间的少女", "The Girl Who Dwells Here", 965, 325, 110, 105, 1019, 310],
+        ["paper-boat-letters", "纸船来信", "Paper Boat Letters", 412, 600, 98, 55, 461, 585],
+        ["take-the-seat", "请坐", "Take the Seat", 760, 455, 310, 240, 915, 440],
+      ];
+
+      const roomMonologueLines = [
+        "我并非凭空诞生。",
+        "她的记忆，旧日的来客，",
+        "潮声、书页、梦境与远方，",
+        "都曾是我的骨骼。",
+        "只是我已记不起，自己究竟是什么，",
+        "又为何会在这里醒来。",
+        "阁下，我有一个请求：",
+        "请替我找回那些散落在房间里的、我的记忆。",
+      ];
+
+      const monologueRevealMs = 2200;
+      const debugHotspots = new URLSearchParams(window.location.search).get("debug") === "hotspots";
+      const study = document.querySelector(".seaside-study");
+      const layer = document.querySelector(".seaside-study__hotspot-layer");
+      const chairLayer = document.querySelector(".seaside-study__chair-layer");
+      const label = document.querySelector(".seaside-study__floating-label");
+      const zh = label.querySelector(".seaside-study__floating-label-chinese");
+      const en = label.querySelector(".seaside-study__floating-label-english");
+      const overlay = document.querySelector(".seaside-study__entrance-overlay");
+      const chairHitPath =
+        "M782 455 C842 438 955 440 1015 468 L1036 632 C1038 668 1002 695 940 695 L808 695 C772 682 758 646 772 600 C760 552 762 492 782 455 Z";
+
+      let entranceState = "initialEntrance";
+      let monologueIndex = 0;
+      let isRoomAwake = false;
+
+      if (debugHotspots) {
+        study.dataset.debugHotspots = "true";
+      }
+
+      function toPercent(value, total) {
+        return `${(value / total) * 100}%`;
+      }
+
+      function showLabel(hotspot) {
+        label.hidden = false;
+        label.type = "button";
+        label.classList.remove("seaside-study__floating-label--button");
+        label.tabIndex = -1;
+        label.setAttribute("aria-label", `${hotspot[1]} / ${hotspot[2]}`);
+        label.style.setProperty("--label-x", toPercent(hotspot[7], 1774));
+        label.style.setProperty("--label-y", toPercent(hotspot[8], 695));
+        zh.textContent = hotspot[1];
+        en.textContent = hotspot[2];
+      }
+
+      function hideLabel() {
+        label.hidden = true;
+        label.classList.remove("seaside-study__floating-label--button");
+        label.tabIndex = -1;
+      }
+
+      function setEntranceState(nextState) {
+        entranceState = nextState;
+        study.dataset.entranceState = nextState;
+        study.dataset.roomAwake = nextState === "freeExplore" || nextState === "curatorAgent" ? "true" : "false";
+        isRoomAwake = study.dataset.roomAwake === "true";
+
+        layer.querySelectorAll(".seaside-study__hotspot").forEach((link) => {
+          link.tabIndex = isRoomAwake ? 0 : -1;
+          link.setAttribute("aria-disabled", isRoomAwake ? "false" : "true");
+        });
+
+        renderOverlay();
+      }
+
+      function enterFreeExplore() {
+        hideLabel();
+        setEntranceState("freeExplore");
+      }
+
+      function startRoomMonologue() {
+        monologueIndex = 0;
+        hideLabel();
+        setEntranceState("roomMonologue");
+      }
+
+      function renderOverlay() {
+        overlay.innerHTML = "";
+        overlay.hidden = entranceState === "initialEntrance" || entranceState === "freeExplore";
+
+        if (entranceState === "awakenedChoice") {
+          const section = document.createElement("section");
+          section.className = "seaside-study__entrance-card";
+          section.setAttribute("aria-label", "Room entrance choice");
+          section.innerHTML = `
+            <p class="seaside-study__story-line">这间房只为愿意倾听的人苏醒。</p>
+            <p class="seaside-study__story-line">阁下，在暮色合拢以前，这间房属于你。</p>
+            <div class="seaside-study__message-actions">
+              <button type="button" aria-label="独自漫游 / Wander Alone"><span>独自漫游</span><span>Wander Alone</span></button>
+              <button type="button" aria-label="倾听房间 / Listen to the Room"><span>倾听房间</span><span>Listen to the Room</span></button>
+            </div>
+          `;
+          const [wanderButton, listenButton] = section.querySelectorAll("button");
+          wanderButton.addEventListener("click", enterFreeExplore);
+          listenButton.addEventListener("click", startRoomMonologue);
+          overlay.append(section);
+          return;
+        }
+
+        if (entranceState === "roomMonologue") {
+          const isFinalLine = monologueIndex >= roomMonologueLines.length - 1;
+          const section = document.createElement("section");
+          section.className = "seaside-study__entrance-card";
+          section.setAttribute("aria-label", "Room monologue");
+          section.innerHTML = `
+            <p class="seaside-study__story-line seaside-study__story-line--revealing" style="--story-reveal-ms: ${monologueRevealMs}ms">${roomMonologueLines[monologueIndex]}</p>
+          `;
+
+          if (isFinalLine) {
+            const actions = document.createElement("div");
+            actions.className = "seaside-study__message-actions";
+            actions.innerHTML = `
+              <button type="button" aria-label="与房间对话 / Speak with the Room"><span>与房间对话</span><span>Speak with the Room</span></button>
+              <button type="button" aria-label="独自寻找 / Search Alone"><span>独自寻找</span><span>Search Alone</span></button>
+            `;
+            const [speakButton, searchButton] = actions.querySelectorAll("button");
+            speakButton.addEventListener("click", () => setEntranceState("curatorAgent"));
+            searchButton.addEventListener("click", enterFreeExplore);
+            section.append(actions);
+          } else {
+            const continueButton = document.createElement("button");
+            continueButton.className = "seaside-study__continue";
+            continueButton.type = "button";
+            continueButton.setAttribute("aria-label", "继续 / Continue");
+            continueButton.innerHTML = "<span>继续</span><span>Continue</span>";
+            continueButton.addEventListener("click", () => {
+              monologueIndex += 1;
+              renderOverlay();
+            });
+            section.append(continueButton);
+          }
+
+          overlay.append(section);
+          return;
+        }
+
+        if (entranceState === "curatorAgent") {
+          const section = document.createElement("section");
+          section.className = "seaside-study__entrance-card";
+          section.setAttribute("aria-label", "Curator room voice");
+          section.innerHTML = `
+            <p class="seaside-study__story-line">我会与你一同倾听这些物件。</p>
+            <p class="seaside-study__story-line">先从一处记忆开始吧。</p>
+            <button class="seaside-study__continue" type="button"><span>开始寻找</span><span>Begin the Search</span></button>
+          `;
+          section.querySelector("button").addEventListener("click", enterFreeExplore);
+          overlay.append(section);
+        }
+      }
+
+      hotspots.forEach((hotspot) => {
+        const [id, chinese, english, x, y, width, height, labelX, labelY, href] = hotspot;
+
+        if (id === "take-the-seat") {
+          return;
+        }
+
+        const link = document.createElement("a");
+
+        link.id = `hotspot-${id}`;
+        link.className = "seaside-study__hotspot";
+        link.href = href || `#${id}`;
+        link.title = `${chinese} / ${english}`;
+        link.setAttribute("aria-label", `${chinese} / ${english}`);
+        link.dataset.hotspotId = id;
+        link.dataset.chinese = chinese;
+        link.dataset.english = english;
+        link.style.left = toPercent(x, 1774);
+        link.style.top = toPercent(y, 695);
+        link.style.width = toPercent(width, 1774);
+        link.style.height = toPercent(height, 695);
+        link.tabIndex = -1;
+        link.setAttribute("aria-disabled", "true");
+
+        link.addEventListener("mouseenter", () => {
+          if (isRoomAwake) {
+            showLabel(hotspot);
+          }
+        });
+        link.addEventListener("mouseleave", hideLabel);
+        link.addEventListener("focus", () => {
+          if (isRoomAwake) {
+            showLabel(hotspot);
+          }
+        });
+        link.addEventListener("blur", hideLabel);
+        link.addEventListener("click", (event) => {
+          if (!isRoomAwake) {
+            event.preventDefault();
+          }
+        });
+
+        layer.append(link);
+
+        if (debugHotspots) {
+          const debugLabel = document.createElement("span");
+          debugLabel.className = "seaside-study__debug-label";
+          debugLabel.textContent = `${id}: ${chinese}`;
+          debugLabel.style.left = toPercent(x, 1774);
+          debugLabel.style.top = toPercent(y, 695);
+          layer.append(debugLabel);
+        }
+      });
+
+      const chairHotspot = hotspots.find((hotspot) => hotspot[0] === "take-the-seat");
+      const chairLink = document.createElementNS("http://www.w3.org/2000/svg", "a");
+      const chairTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+      const chairAura = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+      const chairHit = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+      chairLink.id = `hotspot-${chairHotspot[0]}`;
+      chairLink.classList.add("seaside-study__chair-hotspot");
+      chairLink.setAttribute("href", `#${chairHotspot[0]}`);
+      chairLink.setAttribute("aria-label", `${chairHotspot[1]} / ${chairHotspot[2]}`);
+      chairLink.dataset.hotspotId = chairHotspot[0];
+      chairLink.dataset.chinese = chairHotspot[1];
+      chairLink.dataset.english = chairHotspot[2];
+
+      chairTitle.textContent = `${chairHotspot[1]} / ${chairHotspot[2]}`;
+      chairAura.classList.add("seaside-study__chair-aura");
+      chairAura.setAttribute("cx", "906");
+      chairAura.setAttribute("cy", "707");
+      chairAura.setAttribute("rx", "205");
+      chairAura.setAttribute("ry", "168");
+      chairAura.setAttribute("filter", "url(#seaside-study-chair-aura)");
+      chairHit.classList.add("seaside-study__chair-hit-area");
+      chairHit.setAttribute("d", chairHitPath);
+
+      chairLink.append(chairTitle, chairAura, chairHit);
+      chairLayer.append(chairLink);
+
+      if (debugHotspots) {
+        const debugLabel = document.createElement("span");
+        debugLabel.className = "seaside-study__debug-label";
+        debugLabel.textContent = `${chairHotspot[0]}: ${chairHotspot[1]}`;
+        debugLabel.style.left = toPercent(chairHotspot[7], 1774);
+        debugLabel.style.top = toPercent(chairHotspot[8], 695);
+        layer.append(debugLabel);
+      }
+
+      chairLink.addEventListener("mouseenter", () => {
+        if (entranceState === "initialEntrance" || isRoomAwake) {
+          showLabel(chairHotspot);
+        }
+      });
+      chairLink.addEventListener("mouseleave", hideLabel);
+      chairLink.addEventListener("focus", () => {
+        if (entranceState === "initialEntrance" || isRoomAwake) {
+          showLabel(chairHotspot);
+        }
+      });
+      chairLink.addEventListener("blur", hideLabel);
+      chairLink.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (entranceState === "initialEntrance") {
+          hideLabel();
+          setEntranceState("awakenedChoice");
+        }
+      });
+
+      renderOverlay();
+    </script>
+  </body>
+</html>

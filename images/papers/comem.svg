@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="CoMem paper thumbnail">
+  <defs><linearGradient id="g" x1="0" x2="1" y1="1" y2="0"><stop stop-color="#173b50"/><stop offset="1" stop-color="#9eaa79"/></linearGradient></defs>
+  <rect width="960" height="540" fill="url(#g)"/><g fill="none" stroke="#f1e4c6" stroke-width="4" opacity=".8"><path d="M130 150h700v260H130z"/><path d="M130 215h700M130 280h700M130 345h700"/><path d="M245 150v260M360 150v260M475 150v260M590 150v260M705 150v260"/></g><path d="M160 370C280 290 320 190 440 250s170 120 340-100" fill="none" stroke="#dca76e" stroke-width="12"/>
+  <text x="64" y="92" fill="#f1e4c6" font-family="Georgia,serif" font-size="42">CoMem</text><text x="64" y="490" fill="#f1e4c6" font-family="monospace" font-size="21">depth / memory / context</text>
+</svg>

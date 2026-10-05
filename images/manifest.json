@@ -1,0 +1,19 @@
+{
+	"name": "Chunyu Liu / Academic Homepage",
+	"short_name": "Chunyu Liu",
+	"description": "Chunyu Liu's academic homepage — efficient language models, diffusion models, quantization, and long-context memory.",
+	"start_url": "/",
+	"lang": "en-US",
+	"icons": [
+		{
+			"src": "/images/favicon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/images/favicon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}

@@ -1,0 +1,272 @@
+.seaside-study {
+  position: relative;
+  display: block;
+  width: min(100%, 1774px);
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.seaside-study__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.seaside-study__hotspot-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.seaside-study__hotspot {
+  position: absolute;
+  display: block;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.seaside-study[data-room-awake="false"] .seaside-study__hotspot {
+  pointer-events: none;
+}
+
+.seaside-study__chair-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.seaside-study[data-room-awake="true"] .seaside-study__chair-layer {
+  pointer-events: none;
+}
+
+.seaside-study__chair-hotspot {
+  cursor: pointer;
+  outline: none;
+  pointer-events: auto;
+}
+
+.seaside-study__chair-hit-area {
+  fill: transparent;
+  stroke: transparent;
+  pointer-events: all;
+}
+
+.seaside-study__chair-aura {
+  fill: rgba(244, 217, 139, 0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.seaside-study__chair-hotspot:hover .seaside-study__chair-aura,
+.seaside-study__chair-hotspot:focus .seaside-study__chair-aura,
+.seaside-study__chair-hotspot:focus-visible .seaside-study__chair-aura {
+  opacity: 1;
+}
+
+.seaside-study__floating-label {
+  position: absolute;
+  left: var(--label-x);
+  top: var(--label-y);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  max-width: min(14rem, 42vw);
+  padding: 0.38rem 0.58rem;
+  border: 1px solid rgba(244, 217, 139, 0.52);
+  border-radius: 6px;
+  background: rgba(29, 21, 15, 0.72);
+  color: #fff7df;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.24);
+  text-align: center;
+  line-height: 1.12;
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 10px));
+  white-space: nowrap;
+}
+
+.seaside-study__floating-label-chinese {
+  font-size: clamp(0.82rem, 1.45vw, 1rem);
+  font-weight: 650;
+}
+
+.seaside-study__floating-label-english {
+  font-size: clamp(0.66rem, 1.05vw, 0.82rem);
+  opacity: 0.86;
+}
+
+.seaside-study__message-actions {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.seaside-study__message-actions button {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.14rem;
+  min-width: 0;
+  padding: 0.62rem 0.75rem;
+  border: 1px solid rgba(244, 217, 139, 0.38);
+  border-radius: 6px;
+  background: rgba(255, 247, 223, 0.08);
+  color: #fff7df;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.15;
+}
+
+.seaside-study__message-actions button:hover,
+.seaside-study__message-actions button:focus-visible {
+  background: rgba(244, 217, 139, 0.16);
+  border-color: rgba(244, 217, 139, 0.62);
+}
+
+.seaside-study__message-actions button span:first-child {
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.seaside-study__message-actions button span:last-child {
+  font-size: 0.78rem;
+  opacity: 0.84;
+}
+
+.seaside-study__entrance-overlay {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(14, 11, 10, 0.28);
+  pointer-events: auto;
+}
+
+.seaside-study__entrance-overlay[hidden] {
+  display: none;
+}
+
+.seaside-study__entrance-card {
+  width: min(30rem, 74%);
+  padding: 1.05rem 1.25rem 1.1rem;
+  border: 1px solid rgba(244, 217, 139, 0.42);
+  border-radius: 8px;
+  background: rgba(24, 18, 14, 0.82);
+  color: #fff7df;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
+  line-height: 1.45;
+  text-align: center;
+}
+
+.seaside-study__entrance-card--button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.seaside-study__entrance-card--button:hover,
+.seaside-study__entrance-card--button:focus-visible {
+  border-color: rgba(244, 217, 139, 0.72);
+  background: rgba(31, 23, 17, 0.86);
+}
+
+.seaside-study__entrance-chinese,
+.seaside-study__entrance-english {
+  display: block;
+}
+
+.seaside-study__entrance-chinese {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 650;
+}
+
+.seaside-study__entrance-english {
+  margin-top: 0.28rem;
+  font-size: clamp(0.88rem, 1.25vw, 1rem);
+  opacity: 0.86;
+}
+
+.seaside-study__story-line {
+  margin: 0;
+  font-size: clamp(1rem, 1.55vw, 1.14rem);
+  letter-spacing: 0;
+}
+
+.seaside-study__story-line + .seaside-study__story-line {
+  margin-top: 0.55rem;
+}
+
+.seaside-study__story-line--revealing {
+  animation: seaside-study-story-fade var(--story-reveal-ms, 2200ms) ease both;
+}
+
+.seaside-study__continue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  margin-top: 1rem;
+  padding: 0.55rem 1.05rem;
+  border: 1px solid rgba(244, 217, 139, 0.38);
+  border-radius: 6px;
+  background: rgba(255, 247, 223, 0.08);
+  color: #fff7df;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.15;
+}
+
+.seaside-study__continue:hover,
+.seaside-study__continue:focus-visible {
+  background: rgba(244, 217, 139, 0.16);
+  border-color: rgba(244, 217, 139, 0.62);
+}
+
+.seaside-study__continue span:first-child {
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.seaside-study__continue span:last-child {
+  font-size: 0.78rem;
+  opacity: 0.84;
+}
+
+@keyframes seaside-study-story-fade {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  .seaside-study__floating-label {
+    gap: 0.1rem;
+    max-width: 52vw;
+    padding: 0.32rem 0.48rem;
+  }
+
+  .seaside-study__message-actions {
+    flex-direction: column;
+  }
+
+  .seaside-study__entrance-card {
+    width: min(22rem, 84%);
+    padding: 0.82rem 0.95rem 0.9rem;
+  }
+}

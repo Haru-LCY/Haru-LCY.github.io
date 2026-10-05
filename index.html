@@ -1,0 +1,603 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js" data-theme="dark">
+  <head>
+    
+
+
+<meta charset="utf-8">
+
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Chunyu Liu / Academic Homepage</title>
+
+
+
+<meta name="description" content="Chunyu Liu’s academic homepage — efficient language models, diffusion models, quantization, and long-context memory.">
+
+
+
+
+
+
+
+  <link rel="canonical" href="https://haru-lcy.github.io/">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chunyu Liu",
+      "url" : "https://haru-lcy.github.io",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<!-- Open Graph protocol data (https://ogp.me/), used by social media -->
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Chunyu Liu / Academic Homepage"> 
+<meta property="og:title" content="Chunyu Liu / Academic Homepage">
+
+
+
+  <meta property="og:url" content="https://haru-lcy.github.io/">
+
+
+
+
+
+<!-- end Open Graph protocol -->
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Chunyu Liu / Academic Homepage Feed">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css?v=20261006-17">
+
+    
+
+
+<!-- start custom head snippets -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script defer src="/assets/js/publication-authors.js"></script>
+
+<!-- Support for Academicons -->
+<link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"></noscript>
+
+<!-- Support for Font Awesome -->
+ <link rel="preload" href="/assets/css/fontawesome.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/fontawesome.css"></noscript>
+
+<!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png"/>
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg"/>
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192"/>
+<link rel="manifest" href="/images/manifest.json"/>
+<link rel="icon" href="/images/favicon.ico"/>
+<meta name="theme-color" content="var(--global-bg-color)"/>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="home-page">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg persist selected">
+            <a href="/">Chunyu Liu / Academic Homepage</a>
+          </li>
+          
+            
+            <li class="masthead__menu-item persist ">
+              <a href="/blog/">觀瀾</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item persist ">
+              <a href="/music/">Music</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item persist ">
+              <a href="/sketchbook/">Paintings</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="/images/chunyu-avatar.jpeg" class="author__avatar" alt="Chunyu Liu"  fetchpriority="high" />
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Chunyu Liu</h3>
+    
+    <p class="author__bio">I live to turn rigor into beauty.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      <!-- Font Awesome icons / Biographic information  -->
+      
+        <li class="author__desktop"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>Beijing, China</li>
+      
+      
+        <li class="author__desktop"><i class="fas fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>Tsinghua University · IIIS (Yao Class)</li>
+      
+      
+      
+        <li><a href="mailto:liucy24@mails.tsinghua.edu.cn"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>Email</a></li>
+      
+
+      <!-- Font Awesome and Academicons icons / Academic websites -->
+      
+            
+      
+        <li><a href="https://scholar.google.com/citations?user=Rvi6zqUAAAAJ&hl=en"><i class="ai ai-google-scholar ai-fw icon-pad-right"></i>Google Scholar</a></li>
+      
+            
+      
+      
+                              
+      
+      
+      
+      
+      
+
+      <!-- Font Awesome icons / Repositories and software development -->
+      
+            
+            
+      
+        <li><a href="https://github.com/Haru-LCY"><i class="fab fa-fw fa-github icon-pad-right" aria-hidden="true"></i>GitHub</a></li>
+      
+            
+            
+
+      <!-- Font Awesome icons / Social media -->
+              
+      
+      
+            
+      
+                  
+                  
+      
+            
+            
+            
+      
+            
+                  
+            
+      
+            
+            
+      
+              
+      
+                      
+      
+      
+            
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+        
+        
+            
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <h2 id="about-me">About Me</h2>
+
+<p>I am <strong>Chunyu Liu (刘春宇)</strong>, a third-year undergraduate student in <strong>Yao Class</strong> at Tsinghua University, advised by <a href="https://sites.google.com/view/alexmlamb"><strong>Alex Lamb</strong></a>. My research lies at the intersection of language modeling, ML efficiency, and self-evolving agents.</p>
+
+<p>Outside the lab, I write under the name <strong>瑾瑜當年</strong>. <a href="/blog/">觀瀾</a> is a quiet home for my artistic soul. You can get to know me better through my <a href="/music/">Music</a> and <a href="/sketchbook/">Paintings</a>.</p>
+
+<h2 id="education">Education</h2>
+
+<div class="experience-entry education-entry">
+  <div class="experience-entry__media">
+    <img src="/images/education/iiis-logo.png" alt="IIIS Yao Class, Tsinghua University" loading="lazy" />
+  </div>
+  <div class="experience-entry__body">
+    <h3 class="experience-entry__title">B.S. in Computer Science and Technology</h3>
+    <p class="experience-entry__line">IIIS (Yao Class), Tsinghua University</p>
+    <p class="experience-entry__line">Sep 2024 – Present</p>
+    <p class="experience-entry__line">GPA 3.9 / 4.0</p>
+  </div>
+</div>
+
+<div class="education-coursework-label"><strong>Selected coursework:</strong></div>
+<ul class="education-coursework-list">
+  <li><strong>A+</strong>: Advanced Computer Graphics, Introduction to Large Language Model Applications, Type-safe Modern System Practice, Introduction to Programming in C/C++.</li>
+  <li><strong>A</strong>: Deep Learning, Machine Learning, Natural Language Processing, Embodied Artificial Intelligence, AI+X Computing Acceleration, Introduction to Computer Systems, Introduction to Computer Science, Calculus A (1), Calculus A (2).</li>
+</ul>
+
+<h2 id="publications">Publications</h2>
+
+<article class="publication-card">
+  <div class="publication-card__meta">
+    <span class="publication-card__venue-badge">COLM</span>
+    <a class="publication-card__teaser" href="/publications/voidpadding/" aria-label="VoidPadding: Let [VOID] Handle Padding in Masked Diffusion Language Models so that [EOS] Can Focus on Semantic Termination">
+      <img src="/images/papers/void.png" alt="VoidPadding: Let [VOID] Handle Padding in Masked Diffusion Language Models so that [EOS] Can Focus on Semantic Termination paper thumbnail" loading="lazy" />
+    </a>
+  </div>
+
+  <div class="publication-card__body">
+    <h3 class="publication-card__title">
+      VoidPadding: Let [VOID] Handle Padding in Masked Diffusion Language Models so that [EOS] Can Focus on Semantic Termination
+    </h3>
+    
+      <div class="publication-card__authors">
+        <span class="publication-card__author-self">Chunyu Liu</span>, Zhengyang Fan, Kaisen Yang, Alex Lamb
+      </div>
+    
+
+    <div class="publication-card__periodical"><em>COLM 2026 Workshop on Efficient Reasoning (Spotlight), 2026</em></div>
+
+    <div class="publication-card__links">
+      <a class="btn btn--small" href="https://arxiv.org/pdf/2606.17999" target="_blank" rel="noopener noreferrer">PDF</a>
+      <a class="btn btn--small" href="https://github.com/Haru-LCY/VoidPadding" target="_blank" rel="noopener noreferrer">Code</a>
+    </div>
+  </div>
+</article>
+
+<article class="publication-card">
+  <div class="publication-card__meta">
+    <span class="publication-card__venue-badge">ArXiv</span>
+    <a class="publication-card__teaser" href="/publications/justquant/" aria-label="JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization">
+      <img src="/images/papers/justquant.png" alt="JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization paper thumbnail" loading="lazy" />
+    </a>
+  </div>
+
+  <div class="publication-card__body">
+    <h3 class="publication-card__title">
+      JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization
+    </h3>
+    
+      <div class="publication-card__authors">
+        Kaicheng Yang*, Kaisen Yang*, <span class="publication-card__author-self">Chunyu Liu</span>*, Xianglong Yan, Haotong Qin, <button class="publication-card__more-authors" type="button" aria-expanded="false" data-more-authors="Junyi Wu, Tianao Zhang, Xun Zhang, Shaoqiu Zhang, Youbang Sun, Yulun Zhang" data-more-count="6">6 more authors</button>
+      </div>
+    
+
+    <div class="publication-card__periodical"><em>ArXiv preprint, 2026</em></div>
+
+    <div class="publication-card__links">
+      <a class="btn btn--small" href="https://arxiv.org/pdf/2609.33601" target="_blank" rel="noopener noreferrer">PDF</a>
+      
+    </div>
+  </div>
+</article>
+
+<article class="publication-card">
+  <div class="publication-card__meta">
+    <span class="publication-card__venue-badge">COLM</span>
+    <a class="publication-card__teaser" href="/publications/comem/" aria-label="Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory">
+      <img src="/images/papers/understanding.png" alt="Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory paper thumbnail" loading="lazy" />
+    </a>
+  </div>
+
+  <div class="publication-card__body">
+    <h3 class="publication-card__title">
+      Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory
+    </h3>
+    
+      <div class="publication-card__authors">
+        Hanzuo Liu, Xuan Qi, <span class="publication-card__author-self">Chunyu Liu</span>, Haotian Zhong, Yulong Wang, <button class="publication-card__more-authors" type="button" aria-expanded="false" data-more-authors="Rayying, Key, Alex Lamb, Mingyu Gao" data-more-count="4">4 more authors</button>
+      </div>
+    
+
+    <div class="publication-card__periodical"><em>COLM 2026 Workshop on Efficient Reasoning, 2026</em></div>
+
+    <div class="publication-card__links">
+      <a class="btn btn--small" href="https://arxiv.org/pdf/2607.28263" target="_blank" rel="noopener noreferrer">PDF</a>
+      <a class="btn btn--small" href="https://github.com/liuhanzuo/COMem" target="_blank" rel="noopener noreferrer">Code</a>
+    </div>
+  </div>
+</article>
+
+<article class="publication-card">
+  <div class="publication-card__meta">
+    <span class="publication-card__venue-badge">ArXiv</span>
+    <a class="publication-card__teaser" href="/publications/efficient-attention-survey/" aria-label="A Survey of Efficient Attention Methods: Hardware-Efficient, Sparse, Compact, and Linear Attention">
+      <img src="/images/papers/survey.png" alt="A Survey of Efficient Attention Methods: Hardware-Efficient, Sparse, Compact, and Linear Attention paper thumbnail" loading="lazy" />
+    </a>
+  </div>
+
+  <div class="publication-card__body">
+    <h3 class="publication-card__title">
+      A Survey of Efficient Attention Methods: Hardware-Efficient, Sparse, Compact, and Linear Attention
+    </h3>
+    
+      <div class="publication-card__authors">
+        Jintao Zhang, Rundong Su*, <span class="publication-card__author-self">Chunyu Liu</span>*, Jia Wei*, Ziteng Wang*, <button class="publication-card__more-authors" type="button" aria-expanded="false" data-more-authors="Haoxu Wang*, Pengle Zhang, Huiqiang Jiang, Haofeng Huang, Chendong Xiang, Haocheng Xi, Shuo Yang, Xingyang Li, Yilong Zhao, Yuezhou Hu, Tianyu Fu, Tianchen Zhao, Yicheng Zhang, Boqun Cao, Youhe Jiang, Chang Chen, Kai Jiang, Huayu Chen, Min Zhao, Xiaoming Xu, Yi Wu, Fan Bao, Ion Stoica, Joseph E. Gonzalez, Jianfei Chen, Jun Zhu" data-more-count="26">26 more authors</button>
+      </div>
+    
+
+    <div class="publication-card__periodical"><em>ArXiv preprint, 2025</em></div>
+
+    <div class="publication-card__links">
+      <a class="btn btn--small" href="https://attention-survey.github.io/files/Attention_Survey.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+      
+    </div>
+  </div>
+</article>
+
+<p class="publication-card__legend">* Equal contribution.</p>
+
+<h2 id="research-experience">Research Experience</h2>
+
+<div class="experience-list">
+  <article class="experience-entry">
+    <div class="experience-entry__media">
+      <img src="/images/experience/lamb-group.jpeg" alt="Tsinghua College AI / Lamb Group" loading="lazy" />
+    </div>
+    <div class="experience-entry__body">
+      <h3 class="experience-entry__title">Tsinghua College AI</h3>
+      <p class="experience-entry__line">Research Intern: 2026.3 - Present.</p>
+      <p class="experience-entry__line">Topics: Diffusion Language Models and Agent Memory.</p>
+      <p class="experience-entry__line">Research Advisor: Prof. <a href="https://sites.google.com/view/alexmlamb">Alex Lamb</a>.</p>
+    </div>
+  </article>
+
+  <article class="experience-entry">
+    <div class="experience-entry__media">
+      <img src="/images/experience/tsail.jpeg" alt="Tsinghua SAIL Group" loading="lazy" />
+    </div>
+    <div class="experience-entry__body">
+      <h3 class="experience-entry__title">Tsinghua SAIL Group</h3>
+      <p class="experience-entry__line">Research Intern: 2025.6 - 2026.2.</p>
+      <p class="experience-entry__line">Topics: Sparse Attention, Linear Attention, and Quantization.</p>
+      <p class="experience-entry__line">Research Advisor: Prof. <a href="https://ml.cs.tsinghua.edu.cn/~jianfei/">Jianfei Chen</a> and Prof. <a href="https://ml.cs.tsinghua.edu.cn/~jun/index.shtml">Jun Zhu</a>.</p>
+    </div>
+  </article>
+</div>
+
+<h2 id="industry-experience">Industry Experience</h2>
+
+<div class="experience-list industry-experience-list">
+  <article class="experience-entry">
+    <div class="experience-entry__media">
+      <img src="/images/experience/einsia-logo.jpg" alt="Einsia" loading="lazy" />
+    </div>
+    <div class="experience-entry__body">
+      <h3 class="experience-entry__title">Einsia</h3>
+      <p class="experience-entry__line">AI Research Engineer: 2026.8 - Present.</p>
+      <p class="experience-entry__line">Topics: Physical Agents, Benchmarking, and <a href="https://agent-git.com/">AgentGit</a> R&amp;D.</p>
+    </div>
+  </article>
+
+  <article class="experience-entry">
+    <div class="experience-entry__media">
+      <img src="/images/experience/ubiquant-logo.png" alt="Ubiquant IQuest Lab" loading="lazy" />
+    </div>
+    <div class="experience-entry__body">
+      <h3 class="experience-entry__title">Ubiquant IQuest Lab</h3>
+      <p class="experience-entry__line">Pretraining Algorithms Intern: 2026.6 - 2026.9.</p>
+      <p class="experience-entry__line">Topics: Sparse Attention.</p>
+    </div>
+  </article>
+</div>
+
+<h2 id="selected-projects">Selected Projects</h2>
+
+<div class="project-list">
+  <article class="project-card">
+    <a class="project-card__media" href="https://agent-git.com/" aria-label="AgentGit">
+      <img src="/images/projects/agentgit.png" alt="AgentGit project thumbnail" loading="lazy" />
+    </a>
+    <div class="project-card__body">
+      <h3 class="project-card__title"><a href="https://agent-git.com/">AgentGit</a></h3>
+      <p class="project-card__description">An agent-native development workflow for repository search, collaboration, and research-and-development work.</p>
+      <div class="project-card__links">
+        <a class="btn" href="https://agent-git.com/">Website</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-card">
+    <a class="project-card__media" href="https://haru-lcy.github.io/CV-Project/" aria-label="Moe Traits 2 Companion">
+      <img src="/images/projects/moe.png" alt="Moe Traits 2 Companion project thumbnail" loading="lazy" />
+    </a>
+    <div class="project-card__body">
+      <h3 class="project-card__title"><a href="https://haru-lcy.github.io/CV-Project/">Moe Traits 2 Companion</a></h3>
+      <p class="project-card__description">A multimodal AI desktop companion combining screen and camera perception, tool-calling agents, persistent memory, and a character-creation workbench.</p>
+      <div class="project-card__links">
+        <a class="btn" href="https://github.com/Haru-LCY/CV-Project/">Code</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-card">
+    <a class="project-card__media" href="https://github.com/Haru-LCY/EAI-Project/" aria-label="HACT">
+      <img src="/images/projects/hact.gif" alt="HACT project thumbnail" loading="lazy" />
+    </a>
+    <div class="project-card__body">
+      <h3 class="project-card__title"><a href="https://github.com/Haru-LCY/EAI-Project/">HACT</a></h3>
+      <p class="project-card__description">A hierarchical ACT policy for long-horizon, language-conditioned manipulation, reaching 87% simulated success.</p>
+      <div class="project-card__links">
+        <a class="btn" href="https://github.com/Haru-LCY/EAI-Project/">Code</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+<h2 id="awards">Awards</h2>
+
+<ul>
+  <li>Silver Medal, 21st Chinese Girls’ Mathematical Olympiad · 2022</li>
+  <li>Freshman Scholarship, Tsinghua University · 2024–2025</li>
+  <li>Artistic Excellence Scholarship, Tsinghua University · 2024–2025</li>
+</ul>
+
+<h2 id="skills">Skills</h2>
+
+<ul>
+  <li><strong>Programming:</strong> Python, C/C++, Scala, TypeScript, HLSL, Bash, LaTeX, Rust</li>
+  <li><strong>Tools:</strong> PyTorch, Hugging Face Transformers, Linux, Git, Slurm, Docker</li>
+  <li><strong>Languages:</strong> Chinese (native), English (TOEFL 108)</li>
+</ul>
+
+
+        
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+
+      </footer>
+
+      
+
+      
+
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- Support for MathJax -->
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
+
+<!-- end custom footer snippets -->
+
+        
+
+
+<p class="site-tribute">This site wears black—to my favorite artist, <a href="https://www.yohjiyamamoto.co.jp/en/yy/">Yohji Yamamoto</a>.</p>
+
+      </footer>
+    </div>
+
+    <script src="/assets/js/light-theme.js"></script>
+<script type="module" src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

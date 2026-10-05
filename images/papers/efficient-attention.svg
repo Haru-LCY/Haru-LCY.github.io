@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Efficient attention survey thumbnail">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#0d4f58"/><stop offset="1" stop-color="#bd8b48"/></linearGradient></defs>
+  <rect width="960" height="540" fill="url(#g)"/><g fill="none" stroke="#f8f3e6" opacity=".65"><path d="M90 390Q220 120 350 390T610 390T870 390" stroke-width="7"/><path d="M90 330Q220 90 350 330T610 330T870 330" stroke-width="3"/><path d="M90 270Q220 60 350 270T610 270T870 270" stroke-width="2"/></g>
+  <text x="64" y="92" fill="#f8f3e6" font-family="Georgia,serif" font-size="38">Efficient Attention</text><text x="64" y="490" fill="#f8f3e6" font-family="monospace" font-size="21">sparse / compact / linear</text>
+</svg>
