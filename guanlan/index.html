@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>觀瀾入口</title>
+    <link rel="icon" type="image/svg+xml" href="../img/black-heart.svg" />
+    <link rel="stylesheet" href="../css/site-loader.css" />
     <link rel="stylesheet" href="../components/SeasideStudyHotspots.css" />
     <style>
       :root {
@@ -106,6 +108,14 @@
     </style>
   </head>
   <body>
+    <div class="site-loader" id="site-loader" aria-label="Loading Chunyu Liu's blog">
+      <div class="site-loader__inner">
+        <div class="site-loader__name">CHUNYU LIU</div>
+        <div class="site-loader__rule" aria-hidden="true"></div>
+        <div class="site-loader__label">I live to turn rigor into beauty.</div>
+      </div>
+    </div>
+
     <main class="seaside-gateway" aria-label="觀瀾入口">
       <a class="seaside-gateway__bar" href="/blog/tags/心湖观澜/" aria-label="进入观澜">
         <span class="seaside-gateway__bar-text">觀瀾</span>
@@ -423,5 +433,6 @@
 
       renderOverlay();
     </script>
+    <script src="../js/site-loader.js"></script>
   </body>
 </html>
