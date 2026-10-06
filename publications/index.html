@@ -101,6 +101,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script defer src="/assets/js/publication-authors.js"></script>
+<script defer src="/assets/js/publication-filter.js"></script>
 
 <!-- Support for Academicons -->
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -284,38 +285,14 @@
 
 
 
+<p class="publication-card__legend publication-card__legend--heading">* Equal contribution.</p>
 
-  
+<div class="publication-filter" role="group" aria-label="Publication filter">
+  <button class="publication-filter__button is-active" type="button" data-publication-filter="selected" aria-pressed="true">Selected</button>
+  <button class="publication-filter__button" type="button" data-publication-filter="all" aria-pressed="false">All</button>
+</div>
 
-
-
-
-<article class="publication-card">
-  <div class="publication-card__meta">
-    <span class="publication-card__venue-badge">ArXiv</span>
-    <a class="publication-card__teaser" href="/publications/justquant/" aria-label="JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization">
-      <img src="/images/papers/justquant.png" alt="JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization paper thumbnail" loading="lazy">
-    </a>
-  </div>
-
-  <div class="publication-card__body">
-    <h3 class="publication-card__title">
-      JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization
-    </h3>
-    
-      <div class="publication-card__authors">
-        Kaicheng Yang*, Kaisen Yang*, <span class="publication-card__author-self">Chunyu Liu</span>*, Xianglong Yan, Haotong Qin, <button class="publication-card__more-authors" type="button" aria-expanded="false" data-more-authors="Junyi Wu, Tianao Zhang, Xun Zhang, Shaoqiu Zhang, Youbang Sun, Yulun Zhang" data-more-count="6">6 more authors</button>
-      </div>
-    
-
-    <div class="publication-card__periodical"><em>ArXiv preprint, 2026</em></div>
-
-    <div class="publication-card__links">
-      <a class="btn btn--small" href="https://arxiv.org/pdf/2609.33601" target="_blank" rel="noopener noreferrer">PDF</a>
-      
-    </div>
-  </div>
-</article>
+<div class="publication-list" data-publication-list>
 
 
   
@@ -323,40 +300,7 @@
 
 
 
-<article class="publication-card">
-  <div class="publication-card__meta">
-    <span class="publication-card__venue-badge">COLM</span>
-    <a class="publication-card__teaser" href="/publications/comem/" aria-label="Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory">
-      <img src="/images/papers/understanding.png" alt="Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory paper thumbnail" loading="lazy">
-    </a>
-  </div>
-
-  <div class="publication-card__body">
-    <h3 class="publication-card__title">
-      Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory
-    </h3>
-    
-      <div class="publication-card__authors">
-        Hanzuo Liu, Xuan Qi, <span class="publication-card__author-self">Chunyu Liu</span>, Haotian Zhong, Yulong Wang, <button class="publication-card__more-authors" type="button" aria-expanded="false" data-more-authors="Rayying, Key, Alex Lamb, Mingyu Gao" data-more-count="4">4 more authors</button>
-      </div>
-    
-
-    <div class="publication-card__periodical"><em>COLM 2026 Workshop on Efficient Reasoning, 2026</em></div>
-
-    <div class="publication-card__links">
-      <a class="btn btn--small" href="https://arxiv.org/pdf/2607.28263" target="_blank" rel="noopener noreferrer">PDF</a>
-      <a class="btn btn--small" href="https://github.com/liuhanzuo/COMem" target="_blank" rel="noopener noreferrer">Code</a>
-    </div>
-  </div>
-</article>
-
-
-  
-
-
-
-
-<article class="publication-card">
+<article class="publication-card" data-publication-selected="true">
   <div class="publication-card__meta">
     <span class="publication-card__venue-badge">COLM</span>
     <a class="publication-card__teaser" href="/publications/voidpadding/" aria-label="VoidPadding: Let [VOID] Handle Padding in Masked Diffusion Language Models so that [EOS] Can Focus on Semantic Termination">
@@ -389,7 +333,106 @@
 
 
 
-<article class="publication-card">
+<article class="publication-card" data-publication-selected="true">
+  <div class="publication-card__meta">
+    <span class="publication-card__venue-badge">ArXiv</span>
+    <a class="publication-card__teaser" href="/publications/justquant/" aria-label="JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization">
+      <img src="/images/papers/justquant.png" alt="JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization paper thumbnail" loading="lazy">
+    </a>
+  </div>
+
+  <div class="publication-card__body">
+    <h3 class="publication-card__title">
+      JustQuant: You Don't Need Smoothing, SVD, or Rotation for 4-Bit Activation Quantization
+    </h3>
+    
+      <div class="publication-card__authors">
+        Kaicheng Yang*, Kaisen Yang*, <span class="publication-card__author-self">Chunyu Liu</span>*, Xianglong Yan, Haotong Qin, <button class="publication-card__more-authors" type="button" aria-expanded="false" data-more-authors="Junyi Wu, Tianao Zhang, Xun Zhang, Shaoqiu Zhang, Youbang Sun, Yulun Zhang" data-more-count="6">6 more authors</button>
+      </div>
+    
+
+    <div class="publication-card__periodical"><em>ArXiv preprint, 2026</em></div>
+
+    <div class="publication-card__links">
+      <a class="btn btn--small" href="https://arxiv.org/pdf/2609.33601" target="_blank" rel="noopener noreferrer">PDF</a>
+      <a class="btn btn--small" href="https://github.com/racoonykc/JustQuant" target="_blank" rel="noopener noreferrer">Code</a>
+    </div>
+  </div>
+</article>
+
+
+  
+
+
+
+
+<article class="publication-card" data-publication-selected="true">
+  <div class="publication-card__meta">
+    <span class="publication-card__venue-badge">ArXiv</span>
+    <a class="publication-card__teaser" href="/publications/frozen-in-a-frame/" aria-label="Frozen in a Frame: The Velocity Blind Spot in JEPA World Models">
+      <img src="/images/papers/jepa.png" alt="Frozen in a Frame: The Velocity Blind Spot in JEPA World Models paper thumbnail" loading="lazy">
+    </a>
+  </div>
+
+  <div class="publication-card__body">
+    <h3 class="publication-card__title">
+      Frozen in a Frame: The Velocity Blind Spot in JEPA World Models
+    </h3>
+    
+      <div class="publication-card__authors">
+        Tinghe Zhang, <span class="publication-card__author-self">Chunyu Liu</span>, Yu Leon Liu, Zerui Zhao, Jiaheng Chen, <button class="publication-card__more-authors" type="button" aria-expanded="false" data-more-authors="Yucheng Xiao, Jiaxing Li, Yunlong Wang, Alex Lamb" data-more-count="4">4 more authors</button>
+      </div>
+    
+
+    <div class="publication-card__periodical"><em>ArXiv preprint, 2026</em></div>
+
+    <div class="publication-card__links">
+      <a class="btn btn--small" href="https://arxiv.org/pdf/2610.04585" target="_blank" rel="noopener noreferrer">PDF</a>
+      <a class="btn btn--small" href="https://github.com/OliverZ-dot/TI-JEPA" target="_blank" rel="noopener noreferrer">Code</a>
+    </div>
+  </div>
+</article>
+
+
+  
+
+
+
+
+<article class="publication-card" data-publication-selected="false">
+  <div class="publication-card__meta">
+    <span class="publication-card__venue-badge">COLM</span>
+    <a class="publication-card__teaser" href="/publications/comem/" aria-label="Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory">
+      <img src="/images/papers/understanding.png" alt="Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory paper thumbnail" loading="lazy">
+    </a>
+  </div>
+
+  <div class="publication-card__body">
+    <h3 class="publication-card__title">
+      Understanding Is Done Early: A Depth Division of Labor in Large Language Models and Its Use for Unbounded-Context Memory
+    </h3>
+    
+      <div class="publication-card__authors">
+        Hanzuo Liu, Xuan Qi, <span class="publication-card__author-self">Chunyu Liu</span>, Haotian Zhong, Yulong Wang, <button class="publication-card__more-authors" type="button" aria-expanded="false" data-more-authors="Rayying, Key, Alex Lamb, Mingyu Gao" data-more-count="4">4 more authors</button>
+      </div>
+    
+
+    <div class="publication-card__periodical"><em>COLM 2026 Workshop on Efficient Reasoning, 2026</em></div>
+
+    <div class="publication-card__links">
+      <a class="btn btn--small" href="https://arxiv.org/pdf/2607.28263" target="_blank" rel="noopener noreferrer">PDF</a>
+      <a class="btn btn--small" href="https://github.com/liuhanzuo/COMem" target="_blank" rel="noopener noreferrer">Code</a>
+    </div>
+  </div>
+</article>
+
+
+  
+
+
+
+
+<article class="publication-card" data-publication-selected="false">
   <div class="publication-card__meta">
     <span class="publication-card__venue-badge">ArXiv</span>
     <a class="publication-card__teaser" href="/publications/efficient-attention-survey/" aria-label="A Survey of Efficient Attention Methods: Hardware-Efficient, Sparse, Compact, and Linear Attention">
@@ -417,8 +460,7 @@
 </article>
 
 
-
-<p class="publication-card__legend">* Equal contribution.</p>
+</div>
 
 
 
