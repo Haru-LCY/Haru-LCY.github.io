@@ -19,14 +19,14 @@
 }
 
 .site-loader__inner {
-  width: min(320px, 72vw);
+  width: min(410px, 78vw);
   text-align: center;
   animation: site-loader-breathe 3.2s ease-in-out infinite;
 }
 
 .site-loader__name {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.05rem;
+  font-size: 1.32rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-indent: 0.22em;
@@ -44,7 +44,7 @@
 .site-loader__label {
   color: rgba(255, 255, 255, 0.78);
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.86rem;
+  font-size: 1.02rem;
   font-weight: 500;
   font-style: italic;
   letter-spacing: 0.22em;
