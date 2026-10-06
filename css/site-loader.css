@@ -1,4 +1,8 @@
 /* Shared black-and-white loading screen for the Guanlan blog. */
+html.blog-loader-skipped .site-loader {
+  display: none;
+}
+
 .site-loader {
   position: fixed;
   z-index: 10000;

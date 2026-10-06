@@ -3,6 +3,11 @@
 
   if (!loader) return;
 
+  if (document.documentElement.classList.contains("blog-loader-skipped")) {
+    loader.remove();
+    return;
+  }
+
   var dismissed = false;
   var dismiss = function (immediate) {
     if (dismissed) return;
