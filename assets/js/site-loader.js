@@ -11,13 +11,13 @@
   };
 
   if (document.readyState === "complete") {
-    window.setTimeout(dismiss, 3000);
+    window.setTimeout(dismiss, 2000);
   } else {
     window.addEventListener("load", function () {
-      window.setTimeout(dismiss, 3000);
+      window.setTimeout(dismiss, 2000);
     }, { once: true });
   }
 
   // Never leave the page covered if a network resource stalls.
-  window.setTimeout(dismiss, 4500);
+  window.setTimeout(dismiss, 3500);
 }());
