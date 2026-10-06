@@ -8,4 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
         : toggle.dataset.moreAuthors;
     });
   });
+
+  document.querySelectorAll(".education-coursework-more").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      toggle.textContent = expanded ? "3 more courses" : toggle.dataset.moreCourses;
+    });
+  });
 });
