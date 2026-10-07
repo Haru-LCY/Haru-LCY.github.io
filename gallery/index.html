@@ -90,7 +90,7 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css?v=1791372858">
+<link rel="stylesheet" href="/assets/css/main.css?v=1791375503">
 
     
 
@@ -193,7 +193,7 @@
   <div class="painting-gallery">
     <section class="painting-gallery__section">
       <h2 class="painting-gallery__section-title">見る</h2>
-      <p class="painting-gallery__section-quote">「ὄψις γὰρ τῶν ἀδήλων τὰ φαινόμενα.」 <span>— Anaxagoras</span></p>
+      <p class="painting-gallery__section-quote">&quot;ὄψις γὰρ τῶν ἀδήλων τὰ φαινόμενα.&quot; <span>— Anaxagoras</span></p>
       <div class="painting-gallery__row">
         <figure class="painting-gallery__item">
           <div class="painting-gallery__image painting-gallery__image--east">
@@ -317,23 +317,23 @@
       <h2 class="painting-gallery__section-title">自分になる</h2>
       <p class="painting-gallery__section-quote">「情不知所起，一往而深。生者可以死，死可以生。」 <span>— 湯顯祖《牡丹亭》</span></p>
       <div class="painting-gallery__row">
-        <figure class="painting-gallery__item">
-          <div class="painting-gallery__image painting-gallery__image--east">
+        <figure class="painting-gallery__item painting-gallery__item--linked" id="jar-bottom">
+          <a class="painting-gallery__image painting-gallery__image--east painting-gallery__image--linked" href="/gallery/white-robed-minister/" aria-label="阅读《2018–2021 archive·自是白衣卿相》">
             <img src="/images/paintings/缸底.jpg" alt="缸底" />
-          </div>
+          </a>
           <figcaption>
-            <h2>缸底</h2>
+            <h2><a href="/gallery/white-robed-minister/">缸底</a></h2>
             <p>瑾瑜當年, 2011</p>
             <p class="painting-gallery__material"><i>Crayon &amp; Marker on Paper</i></p>
           </figcaption>
         </figure>
 
-        <figure class="painting-gallery__item">
-          <div class="painting-gallery__image painting-gallery__image--east">
+        <figure class="painting-gallery__item painting-gallery__item--linked" id="womb">
+          <a class="painting-gallery__image painting-gallery__image--east painting-gallery__image--linked" href="/gallery/venetian-glass/" aria-label="阅读《春日狂想之二——观威尼斯琉璃》">
             <img src="/images/paintings/胎.jpg" alt="胎" />
-          </div>
+          </a>
           <figcaption>
-            <h2>胎</h2>
+            <h2><a href="/gallery/venetian-glass/">胎</a></h2>
             <p>瑾瑜當年, 2013</p>
             <p class="painting-gallery__material"><i>Earthenware, Porcelain &amp; Glass</i></p>
           </figcaption>
@@ -341,23 +341,23 @@
       </div>
 
       <div class="painting-gallery__row">
-        <figure class="painting-gallery__item">
-          <div class="painting-gallery__image painting-gallery__image--east">
+        <figure class="painting-gallery__item painting-gallery__item--linked" id="magnolia">
+          <a class="painting-gallery__image painting-gallery__image--east painting-gallery__image--linked" href="/gallery/magnolia/" aria-label="阅读《玉兰——记在异乡的第一个春天》">
             <img src="/images/paintings/朱唇.png" alt="朱唇" />
-          </div>
+          </a>
           <figcaption>
-            <h2>朱唇</h2>
+            <h2><a href="/gallery/magnolia/">朱唇</a></h2>
             <p>瑾瑜當年, 2018</p>
             <p class="painting-gallery__material"><i>Acrylic on Canvas</i></p>
           </figcaption>
         </figure>
 
-        <figure class="painting-gallery__item">
-          <div class="painting-gallery__image painting-gallery__image--east">
+        <figure class="painting-gallery__item painting-gallery__item--linked" id="flower-and-water">
+          <a class="painting-gallery__image painting-gallery__image--east painting-gallery__image--linked" href="/gallery/flower-and-water/" aria-label="阅读《春日狂想其之一——或是记高中与青春》">
             <img src="/images/paintings/花to水.jpg" alt="花と水" />
-          </div>
+          </a>
           <figcaption>
-            <h2>花と水</h2>
+            <h2><a href="/gallery/flower-and-water/">花と水</a></h2>
             <p>瑾瑜當年, 2026</p>
             <p class="painting-gallery__material"><i>Acrylic on Canvas</i></p>
           </figcaption>
@@ -367,12 +367,12 @@
 
     <section class="painting-gallery__section painting-gallery__section--root">
       <div class="painting-gallery__row painting-gallery__row--single">
-        <figure class="painting-gallery__item painting-gallery__item--root">
-          <div class="painting-gallery__image painting-gallery__image--root">
+        <figure class="painting-gallery__item painting-gallery__item--root" id="stay">
+          <a class="painting-gallery__image painting-gallery__image--root painting-gallery__image--linked" href="/gallery/back-to-79/" aria-label="阅读《怀旧是一场名为回忆的欺骗》">
             <img src="/images/paintings/root.png" alt="留下來" />
-          </div>
+          </a>
           <figcaption>
-            <h2>留下來</h2>
+            <h2><a href="/gallery/back-to-79/">留下來</a></h2>
             <p>nobody, 2010</p>
             <p class="painting-gallery__material"><i>Crayon on paper</i></p>
           </figcaption>
@@ -415,11 +415,12 @@
 
 
     
-      <section id="typographic-sea" class="typographic-sea" aria-label="留：文字構成的潮汐">
+      <section id="typographic-sea" class="typographic-sea" aria-label="留：文字構成的流水">
   <div class="typographic-sea__surface" data-typographic-sea></div>
   <button class="typographic-sea__pause" type="button" aria-pressed="false" aria-label="暫停文字海動畫" hidden>暫停</button>
 </section>
-<script defer src="/assets/js/typographic-sea.js?v=1791372858"></script>
+<script defer src="/assets/js/p5/p5-1.11.13.min.js?v=1.11.13"></script>
+<script defer src="/assets/js/typographic-sea.js?v=1791375503"></script>
 
     
 

@@ -1,4 +1,4 @@
-/* Thousands of fine glyphs roll as one sea, with tides travelling bottom to top. */
+/* Fine glyphs flow sideways near low water; the large paired words drift gently. */
 (() => {
   "use strict";
 
@@ -7,8 +7,66 @@
 
   const section = surface.closest("section");
   const painting = document.querySelector(".painting-gallery__image--root img");
+  const paintingLink = painting && painting.closest("a[href]");
+  if (paintingLink) {
+    // The transparent sea covers the artwork. Forward a click to its link,
+    // while leaving drags and strokes available for stirring the water.
+    const figure = painting.closest("figure");
+    const titleLink = figure.querySelector("figcaption h2 a");
+    const targets = [{ element: painting, link: paintingLink }];
+    if (titleLink) targets.push({ element: titleLink, link: titleLink });
+    const linkAt = (event) => targets.find(({ element }) => {
+      const rect = element.getBoundingClientRect();
+      return event.clientX >= rect.left && event.clientX <= rect.right
+        && event.clientY >= rect.top && event.clientY <= rect.bottom;
+    })?.link;
+    const clearHover = () => {
+      surface.style.cursor = "";
+      figure.classList.remove("is-sea-hover");
+    };
+    const updateHover = (event) => {
+      if (event.target?.closest?.(".page__footer, .masthead")) { clearHover(); return; }
+      const overPainting = Boolean(linkAt(event));
+      surface.style.cursor = overPainting ? "pointer" : "";
+      figure.classList.toggle("is-sea-hover", overPainting && event.pointerType !== "touch");
+    };
+    // Detect the artwork before canvas handlers run. Keep its hover state when
+    // it rises above the canvas and becomes the pointer's direct target.
+    document.addEventListener("pointermove", updateHover, { capture: true, passive: true });
+    document.addEventListener("pointerdown", updateHover, { capture: true, passive: true });
+    document.addEventListener("pointerout", (event) => {
+      if (!event.relatedTarget) clearHover();
+    });
+    window.addEventListener("blur", clearHover);
+    window.addEventListener("scroll", clearHover, { passive: true });
+    let press = null;
+    surface.addEventListener("pointerdown", (event) => {
+      const link = event.button === 0 && linkAt(event);
+      press = link ? { link, x: event.clientX, y: event.clientY } : null;
+    });
+    surface.addEventListener("pointermove", (event) => {
+      if (press && Math.hypot(event.clientX - press.x, event.clientY - press.y) > 8) press = null;
+    });
+    surface.addEventListener("pointerleave", () => {
+      press = null;
+    });
+    surface.addEventListener("pointercancel", () => {
+      press = null;
+      clearHover();
+    });
+    surface.addEventListener("click", (event) => {
+      const link = press && press.link;
+      press = null;
+      if (event.defaultPrevented || !link || linkAt(event) !== link) return;
+      link.dispatchEvent(new MouseEvent("click", {
+        bubbles: true, cancelable: true, button: event.button,
+        ctrlKey: event.ctrlKey, metaKey: event.metaKey,
+        shiftKey: event.shiftKey, altKey: event.altKey,
+      }));
+    });
+  }
   const banner = document.querySelector(".page__footer");
-  let tideBounds = null;
+  let waterBounds = null;
   let paintingSides = null;
   if (painting) {
     let overlap = 0;
@@ -17,12 +75,15 @@
       if (!image.height) return;
       const mobile = window.innerWidth <= 768;
       // Move the artwork independently, keeping the sea at its original level.
-      const paintingShift = parseFloat(getComputedStyle(painting)
+      const paintingStyle = getComputedStyle(painting);
+      const paintingShift = parseFloat(paintingStyle
         .getPropertyValue("--painting-root-shift")) || 0;
+      const removedGap = parseFloat(paintingStyle
+        .getPropertyValue("--painting-root-gap-removed")) || 0;
       // The entire canvas starts only a little above the painting. Even spray
-      // cannot climb farther than this; only the waterline moves with the tide.
+      // cannot climb farther than this; the waterline stays near its lowest level.
       const inset = mobile ? 16 : 24;
-      const top = image.top - paintingShift - inset;
+      const top = image.top - paintingShift + removedGap - inset;
       const height = Math.ceil(Math.max(mobile ? 420 : 650,
         image.height + inset + (mobile ? 140 : 200)));
       const next = Math.max(0, Math.round(section.getBoundingClientRect().top
@@ -35,7 +96,7 @@
         left: (image.left - sea.left) / sea.width,
         right: (image.right - sea.left) / sea.width,
       };
-      tideBounds = { high: inset * 0.35, low: Math.min(height - 95, image.height + inset + 28) };
+      waterBounds = { low: Math.min(height - 95, image.height + inset + 28) };
       // Desktop's fixed banner covers the bottom current. On mobile, cancel
       // its existing outer gap without changing the banner's own appearance.
       const footerStyle = banner && getComputedStyle(banner);
@@ -99,7 +160,7 @@
     let time = 0;
     let pointer = null;
     let density = 1;
-    let tide = null;
+    let water = null;
 
     const wrap = (n) => ((n % 1) + 1) % 1;
     const smooth = (a, b, n) => {
@@ -154,8 +215,8 @@
           offsetX: 0, offsetY: 0, vx: 0, vy: 0,
         });
       }
-      // Paired words share a tidal depth, with small independent offsets and
-      // mirrored side positions. Their own local currents keep them floating.
+      // Preserve the paired words' seeded depths and mirrored side positions.
+      // Their original low-water positions become fixed anchors.
       wordPairs.forEach((words, pair) => {
         if (!words) {
           // Preserve the seeded offsets of all the pairs below the empty slot.
@@ -209,23 +270,24 @@
       atlasScale = atlas.pixelDensity();
     };
 
-    // A 24-second flood/ebb moves the whole shoreline across the painting.
-    // Surface ripples ride on it; the slow bottom current stays at the banner.
-    const updateTide = () => {
-      const phase = time * p.TWO_PI / 24;
-      const level = (1 - Math.cos(phase)) * 0.5;
-      const high = tideBounds ? tideBounds.high : 12;
-      const low = tideBounds ? tideBounds.low : p.height * 0.8;
-      tide = { level, direction: Math.sin(phase), shore: low + (high - low) * level };
+    // Rise and fall visibly from the existing lowest level, while keeping
+    // the continuous horizontal current and leaving most of the artwork clear.
+    const updateWater = () => {
+      const low = waterBounds ? waterBounds.low : p.height * 0.8;
+      const scale = reducedMotion ? 0.4 : 1;
+      // Canvas y decreases as the river rises: 1.7x depth means lifting
+      // the surface by 0.7 times its depth at the existing lowest level.
+      const lowDepth = p.height - low;
+      const excursion = lowDepth * 0.7;
+      const rise = (1 - Math.cos(time * p.TWO_PI / 9)) * 0.5;
+      water = { shore: low - rise * excursion * scale };
     };
 
     const shoreline = (u) => {
-      // Keep high-tide ripples small enough that the upper limit is only a
-      // few pixels above the painting. More lively surf appears lower down.
-      const roughness = 3 + (1 - tide.level) * 12;
-      return tide.shore + (Math.sin(u * 9 + time * 0.65) * 0.6
+      const scale = reducedMotion ? 0.4 : 1;
+      return water.shore + (Math.sin(u * 9 - time * 0.65) * 0.6
         + Math.sin(u * 23 - time * 0.42) * 0.25
-        + waterNoise(u) * 0.8) * roughness;
+        + waterNoise(u) * 0.8) * 3 * scale;
     };
 
     const emphasisRange = (g) => {
@@ -243,82 +305,108 @@
       return null;
     };
 
-    const renderPosition = (g, point) => {
-      let x = point.x + g.offsetX;
-      if (g.emphasis) {
-        const range = emphasisRange(g);
-        if (!range) return null;
-        // Apply the constraint after mouse forces as well as tidal motion.
-        x = Math.max(range.min, Math.min(range.max, x));
-      }
-      return { x, y: point.y + g.offsetY };
-    };
-
-    const waterPosition = (g) => {
-      const range = g.emphasis ? emphasisRange(g) : null;
-      if (g.emphasis && !range) {
-        return { x: 0, y: 0, depth: 0, brightness: 0, foam: 0, char: g.char, large: true };
-      }
-      const u = range ? (range.min + (range.max - range.min) * g.sidePosition) / p.width : g.u;
-      const h = p.height;
-      const shore = shoreline(u);
-      const waterHeight = h - shore;
-      if (g.spray) {
-        const travel = wrap(g.v - time * 0.12);
-        const x = u * p.width + Math.sin(time * 0.8 + g.seed) * 18;
-        // Scatter across a broad edge instead of accumulating at a narrow
-        // sine-curve apex, which reads as a continuous bright pencil line.
-        const spread = 18 + (1 - tide.level) * 65;
-        const y = shore + (travel - 0.65) * spread
-          + Math.sin(u * 10 + time * 1.3 + g.seed) * 4;
-        const brightness = g.tone * 0.3 * Math.sin(travel * Math.PI) ** 2
-          * smooth(0.2, 0.7, foamNoise(u));
-        return { x, y, depth: 0, brightness, foam: 0, char: g.char, large: false };
-      }
-
-      // Redistribute the existing particles toward the bottom instead of
-      // adding heavier draw work. The 留-rich root is denser and more viscous.
+    // Anchor the paired words at their original low-water, time-zero positions.
+    // Preserve the arrangement while the words float around it with the water.
+    const emphasisAnchor = (g) => {
+      if (g.anchor) return g.anchor;
+      const range = emphasisRange(g);
+      if (!range) return { x: 0, y: 0, brightness: 0, depth: 0, char: g.char };
+      const u = (range.min + (range.max - range.min) * g.sidePosition) / p.width;
+      const sample = u * 80;
+      const index = Math.min(79, Math.floor(sample));
+      const a = (p.noise(index * 0.065, 0) - 0.5) * 2;
+      const b = (p.noise((index + 1) * 0.065, 0) - 0.5) * 2;
+      const noise = a + (b - a) * (sample - index);
+      const low = waterBounds ? waterBounds.low : p.height * 0.8;
+      const shore = low + (Math.sin(u * 9) * 0.6
+        + Math.sin(u * 23) * 0.25 + noise * 0.8) * 15;
+      const waterHeight = p.height - shore;
       const depth = 1 - Math.pow(1 - g.v, 1.45);
       const breaking = Math.exp(-(((depth - 0.14) / 0.13) ** 2));
       const deep = smooth(0.76, 0.9, depth);
-      const noise = waterNoise(u);
-      const bow = Math.sin(u * 6.2 + time * 0.31) * 1.8 + noise * 0.75;
-      const phase = depth * 12 + Math.sin(time * p.TWO_PI / 24) * 3
-        + time * 0.55 + bow + u * 3.2;
-      const swell = Math.sin(phase);
-      const curl = Math.cos(phase);
-      const crossWave = Math.sin(u * 13 - depth * 7 + time * 0.92);
-      const deepPhase = u * 8 + depth * 4 + time * 0.3;
-      const motionScale = reducedMotion ? 0.55 : 1;
       const boundary = smooth(0, 0.08, depth) * (1 - smooth(0.9, 1, depth));
-      // Keep the mapping gently stretched: strong folds made whole rows of
-      // glyphs coincide and formed an unnaturally dense, thin upper stripe.
-      const amplitude = waterHeight * (0.009 + breaking * 0.012)
-        * boundary * (1 - deep) * motionScale;
-      const x = (g.emphasis ? u : u * 1.08 - 0.04) * p.width
-        + (curl * (10 + breaking * 31) + crossWave * breaking * 12) * (1 - deep)
+      const phase = depth * 12 + Math.sin(u * 6.2) * 1.8 + noise * 0.75 + u * 3.2;
+      const crossWave = Math.sin(u * 13 - depth * 7);
+      const deepPhase = u * 8 + depth * 4;
+      const x = u * p.width
+        + (Math.cos(phase) * (10 + breaking * 31) + crossWave * breaking * 12) * (1 - deep)
         + Math.sin(deepPhase) * 6 * deep;
-      const y = shore + depth * waterHeight + swell * amplitude
-        + crossWave * breaking * waterHeight * 0.009 * boundary * motionScale
+      const y = shore + depth * waterHeight
+        + Math.sin(phase) * waterHeight * (0.009 + breaking * 0.012) * boundary * (1 - deep)
+        + crossWave * breaking * waterHeight * 0.009 * boundary
         + noise * breaking * waterHeight * 0.01 * boundary
         + Math.sin(deepPhase) * 3 * deep * boundary;
-      // Broad, broken foam patches carry across the surf and dissolve on ebb.
-      // Their widths vary with x, so the edge never becomes one solid ribbon.
+      g.anchor = { x: Math.max(range.min, Math.min(range.max, x)), y,
+        depth, brightness: 0.75, foam: 0, char: g.char, large: true };
+      return g.anchor;
+    };
+
+    const renderPosition = (g, point) => g.emphasis ? point
+      : { x: point.x + g.offsetX, y: point.y + g.offsetY };
+
+    const waterPosition = (g) => {
+      if (g.emphasis) {
+        const anchor = emphasisAnchor(g);
+        if (!anchor.brightness) return anchor;
+        const range = emphasisRange(g);
+        const u = anchor.x / p.width;
+        const scale = reducedMotion ? 0.4 : 1;
+        const phase = u * 10 - anchor.depth * 7 - time * 0.65;
+        const low = waterBounds ? waterBounds.low : p.height * 0.8;
+        // Reserve room on both sides before floating. Clamping each animated
+        // frame made words near the lane edge stop for half of their cycle.
+        const amplitude = Math.min(g.pair === 0 ? 28 : 24,
+          (range.max - range.min) * 0.45);
+        const center = Math.max(range.min + amplitude,
+          Math.min(range.max - amplitude, anchor.x));
+        const x = center + (Math.sin(phase) * 0.85
+          + waterNoise(u) * 0.15) * amplitude * scale;
+        const y = anchor.y + (water.shore - low) * (1 - anchor.depth)
+          + (Math.sin(phase + anchor.depth * 4) * 6
+            + Math.sin(u * 16 - time * 0.45) * 2) * scale;
+        return { ...anchor, x: Math.max(range.min, Math.min(range.max, x)), y };
+      }
+      const depth = 1 - Math.pow(1 - g.v, 1.45);
+      const scale = reducedMotion ? 0.4 : 1;
+      const padding = 32;
+      const span = p.width + padding * 2;
+      // A slow, continuous sideward current, with wrapping outside the viewport.
+      const speed = 9 + depth * 5;
+      const baseX = wrap(g.u + time * speed / span) * span - padding;
+      const u = Math.max(0, Math.min(1, baseX / p.width));
+      const shore = shoreline(u);
+      const waterHeight = p.height - shore;
+      const noise = waterNoise(u);
+      if (g.spray) {
+        const x = baseX + Math.sin(time * 0.6 + g.seed) * 3 * scale;
+        const y = shore + (g.v - 0.65) * 42
+          + Math.sin(u * 10 - time * 0.8 + g.seed) * 5 * scale;
+        const brightness = g.tone * 0.18 * Math.sin(g.v * Math.PI) ** 2
+          * smooth(0.2, 0.7, foamNoise(u));
+        return { x, y, depth: 0, brightness, foam: 0, char: g.char, large: false };
+      }
+      const deep = smooth(0.76, 0.9, depth);
+      const boundary = smooth(0, 0.08, depth) * (1 - smooth(0.9, 1, depth));
+      const phase = u * 10 - depth * 7 - time * 0.65;
+      const x = baseX + (Math.sin(phase) * 4 + noise * 2) * scale;
+      const y = shore + depth * waterHeight
+        + (Math.sin(phase + depth * 4) * 6
+          + Math.sin(u * 16 - depth * 9 - time * 0.45) * 2) * boundary * scale;
       const patch = smooth(0.22, 0.72, foamNoise(u)
-        + Math.sin(depth * 23 + u * 17 - time * 0.7) * 0.16);
-      const foam = Math.pow((1 - curl) * 0.5, 1.5) * patch
-        * (0.25 + breaking * 0.75) * (1 - deep);
-      const emergence = smooth(0, 0.1 + waterNoise(u) * 0.025, depth);
+        + Math.sin(depth * 23 + u * 17 - time * 0.7) * 0.12);
+      const foam = (0.5 + Math.sin(phase) * 0.5) * patch * (1 - deep);
+      const emergence = smooth(0, 0.1 + noise * 0.025, depth);
       const edgeFade = smooth(-12, 16, x) * (1 - smooth(p.width - 16, p.width + 12, x));
       const brightness = emergence * edgeFade * g.tone
-        * (g.emphasis ? 0.7 + foam * 0.15 : 0.16 + depth * 0.17 + deep * 0.14 + foam * 0.3);
+        * (0.16 + depth * 0.17 + deep * 0.14 + foam * 0.1);
       const retention = 0.38 + smooth(0.68, 0.91, depth) * 0.56;
-      const char = g.emphasis ? g.char : g.retention < retention ? vocabulary.length - 1 : g.char;
+      const char = g.retention < retention ? vocabulary.length - 1 : g.char;
       return { x, y, depth, brightness, foam, char,
-        large: g.emphasis || (char === vocabulary.length - 1 && g.large) };
+        large: char === vocabulary.length - 1 && g.large };
     };
 
     const disturb = (g, point, step) => {
+      if (g.emphasis) return;
       for (const wake of wakes) {
         const dx = point.x + g.offsetX - wake.x;
         const dy = point.y + g.offsetY - wake.y;
@@ -330,7 +418,7 @@
         g.vx += (dx / distance * 0.07 - dy / distance * 0.025 * wake.spin) * strength * step;
         g.vy += (dy / distance * 0.07 + dx / distance * 0.025 * wake.spin) * strength * step;
       }
-      // Local strokes bend the sea temporarily; the underlying tide keeps going.
+      // Local strokes bend the small glyphs temporarily; the current keeps going.
       g.vx = (g.vx - g.offsetX * 0.008 * step) * Math.pow(0.9, step);
       g.vy = (g.vy - g.offsetY * 0.008 * step) * Math.pow(0.9, step);
       g.offsetX += g.vx * step;
@@ -371,7 +459,7 @@
       const canvas = p.createCanvas(Math.round(surface.clientWidth), Math.round(surface.clientHeight));
       canvas.parent(surface);
       canvas.elt.setAttribute("role", "img");
-      canvas.elt.setAttribute("aria-label", "密集細小的漢字構成潮汐，從底部湧起，漲潮越過留下來畫作的頂部，退潮露出畫作。移動鼠標或手指可撥動水流。");
+      canvas.elt.setAttribute("aria-label", "密集細小的漢字在低水位緩緩橫向流動，水面明顯升降，大小字隨水上下左右漂動。移動鼠標或手指可撥動小字水流。");
       p.frameRate(reducedMotion ? 20 : 30);
       makeGlyphs();
       makeAtlas();
@@ -409,7 +497,7 @@
         wakes = wakes.filter((wake) => wake.life > 0.025);
       }
       updateNoise();
-      updateTide();
+      updateWater();
       // Clear to transparent on every frame so the painting and page show
       // through the spaces between glyphs without leaving particle trails.
       p.clear();
