@@ -111,6 +111,14 @@
       let shorelineTrace = false;
       let width = 1;
       let height = 1;
+      let textRight = 1;
+      let textGlyphWidth = 16;
+      const essayInner = container.closest(".gallery-essay")
+        ? container.closest(".gallery-essay").querySelector(".gallery-essay__inner")
+        : null;
+      const essayBody = container.closest(".gallery-essay")
+        ? container.closest(".gallery-essay").querySelector(".gallery-essay__body")
+        : null;
       const layers = [
         {
           key: "background",
@@ -150,6 +158,19 @@
       const resizeMetrics = () => {
         width = Math.max(1, Math.round(surface.clientWidth || surface.getBoundingClientRect().width));
         height = Math.max(1, Math.round(surface.clientHeight || 190));
+        if (horizontal && essayInner) {
+          const textRect = (essayBody || essayInner).getBoundingClientRect();
+          const computed = global.getComputedStyle ? global.getComputedStyle(essayBody || essayInner) : null;
+          const fontSize = computed ? parseFloat(computed.fontSize) : 16;
+          const letterSpacing = computed && computed.letterSpacing !== "normal"
+            ? parseFloat(computed.letterSpacing) || 0
+            : 0;
+          textRight = clamp(textRect.right, width * 0.52, width - 2);
+          textGlyphWidth = clamp(fontSize + letterSpacing, 12, 32);
+        } else {
+          textRight = width;
+          textGlyphWidth = 16;
+        }
       };
 
       const makeParticles = () => {
@@ -223,12 +244,14 @@
         const swell = Math.sin(v * Math.PI * 1.7 + now * 1.05 + layerIndex * 1.4) * 14;
         const cross = Math.sin(v * Math.PI * 5.2 - now * 0.72 + layerIndex) * 7;
         const broken = (p.noise(v * 1.3 + layerIndex * 7.1, now * 0.2) - 0.5) * 22;
-        // The quiet water stays on the right. High tide moves the broken
-        // shoreline left by roughly four or five glyphs.
-        const horizontalRange = config.horizontalTideRange || 82;
-        const rawFront = width * (0.9 - layerIndex * 0.025)
-          + swell + cross + broken - tide * horizontalRange;
-        return clamp(rawFront, width * 0.42, width * 0.98);
+        // Anchor the water to the essay's text column. The full tide swing
+        // spans four glyphs: high tide reaches four characters into the text,
+        // while low tide settles near the text edge instead of the viewport edge.
+        const coverage = textGlyphWidth * 4;
+        const horizontalRange = coverage * 0.5;
+        const baseline = textRight - horizontalRange - layerIndex * 1.5;
+        const rawFront = baseline + swell + cross + broken - tide * horizontalRange;
+        return clamp(rawFront, textRight - coverage, textRight + textGlyphWidth * 0.65);
       };
 
       const waveX = (y, particle, layerIndex, now, tide) => {
