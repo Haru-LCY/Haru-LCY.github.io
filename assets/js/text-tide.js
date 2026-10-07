@@ -43,6 +43,8 @@
 
     const surface = settings.surface || container.querySelector("[data-text-tide-surface]") || container;
     const pauseButton = settings.pauseButton || container.querySelector("[data-text-tide-pause]");
+    const direction = container.dataset.tideDirection || "vertical";
+    const horizontal = direction === "horizontal";
     const config = Object.assign({}, DEFAULT_CONFIG, settings.config || {});
     const palette = settings.palette || {};
     Object.assign(config, palette);
@@ -167,6 +169,7 @@
               baseChar: source[Math.floor(Math.random() * source.length)],
               char: source[Math.floor(Math.random() * source.length)],
               x: Math.random() * width,
+              y: Math.random() * height,
               phase: Math.random() * Math.PI * 2,
               // A square-root distribution puts most glyphs in the thick,
               // heavy lower water while a sparse veil remains above it.
@@ -215,7 +218,57 @@
         return waterColumn + crest + noise;
       };
 
+      const waveFrontX = (y, layerIndex, now, tide) => {
+        const v = y / Math.max(1, height);
+        const swell = Math.sin(v * Math.PI * 1.7 + now * 1.05 + layerIndex * 1.4) * 14;
+        const cross = Math.sin(v * Math.PI * 5.2 - now * 0.72 + layerIndex) * 7;
+        const broken = (p.noise(v * 1.3 + layerIndex * 7.1, now * 0.2) - 0.5) * 22;
+        // The quiet water stays on the right. High tide moves the broken
+        // shoreline left by roughly four or five glyphs.
+        const horizontalRange = config.horizontalTideRange || 82;
+        const rawFront = width * (0.9 - layerIndex * 0.025)
+          + swell + cross + broken - tide * horizontalRange;
+        return clamp(rawFront, width * 0.42, width * 0.98);
+      };
+
+      const waveX = (y, particle, layerIndex, now, tide) => {
+        const layer = layers[layerIndex];
+        const v = y / Math.max(1, height);
+        const wave = Math.sin(v * Math.PI * config.waveFrequency + particle.phase + now * layer.speed);
+        const secondary = Math.sin(v * Math.PI * 4.8 - now * 0.35 + particle.phase * 0.35) * 0.22;
+        const noise = (p.noise(v * 1.45 + particle.noiseSeed, now * 0.12) - 0.5) * (config.noiseAmount * 0.72);
+        const amplitude = config.waveAmplitude * 0.62 * layer.amplitude * (1 + tide * 0.12);
+        const front = waveFrontX(y, layerIndex, now, tide);
+        const waterColumn = front + Math.pow(particle.depth, 0.78) * (width - front);
+        const crest = (wave + secondary) * amplitude * (1 - particle.depth * 0.58);
+        particle.frontness = Math.pow(1 - particle.depth, 0.58);
+        return waterColumn + crest + noise;
+      };
+
       const currentPosition = (particle, now, tide) => {
+        if (horizontal) {
+          const driftY = particle.drift * now * 1.2
+            + Math.sin(now * 0.18 + particle.phase) * 2.5;
+          const y = ((particle.y + driftY) % height + height) % height;
+          const x = waveX(y, particle, particle.layer, now, tide);
+          let drawX = x;
+          let drawY = y;
+          let rotation = particle.rotation;
+          let blend = 0;
+          if (particle.recon) {
+            const state = reconstruction[particle.recon];
+            blend = state.blend;
+            drawX = x + (particle.targetX - x) * blend;
+            drawY = y + (particle.targetY - y) * blend;
+            rotation *= 1 - blend * 0.8;
+          }
+          particle.drawX = drawX;
+          particle.drawY = drawY;
+          particle.drawRotation = rotation;
+          particle.drawBlend = blend;
+          particle.drawHeight = x;
+          return particle;
+        }
         // The tide rises and ebbs vertically. Horizontal motion is only a
         // quiet local drift, so the full-width field never reads as a ticker.
         const driftX = particle.drift * now * 1.4
@@ -255,7 +308,9 @@
         if (candidates.length < printable.length) return;
         const chosen = candidates.slice(0, printable.length);
         const step = clamp((config.fontSizeRange[1] * (state.id === "nobody" ? 0.95 : 0.78)), 13, 25);
-        const center = randomBetween(width * 0.36, width * 0.64);
+        const center = horizontal
+          ? randomBetween(height * 0.36, height * 0.64)
+          : randomBetween(width * 0.36, width * 0.64);
         const startX = center - ((state.chars.length - 1) * step) / 2;
         state.active = true;
         state.startedAt = now;
@@ -263,11 +318,16 @@
           const slot = printable[index].index;
           particle.recon = state.id;
           particle.char = printable[index].char;
-          particle.targetX = startX + slot * step;
-          particle.targetY = waveFront(particle.targetX, state.layer, now, tide) + 8;
+          if (horizontal) {
+            particle.targetY = startX + slot * step;
+            particle.targetX = waveFrontX(particle.targetY, state.layer, now, tide) + 8;
+          } else {
+            particle.targetX = startX + slot * step;
+            particle.targetY = waveFront(particle.targetX, state.layer, now, tide) + 8;
+          }
           return particle;
         });
-        state.targetY = height * layers[state.layer].base;
+        state.targetY = horizontal ? height * 0.5 : height * layers[state.layer].base;
       };
 
       const updateReconstruction = (state, now) => {
@@ -305,7 +365,8 @@
         context.font = `${Math.max(13, config.fontSizeRange[0])}px ${config.fontFamily}`;
         context.textAlign = "center";
         context.textBaseline = "middle";
-        context.fillText("nobody", width * 0.5, height - 17);
+        if (horizontal) context.fillText("nobody", width - 17, height * 0.5);
+        else context.fillText("nobody", width * 0.5, height - 17);
         context.restore();
       };
 
@@ -316,12 +377,21 @@
         const samples = 72;
         context.save();
         context.beginPath();
-        context.moveTo(0, height);
-        for (let index = 0; index <= samples; index += 1) {
-          const x = width * index / samples;
-          context.lineTo(x, waveFront(x, 2, now, tide));
+        if (horizontal) {
+          context.moveTo(width, 0);
+          for (let index = 0; index <= samples; index += 1) {
+            const y = height * index / samples;
+            context.lineTo(waveFrontX(y, 2, now, tide), y);
+          }
+          context.lineTo(width, height);
+        } else {
+          context.moveTo(0, height);
+          for (let index = 0; index <= samples; index += 1) {
+            const x = width * index / samples;
+            context.lineTo(x, waveFront(x, 2, now, tide));
+          }
+          context.lineTo(width, height);
         }
-        context.lineTo(width, height);
         context.closePath();
         context.fillStyle = config.waterColor;
         context.fill();
