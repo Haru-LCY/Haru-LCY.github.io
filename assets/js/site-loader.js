@@ -3,6 +3,19 @@
 
   if (!loader) return;
 
+  var skipReferrerPath = loader.getAttribute("data-skip-referrer-path");
+  if (skipReferrerPath && document.referrer) {
+    try {
+      var referrer = new URL(document.referrer);
+      if (referrer.origin === window.location.origin &&
+          (referrer.pathname === skipReferrerPath.replace(/\/$/, "") ||
+           referrer.pathname.indexOf(skipReferrerPath) === 0)) {
+        if (loader.parentNode) loader.parentNode.removeChild(loader);
+        return;
+      }
+    } catch (error) {}
+  }
+
   var dismissed = false;
   var dismiss = function (immediate) {
     if (dismissed) return;
