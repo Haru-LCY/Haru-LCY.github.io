@@ -23,8 +23,10 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
 .folio-home { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 11px; letter-spacing: .1em; }
 .folio-home span:first-child { font-size: 22px; }
 .folio-home:hover { color: var(--ink); }
+.folio-nav { display: flex; align-items: center; gap: 28px; }
 .index-page { isolation: isolate; }
 .index-page .folio-header { justify-content: flex-end; }
+.index-page .folio-nav { flex-direction: column; align-items: flex-end; gap: 12px; }
 .index-tide { position: fixed; z-index: -1; inset: 0; pointer-events: none; overflow: hidden; opacity: 0; transition: opacity 1.2s ease; }
 .index-tide.is-ready { opacity: 1; }
 .index-tide canvas { display: block; width: 100% !important; height: 100% !important; }
@@ -50,21 +52,15 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
 .volume-quote { grid-column: 1; grid-row: 1; display: flex; flex-direction: row-reverse; align-self: center; justify-self: center; gap: 24px; }
 .volume-quote p { writing-mode: vertical-rl; margin: 0; font-size: 18px; line-height: 2.3; letter-spacing: .13em; }
 .volume-quote > span { writing-mode: vertical-rl; font-size: 10px; letter-spacing: .12em; color: var(--muted); align-self: flex-end; }
-.volume-colophon { grid-column: 1 / -1; display: flex; justify-content: space-between; align-self: end; color: var(--muted); font-size: 10px; letter-spacing: .16em; margin-top: 35px; }
-.volume-colophon a span { display: inline-block; margin-left: 20px; }
 .volume-content { max-width: 1000px; margin: auto; padding: 80px 40px 120px; scroll-margin-top: 20px; }
-.volume-section-label { display: flex; justify-content: space-between; align-items: center; padding-bottom: 26px; margin-bottom: 24px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; letter-spacing: .15em; }
-.volume-section-label span:last-child { font-family: var(--display); font-size: 12px; }
-.volume-contents { padding: 0; margin: 0; list-style: none; }
-.volume-contents li { border-bottom: 1px solid var(--line); }
-.volume-contents a { display: grid; grid-template-columns: 40px 1fr 24px; gap: 24px; align-items: baseline; padding: 35px 6px; transition: background .25s; }
-.volume-contents a:hover { background: #141413; }
-.work-number { font-family: var(--display); color: var(--muted); font-size: 21px; }
-.volume-contents h2 { margin: 0; font-size: clamp(18px, 2vw, 25px); font-weight: 400; line-height: 1.8; }
-.volume-contents p { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 12px 0 0; }
-.work-arrow { font-size: 21px; }
-.volume-toc ol { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 50px; padding-left: 24px; margin: 38px 0 90px; color: var(--muted); font-size: 13px; line-height: 1.8; }
-.volume-toc a:hover { color: var(--ink); }
+.volume-contents { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); direction: rtl; gap: 44px 0; padding: 12px 0 0; margin: 0 0 72px; list-style: none; }
+.volume-contents li { min-width: 0; direction: ltr; }
+.volume-entry { --line-end: 80px; --entry-inset: 22px; position: relative; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; min-height: 420px; height: 100%; padding: 8px var(--entry-inset) 16px 16px; }
+.volume-entry::after { content: ''; position: absolute; top: 8px; bottom: var(--line-end); right: 0; width: 1px; background: var(--line); transition: background .25s ease, width .25s ease; }
+.volume-entry:hover::after, .volume-entry:focus-visible::after { width: 2px; background: #fff; }
+.entry-heading { display: flex; flex-direction: row-reverse; align-items: flex-start; gap: 12px; max-width: 100%; }
+.entry-heading h2 { writing-mode: vertical-rl; text-orientation: mixed; inline-size: 12em; margin: 0; font-size: 24px; font-weight: 500; line-height: 1.65; letter-spacing: .08em; overflow-wrap: anywhere; }
+.entry-year { position: absolute; right: var(--entry-inset); bottom: var(--line-end); color: var(--muted); font-size: 12px; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: .08em; }
 .volume-prose { font-size: 16px; line-height: 2.2; overflow-wrap: anywhere; }
 .volume-prose .gallery-essay__work { padding: 60px 0; border-top: 1px solid var(--line); scroll-margin-top: 36px; }
 .volume-prose h2 { margin: 0 0 20px; font-size: 28px; font-weight: 500; }
@@ -74,10 +70,32 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
 .volume-prose .gallery-essay__work-return { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 40px; font-size: 11px; color: var(--muted); }
 .volume-prose a { text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #625d55; }
 .volume-prose img { max-width: 100%; height: auto; }
-.volume-footer { margin: 0 6.2vw; padding: 30px 0 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 11px; }
+.work-content { max-width: 840px; margin: auto; padding: 50px 40px 100px; }
+.work-content .gallery-essay__work { padding: 0; border: 0; }
+.work-content h1 { margin: 0 0 22px; font-size: clamp(26px, 4vw, 40px); font-weight: 500; line-height: 1.6; }
+.work-content .gallery-essay__date { margin-bottom: 42px; }
+.about-content { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 64px; max-width: 960px; margin: auto; padding: 48px 40px 96px; }
+.about-title { grid-column: 2; grid-row: 1; }
+.about-title h1 { writing-mode: vertical-rl; margin: 0; color: var(--ink); font-size: 48px; line-height: 1.5; font-weight: 500; letter-spacing: .08em; }
+.about-prose { grid-column: 1; grid-row: 1; min-width: 0; font-size: 17px; line-height: 2; overflow-wrap: anywhere; }
+.about-prose p { margin: 0 0 24px; }
+.about-prose a { text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #666; }
+.about-prose a:hover { color: #fff; text-decoration-color: currentColor; }
+.about-prose blockquote { margin: 40px 0 16px; color: var(--muted); }
+.about-prose .about-source { text-align: right; color: var(--muted); font-size: 13px; }
+.about-prose .about-signature { margin-top: 40px; text-align: right; }
+.volume-footer { margin: 0 6.2vw; padding: 30px 0 40px; display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 11px; }
+@media (min-width: 761px) and (max-width: 1000px) {
+  .volume-contents { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 @media (max-width: 760px) {
   .folio-header { height: 80px; padding: 0 24px; }
   .folio-brand { gap: 10px; font-size: 14px; }
+  .folio-nav { gap: 18px; }
+  .about-page .folio-header { height: auto; min-height: 80px; flex-wrap: wrap; gap: 18px; padding-top: 18px; padding-bottom: 18px; }
+  .about-content { gap: 24px; padding: 32px 24px 64px; }
+  .about-title h1 { font-size: 36px; }
+  .about-prose { font-size: 16px; }
   .collection-index { min-height: calc(100svh - 80px); grid-template-columns: 1fr; padding: 30px 24px 0; }
   .collection-spines { grid-column: 1; grid-row: 1; min-height: 57svh; }
   .spine { min-height: 410px; padding-top: 12px; }
@@ -90,12 +108,17 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
   .volume-quote p { font-size: 14px; line-height: 1.9; letter-spacing: .06em; }
   .volume-quote > span { font-size: 9px; }
   .volume-content { padding: 40px 24px 75px; }
-  .volume-contents a { grid-template-columns: 25px 1fr 16px; gap: 12px; }
-  .volume-toc ol { gap: 15px 26px; font-size: 12px; }
+  .work-content { padding: 32px 24px 64px; }
+  .volume-contents { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 32px; margin-bottom: 48px; }
+  .volume-entry { --entry-inset: 14px; min-height: 380px; padding: 6px var(--entry-inset) 14px 10px; }
+  .entry-heading { gap: 8px; }
+  .entry-heading h2 { font-size: 21px; }
   .volume-prose { font-size: 15px; }
   .volume-prose h2 { font-size: 24px; }
   .volume-prose .gallery-essay__poem { font-size: 17px; letter-spacing: .04em; }
-  .volume-section-label span:last-child { font-size: 10px; letter-spacing: .04em; }
+}
+@media (max-width: 480px) {
+  .volume-contents { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
