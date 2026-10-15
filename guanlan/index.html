@@ -1,60 +1,38 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#e9e5dc" />
-    <meta name="description" content="觀瀾：一座由文字、潮汐与记忆组成的个人档案。" />
-    <title>觀瀾 · 文字潮汐档案</title>
-    <link rel="icon" type="image/svg+xml" href="../img/black-heart.svg" />
-    <link rel="stylesheet" href="./guanlan.css" />
-  </head>
-  <body>
-    <div class="guanlan-shell">
-      <header class="guanlan-header">
-        <a class="wordmark" href="/guanlan/" aria-label="返回觀瀾首页">觀瀾</a>
-        <p class="header-note">拾取一些被潮水留下的文字</p>
-        <a class="blog-link" href="/blog/">回到港湾 <span aria-hidden="true">↗</span></a>
-      </header>
-
-      <main>
-        <section class="shore-intro" aria-labelledby="guanlan-title">
-          <p class="eyebrow">A TIDAL ARCHIVE · <span id="post-count">文字</span></p>
-          <h1 id="guanlan-title">觀瀾</h1>
-          <p class="intro-copy">我的文字，观的是内心的波澜。<br />潮来时留下句子，潮退后留下它们曾经照亮过的地方。</p>
-        </section>
-
-        <section class="shore" id="shore" aria-label="散落文章的沙滩">
-          <canvas id="tide-canvas" aria-hidden="true"></canvas>
-          <div class="wet-quote" id="wet-quote" aria-live="polite"></div>
-          <div class="object-layer" id="object-layer"></div>
-          <div class="shore-caption" aria-hidden="true">
-            <span>低潮时，文字会显现</span>
-            <span class="caption-rule"></span>
-            <span>move slowly · read closely</span>
-          </div>
-        </section>
-
-        <section class="archive" id="archive" aria-labelledby="archive-title">
-          <div class="archive-heading">
-            <div>
-              <p class="eyebrow">THE MARKS LEFT ON THE SAND</p>
-              <h2 id="archive-title">潮痕档案</h2>
-            </div>
-            <p class="archive-intro">从旧梦、远行到课堂与研究，<br />所有文章都从原来的 blog 迁来这里，仍保留原文入口。</p>
-          </div>
-          <div class="filter-row" id="filter-row" aria-label="文章筛选"></div>
-          <div class="archive-list" id="archive-list"></div>
-        </section>
-      </main>
-
-      <footer class="guanlan-footer">
-        <span>觀瀾 / INNER TIDES</span>
-        <span>© 2026 瑾瑜當年</span>
-      </footer>
-    </div>
-
-    <script src="./posts.js"></script>
-    <script src="./guanlan.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="觀瀾，瑾瑜當年的文字作品集。水底、洄游、幻夢、此岸。">
+  <title>觀瀾 · 作品集</title>
+  <link rel="icon" type="image/svg+xml" href="/img/black-heart.svg">
+  <link rel="stylesheet" href="/guanlan/guanlan.css">
+  <script defer src="/js/p5/p5-1.11.13.min.js"></script>
+  <script defer src="/guanlan/tide-quotes.js"></script>
+  <script defer src="/guanlan/tide.js"></script>
+</head>
+<body class="index-page">
+  <div class="index-tide" id="index-tide" aria-hidden="true"></div>
+  <a class="skip-link" href="#collections">跳至作品集</a>
+  <header class="folio-header">
+    <a class="folio-home" href="/" aria-label="The Academic Side"><span aria-hidden="true">↗</span><span>The Academic Side</span></a>
+  </header>
+  <main class="collection-index">
+    <nav class="collection-spines" id="collections" aria-label="作品集目录">
+      <a class="spine" href="/gallery/early-works/">
+        <div class="spine-heading"><h2>水底</h2><span class="spine-note">觀瀾齋主人前傳</span></div>
+      </a>
+      <a class="spine" href="/guanlan/spring/">
+        <div class="spine-heading"><h2>洄游</h2><span class="spine-note">無數次，無數次，我夢見了海</span></div>
+      </a>
+      <a class="spine" href="/guanlan/dreams/">
+        <div class="spine-heading"><h2>幻夢</h2><span class="spine-note">浮生暫寄夢中夢，世事如聞風裡風</span></div>
+      </a>
+      <a class="spine" href="/guanlan/journeys/">
+        <div class="spine-heading"><h2>此岸</h2><span class="spine-note">趁 CPU 與 I/O 尚且正常</span></div>
+      </a>
+    </nav>
+  </main>
+</body>
 </html>
