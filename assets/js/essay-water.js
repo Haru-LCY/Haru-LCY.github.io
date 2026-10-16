@@ -6,11 +6,13 @@
   if (!surface || !window.p5) return;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (reducedMotion.matches) return;
-  // This page is one water surface, including its empty margins. Both banners
-  // remain outside the simulation, and native links stay clickable.
+  // Guanlan uses a full-window surface; the original Gallery keeps its bounds.
   document.body.append(surface);
-  const banner = document.querySelector(".page__footer");
-  const masthead = document.querySelector(".masthead");
+  const guanlan = room.hasAttribute("data-guanlan-ripple");
+  const banner = guanlan ? null : document.querySelector(".page__footer");
+  const masthead = guanlan ? null : document.querySelector(".masthead");
+  const excluded = "script, style, code, pre, button, textarea, input, select, [contenteditable], [data-essay-water-surface]" +
+    (guanlan ? ", #comments, .memory-tide, .skip-link" : ", .page__footer, .masthead");
 
   const glyphs = [];
   const opening = /^[（「『《〈【“‘(\[]$/u;
@@ -36,12 +38,12 @@
   };
   const page = document.body;
   for (const element of page.querySelectorAll("h1, h2, h3, a")) {
-    if (element.closest(".page__footer, .masthead")) continue;
+    if (element.closest(excluded)) continue;
     if (!element.hasAttribute("aria-label")) element.setAttribute("aria-label", element.textContent.trim());
   }
   const walker = document.createTreeWalker(page, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
-      return node.textContent.trim() && !node.parentElement.closest("script, style, code, pre, button, .page__footer, .masthead, [data-essay-water-surface]")
+      return node.textContent.trim() && !node.parentElement.closest(excluded)
         ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
     },
   });
@@ -57,7 +59,26 @@
       fragment.append(element);
       glyphs.push({ element, x: 0, y: 0, fixed: Boolean(element.closest(".masthead")), warp: [0, 0, 0, 0, 0, 0] });
     }
-    node.replaceWith(fragment);
+    if (guanlan) {
+      // Keep a text run as one flex item in navigation and banner containers.
+      const run = document.createElement("span");
+      run.className = "water-text-run";
+      run.append(fragment);
+      node.replaceWith(run);
+    } else node.replaceWith(fragment);
+  }
+  const viewportTracked = new Set();
+  if (guanlan) {
+    const positions = new Map();
+    for (const glyph of glyphs) {
+      for (let parent = glyph.element.parentElement; parent; parent = parent.parentElement) {
+        if (!positions.has(parent)) positions.set(parent, getComputedStyle(parent).position);
+        if (["fixed", "sticky"].includes(positions.get(parent))) {
+          viewportTracked.add(glyph);
+          break;
+        }
+      }
+    }
   }
 
   const CELL = 9;
@@ -125,6 +146,13 @@
         }
         dirtyLayout = false;
       }
+      // Fixed/sticky banners do not share the document's scroll offset.
+      for (const glyph of viewportTracked) glyph.element.style.transform = "";
+      for (const glyph of viewportTracked) {
+        const rect = glyph.element.getBoundingClientRect();
+        glyph.x = rect.left + rect.width / 2;
+        glyph.y = rect.top + rect.height / 2 + viewTop;
+      }
       visible = glyphs.filter((glyph) => glyph.y >= viewTop + surfaceTop - 40 && glyph.y <= viewTop + surfaceTop + height + 40);
       if (hadWater && Math.abs(scrollDelta) > 0.25 && !reducedMotion.matches && !document.hidden) {
         // Scrolling passes the text beneath the continuous surface. It also
@@ -149,7 +177,7 @@
       const headerBottom = Math.max(0, masthead?.getBoundingClientRect().bottom ?? 0);
       return event.clientX >= 0 && event.clientX <= document.documentElement.clientWidth &&
         event.clientY >= headerBottom && event.clientY < Math.min(window.innerHeight, bannerTop) &&
-        !event.target.closest(".page__footer, .masthead");
+        (guanlan || !event.target.closest(excluded));
     };
     const disturb = (event, strength) => {
       if (reducedMotion.matches || document.hidden || !isInside(event)) return;
@@ -226,6 +254,11 @@
       document.addEventListener("visibilitychange", visibility);
       reducedMotion.addEventListener("change", motionPreference);
       document.fonts?.ready.then(invalidateLayout);
+      if (guanlan) {
+        // Article images can finish loading after the first text measurement.
+        page.addEventListener("load", invalidateLayout, true);
+        new ResizeObserver(invalidateLayout).observe(page);
+      }
     };
     p.draw = () => {
       if (dirtyView) refreshView();

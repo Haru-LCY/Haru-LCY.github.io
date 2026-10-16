@@ -21,7 +21,7 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
 .folio-brand { display: inline-flex; align-items: center; gap: 18px; font-size: 16px; letter-spacing: .22em; }
 .folio-ring { width: 24px; height: 24px; border: 1px solid #d1cec7; border-radius: 50%; box-shadow: inset 1px 0 0 #77746d, 1px 1px 0 #77746d; }
 .folio-home { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 11px; letter-spacing: .1em; }
-.folio-home span:first-child { font-size: 22px; }
+.folio-home > span[aria-hidden="true"] { font-size: 22px; }
 .folio-home:hover { color: var(--ink); }
 .folio-nav { display: flex; align-items: center; gap: 28px; }
 .index-page { isolation: isolate; }
@@ -52,6 +52,14 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
 .volume-quote { grid-column: 1; grid-row: 1; display: flex; flex-direction: row-reverse; align-self: center; justify-self: center; gap: 24px; }
 .volume-quote p { writing-mode: vertical-rl; margin: 0; font-size: 18px; line-height: 2.3; letter-spacing: .13em; }
 .volume-quote > span { writing-mode: vertical-rl; font-size: 10px; letter-spacing: .12em; color: var(--muted); align-self: flex-end; }
+.volume-cover--prose { grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr); gap: 64px; }
+.volume-cover--prose .volume-title-block { flex-direction: column; align-items: center; gap: 25px; }
+.volume-cover--prose .volume-title-block h1 { font-size: clamp(96px, 12vw, 168px); }
+.volume-cover--prose .volume-author { writing-mode: horizontal-tb; align-self: center; margin: 0; max-height: none; font-size: 12px; letter-spacing: .04em; text-align: center; white-space: nowrap; }
+.volume-quote--prose { display: block; min-width: 0; width: 100%; max-width: 33em; font-size: 15px; justify-self: start; }
+.volume-quote--prose p { writing-mode: horizontal-tb; font-size: inherit; line-height: 2.2; letter-spacing: .04em; margin: 0 0 1.3em; overflow-wrap: anywhere; color: #c5c3be; }
+.volume-quote--prose p:last-child { margin-bottom: 0; }
+.volume-quote--prose .volume-quote-closing { color: #fff; }
 .volume-content { max-width: 1000px; margin: auto; padding: 80px 40px 120px; scroll-margin-top: 20px; }
 .volume-contents { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); direction: rtl; gap: 44px 0; padding: 12px 0 0; margin: 0 0 72px; list-style: none; }
 .volume-contents li { min-width: 0; direction: ltr; }
@@ -61,12 +69,17 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
 .entry-heading { display: flex; flex-direction: row-reverse; align-items: flex-start; gap: 12px; max-width: 100%; }
 .entry-heading h2 { writing-mode: vertical-rl; text-orientation: mixed; inline-size: 12em; margin: 0; font-size: 24px; font-weight: 500; line-height: 1.65; letter-spacing: .08em; overflow-wrap: anywhere; }
 .entry-year { position: absolute; right: var(--entry-inset); bottom: var(--line-end); color: var(--muted); font-size: 12px; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: .08em; }
-.volume-prose { font-size: 16px; line-height: 2.2; overflow-wrap: anywhere; }
+.entry-author { writing-mode: vertical-rl; text-orientation: mixed; max-inline-size: 250px; padding-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.6; letter-spacing: .06em; }
+/* Match the original Gallery archive's lost/unfinished work colors. */
+.volume-entry[data-work-status="lost"], .work-page .gallery-essay__work--lost { --muted: #777777; color: var(--muted); }
+.volume-entry[data-work-status="unfinished"], .work-page .gallery-essay__work--unfinished { --muted: rgba(255, 255, 255, 0.7); color: var(--muted); }
+.volume-prose { --work-body-size: 20px; font-size: var(--work-body-size); line-height: 2.2; overflow-wrap: anywhere; }
 .volume-prose .gallery-essay__work { padding: 60px 0; border-top: 1px solid var(--line); scroll-margin-top: 36px; }
 .volume-prose h2 { margin: 0 0 20px; font-size: 28px; font-weight: 500; }
 .volume-prose h3 { font-size: 19px; font-weight: 500; }
-.volume-prose .gallery-essay__date, .volume-prose .gallery-essay__work-note { color: var(--muted); font-size: 12px; }
-.volume-prose .gallery-essay__poem { margin: 40px 0; font-size: 20px; line-height: 2.3; letter-spacing: .1em; }
+.volume-prose .gallery-essay__date { color: var(--muted); font-size: 12px; }
+.volume-prose .gallery-essay__work-note { color: var(--muted); font-size: var(--work-body-size); }
+.volume-prose .gallery-essay__poem { margin: 40px 0; font-size: var(--work-body-size); line-height: 2.3; letter-spacing: .1em; }
 .volume-prose .gallery-essay__work-return { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 40px; font-size: 11px; color: var(--muted); }
 .volume-prose a { text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #625d55; }
 .volume-prose img { max-width: 100%; height: auto; }
@@ -107,15 +120,20 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
   .volume-quote { gap: 12px; }
   .volume-quote p { font-size: 14px; line-height: 1.9; letter-spacing: .06em; }
   .volume-quote > span { font-size: 9px; }
+  .volume-cover--prose { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .volume-cover--prose .volume-title-block { grid-column: 1; grid-row: 1; justify-content: flex-start; }
+  .volume-cover--prose .volume-title-block h1 { font-size: clamp(78px, 18vw, 120px); }
+  .volume-quote--prose { grid-column: 1; grid-row: 2; font-size: 14px; }
+  .volume-quote--prose p { font-size: inherit; line-height: 2.2; letter-spacing: .04em; }
   .volume-content { padding: 40px 24px 75px; }
   .work-content { padding: 32px 24px 64px; }
   .volume-contents { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 32px; margin-bottom: 48px; }
   .volume-entry { --entry-inset: 14px; min-height: 380px; padding: 6px var(--entry-inset) 14px 10px; }
   .entry-heading { gap: 8px; }
   .entry-heading h2 { font-size: 21px; }
-  .volume-prose { font-size: 15px; }
+  .volume-prose { --work-body-size: 17px; }
   .volume-prose h2 { font-size: 24px; }
-  .volume-prose .gallery-essay__poem { font-size: 17px; letter-spacing: .04em; }
+  .volume-prose .gallery-essay__poem { letter-spacing: .04em; }
 }
 @media (max-width: 480px) {
   .volume-contents { grid-template-columns: repeat(2, minmax(0, 1fr)); }

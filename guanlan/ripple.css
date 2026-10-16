@@ -1,0 +1,7 @@
+.gallery-essay__water { position: fixed; inset: 0; width: 100%; height: 100vh; overflow: hidden; pointer-events: none; z-index: 2000; }
+.gallery-essay__water canvas { display: block; pointer-events: none; }
+.gallery-essay__water-glyph { display: inline-block; text-indent: 0; transform-origin: 50% 65%; }
+@media (prefers-reduced-motion: reduce) {
+  .gallery-essay__water { display: none; }
+  .gallery-essay__water-glyph { transform: none !important; }
+}
