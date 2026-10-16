@@ -83,6 +83,27 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 7px; }
 .volume-prose .gallery-essay__work-return { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 40px; font-size: 11px; color: var(--muted); }
 .volume-prose a { text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #625d55; }
 .volume-prose img { max-width: 100%; height: auto; }
+.bangumi-content .bangumi-image { display: block; margin: 1.5em auto; }
+.bangumi-content .bangumi-smile { display: inline-block; width: auto; height: 1.25em; margin: 0 .12em; vertical-align: -.2em; }
+.bangumi-content .bangumi-spoiler { color: transparent; background: #555; border-radius: 2px; cursor: help; }
+.bangumi-content .bangumi-spoiler:hover, .bangumi-content .bangumi-spoiler:focus { color: var(--ink); background: #333; }
+.bangumi-content .bangumi-spoiler:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+.annual-review-part { margin-top: 64px; scroll-margin-top: 32px; }
+.manuscript-gallery figure { margin: 40px 0; }
+.manuscript-gallery img { display: block; width: 100%; height: auto; }
+.manuscript-gallery figcaption { margin-top: 10px; color: var(--muted); font-size: 12px; text-align: center; }
+.research-essay .research-subtitle { margin: 0 0 24px; font-size: 18px; color: var(--muted); }
+.research-essay h2 { margin-top: 56px; }
+.research-essay h3 { margin-top: 36px; font-size: 22px; }
+.research-figure { margin: 40px 0; }
+.research-images { display: flex; justify-content: center; align-items: flex-start; gap: 16px; }
+.research-images a { min-width: 0; max-width: 48%; }
+.research-images img { display: block; width: 100%; height: auto; }
+.research-figure figcaption { margin-top: 14px; font-size: 14px; line-height: 1.8; color: var(--muted); text-align: center; }
+.research-essay .footnote-ref { font-size: .75em; text-decoration: none; }
+.research-essay .footnotes { margin-top: 64px; font-size: 14px; line-height: 1.9; color: var(--muted); }
+.research-essay .footnotes ol { padding-left: 1.8em; }
+.research-essay .footnotes li { margin-bottom: 16px; scroll-margin-top: 32px; }
 .work-content { max-width: 840px; margin: auto; padding: 50px 40px 100px; }
 .work-content .gallery-essay__work { padding: 0; border: 0; }
 .work-content h1 { margin: 0 0 22px; font-size: clamp(26px, 4vw, 40px); font-weight: 500; line-height: 1.6; }
